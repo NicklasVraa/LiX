@@ -11,3 +11,5 @@ Take a look at this example, which also acts as a manual:
 | ![p1](figures/s3.png) | ![p3](figures/p3.png) |
 
 Access the full generated pdf [here](main.pdf).
+
+This was made entirely for my own workflow, and I do not intend to maintain or fix issues in the future. Do with it, as you please.
