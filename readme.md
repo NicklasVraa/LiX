@@ -1,5 +1,5 @@
 # The `Academic` LaTeX Class
-This is a showcase of a LaTeX document class for academic writing. The template uses custom commands and environments, which allows a higher level of abstraction, to speed up writing.
+This is a showcase of a LaTeX document class for academic writing. It implements custom commands and environments, which allow a higher level of abstraction, to speed up writing.
 
 While LaTeX is the indisputable king for typesetting academic papers, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the focus back on the content, the syntax should be as light as possible - hence this humble project.
 
