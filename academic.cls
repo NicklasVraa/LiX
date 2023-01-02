@@ -14,7 +14,7 @@
     \RequirePackage[utf8]{inputenc}
     \RequirePackage[T1]{fontenc}
     \RequirePackage[nottoc]{tocbibind}
-    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, ifthen, inconsolata, lastpage, listings, microtype, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem, xpatch}
+    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, ifthen, inconsolata, lastpage, listings, microtype, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem}
 
 % Package configs:
 
@@ -56,14 +56,6 @@
     % Setting bibliography to sort by order of appearance.
     \bibliographystyle{unsrt}
 
-    % Code styling (if minted package is used).
-    %\usemintedstyle{algol_nu} % Monochrome highlighting.
-    %\setminted{baselinestretch=1, fontsize=\small, xleftmargin=15px, linenos, autogobble, numbersep=7px, breaklines} % Codeblocks.
-    %\xpatchcmd{\mintinline}{\begingroup}{\begingroup\let\itshape\relax}{}{}
-    %\xpatchcmd{\minted}{\VerbatimEnvironment}{\VerbatimEnvironment\let\itshape\relax}{}{} % Disable italic highlighting.
-    %\xpretocmd{\minted}{\begin{center}\noindent\rule{0.99\columnwidth}{0.1pt}\end{center}\vspace{-0.5em}}{}{} % Add line before block.
-    %\xapptocmd{\endminted}{\vspace{-0.8em}\begin{center}\noindent\rule{0.99\columnwidth}{0.1pt}\end{center}}{}{} % Add line after block.
-
     % Code styling.
     \lstdefinestyle{inline}{
         basicstyle=\ttfamily\footnotesize, breaklines=true
@@ -72,7 +64,7 @@
         basicstyle=\ttfamily\footnotesize,
         commentstyle=\color[rgb]{0.5,0.5,0.5},
         postbreak=\mbox{\hspace{-2.5em}\textcolor{gray}{$\hookrightarrow$}\space\space},
-        breaklines=true, numbers=left, numberstyle=\tiny, numbersep=7pt, showspaces=false, tabsize=4,xleftmargin=14pt,
+        breaklines=true, numbers=left, numberstyle=\tiny, numbersep=7pt, showspaces=false, tabsize=4,xleftmargin=14pt
     }
 
     % Header, footer, page numbers, etc.
@@ -160,6 +152,3 @@
 
     % Code blocks.
     \lstnewenvironment{code}[3]{\newcommand{\append}{\captionof{lstlisting}{#3}\label{#1}}\begin{center}\noindent\rule{\columnwidth}{0.1pt}\end{center}\vspace{-1mm}\lstset{language=#2,style=block}}{\vspace{-5mm}\begin{center}\noindent\rule{\columnwidth}{0.1pt}\end{center}\append\vspace{0.8em}}
-
-    % Code (if minted package is used).
-    %\newenvironment{code}[3]{\newcommand{\append}{\captionof{lstlisting}{#3}\label{#1}}\VerbatimEnvironment\begin{minted}{#2}}{\end{minted}\append}
