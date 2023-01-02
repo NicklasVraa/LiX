@@ -30,12 +30,14 @@ To make a heading, simple use the \c{\h} command. For a subheading, just add ano
 This section showcases the various environments which are available in the Academic class. The available environments are \c{bullets, numbers, code} and \c{math}. Begin and end them with \c{\begin{}} and \c{\end{}}.
 
 \hh{Code Blocks}
-Here is a codeblock. The declaration always follow \c{\begin{code}{label...}{lang...}{caption...} ... \end{code}}. This environment leverages the \c{minted}\cite{minted} package to subtly apply language-specific code highlighting. The fencing horizontal lines are separate entities and will position themselves vertically, such that they appear natural.
+Here is a code block. The declaration always follow \c{\begin{code}{label...}{lang...}{caption...} ... \end{code}}. The fencing horizontal lines are separate entities and will position themselves vertically, such that they appear natural.
 
 \begin{code}{snip}{python}{This is some python code.}
-    import numpy as np
-    def add(x,y):
-        return x+y
+import numpy as np
+def add(x,y):
+    return x+y
+
+# This is a long comment. Note that lines will wrap naturally.
 \end{code}
 
 \hh{Lists}

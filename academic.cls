@@ -14,7 +14,7 @@
     \RequirePackage[utf8]{inputenc}
     \RequirePackage[T1]{fontenc}
     \RequirePackage[nottoc]{tocbibind}
-    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, ifthen, inconsolata, lastpage, listings, microtype, minted, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem, xpatch}
+    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, ifthen, inconsolata, lastpage, listings, microtype, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem, xpatch}
 
 % Package configs:
 
@@ -56,13 +56,24 @@
     % Setting bibliography to sort by order of appearance.
     \bibliographystyle{unsrt}
 
+    % Code styling (if minted package is used).
+    %\usemintedstyle{algol_nu} % Monochrome highlighting.
+    %\setminted{baselinestretch=1, fontsize=\small, xleftmargin=15px, linenos, autogobble, numbersep=7px, breaklines} % Codeblocks.
+    %\xpatchcmd{\mintinline}{\begingroup}{\begingroup\let\itshape\relax}{}{}
+    %\xpatchcmd{\minted}{\VerbatimEnvironment}{\VerbatimEnvironment\let\itshape\relax}{}{} % Disable italic highlighting.
+    %\xpretocmd{\minted}{\begin{center}\noindent\rule{0.99\columnwidth}{0.1pt}\end{center}\vspace{-0.5em}}{}{} % Add line before block.
+    %\xapptocmd{\endminted}{\vspace{-0.8em}\begin{center}\noindent\rule{0.99\columnwidth}{0.1pt}\end{center}}{}{} % Add line after block.
+
     % Code styling.
-    \usemintedstyle{algol_nu} % Monochrome highlighting.
-    \setminted{baselinestretch=1, fontsize=\small, xleftmargin=15px, linenos, autogobble, numbersep=7px, breaklines} % Codeblocks.
-    \xpatchcmd{\mintinline}{\begingroup}{\begingroup\let\itshape\relax}{}{}
-    \xpatchcmd{\minted}{\VerbatimEnvironment}{\VerbatimEnvironment\let\itshape\relax}{}{} % Disable italic highlighting.
-    \xpretocmd{\minted}{\begin{center}\noindent\rule{0.99\columnwidth}{0.1pt}\end{center}\vspace{-0.5em}}{}{} % Add line before block.
-    \xapptocmd{\endminted}{\vspace{-0.8em}\begin{center}\noindent\rule{0.99\columnwidth}{0.1pt}\end{center}}{}{} % Add line after block.
+    \lstdefinestyle{inline}{
+        basicstyle=\ttfamily\footnotesize, breaklines=true
+    }
+    \lstdefinestyle{block}{
+        basicstyle=\ttfamily\footnotesize,
+        commentstyle=\color[rgb]{0.5,0.5,0.5},
+        postbreak=\mbox{\hspace{-2.5em}\textcolor{gray}{$\hookrightarrow$}\space\space},
+        breaklines=true, numbers=left, numberstyle=\tiny, numbersep=7pt, showspaces=false, tabsize=4,xleftmargin=14pt,
+    }
 
     % Header, footer, page numbers, etc.
     \fancypagestyle{firstpage}{\fancyhf{}\fancyfoot[C]{\thepage\ of \pageref{LastPage}}\renewcommand{\headrulewidth}{0pt}} % No line on first page, but display current and total page number.
@@ -122,7 +133,7 @@
     \renewcommand{\i}[1]{\textit{#1}} % Italic.
     \renewcommand{\u}[1]{\uline{#1}} % Underline.
     \newcommand{\m}[1]{$#1$} % Inline math.
-    \renewcommand{\c}[1]{\mintinline{text}{#1}} % Inline code.
+    \RenewDocumentCommand{\c}{v}{\lstinline[style=inline]{#1}}
     \newcommand{\s}[1]{\sout{#1}} % Strikethrough.
 
 % Custom environment commands:
@@ -147,5 +158,8 @@
     % Equations.
     \renewenvironment{math}[1]{\begin{equation}\label{#1}}{\end{equation}}
 
-    % Code.
-    \newenvironment{code}[3]{\newcommand{\append}{\captionof{lstlisting}{#3}\label{#1}}\VerbatimEnvironment\begin{minted}{#2}}{\end{minted}\append}
+    % Code blocks.
+    \lstnewenvironment{code}[3]{\newcommand{\append}{\captionof{lstlisting}{#3}\label{#1}}\begin{center}\noindent\rule{\columnwidth}{0.1pt}\end{center}\vspace{-1mm}\lstset{language=#2,style=block}}{\vspace{-5mm}\begin{center}\noindent\rule{\columnwidth}{0.1pt}\end{center}\append\vspace{0.8em}}
+
+    % Code (if minted package is used).
+    %\newenvironment{code}[3]{\newcommand{\append}{\captionof{lstlisting}{#3}\label{#1}}\VerbatimEnvironment\begin{minted}{#2}}{\end{minted}\append}
