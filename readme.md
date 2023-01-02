@@ -12,6 +12,6 @@ Take a look at this example, which also acts as a manual:
 
 Access the full generated pdf [here](main.pdf).
 
-It works out-of-the-box with overleaf.
+It works out-of-the-box with overleaf, but locally, you need to have all package dependencies installed. Check up on the `minted` and `svg` packages, which have non-latex dependencies.
 
 This was made entirely for my own workflow, and I do not intend to maintain or fix issues in the future. Do with it, as you please.
