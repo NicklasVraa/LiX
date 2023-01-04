@@ -4,6 +4,13 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{academic}[2022/12/12 Nicklas Vraa's custom LaTeX class]
 
+\RequirePackage{ifthen}
+\newboolean{onecol}\setboolean{onecol}{true}
+\DeclareOption{twocolumn}{
+    \setboolean{onecol}{false}
+    \PassOptionsToClass{\CurrentOption}{article}
+}
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
@@ -14,16 +21,33 @@
     \RequirePackage[utf8]{inputenc}
     \RequirePackage[T1]{fontenc}
     \RequirePackage[nottoc]{tocbibind}
-    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, ifthen, inconsolata, lastpage, listings, microtype, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem}
+    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, inconsolata, lastpage, listings, microtype, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem, xcolor}
 
 % Package configs:
 
     \WarningsOff* % Ignore all warnings.
 
+    % Column-count-specific adjustments.
+    \ifthenelse{\boolean{onecol}}{
+        \geometry{a4paper, top=36mm, left=34mm, right=34mm, bottom=36mm}
+        \setlength{\droptitle}{-5.5em}
+        \titleformat*{\section}{\bfseries\scshape\large}
+        \titleformat*{\subsection}{\bfseries\scshape}
+        \titleformat*{\subsubsection}{\bfseries\scshape}
+        \titleformat*{\paragraph}{\bfseries\scshape}
+        \titleformat*{\subparagraph}{\bfseries\scshape}
+    }{
+        \geometry{a4paper, top=30mm, left=26mm, right=26mm, bottom=32mm}
+        \setlength{\columnsep}{5mm}
+        \setlength{\droptitle}{-4.6em}
+        \titleformat*{\section}{\bfseries\scshape}
+        \titleformat*{\subsection}{\bfseries\scshape}
+        \titleformat*{\subsubsection}{\bfseries\scshape}
+        \titleformat*{\paragraph}{\bfseries\scshape}
+        \titleformat*{\subparagraph}{\bfseries\scshape}
+    }
+
     % Whitespace adjustments.
-    \geometry{a4paper, top=30mm, left=26mm, right=26mm, bottom=34mm}
-    \setlength{\columnsep}{5mm}
-    \setlength{\droptitle}{-4.5em}
     \titlespacing\numberless{0pt}{14pt}{4pt}
     \titlespacing\section{0pt}{14pt}{4pt}
     \titlespacing\subsection{0pt}{14pt}{4pt}
@@ -31,11 +55,7 @@
     \renewcommand*{\@seccntformat}[1]{\csname the#1\endcsname.\hspace{0.5em}}
 
     % Section heading styling.
-    \titleformat*{\section}{\bfseries\scshape}
-    \titleformat*{\subsection}{\bfseries\scshape}
-    \titleformat*{\subsubsection}{\bfseries\scshape}
-    \titleformat*{\paragraph}{\bfseries\scshape}
-    \titleformat*{\subparagraph}{\bfseries\scshape}
+    \renewcommand{\abstract}[1]{\textbf{\textsc{Abstract}}: #1}
 
     % ToC adjustments.
     \titlecontents{section}[0em]{}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
@@ -94,7 +114,6 @@
     \newcommand{\titles}[2]{\title{\textbf{\textsc{#1}}\\[0.8ex] \large\scshape #2}}
     \newcommand{\authors}[1]{\author{\normalsize{#1}}}
     \newcommand{\byline}[1]{\author{\normalsize{#1}} \date{}} % Either this alone, or both \authors and \date.
-    \renewcommand{\abstract}[1]{\textbf{\textsc{Abstract}}: #1}
     \newcommand{\h}[2][\DefaultOpt]{\def\DefaultOpt{#2}\section[#1]{#2}\label{#2}}
     \newcommand{\hh}[2][\DefaultOpt]{\def\DefaultOpt{#2}\subsection[#1]{#2}\label{#2}}
     \newcommand{\hhh}[2][\DefaultOpt]{\def\DefaultOpt{#2}\subsubsection[#1]{#2}\label{#2}}
@@ -136,8 +155,11 @@
         \begin{figure}[h!]
             \centering
             \filename@parse{#3}
-            \ifthenelse{\equal{\filename@ext}{svg}}
-                {\sbox0{\includesvg[width=#1\columnwidth]{#3}}}{\sbox0{\includegraphics[width=\maxwidth{#1\columnwidth}]{#3}}}
+            \ifthenelse{\equal{\filename@ext}{svg}}{
+                \sbox0{\includesvg[width=#1\columnwidth]{#3}}
+            }{
+                \sbox0{\includegraphics[width=\maxwidth{#1\columnwidth}]{#3}}
+            }
             \begin{minipage}{\wd0}\usebox0\caption{#4}\label{#2}\end{minipage}
         \end{figure}
     }
@@ -153,8 +175,20 @@
         \begin{table}[h!]\centering\sbox0{\begin{tblr}{hline{1,2,Z} = {0.1pt,solid}, vline{2} = {0.1pt,solid}, rowsep = {1pt}, hspan = even}#3\end{tblr}}\begin{minipage}{\wd0}\usebox0\caption{#2}\label{#1}\end{minipage}\end{table}
     }
 
-    % Equations.
-    \renewenvironment{math}[1]{\begin{equation}\label{#1}}{\end{equation}}
+    % Math equations.
+    \renewenvironment{math}[1]{
+        \begin{equation}\label{#1}
+    }{
+        \end{equation}
+    }
 
     % Code blocks.
-    \lstnewenvironment{code}[3]{\newcommand{\append}{\captionof{lstlisting}{#3}\label{#1}}\begin{center}\noindent\rule{\columnwidth}{0.1pt}\end{center}\vspace{-1mm}\lstset{language=#2,style=block}}{\vspace{-5mm}\begin{center}\noindent\rule{\columnwidth}{0.1pt}\end{center}\append\vspace{0.8em}}
+    \lstnewenvironment{code}[3]{
+        \newcommand{\append}{\captionof{lstlisting}{#3}\label{#1}}
+        \begin{center}\noindent\rule{\columnwidth}{0.1pt}\end{center}\vspace{-1mm}
+        \lstset{language=#2,style=block}
+    }{
+        \vspace{-5mm}
+        \begin{center}\noindent\rule{\columnwidth}{0.1pt}\end{center}
+        \append\vspace{0.8em}
+    }
