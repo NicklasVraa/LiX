@@ -11,11 +11,13 @@ Take a look at this example, which also acts as a manual:
 | ![p1](figures/s3.png) | ![p1](figures/p3.png) | ![o3](figures/o3.png) |
 |                       |                       | Pages 4 to 6...       |
 
-Access the generated pdf's here: [One-column](main_onecol.pdf) and [two-column](main.pdf).
+Access the generated pdf's here: [One-column](onecolumn.pdf) and [two-column](twocolumn.pdf).
 
-It works out-of-the-box with overleaf, but locally, you need to have all package dependencies installed. Check up on the `svg` package, which has non-latex dependencies.
+It works out-of-the-box with overleaf, but locally, you need to have all package dependencies installed. Check up on the `svg` package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
 
-This was made entirely for my own workflow, and I do not intend to maintain or fix issues in the future. Do with it, as you please.
+This was made entirely for my own workflow.
 
 ## Changelog:
 - Replaced `minted` with `listings` to remove dependency on Pygmentize.
+- Added optional scaling argument to `\fig`.
+- Increased margins for onecolumn-layout.
