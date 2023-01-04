@@ -95,11 +95,11 @@ Here are some tables. There are three types, namely the \c{\cols, \rows} and \c{
 }
 
 \h{Figures}
-The \c{\fig{path...}{label...}{caption...}} command only needs to know the path of your resource, an internal label for referencing, and a caption. It takes care of placing it correctly and is file-format agnostic, i.e. it works the same for both regular images and vector graphics.
+The \c{\fig[size...]{label...}{path...}{caption...}} command only needs to know an internal label for referencing, the path of your resource, and a caption. It takes care of placing it correctly and is file-format agnostic, i.e. it works the same for both regular images and vector graphics. Optionally, you can specify a scale, like \c{[0.5]}, which will shrink the image to half the width of the column.
 
-\fig{figures/placeholder.svg}{my_svg}{This is an svg-figure, and this is a very long description of the figure to showcase how captions will automatically fit itself underneath its figure.}
+\fig[0.7]{my_svg}{figures/placeholder.svg}{This is an svg-figure scaled by 0.7, and this is a very long description of the figure to showcase how captions will automatically fit itself underneath its figure.}
 
-\fig{figures/placeholder.png}{my_png}{This is a png-figure, and this is a very long description of the figure to showcase how captions will automatically fit itself underneath its figure.}
+\fig{my_png}{figures/placeholder.png}{This is a png-figure.}
 
 \h{Referencing}
 Here is a link to a \url{webpage}{https://www.overleaf.com/}, made using \c{\url{text...}{address...}}. Internal referencing is done using \c{\r{label...}} These are references to the previous \r{euler}, \r{snip}, \r{table1}, \r{my_svg} and \r{my_png}. \R{euler} is an example of how to easily capitalize the reference name with \c{\R{label...}} when appropriate. Labels are also automatically added to sections, like \r{Introduction} and \r{Mathematics}. The internal labels are the same as the section text. For all references, both the name and number are links. Of cource, you can cite sources using \c{\cite{...}}, like this \cite{minted} or this \cite{tabularray}. Insert your bibliography using \c{\bib{file...}}.

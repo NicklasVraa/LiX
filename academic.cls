@@ -132,8 +132,14 @@
 
     % Figures.
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
-    \newcommand{\fig}[3]{ % One command for vectors and images.
-        \begin{figure}[h!] \centering\filename@parse{#1}\ifthenelse{\equal{\filename@ext}{svg}}{\sbox0{\includesvg[width=0.99\columnwidth]{#1}}}{\sbox0{\includegraphics[width=\maxwidth{0.99\columnwidth}]{#1}}}\begin{minipage}{\wd0}\usebox0\caption{#3}\label{#2}\end{minipage}\end{figure}
+    \newcommand{\fig}[4][1]{ % One command for vectors and images.
+        \begin{figure}[h!]
+            \centering
+            \filename@parse{#3}
+            \ifthenelse{\equal{\filename@ext}{svg}}
+                {\sbox0{\includesvg[width=#1\columnwidth]{#3}}}{\sbox0{\includegraphics[width=\maxwidth{#1\columnwidth}]{#3}}}
+            \begin{minipage}{\wd0}\usebox0\caption{#4}\label{#2}\end{minipage}
+        \end{figure}
     }
 
     % Tables.
