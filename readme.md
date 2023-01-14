@@ -34,3 +34,4 @@ If you are working locally, you need to have all package dependencies installed.
 - Added optional scaling argument to `\fig`.
 - Increased margins for onecolumn-layout.
 - Automatically adjust margins and title placement, if `\header` is called.
+- Removed dependency on `ifthen` package.
