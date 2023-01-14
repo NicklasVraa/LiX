@@ -1,0 +1,175 @@
+\documentclass[twocolumn]{paper}
+
+%\header{Custom LaTeX Class}{Academic}{Nicklas Vraa}
+\titles{Showcasing The Academic Class}{Bring Your Focus Back on Writing}
+\byline{Nicklas Vraa - \today}
+
+\begin{document}
+\front
+
+\abstract{This is a showcase of a LaTeX template for academic writing. The template uses custom commands and environments, which allows a higher level of abstraction, to speed up writing. This short pdf is the result of compiling a TeX-document, which was written using the Academic document class. This PDF by itself is not particularly interesting. Instead look at its source-code.}
+
+\toc
+
+\h{Introduction}
+This document-class aims to simplify the process of writing beautiful and minimalistic academic papers. Academic extends the ever-popular \c{article} class, but greatly simplifies the syntax with which you typeset your document. In the following sections, we showcase this syntax by actually using it to define the document, you are looking at now. To use the \c{Academic} document class for your document, simply add \c{\usepackage[]{academic}}. It will pass through any optional arguments to the basic \c{article} class, e.g. \c{[twocolumn]}.
+
+\h{Motivation}
+While LaTeX is the indisputable king for typesetting academic papers, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the focus back on the content, the syntax should be as light as possible - hence this humble project.
+
+\h{Formatting}
+This is \b{bold font}. Here is some \i{italic font}. Maybe you need to \u{underline}, or \s{strike} it. You've already seen some \c{inline code}, and of course you can write inline \m{math^2}. In order, the commands for these are \c{\b}, \c{\i}, \c{\u}, \c{\s}, \c{\c} and \c{\m}. These were chosen to be easily remembered.
+
+\h{Frontmatter}
+To add titles, use \c{\titles{title...}{subtitle...}}. To add a byline, use the \c{\byline} command. Similarly, there are the \c{\authors} and the \c{\date} commands, if you wish to have the authors and date on separate lines. To add a table of contents, use \c{\toc}. You can add a header using \c{\header{left...}{center...}{right...}}. All parameters can of course be left blank. To include this frontmatter, use \c{\front} after \c{\begin{document}}.
+
+\h{Headings}
+To make a heading, simple use the \c{\h} command. For a subheading, just add another \c{h}, i.e. \c{\hh}. If you have ever used Markdown, this should be familier. For a non-numbered heading, use \c{\H}. These will also be included in the table of contents.
+
+\h{Environments}
+This section showcases the various environments which are available in the Academic class. The available environments are \c{bullets, numbers, code} and \c{math}. Begin and end them with \c{\begin{}} and \c{\end{}}.
+
+\hh{Code Blocks}
+Here is a code block. The declaration always follow \c{\begin{code}{label...}{lang...}{caption...} ... \end{code}}. The fencing horizontal lines are separate entities and will position themselves vertically, such that they appear natural.
+
+\begin{code}{snip}{python}{This is some python code.}
+import numpy as np
+def add(x,y):
+    return x+y
+
+# This is a long comment. Note that lines will wrap naturally.
+\end{code}
+
+\hh{Lists}
+This is an unordered list, using the environment \c{\begin{bullets}...\end{bullets}}
+\begin{bullets}
+    \item This is a very long item to test the wrapping of text in the unordered environment.
+    \begin{bullets}
+        \item Another item, but indented.
+        \begin{bullets}
+            \item Yet another item.
+            \item An item on the same level.
+        \end{bullets}
+    \end{bullets}
+\end{bullets}
+
+This is a numbered list, using the environment \c{\begin{numbers}...\end{numbers}}
+\begin{numbers}
+    \item This is an item.
+    \begin{numbers}
+        \item Another item, but indented.
+        \begin{numbers}
+            \item Yet another item.
+            \item An item on the same level.
+        \end{numbers}
+    \end{numbers}
+    \item Last item.
+\end{numbers}
+
+\hh{Mathematics}
+Here is a cool equation. The declaration always follow \c{\begin{math}{label} ... \end{math}}
+\begin{math}{euler}
+    e^{i\pi}+1=0
+\end{math}
+
+\h{Tables}
+Here are some tables. There are three types, namely the \c{\cols, \rows} and \c{\grid} tables. The declaration always follow \c{\<type>{label}{caption} ... \end{tabs}}. Take a look at the source-files to see how simple it is to create a decent-looking table using these commands. These three tables will cover 90\% of your table-needs, but since this is just the article-class extended, you have access to the full power of the \c{tabularray}\cite{tabularray} package for more complicated tables.
+
+\cols{table1}{This is a column-table. Notice that the description lines up with the table.}{
+    This & is & a & cool & table \\
+    1    & 2  & 3 & 4    & 5     \\
+    a    & b  & c & d    & e     \\
+}
+
+\rows{table2}{This is a row-table.}{
+    Another & 1 & 2  & 3   & 4  \\
+    cool    & a & b  & c   & d  \\
+    table   & I & II & III & IV \\
+}
+
+\grid{table3}{This is a grid-table.}{
+    This  & is & a & table \\
+    is    & 1  & 2 & 3     \\
+    a     & 2  & 4 & 6     \\
+    table & 3  & 6 & 9     \\
+}
+
+\h{Figures}
+The \c{\fig[size...]{label...}{path...}{caption...}} command only needs to know an internal label for referencing, the path of your resource, and a caption. It takes care of placing it correctly and is file-format agnostic, i.e. it works the same for both regular images and vector graphics. Optionally, you can specify a scale, like \c{[0.5]}, which will shrink the image to half the width of the column.
+
+\fig[0.7]{my_svg}{resources/figures/placeholder.svg}{This is an svg-figure scaled by 0.7, and this is a very long description of the figure to showcase how captions will automatically fit itself underneath its figure.}
+
+\fig{my_png}{resources/figures/placeholder.png}{This is a png-figure.}
+
+\h{Referencing}
+Here is a link to a \url{webpage}{https://www.overleaf.com/}, made using \c{\url{text...}{address...}}. Internal referencing is done using \c{\r{label...}} These are references to the previous \r{euler}, \r{snip}, \r{table1}, \r{my_svg} and \r{my_png}. \R{euler} is an example of how to easily capitalize the reference name with \c{\R{label...}} when appropriate. Labels are also automatically added to sections, like \r{Introduction} and \r{Mathematics}. The internal labels are the same as the section text. For all references, both the name and number are links. Of cource, you can cite sources using \c{\cite{...}}, like this \cite{minted} or this \cite{tabularray}. Insert your bibliography using \c{\bib{file...}}.
+
+\H{Personalization}
+Don't agree with some of the stylistic choices? Feel free to change the class. Simply edit \c{academic.cls} to your liking. The file is not very long and fairly simple, so it should be easy for someone with rudamentary knowledge of LaTeX.
+
+\H{Conclusion}
+This class offers a layer of abstraction for those who want an easy way to produce professional-looking academic papers, while not worrying too much about learning all the intricacies of LaTeX, but still having access to the full power of the standard \c{article} class, should it be necessary.
+
+The plan is to formulate a markup language inspired by YAML and Markdown with a transpiler written in Python, that will translate it into TeX, and using this document class, produce PDF's. I don't like the way lists and tables are handled in LaTeX. Taking inspiration from Markdown, these two elements in particular, could be made much more intuitive. This development will be hosted in its own repository.
+
+\H{Command Overview}
+Commands in alphabetical order.
+\begin{bullets}
+    \item \c{\authors{Name Lastname...}}. \\
+    Add your information to the frontmatter.
+    \item \c{\b{text...}} \\
+    Enbolden text.
+    \item \c{\begin{code}{lang...}{label...}{caption...}} \\... \c{\end{code}} \\
+    Enclose and write code.
+    \item \c{\begin{math}{label...}{caption...}} \\... \c{\end{math}} \\
+    Enclose and wite math.
+    \item \c{\bib{path/to/bib-file.bib}} \\
+    Print bibliography/references.
+    \item \c{\byline{Name Lastname - date...}} \\
+    Add author and date on the same line.
+    \item \c{\c{code...}} \\
+    Format as code.
+    \item \c{\cite{source...}} \\
+    Cite a source from your bibliography.
+    \item \c{\cols{label...}{caption...}{content...}} \\
+    Table of columns.
+    \item \c{\date{11-11-11...}}. \\
+    Add a date to the frontmatter.
+    \item \c{\fig{path...}{label...}{caption...}} \\
+    Place a figure.
+    \item \c{\front} \\
+    Print frontmatter, like titles, authors and date.
+    \item \c{\grid{label...}{caption...}{content...}} \\
+    Grid-like table.
+    \item \c{\h{...}}, \c{\hh{...}}, ... , \c{\hhhhh{...}} \\
+    Add numbered headings of various levels.
+    \item \c{\H{...}} \\
+    Add non-numbered heading.
+    \item \c{\header{left...}{center...}{right...}} \\
+    Define a document header.
+    \item \c{\i{text...}} \\
+    Italize text.
+    \item \c{\m{math...}} \\
+    Format as math.
+    \item \c{\r{label...}} \\
+    Internally reference, i.e. linking to labels.
+    \item \c{\R{label...}} \\
+    Capitalize-first-letter equivalent of \c{\r{}}.
+    \item \c{\rows{label...}{caption...}{content...}} \\
+    Table of rows.
+    \item \c{\s{text...}} \\
+    Strike text.
+    \item \c{\titles{title...}{subtitle...}}. \\
+    Add a title and subtitle to the frontmatter.
+    \item \c{\u{text...}} \\
+    Underline text.
+    \item \c{\url{text...}{https...}} \\
+    Reference a website.
+\end{bullets}
+
+\H{Acknowlegdements}
+This class leverages the hard work that went into creating all the amazing packages, which it imports. I encourage anyone finding use for this project to visit the individual package repositories. Check out the full list at the top of \c{academic.cls}.
+
+\bib{resources/refs}
+
+\end{document}
