@@ -293,13 +293,28 @@
         singlelinecheck=false
     }
 
-% REFERENCES: ------------------------------------------------------------------
+% REFERENCES: -------------------------------------------------------------
 
     \hypersetup{hidelinks} % Remove box around links.
     \normalem % Allow italized and underlined text.
+
+    % Add reference category for code blocks.
+    \renewcommand{\lstlistingname}{Snippet}
+    \providecommand*{\lstlistingautorefname}{snippet}
 
     \renewcommand{\url}[2]{\href{#2}{#1}} % Shortcut.
 
     % Add underline to urls.
     \NewCommandCopy{\oldhref}{\href}
     \renewcommand{\href}[2]{\uline{\oldhref{#1}{#2}}}
+
+    % Lowercase reference names.
+    \renewcommand{\r}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}
+
+    % Uppercase reference names.
+    \newcommand{\R}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
+
+% BIBLIOGRAPHY: -----------------------------------------------------------
+
+    \bibliographystyle{unsrt} % Sort by order of appearance.
+    \newcommand{\bib}[1]{\bibliography{#1}} % Shortcut.

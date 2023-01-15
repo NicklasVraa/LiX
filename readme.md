@@ -1,6 +1,7 @@
 # LaTeX Class Abstractions
-This will eventually be a collection of classes, which simplify the user's interaction with the basic LaTeX-classes. For now, only the `article`-class has been abstracted.
+This will eventually be a collection of classes, which simplify the user's interaction with the basic LaTeX-classes. For now, only the `article`-class has been abstracted. The abstraction on the `report` class is a work-in-progress.
 
+---
 ## The `Paper` LaTeX Class
 This is a showcase of the LaTeX document-class called `paper`, which abstracts `article` for academic writing. It implements custom commands and environments, which allow a higher level of abstraction, to speed up writing.
 
@@ -22,7 +23,7 @@ In-action using VSCode:
 |-----------------------------------------|-----------------------------------------|
 | ![screenshot1](resources/for_readme/screenshot1.png) | ![screenshot2](resources/for_readme/screenshot2.png) |
 
-Access the generated pdf's here: [One-column](compiled_pdfs/paper_one_column.pdf) and [two-column](compiled_pdfs/paper_two_column.pdf).
+Access the generated pdf's here: [One-column](compiled_pdfs/paper_onecolumn_example.pdf) and [two-column](compiled_pdfs/paper_twocolumn_example.pdf).
 
 ### Installation
 It works out-of-the-box with [Overleaf](https://www.overleaf.com). Simply include the [paper.cls](paper.cls) file in your project folder.
@@ -38,3 +39,7 @@ If you are working locally, you need to have all package dependencies installed.
 - Increased margins for onecolumn-layout.
 - Automatically adjust margins and title placement, if `\header` is called.
 - Removed dependency on `ifthen` package.
+
+---
+## The `Tome` LaTeX Class
+See an example [here](compiled_pdfs/tome_example.pdf).
