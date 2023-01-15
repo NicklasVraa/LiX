@@ -1,5 +1,5 @@
 # LaTeX Class Abstractions
-This will eventually be a collection of classes, which simplify the user's interaction with the basic LaTeX-classes. For now, only the `article`-class has been abstracted. The abstraction on the `report` class is a work-in-progress.
+This will eventually be a collection of classes, which simplify the user's interaction with the basic LaTeX-classes. For now, only the `article` class has been abstracted. The abstraction on the `report` class is a work-in-progress.
 
 ---
 ## The `Paper` LaTeX Class
@@ -42,4 +42,4 @@ If you are working locally, you need to have all package dependencies installed.
 
 ---
 ## The `Tome` LaTeX Class
-See an example [here](compiled_pdfs/tome_example.pdf).
+Work-in-progress. See an example [here](compiled_pdfs/tome_example.pdf).
