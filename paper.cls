@@ -92,7 +92,7 @@
 
 % ABSTRACT: ---------------------------------------------------------------
 
-    \renewcommand{\abstract}[1]{\textbf{\textsc{Abstract}}: #1}
+    \renewcommand{\abstract}{\textbf{\textsc{Abstract}}}
 
 % TABLE OF CONTENTS: ------------------------------------------------------
 
@@ -157,7 +157,7 @@
 % CODE: -------------------------------------------------------------------
 
     \lstdefinestyle{inline}{ % Inline styling.
-        basicstyle=\ttfamily\footnotesize, breaklines=true
+        basicstyle=\ttfamily\small, breaklines=true
     }
     \lstdefinestyle{block}{ % Block styling.
         basicstyle=\ttfamily\footnotesize,

@@ -28,7 +28,7 @@
 
 % WHITESPACE: ------------------------------------------------------------------
 
-  \geometry{letterpaper, top=40mm, left=34mm, right=34mm, bottom=34mm}
+    \geometry{letterpaper, top=40mm, left=34mm, right=34mm, bottom=34mm}
 
 % HEADER & FOOTER: -------------------------------------------------------------
 
@@ -154,7 +154,7 @@
 % CODE: ------------------------------------------------------------------------
 
     \lstdefinestyle{inline}{ % Inline styling.
-        basicstyle=\ttfamily\footnotesize, breaklines=true
+        basicstyle=\ttfamily\small, breaklines=true
     }
     \lstdefinestyle{block}{ % Block styling.
         basicstyle=\ttfamily\footnotesize,
