@@ -22,7 +22,7 @@ In-action using VSCode:
 |-----------------------------------------|-----------------------------------------|
 | ![screenshot1](resources/for_readme/screenshot1.png) | ![screenshot2](resources/for_readme/screenshot2.png) |
 
-Access the generated pdf's here: [One-column](compiled_pdfs/one_column.pdf) and [two-column](compiled_pdfs/two_column.pdf).
+Access the generated pdf's here: [One-column](compiled_pdfs/paper_one_column.pdf) and [two-column](compiled_pdfs/paper_two_column.pdf).
 
 ### Installation
 It works out-of-the-box with [Overleaf](https://www.overleaf.com). Simply include the [paper.cls](paper.cls) file in your project folder.

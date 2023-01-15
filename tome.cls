@@ -1,23 +1,23 @@
-% DESC: LaTeX document-class abstraction for academic papers.
+% DESC: LaTeX document-class abstraction for academic books.
 % AUTH: Nicklas Vraa.
 
-% CLASS CONFIGURATION: ----------------------------------------------------
+% CLASS CONFIGURATION: ---------------------------------------------------------
 
     \NeedsTeXFormat{LaTeX2e}
-    \ProvidesClass{paper}[2022/12/12 Nicklas Vraa's custom LaTeX class]
+    \ProvidesClass{tome}[2022/12/12 Nicklas Vraa's custom LaTeX class]
 
     % Intercept base-class options.
     \newcommand{\onecol}{true}
     \DeclareOption{twocolumn}{
         \renewcommand{\onecol}{false}
-        \PassOptionsToClass{\CurrentOption}{article}
+        \PassOptionsToClass{\CurrentOption}{report}
     }
 
-    \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+    \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
     \ProcessOptions\relax
-    \LoadClass{article}
+    \LoadClass[oneside]{report}
 
-% PACKAGES: ---------------------------------------------------------------
+% PACKAGES: --------------------------------------------------------------------
 
     \RequirePackage[utf8]{inputenc}
     \RequirePackage[T1]{fontenc}
@@ -26,54 +26,34 @@
 
     \WarningsOff* % Ignore all warnings.
 
-% COLUMN-COUNT-SPECIFIC: --------------------------------------------------
+% WHITESPACE: ------------------------------------------------------------------
 
-    % Adjust margins, title placement and 1st level heading formatting.
-    \ifnum\pdfstrcmp{\onecol}{true}=0
-        \geometry{a4paper, top=28mm, left=34mm, right=34mm, bottom=36mm}
-        \setlength{\droptitle}{-3.8em}
-    \else
-        \geometry{a4paper, top=22mm, left=26mm, right=26mm, bottom=32mm}
-        \setlength{\columnsep}{5mm}
-        \setlength{\droptitle}{-2.8em}
-    \fi
+  \geometry{letterpaper, top=40mm, left=34mm, right=34mm, bottom=34mm}
 
-% HEADER & FOOTER: --------------------------------------------------------
+% HEADER & FOOTER: -------------------------------------------------------------
 
-    \fancypagestyle{firstpage}{%
-        \fancyhf{}
-        \fancyfoot[C]{\thepage\ of \pageref{LastPage}}
-        \renewcommand{\headrulewidth}{0pt}
-    }
-    \fancypagestyle{withoutheader}{%
-        \fancyhf{}
-        \fancyfoot[C]{\thepage\ of \pageref{LastPage}}
-        \renewcommand{\headrulewidth}{0.0pt}
-    }
-    \fancypagestyle{withheader}{%
-        \fancyhf{}
-        \fancyfoot[C]{\thepage\ of \pageref{LastPage}}
-        \renewcommand{\headrulewidth}{0.1pt}
-    }
-    \pagestyle{withoutheader}
+    \setlength{\headsep}{5mm}
+    \pagestyle{fancy}
+    \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
+    \fancyhead[L]{\small\scshape\color{darkgray} \chaptername\ \thechapter\ --\ \leftmark}
+    \fancyhead[R]{\small\scshape\color{darkgray} Page \thepage\ of \pageref{LastPage}}
+    \fancyfoot[C]{}
+    \renewcommand{\headrulewidth}{0pt}
 
-    % If header is included, adjust margins and title placement.
-    \newcommand{\header}[3]{%
-        \ifnum\pdfstrcmp{\onecol}{true}=0 % If one-column.
-            \geometry{a4paper, top=32mm, left=34mm, right=34mm, bottom=36mm}
-        \else % Else if two-column.
-            \geometry{a4paper, top=30mm, left=26mm, right=26mm, bottom=32mm}
-        \fi
-        \setlength{\droptitle}{-5em}
-        \pagestyle{withheader}
-        \lhead{#1}\chead{#2}\rhead{#3}
+    % Specifically for pages containing the chapter heading.
+    \fancypagestyle{firstPageOfChapter}{%
+        \fancyhead{}%
+        \renewcommand{\headrulewidth}{0pt}%
     }
 
-% FRONTMATTER: ------------------------------------------------------------
+
+% FRONTMATTER: -----------------------------------------------------------------
 
     % Reduce vertical space before date.
     \NewCommandCopy{\olddate}{\date}
-    \renewcommand{\date}[1]{\olddate{\vspace{0.2em}\normalsize{#1}}}
+    \renewcommand{\date}[1]{%
+        \olddate{\vspace{0.2em}\normalsize{#1}}%
+    }
 
     % Title, subtitle, authors and byline commands.
     \newcommand{\titles}[2]{%
@@ -81,39 +61,54 @@
     }
 
     \newcommand{\authors}[1]{%
-        \author{\normalsize{#1}}%
+        \author{#1}%
     }
 
     % Either this alone, or both \authors and \date.
-    \newcommand{\byline}[1]{\author{\normalsize{#1}} \date{}}
+    \newcommand{\byline}[1]{%
+        \author{#1} \date{}%
+    }
 
     % Shortcut.
-    \newcommand{\front}{\maketitle\thispagestyle{firstpage}}%\thispagestyle{firstpage}
+    \newcommand{\frontpage}{\maketitle}
 
-% ABSTRACT: ---------------------------------------------------------------
-
-    \renewcommand{\abstract}[1]{\textbf{\textsc{Abstract}}: #1}
-
-% TABLE OF CONTENTS: ------------------------------------------------------
+% TABLE OF CONTENTS: -----------------------------------------------------------
 
     % Adjust indentation and formatting of entries.
     \titlecontents{section}[0em]{}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
     \titlecontents{subsection}[0em]{\hspace*{1.4em}}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
     \titlecontents{subsubsection}[0em]{\hspace*{2.8em}}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
 
-    \newcommand{\toc}{\tableofcontents} % Shortcut.
+    \newcommand{\toc}{%
+        \tableofcontents\thispagestyle{firstPageOfChapter}%
+    }
 
-% FORMATTING: ------------------------------------------------------------
+% FORMATTING: ------------------------------------------------------------------
 
     \renewcommand{\b}[1]{\textbf{#1}} % Bold.
     \renewcommand{\i}[1]{\textit{#1}} % Italic.
-    \renewcommand{\u}[1]{\uline{#1}} % Underline.
-    \newcommand{\m}[1]{$#1$} % Inline math.
-    \newcommand{\s}[1]{\sout{#1}} % Strikethrough.
+    \renewcommand{\u}[1]{\uline{#1}}  % Underline.
+    \newcommand{\m}[1]{$#1$}          % Inline math.
+    \newcommand{\s}[1]{\sout{#1}}     % Strikethrough.
 
-% HEADINGS: ---------------------------------------------------------------
+% HEADINGS: --------------------------------------------------------------------
+
+    \titleformat{\chapter}[display]{%
+        \normalsize%
+    }{% Prefix.
+        \hspace{1pt}\small\scshape\color{darkgray}\chaptertitlename \ \thechapter \hfill Page \thepage\ of \pageref{LastPage}%
+    }{% Vertical space between.
+        \ifnum\pdfstrcmp{\onecol}{true}=0%
+            -9pt%
+        \else
+            -4pt%
+        \fi
+    }{% Chapter name.
+        \LARGE\bfseries\scshape%
+    }
 
     % Adjust spacing between heading and text.
+    \titlespacing{\chapter}{-1pt}{-44pt}{4pt}
     \titlespacing\numberless{0pt}{14pt}{4pt}
     \titlespacing\section{0pt}{14pt}{4pt}
     \titlespacing\subsection{0pt}{14pt}{4pt}
@@ -130,31 +125,33 @@
     \renewcommand*{\@seccntformat}[1]{\csname the#1\endcsname.\hspace{0.5em}}
 
     % Set lowest level of heading that will be numbered.
-    \setcounter{secnumdepth}{3}
+    \setcounter{secnumdepth}{4}
 
     % Shortcuts for headings.
     \newcommand{\h}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\section[#1]{#2}\label{#2}%
+        \def\DefaultOpt{#2}\chapter[#1]{#2}\label{#2}%
+        \thispagestyle{firstPageOfChapter}
     }
     \newcommand{\hh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\subsection[#1]{#2}\label{#2}%
+        \def\DefaultOpt{#2}\section[#1]{#2}\label{#2}%
     }
     \newcommand{\hhh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\subsubsection[#1]{#2}\label{#2}%
+        \def\DefaultOpt{#2}\subsection[#1]{#2}\label{#2}%
     }
     \newcommand{\hhhh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\paragraph[#1]{#2}\label{#2}%
+        \def\DefaultOpt{#2}\subsubsection[#1]{#2}\label{#2}%
     }
     \newcommand{\hhhhh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\subparagraph[#1]{#2}\label{#2}%
+        \def\DefaultOpt{#2}\paragraph[#1]{#2}\label{#2}%
     }
 
     % Non-numbered heading shortcut.
     \renewcommand{\H}[1]{%
-        \section*{#1}\label{#1}\addcontentsline{toc}{section}{#1}%
+        \chapter*{#1}\label{#1}\addcontentsline{toc}{chapter}{#1}%
+        \thispagestyle{firstPageOfChapter}
     }
 
-% CODE: -------------------------------------------------------------------
+% CODE: ------------------------------------------------------------------------
 
     \lstdefinestyle{inline}{ % Inline styling.
         basicstyle=\ttfamily\footnotesize, breaklines=true
@@ -186,7 +183,7 @@
         \append\vspace{0.8em}
     }
 
-% MATHEMATICS: -----------------------------------------------------------
+% MATHEMATICS: -----------------------------------------------------------------
 
     % Shortcuts.
     \newcommand{\mean}[1]{\overline{#1}}
@@ -206,7 +203,7 @@
         \end{equation}
     }
 
-% LISTS: ------------------------------------------------------------------
+% LISTS: -----------------------------------------------------------------------
 
     % Create new list-type based on 'itemize'.
     \newlist{bullets}{itemize}{10}
@@ -218,7 +215,7 @@
     \setlist[numbers,1]{leftmargin=6mm}
     \setlist[numbers]{leftmargin=*,label*=\arabic*.,labelindent=\parindent}
 
-% FIGURES: ---------------------------------------------------------------
+% FIGURES: ---------------------------------------------------------------------
 
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
     \newcommand{\fig}[4][1]{ % One command for vectors and images.
@@ -234,7 +231,7 @@
         \end{figure}
     }
 
-% TABLES: ----------------------------------------------------------------
+% TABLES: ----------------------------------------------------------------------
 
     \newcommand{\cols}[3]{ % Column-based table.
         \begin{table}[h!]
@@ -284,7 +281,7 @@
         \end{table}
     }
 
-% CAPTIONS: ---------------------------------------------------------------
+% CAPTIONS: --------------------------------------------------------------------
 
     % Set formatting of caption text.
     \DeclareCaptionFormat{myformat}{\fontsize{8}{9}\selectfont#1#2#3}
@@ -296,28 +293,13 @@
         singlelinecheck=false
     }
 
-% REFERENCES: -------------------------------------------------------------
+% REFERENCES: ------------------------------------------------------------------
 
     \hypersetup{hidelinks} % Remove box around links.
     \normalem % Allow italized and underlined text.
-
-    % Add reference category for code blocks.
-    \renewcommand{\lstlistingname}{Snippet}
-    \providecommand*{\lstlistingautorefname}{snippet}
 
     \renewcommand{\url}[2]{\href{#2}{#1}} % Shortcut.
 
     % Add underline to urls.
     \NewCommandCopy{\oldhref}{\href}
     \renewcommand{\href}[2]{\uline{\oldhref{#1}{#2}}}
-
-    % Lowercase reference names.
-    \renewcommand{\r}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}
-
-    % Uppercase reference names.
-    \newcommand{\R}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
-
-% BIBLIOGRAPHY: -----------------------------------------------------------
-
-    \bibliographystyle{unsrt} % Sort by order of appearance.
-    \newcommand{\bib}[1]{\bibliography{#1}} % Shortcut.
