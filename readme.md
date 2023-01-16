@@ -6,20 +6,32 @@ While LaTeX is the indisputable king for typesetting academic papers, it does ha
 
 **Classes**:
 - `Paper` is for typesetting academic research papers and university assignments. It abstracts the article class.
-- `Tome` is for typesetting academic pieces of litterature, like textbooks or dissertations. It abstracts the report class.
+- `Tome` is for typesetting academic pieces of litterature, like textbooks and dissertations. It abstracts the report class.
 - `Novel` is for typesetting fiction, like novels or a short-stories. It abstracts the book class.
 
 
 **Overview**:
 1. [Examples](#examples) - What your finished result might look like.
+   - [Paper](#paper) - Research papers and university assignments.
+   - [Tome](#tome) - Textbooks and dissertations.
+   - [Novel](#novel) - Novels or a short-stories.
 2. [Syntax](#syntax) - How to use the classes.
+   - [Metadata](#metadata) - Covers, title, subtitle, author, licensing, isbn, etc.
+   - [Heading](#heading) - The various levels of headings.
+   - [Formatting](#formatting) - Embolden and italicize text, etc.
+   - [Codeblocks](#codeblocks) - How to define blocks of code.
+   - [Math](#math) - How to define math blocks.
+   - [Lists](#lists) - How to define various types of lists.
+   - [Tables](#tables) - How to create various types of tables.
+   - [Figures](#figures) - How to place external figures, like images or svg's.
+   - [Referencing](#referencing) - Internally reference, cite and link.
 3. [Installation](#installation) - Notes on using the classes locally or in Overleaf.
 4. [Plans](#plans) - What's next?
 
 ---
 ## 1. Examples <a name="examples"></a>
 
-### The `Paper` Class
+### The `Paper` Class <a name="paper"></a>
 This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](paper_example.pdf).
 | Source                             | Build (Two-column)             |
 |------------------------------------|--------------------------------|
@@ -28,7 +40,7 @@ This class strives to pack as much information as possible, into a visually cohe
 | ![p1](screenshots/src_paper_3.png) | ![p1](screenshots/paper_3.png) |
 
 ---
-### The `Tome` Class
+### The `Tome` Class <a name="tome"></a>
 This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](tome_example.pdf).
 | Source                             | Build (One-column)           |
 |------------------------------------|------------------------------|
@@ -37,7 +49,7 @@ This class is intended to typeset a large amount of academic content to be print
 | ![p1](screenshots/src_tome_3.png) | ![p1](screenshots/tome_3.png) |
 
 ---
-### The `Novel` Class
+### The `Novel` Class <a name="novel"></a>
 This class is meant for typesetting fiction with the intent to print. This class also supply cover-, title- and metadata pages using very simple commands. Access the full document [here](novel_example.pdf).
 | Source                             | Build                          |
 |------------------------------------|--------------------------------|
@@ -46,6 +58,48 @@ This class is meant for typesetting fiction with the intent to print. This class
 ---
 ## 2. Syntax <a name="syntax"></a>
 This is an overview of the commands, which are available in the abstracted classes.
+
+### Metadata <a name="metadata"></a>
+Think of these commands as initializing constants, most of which are optional. These will be used throughout the document in the appropriate places. Currently, there are 7 available constants:
+```latex
+\cover{path/to/your/cover.pdf}     % Optional.
+\title{This is your Title}         % Always mandatory.
+\subtitle{And your Subtitle}       % Optional.
+\author{Name Lastname}             % Only mandatory if license is also used.
+\date{01/01/2023}                  % Optional.
+\license{Type}{modifiers}{version} % Optional. Example: \license{CC}{by-nc-sa}{3.0}.
+\isbn{978-0201529838}              % Optional.
+```
+The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc.
+
+### Heading <a name="">heading</a>
+
+### Formatting <a name="formatting"></a>
+```latex
+\b{...} % Bold text.
+\i{...} % Italic text.
+\u{...} % Underline text.
+\s{...} % Strikeout.
+\c{...} % Inline code.
+\m{...} % Inline math. Equivalent to $...$
+```
+
+### Codeblocks <a name="codeblocks"></a>
+
+
+### Math <a name="math"></a>
+
+
+### Lists <a name="lists"></a>
+
+
+### Tables <a name="tables"></a>
+
+
+### Figures <a name="figures"></a>
+
+
+### Referencing <a name="referencing"></a>
 
 
 ---
