@@ -37,7 +37,6 @@ This class strives to pack as much information as possible, into a visually cohe
 |------------------------------------|--------------------------------|
 | ![p1](screenshots/src_paper_1.png) | ![p1](screenshots/paper_1.png) |
 | ![p1](screenshots/src_paper_2.png) | ![p1](screenshots/paper_2.png) |
-| ![p1](screenshots/src_paper_3.png) | ![p1](screenshots/paper_3.png) |
 
 ---
 ### The `Tome` Class <a name="tome"></a>
@@ -46,7 +45,6 @@ This class is intended to typeset a large amount of academic content to be print
 |------------------------------------|------------------------------|
 | ![p1](screenshots/src_tome_1.png) | ![p1](screenshots/tome_1.png) |
 | ![p1](screenshots/src_tome_2.png) | ![p1](screenshots/tome_2.png) |
-| ![p1](screenshots/src_tome_3.png) | ![p1](screenshots/tome_3.png) |
 
 ---
 ### The `Novel` Class <a name="novel"></a>
