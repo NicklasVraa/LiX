@@ -7,29 +7,36 @@ While LaTeX is the indisputable king for typesetting academic papers, it does ha
 **Classes**
 - `Paper` is for typesetting an academic research paper or longer university assignment. It abstracts the `article` class.
 - `Tome` is for typesetting an academic piece of litterature, like a textbook or a dissertation. It abstracts on the `report` class.
-- `Novel` is for typesetting fiction, like a novel or a short-story.
+- `Novel` is for typesetting fiction, like a novel or a short-story. It abstracts the `book` class.
 
-
+---
 ## The `Paper` Class
-This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references and captions. Below is an example, which also acts as a manual. Access the generated pdf's here: [One-column](compiled_pdfs/paper_onecolumn_example.pdf) and [two-column](compiled_pdfs/paper_twocolumn_example.pdf).
-| Source                | Two-column            | One-column            |
-|-----------------------|-----------------------|-----------------------|
-| ![p1](resources/for_readme/s1.png) | ![p1](resources/for_readme/p1.png) | ![o1](resources/for_readme/o1.png) |
-| ![p1](resources/for_readme/s2.png) | ![p1](resources/for_readme/p2.png) | ![o2](resources/for_readme/o2.png) |
-| ![p1](resources/for_readme/s3.png) | ![p1](resources/for_readme/p3.png) | ![o3](resources/for_readme/o3.png) |
-|                       |                       | Pages 4 to 6...       |
+This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](paper_example.pdf).
+| Source                             | Build (Two-column)             |
+|------------------------------------|--------------------------------|
+| ![p1](screenshots/src_paper_1.png) | ![p1](screenshots/paper_1.png) |
+| ![p1](screenshots/src_paper_2.png) | ![p1](screenshots/paper_2.png) |
+| ![p1](screenshots/src_paper_3.png) | ![p1](screenshots/paper_3.png) |
 
-
+---
 ## The `Tome` Class
-Work-in-progress. See the [example](compiled_pdfs/tome_example.pdf).
+This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a title- and metadata page, references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](tome_example.pdf).
+| Source                             | Build (One-column)           |
+|------------------------------------|------------------------------|
+| ![p1](screenshots/src_tome_1.png) | ![p1](screenshots/tome_1.png) |
+| ![p1](screenshots/src_tome_2.png) | ![p1](screenshots/tome_2.png) |
+| ![p1](screenshots/src_tome_3.png) | ![p1](screenshots/tome_3.png) |
 
-
+---
 ## The `Novel` Class
-Work-in-progress. See the [example](compiled_pdfs/novel_example.pdf).
+This class is meant for typesetting fiction with the intent to print. Access the full document [here](novel_example.pdf).
+| Source                             | Build                          |
+|------------------------------------|--------------------------------|
+| ![p1](screenshots/src_novel_1.png) | ![p1](screenshots/novel_1.png) |
 
-
+---
 ## Installation
-All classes work out-of-the-box with [Overleaf](https://www.overleaf.com). Simply include the `.cls` file in your project folder.
+All classes work out-of-the-box with [Overleaf](https://www.overleaf.com). Simply include the appropriate `.cls` file in your project folder.
 
 If you are working locally, you need to have all package dependencies installed. Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
 

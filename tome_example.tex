@@ -1,10 +1,14 @@
 \documentclass[onecolumn]{tome}
 
-\titles{Showcasing The Tome Class}{Bring Your Focus Back on Writing}
-\byline{Nicklas Vraa}
+\title{Showcasing The Novel Class}
+\subtitle{Bring Your Focus Back on Writing}
+\author{Nicklas Vraa}
+\date{01/01/2022}
+\license{CC}{by-nc-sa}{3.0}
+\isbn{978-0201529838}
 
 \begin{document}
-\frontpage
+\metadata
 
 \toc
 
@@ -18,12 +22,15 @@ This document-class aims to simplify the process of writing beautiful and minima
 While LaTeX is the indisputable king for typesetting academic papers, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the focus back on the content, the syntax should be as light as possible - hence this humble project.
 
 \h{The Syntax}
+This section will describe the syntax of the \c{tome} class.
 
 \hh{Formatting}
 This is \b{bold font}. Here is some \i{italic font}. Maybe you need to \u{underline}, or \s{strike} it. You've already seen some \c{inline code}, and of course you can write inline \m{math^2}. In order, the commands for these are \c{\b}, \c{\i}, \c{\u}, \c{\s}, \c{\c} and \c{\m}. These were chosen to be easily remembered.
 
-\hh{Frontmatter}
-To add titles, use \c{\titles{title...}{subtitle...}}. To add a byline, use the \c{\byline} command. Similarly, there are the \c{\authors} and the \c{\date} commands, if you wish to have the authors and date on separate lines. To add a table of contents, use \c{\toc}. You can add a header using \c{\header{left...}{center...}{right...}}. All parameters can of course be left blank. To include this frontmatter, use \c{\front} after \c{\begin{document}}.
+\hh{Metadata}
+To add titles, use \c{\titles{title...}} and \c{\subtitle{subtitle...}}. Similarly, there are the \c{\author{Name Lastname}} and the \c{\date{...}} commands. If you wish to have the author and date on one line, simply write the date in the \c{\author} command and disregard the \c{\date} command. To add a table of contents, use \c{\toc}. You can add a header using \c{\header{left...}{center...}{right...}}. All parameters can of course be left blank. To include this frontmatter, use \c{\front} after \c{\begin{document}}.
+
+If you supply an ISBN-code, and/or a creative commons copyright license, they will show up on the page immediately after the title page. These are defined by the \c{\isbn{1234...}} command and the \c{license{type...}{modifier...}{version...}} command. To see what types of licenses are possible, see the \c{doclicense} package\cite{doclicense}.
 
 \hh{Headings}
 To make a heading, simple use the \c{\h} command. For a subheading, just add another \c{h}, i.e. \c{\hh}. If you have ever used Markdown, this should be familier. For a non-numbered heading, use \c{\H}. These will also be included in the table of contents.
@@ -99,9 +106,9 @@ Here are some tables. There are three types, namely the \c{\cols, \rows} and \c{
 \hh{Figures}
 The \c{\fig[size...]{label...}{path...}{caption...}} command only needs to know an internal label for referencing, the path of your resource, and a caption. It takes care of placing it correctly and is file-format agnostic, i.e. it works the same for both regular images and vector graphics. Optionally, you can specify a scale, like \c{[0.5]}, which will shrink the image to half the width of the column.
 
-\fig[0.7]{my_svg}{resources/figures/placeholder.svg}{This is an svg-figure scaled by 0.7, and this is a very long description of the figure to showcase how captions will automatically fit itself underneath its figure.}
+\fig[0.7]{my_svg}{resources/placeholder.svg}{This is an svg-figure scaled by 0.7, and this is a very long description of the figure to showcase how captions will automatically fit itself underneath its figure.}
 
-\fig{my_png}{resources/figures/placeholder.png}{This is a png-figure.}
+\fig{my_png}{resources/placeholder.png}{This is a png-figure.}
 
 \hh{Referencing}
 Here is a link to a \url{webpage}{https://www.overleaf.com/}, made using \c{\url{text...}{address...}}. Internal referencing is done using \c{\r{label...}} These are references to the previous \r{euler}, \r{snip}, \r{table1}, \r{my_svg} and \r{my_png}. \R{euler} is an example of how to easily capitalize the reference name with \c{\R{label...}} when appropriate. Labels are also automatically added to sections, like \r{Introduction} and \r{Mathematics}. The internal labels are the same as the section text. For all references, both the name and number are links. Of cource, you can cite sources using \c{\cite{...}}, like this \cite{minted} or this \cite{tabularray}. Insert your bibliography using \c{\bib{file...}}.

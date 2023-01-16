@@ -8,7 +8,7 @@
 
     \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
     \ProcessOptions\relax
-    \LoadClass[12pt,oneside]{book}
+    \LoadClass[12pt,oneside,onecolumn]{book}
 
 % PACKAGES: --------------------------------------------------------------------
 
@@ -23,7 +23,7 @@
 
     \geometry{letterpaper, top=40mm, left=40mm, right=40mm, bottom=40mm}
 
-% HEADER & FOOTER: -------------------------------------------------------------
+% PAGESTYLES, HEADER & FOOTER: -------------------------------------------------
 
     \setlength{\headsep}{5mm}
     \pagestyle{fancy}
@@ -31,7 +31,7 @@
     \fancyhead[L]{}
     \fancyhead[C]{\small\scshape\color{darkgray} \chaptername\ \thechapter\ --\ \leftmark}
     \fancyhead[R]{}
-    \fancyfoot[C]{\large\scshape\color{darkgray}\thepage}
+    \fancyfoot[C]{\large\scshape\thepage}
     \renewcommand{\headrulewidth}{0pt}
 
     % Specifically for pages containing the chapter heading.
@@ -40,30 +40,90 @@
         \renewcommand{\headrulewidth}{0pt}%
     }
 
-% FRONTMATTER: -----------------------------------------------------------------
+    % Specifically for metadata page.
+    \fancypagestyle{metadataPage}{%
+        \fancyhead{}%
+        \fancyfoot{}%
+        \renewcommand{\headrulewidth}{0pt}%
+    }
 
-    % Reduce vertical space before date.
+% METADATA: -----------------------------------------------------------------
+
+    % Redefine commands, but save original prefixed with 'old'.
+    \NewCommandCopy{\oldtitle}{\title}
+    \renewcommand{\title}[1]{%
+        \newcommand{\theTitle}{#1}%
+    }
+
+    \newcommand{\subtitle}[1]{%
+        \newcommand{\theSubtitle}{#1}%
+    }
+
+    \NewCommandCopy{\oldauthor}{\author}
+    \renewcommand{\author}[1]{%
+        \newcommand{\theAuthor}{#1}
+    }
+
     \NewCommandCopy{\olddate}{\date}
     \renewcommand{\date}[1]{%
-        \olddate{\vspace{0.2em}\normalsize{#1}}%
+        \newcommand{\theDate}{#1}
     }
 
-    % Title, subtitle, authors and byline commands.
-    \newcommand{\titles}[2]{%
-        \title{\textbf{\textsc{#1}}\\[0.8ex] \large\scshape #2}%
+    \newcommand{\license}[3]{
+        \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}
     }
 
-    \newcommand{\authors}[1]{%
-        \author{#1}%
+    \newcommand{\isbn}[1]{
+        \usepackage{GS1}
+        \GSSetup{ocrb=true,module_height=5ex}
+        \newcommand{\theIsbn}{#1}
     }
 
-    % Either this alone, or both \authors and \date.
-    \newcommand{\byline}[1]{%
-        \author{#1} \date{}%
-    }
+    % Compile and print frontmatter. Handles undefined.
+    \newcommand{\metadata}{%
 
-    % Shortcut.
-    \newcommand{\frontpage}{\maketitle}
+        % Check if subtitle was given.
+        \@ifundefined{theSubtitle}{%
+            \oldtitle{\textbf{\textsc{\theTitle}}}%
+        }{%
+            \oldtitle{\textbf{\textsc{\theTitle}}\\[0.8ex] \large\scshape \theSubtitle}%
+        }
+
+        % Check if author was given.
+        \@ifundefined{theAuthor}{%
+            \oldauthor{}%
+        }{%
+            \oldauthor{\theAuthor}%
+        }
+
+        % Check if date was given.
+        \@ifundefined{theDate}{%
+            \olddate{}%
+        }{%
+            \olddate{\normalsize{\theDate}}%
+        }
+
+        \maketitle
+
+        % Metadata page.
+        \thispagestyle{metadataPage}%
+        {\clearpage\null\vfill\raggedright\footnotesize%
+
+            % Check if license was given.
+            \@ifpackageloaded{doclicense}{%
+                Copyright 2022--\the\year\ \theAuthor\par
+                \doclicenseLongText \par%
+                \doclicenseIcon%
+            }{}
+
+            % Check if ISBN was given.
+            \@ifpackageloaded{GS1}{%
+                \hfill ISBN: \theIsbn \hspace{2mm} \par\vspace{1mm}%
+                \hfill\expandafter\EANBarcode\expandafter{\theIsbn}%
+            }{}%
+        }
+
+    }
 
 % FORMATTING: ------------------------------------------------------------------
 

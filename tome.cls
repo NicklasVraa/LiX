@@ -46,31 +46,89 @@
         \renewcommand{\headrulewidth}{0pt}%
     }
 
+    % Specifically for metadata page.
+    \fancypagestyle{metadataPage}{%
+        \fancyhead{}%
+        \fancyfoot{}%
+        \renewcommand{\headrulewidth}{0pt}%
+    }
 
-% FRONTMATTER: -----------------------------------------------------------------
+% METADATA: -----------------------------------------------------------------
 
-    % Reduce vertical space before date.
+    % Redefine commands, but save original prefixed with 'old'.
+    \NewCommandCopy{\oldtitle}{\title}
+    \renewcommand{\title}[1]{%
+        \newcommand{\theTitle}{#1}%
+    }
+
+    \newcommand{\subtitle}[1]{%
+        \newcommand{\theSubtitle}{#1}%
+    }
+
+    \NewCommandCopy{\oldauthor}{\author}
+    \renewcommand{\author}[1]{%
+        \newcommand{\theAuthor}{#1}
+    }
+
     \NewCommandCopy{\olddate}{\date}
     \renewcommand{\date}[1]{%
-        \olddate{\vspace{0.2em}\normalsize{#1}}%
+        \newcommand{\theDate}{#1}
     }
 
-    % Title, subtitle, authors and byline commands.
-    \newcommand{\titles}[2]{%
-        \title{\textbf{\textsc{#1}}\\[0.8ex] \large\scshape #2}%
+    \newcommand{\license}[3]{
+        \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}
     }
 
-    \newcommand{\authors}[1]{%
-        \author{#1}%
+    \newcommand{\isbn}[1]{
+        \usepackage{GS1}
+        \GSSetup{ocrb=true,module_height=5ex}
+        \newcommand{\theIsbn}{#1}
     }
 
-    % Either this alone, or both \authors and \date.
-    \newcommand{\byline}[1]{%
-        \author{#1} \date{}%
-    }
+    % Compile and print frontmatter. Handles undefined.
+    \newcommand{\metadata}{%
 
-    % Shortcut.
-    \newcommand{\frontpage}{\maketitle}
+        % Check if subtitle was given.
+        \@ifundefined{theSubtitle}{%
+            \oldtitle{\textbf{\textsc{\theTitle}}}%
+        }{%
+            \oldtitle{\textbf{\textsc{\theTitle}}\\[0.8ex] \large\scshape \theSubtitle}%
+        }
+
+        % Check if author was given.
+        \@ifundefined{theAuthor}{%
+            \oldauthor{}%
+        }{%
+            \oldauthor{\theAuthor}%
+        }
+
+        % Check if date was given.
+        \@ifundefined{theDate}{%
+            \olddate{}%
+        }{%
+            \olddate{\normalsize{\theDate}}%
+        }
+
+        \maketitle
+
+        % Metadata page.
+        \thispagestyle{metadataPage}%
+        {\clearpage\null\vfill\raggedright%
+
+            % Check if license was given.
+            \@ifpackageloaded{doclicense}{%
+                Copyright 2022--\the\year\ \theAuthor\par
+                \doclicenseLongText \par%
+                \doclicenseIcon%
+            }{}
+
+            % Check if ISBN was given.
+            \@ifpackageloaded{GS1}{%
+                \hfill ISBN: \theIsbn \hspace{2mm} \par\vspace{1mm}%
+                \hfill\expandafter\EANBarcode\expandafter{\theIsbn}%
+            }{}%
+        }
+    }
 
 % TABLE OF CONTENTS: -----------------------------------------------------------
 
@@ -302,11 +360,8 @@
     \renewcommand{\lstlistingname}{Snippet}
     \providecommand*{\lstlistingautorefname}{snippet}
 
-    \renewcommand{\url}[2]{\href{#2}{#1}} % Shortcut.
-
     % Add underline to urls.
-    \NewCommandCopy{\oldhref}{\href}
-    \renewcommand{\href}[2]{\uline{\oldhref{#1}{#2}}}
+    \renewcommand{\url}[2]{\uline{\href{#2}{#1}}}
 
     % Lowercase reference names.
     \renewcommand{\r}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}

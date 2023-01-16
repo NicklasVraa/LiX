@@ -38,7 +38,7 @@
         \setlength{\droptitle}{-2.8em}
     \fi
 
-% HEADER & FOOTER: --------------------------------------------------------
+% PAGESTYLES, HEADER & FOOTER: --------------------------------------------------------
 
     \fancypagestyle{firstpage}{%
         \fancyhf{}
@@ -69,26 +69,54 @@
         \lhead{#1}\chead{#2}\rhead{#3}
     }
 
-% FRONTMATTER: ------------------------------------------------------------
+% METADATA: -----------------------------------------------------------------
 
-    % Reduce vertical space before date.
+    % Redefine commands, but save original prefixed with 'old'.
+    \NewCommandCopy{\oldtitle}{\title}
+    \renewcommand{\title}[1]{%
+        \newcommand{\theTitle}{#1}%
+    }
+
+    \newcommand{\subtitle}[1]{%
+        \newcommand{\theSubtitle}{#1}%
+    }
+
+    \NewCommandCopy{\oldauthor}{\author}
+    \renewcommand{\author}[1]{%
+        \newcommand{\theAuthor}{#1}
+    }
+
     \NewCommandCopy{\olddate}{\date}
-    \renewcommand{\date}[1]{\olddate{\vspace{0.2em}\normalsize{#1}}}
-
-    % Title, subtitle, authors and byline commands.
-    \newcommand{\titles}[2]{%
-        \title{\textbf{\textsc{#1}}\\[0.8ex] \large\scshape #2}%
+    \renewcommand{\date}[1]{%
+        \newcommand{\theDate}{#1}
     }
 
-    \newcommand{\authors}[1]{%
-        \author{\normalsize{#1}}%
+    % Compile and print frontmatter. Handles undefined.
+    \newcommand{\metadata}{%
+
+        % Check if subtitle was given.
+        \@ifundefined{theSubtitle}{%
+            \oldtitle{\textbf{\textsc{\theTitle}}}%
+        }{%
+            \oldtitle{\textbf{\textsc{\theTitle}}\\[0.8ex] \large\scshape \theSubtitle}%
+        }
+
+        % Check if author was given.
+        \@ifundefined{theAuthor}{%
+            \oldauthor{}%
+        }{%
+            \oldauthor{\normalsize{\theAuthor}}%
+        }
+
+        % Check if date was given.
+        \@ifundefined{theDate}{%
+            \olddate{}%
+        }{%
+            \olddate{\normalsize{\theDate}}%
+        }
+
+        \maketitle
     }
-
-    % Either this alone, or both \authors and \date.
-    \newcommand{\byline}[1]{\author{\normalsize{#1}} \date{}}
-
-    % Shortcut.
-    \newcommand{\front}{\maketitle\thispagestyle{firstpage}}%\thispagestyle{firstpage}
 
 % ABSTRACT: ---------------------------------------------------------------
 
@@ -305,11 +333,8 @@
     \renewcommand{\lstlistingname}{Snippet}
     \providecommand*{\lstlistingautorefname}{snippet}
 
-    \renewcommand{\url}[2]{\href{#2}{#1}} % Shortcut.
-
     % Add underline to urls.
-    \NewCommandCopy{\oldhref}{\href}
-    \renewcommand{\href}[2]{\uline{\oldhref{#1}{#2}}}
+    \renewcommand{\url}[2]{\uline{\href{#2}{#1}}}
 
     % Lowercase reference names.
     \renewcommand{\r}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}
