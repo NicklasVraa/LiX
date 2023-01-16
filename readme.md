@@ -67,14 +67,29 @@ Think of these commands as initializing constants, most of which are optional. T
 \subtitle{And your Subtitle}       % Optional.
 \author{Name Lastname}             % Only mandatory if license is also used.
 \date{01/01/2023}                  % Optional.
-\license{Type}{modifiers}{version} % Optional. Example: \license{CC}{by-nc-sa}{3.0}.
+\license{Type}{modifiers}{version} % Optional. E.g \license{CC}{by-nc-sa}{3.0}.
 \isbn{978-0201529838}              % Optional.
 ```
-The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc.
+The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc. The commands `\cover`, `\license`, and `\isbn` are for `tome` and `novel` classes only. To make the titlepage and a page with licensing and other metadata, use:
+```latex
+\begin{document}
+\metadata % Usually inserted right after \begin{document}.
+...
+\end{document}
+```
 
-### Heading <a name="">heading</a>
+### Heading <a name="heading"></a>
+Top-level headings will act like chapters in tomes and novels.
+```latex
+\H{...}   % Unnumbered heading.
+\h{...}   % Numbered heading. Level one.
+\hh{...}  % Numbered heading. Level two.
+\hhh{...} % Numbered heading. Level three.
+% etc...
+```
 
 ### Formatting <a name="formatting"></a>
+These command names were chosen to ensure that the readability of the source code is minimally affected.
 ```latex
 \b{...} % Bold text.
 \i{...} % Italic text.
@@ -85,22 +100,62 @@ The values of these may be used anywhere in the document using `\theCover`, `the
 ```
 
 ### Codeblocks <a name="codeblocks"></a>
-
+Codeblocks will be subtly highlighted according to the given language.
+```latex
+\begin{code}{label}{language}{caption}
+... % Code, as is (verbatim).
+\end{code}
+```
 
 ### Math <a name="math"></a>
-
+The label is required and the math block will be numbered.
+```latex
+\begin{math}{label}
+... % Regular LaTeX math syntax.
+\end{math}
+```
 
 ### Lists <a name="lists"></a>
+The formatting of these lists have been greatly simplified. It is of course possible to nest lists.
+```latex
+\begin{bullets} % Always a dot, regardless of nesting.
+    \item ...
+\end{bullets}
 
+\begin{numbers} % Arabic numbering (1, 2, 3...)
+    \item ...
+\end{numbers}
+```
 
 ### Tables <a name="tables"></a>
-
+There are three types. These three tables will cover 90% of your table-needs, but you have access to the full power of the tabularray package for more complicated tables. The `&` symbol separates items and `\\` separates rows.
+```latex
+\cols{label}{caption}{ % The first row acts as the header.
+    ...
+}
+\rows{label}{caption}{ % The first column acts as the header.
+    ...
+}
+\grid{label}{caption}{ % Both the first row and column act as headers.
+    ...
+}
+```
 
 ### Figures <a name="figures"></a>
-
+This command will take care of placing your figure correctly and it file-format agnostic i.e. it works the same for both regular images and vector graphics.
+```latex
+\fig[scale]{label}{caption}{path} % Scale is optional.
+```
 
 ### Referencing <a name="referencing"></a>
-
+Reference your figures, tables, math, codeblocks, etc., using the labels, you provided. Cite external sources from your bibliography. Link to external sources.
+```latex
+\r{label}              % Reference figures, tables, etc., with a lowercase name.
+\R{label}              % Uppercase equivalent of \r.
+\cite{source}          % As defined in your bibliography file.
+\url{label text}{link} % E.g. {this website}{https://www.somewebsite.com}
+\bib{path/to/refs}     % Without the '.bib' extension.
+```
 
 ---
 ## 3. Installation <a name="installation"></a>

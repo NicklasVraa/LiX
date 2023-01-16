@@ -299,13 +299,13 @@
     \newcommand{\fig}[4][1]{ % One command for vectors and images.
         \begin{figure}[h!]
             \centering
-            \filename@parse{#3}
+            \filename@parse{#4}
             \ifnum\pdfstrcmp{\filename@ext}{svg}=0%
-                \sbox0{\includesvg[width=#1\columnwidth]{#3}}%
+                \sbox0{\includesvg[width=#1\columnwidth]{#4}}%
             \else%
-                \sbox0{\includegraphics[width=\maxwidth{#1\columnwidth}]{#3}}%
+                \sbox0{\includegraphics[width=\maxwidth{#1\columnwidth}]{#4}}%
             \fi%
-            \begin{minipage}{\wd0}\usebox0\caption{#4}\label{#2}\end{minipage}
+            \begin{minipage}{\wd0}\usebox0\caption{#3}\label{#2}\end{minipage}
         \end{figure}
     }
 
