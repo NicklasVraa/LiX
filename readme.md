@@ -5,9 +5,9 @@ This will eventually be a collection of classes, which simplify the user's inter
 While LaTeX is the indisputable king for typesetting academic papers, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the focus back on the content, the syntax should be as light as possible - hence this humble project.
 
 **Classes**
-- `Paper` is for typesetting an academic research paper or longer university assignment. It abstracts the article class.
-- `Tome` is for typesetting an academic piece of litterature, like a textbook or a dissertation. It abstracts on the report class.
-- `Novel` is for typesetting fiction, like a novel or a short-story. It abstracts the book class.
+- `Paper` is for typesetting academic research papers and university assignments. It abstracts the article class.
+- `Tome` is for typesetting academic pieces of litterature, like textbooks or dissertations. It abstracts the report class.
+- `Novel` is for typesetting fiction, like novels or a short-stories. It abstracts the book class.
 
 ---
 ## The `Paper` Class
