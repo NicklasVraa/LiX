@@ -20,7 +20,7 @@ This class strives to pack as much information as possible, into a visually cohe
 
 ---
 ## The `Tome` Class
-This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a title- and metadata page, references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](tome_example.pdf).
+This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](tome_example.pdf).
 | Source                             | Build (One-column)           |
 |------------------------------------|------------------------------|
 | ![p1](screenshots/src_tome_1.png) | ![p1](screenshots/tome_1.png) |
@@ -29,7 +29,7 @@ This class is intended to typeset a large amount of academic content to be print
 
 ---
 ## The `Novel` Class
-This class is meant for typesetting fiction with the intent to print. Access the full document [here](novel_example.pdf).
+This class is meant for typesetting fiction with the intent to print. This class also supply cover-, title- and metadata pages using very simple commands. Access the full document [here](novel_example.pdf).
 | Source                             | Build                          |
 |------------------------------------|--------------------------------|
 | ![p1](screenshots/src_novel_1.png) | ![p1](screenshots/novel_1.png) |

@@ -47,7 +47,7 @@
         \renewcommand{\headrulewidth}{0pt}%
     }
 
-% METADATA: -----------------------------------------------------------------
+% METADATA & COVER: ------------------------------------------------------------
 
     % Redefine commands, but save original prefixed with 'old'.
     \NewCommandCopy{\oldtitle}{\title}
@@ -55,32 +55,51 @@
         \newcommand{\theTitle}{#1}%
     }
 
-    \newcommand{\subtitle}[1]{%
-        \newcommand{\theSubtitle}{#1}%
-    }
-
     \NewCommandCopy{\oldauthor}{\author}
     \renewcommand{\author}[1]{%
-        \newcommand{\theAuthor}{#1}
+        \newcommand{\theAuthor}{#1}%
     }
 
     \NewCommandCopy{\olddate}{\date}
     \renewcommand{\date}[1]{%
-        \newcommand{\theDate}{#1}
+        \newcommand{\theDate}{#1}%
+    }
+
+    % Define new metadata commands.
+    \newcommand{\cover}[1]{%
+        \usepackage{eso-pic}%
+        \newcommand{\theCover}{#1}%
+    }
+
+    \newcommand{\subtitle}[1]{%
+        \newcommand{\theSubtitle}{#1}%
     }
 
     \newcommand{\license}[3]{
-        \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}
+        \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}%
     }
 
     \newcommand{\isbn}[1]{
-        \usepackage{GS1}
-        \GSSetup{ocrb=true,module_height=5ex}
-        \newcommand{\theIsbn}{#1}
+        \usepackage{GS1}%
+        \GSSetup{ocrb=true,module_height=5ex}%
+        \newcommand{\theIsbn}{#1}%
     }
 
     % Compile and print frontmatter. Handles undefined.
     \newcommand{\metadata}{%
+
+        % Check if cover was given.
+        \@ifundefined{theCover}{}{%
+            \AddToShipoutPicture*{%
+                \put(0,0){%
+                    \parbox[b][\paperheight]{\paperwidth}{%
+                        \vfill\centering%
+                        \includegraphics[width=\paperwidth,height=\paperheight]{\theCover}%
+                        \vfill%
+                    }%
+                }%
+            }%
+        }
 
         % Check if subtitle was given.
         \@ifundefined{theSubtitle}{%
