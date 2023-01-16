@@ -40,15 +40,7 @@ All classes work out-of-the-box with [Overleaf](https://www.overleaf.com). Simpl
 
 If you are working locally, you need to have all package dependencies installed. Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
 
-
+---
 ## Plans
 - Simplify the way lists are defined.
-
-
-## Changelog
-Paper:
-- Replaced `minted` with `listings` to remove dependency on Pygmentize.
-- Added optional scaling argument to `\fig`.
-- Increased margins for onecolumn-layout.
-- Automatically adjust margins and title placement, if `\header` is called.
-- Removed dependency on `ifthen` package.
+- Add placement argument to `\cover` command for title, subtitle, etc.
