@@ -84,9 +84,9 @@
 
         % Check if subtitle was given.
         \@ifundefined{theSubtitle}{%
-            \oldtitle{\textbf{\textsc{\theTitle}}}%
+            \oldtitle{\huge\textbf{\textsc{\theTitle}}}%
         }{%
-            \oldtitle{\textbf{\textsc{\theTitle}}\\[0.8ex] \large\scshape \theSubtitle}%
+            \oldtitle{\huge\textbf{\textsc{\theTitle}}\\[0.4ex] \Large\scshape \theSubtitle}%
         }
 
         % Check if author was given.
