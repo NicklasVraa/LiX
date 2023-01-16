@@ -150,7 +150,7 @@ Reference your figures, tables, math, codeblocks, etc., using the labels, you pr
 ```latex
 \r{label}              % Reference figures, tables, etc., with a lowercase name.
 \R{label}              % Uppercase equivalent of \r.
-\cite{source}          % As defined in your bibliography file.
+\cite{your_source}     % As defined in your bibliography file.
 \url{label text}{link} % E.g. {this website}{https://www.somewebsite.com}
 \bib{path/to/refs}     % Without the '.bib' extension.
 ```
