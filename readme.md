@@ -166,3 +166,5 @@ If you are working locally, you need to have all package dependencies installed.
 ## 4. Plans <a name="plans"></a>
 - Simplify the way lists are defined.
 - Add placement argument to `\cover` command for title, subtitle, etc.
+- Add command: `\size{papersize}{orientation}`
+- Add command: `\margins{top}{bot}{left}{right}`
