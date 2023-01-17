@@ -58,26 +58,31 @@ This class is meant for typesetting fiction with the intent to print. This class
 This is an overview of the commands, which are available in the abstracted classes. To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, and a comment is always prefixed with a percentage symbol `%`.
 
 ### Metadata <a name="metadata"></a>
-Think of these commands as initializing constants, most of which are optional. These will be used throughout the document in the appropriate places. Currently, there are 11 available constants:
+Think of these commands as initializing constants, most of which are optional. These will be used throughout the document in the appropriate places. Currently, there are 16 available constants:
 ```latex
-\size     {papersize}{orientation}`  % Optional. Defaults depend on the class.
-\margins  {top}{bot}{left}{right}`   % Optional. Defaults depend on the class.
-\lang     {language}                 % Optional. Defaults to English.
-\cover    {path/to/your/cover.pdf}   % Optional.
-\header   {left}{center}{right}      % Optional.
-\title    {This is your Title}       % Mandatory.
-\subtitle {And your Subtitle}        % Optional.
-\author   {Name Lastname}            % Only mandatory if license is also used.
-\date     {01/01/2023}               % Optional.
-\license  {Type}{modifiers}{version} % Optional. E.g \license{CC}{by-nc-sa}{3.0}.
-\isbn     {978-0201529838}           % Optional.
+\size      {papersize}{orientation}`  % Optional. Defaults depend on the class.
+\margins   {top}{bot}{left}{right}`   % Optional. Defaults depend on the class.
+\lang      {language}                 % Optional. Defaults to English.
+\cover     {path/to/your/cover.pdf}   % Optional.
+\header    {left}{center}{right}      % Optional.
+\title     {This is your Title}       % Mandatory.
+\subtitle  {And your Subtitle}        % Optional.
+\author    {Name Lastname}            % Only mandatory if license is also used.
+\date      {01/01/2023}               % Optional.
+\license   {Type}{modifiers}{version} % Optional. E.g \license{CC}{by-nc-sa}{3.0}.
+\isbn      {978-0201529838}           % Optional.
+\edition   {123}{year}                % Optional.
+\publisher {Your Publishing Company}  % Optional.
+\dedicate  {dedicatee}{Messege}       % Optional.
+\thanks    {people or organisations}  % Optional.
+\note      {Longer author's note}     % Optional.
 ```
 Remember that whitespace between a command and its input does not matter. The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc. The commands `\cover`, `\license`, and `\isbn` are for `tome` and `novel` classes only. The `header` command is only for the `paper` class.
 
 **Paper Sizes**:
 | ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
 |-------|-------|-------|------|----|-------------|
-| `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape`. |
+| `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape` |
 
 **Licenses**:
 | Types | Modifiers | Versions |
@@ -174,9 +179,4 @@ If you are working locally, you need to have all package dependencies installed.
 - Simplify the way lists are defined.
 - Add placement argument to `\cover` command for title, subtitle, etc.
 - Add commands to be printed on metadata page.
-    - `\note{...}`
-    - `\publisher{...}`.
-    - `\edition{...}`.
     - `\keywords{...}`.
-    - `\dedicate{...}`.
-    - `\thanks{...}`.
