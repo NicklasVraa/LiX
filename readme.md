@@ -90,12 +90,14 @@ Remember that . The values of these may be used anywhere in the document using `
 | ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
 |-------|-------|-------|------|----|-------------|
 | `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape` |
+
 E.g `\size{a4}{portrait}`.
 
 **Licenses**:
 | Types | Modifiers | Versions |
 |-------|-----------|----------|
 | Creative Commons: `CC` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
+
 E.g `\license{CC}{by-nc-sa}{3.0}`.
 
 ### Heading <a name="heading"></a>
