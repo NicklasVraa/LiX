@@ -58,8 +58,9 @@ This class is meant for typesetting fiction with the intent to print. This class
 This is an overview of the commands, which are available in the abstracted classes.
 
 ### Metadata <a name="metadata"></a>
-Think of these commands as initializing constants, most of which are optional. These will be used throughout the document in the appropriate places. Currently, there are 7 available constants:
+Think of these commands as initializing constants, most of which are optional. These will be used throughout the document in the appropriate places. Currently, there are 8 available constants:
 ```latex
+\lang{your_language}               % Optional. Defaults to English.
 \cover{path/to/your/cover.pdf}     % Optional.
 \title{This is your Title}         % Always mandatory.
 \subtitle{And your Subtitle}       % Optional.

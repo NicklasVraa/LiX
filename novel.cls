@@ -75,8 +75,17 @@
         \newcommand{\theSubtitle}{#1}%
     }
 
+    \newcommand{\lang}[1]{
+        \usepackage[#1]{babel}
+        \newcommand{\theLanguage}{#1}
+    }
+
     \newcommand{\license}[3]{
-        \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}%
+        \usepackage[%
+            type={#1},%
+            modifier={#2},%
+            version={#3}%
+        ]{doclicense}%
     }
 
     \newcommand{\isbn}[1]{
@@ -84,6 +93,7 @@
         \GSSetup{ocrb=true,module_height=5ex}%
         \newcommand{\theIsbn}{#1}%
     }
+
 
     % Compile and print frontmatter. Handles undefined.
     \newcommand{\metadata}{%

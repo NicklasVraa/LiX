@@ -81,8 +81,17 @@
         \newcommand{\theSubtitle}{#1}%
     }
 
+    \newcommand{\lang}[1]{
+        \usepackage[#1]{babel}
+        \newcommand{\theLanguage}{#1}
+    }
+
     \newcommand{\license}[3]{
-        \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}%
+        \usepackage[%
+            type={#1},%
+            modifier={#2},%
+            version={#3}%
+        ]{doclicense}%
     }
 
     \newcommand{\isbn}[1]{
