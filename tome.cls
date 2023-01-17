@@ -22,7 +22,7 @@
     \RequirePackage[utf8]{inputenc}
     \RequirePackage[T1]{fontenc}
     \RequirePackage[nottoc]{tocbibind}
-    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, inconsolata, lastpage, listings, microtype, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem, xcolor}
+    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, inconsolata, lastpage, listings, microtype, numspell, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem, xcolor}
 
     \WarningsOff* % Ignore all warnings.
 
@@ -88,9 +88,7 @@
 
     \newcommand{\license}[3]{
         \usepackage[%
-            type={#1},%
-            modifier={#2},%
-            version={#3}%
+            type={#1},modifier={#2},version={#3}%
         ]{doclicense}%
     }
 
@@ -110,7 +108,29 @@
         \geometry{top=#1, bottom=#2, left=#3, right=#4}
     }
 
-    % Compile and print frontmatter. Handles undefined.
+    \newcommand{\note}[1]{
+        \newcommand{\theNote}{#1}
+    }
+
+    \newcommand{\publisher}[1]{
+        \newcommand{\thePublisher}{#1}
+    }
+
+    \newcommand{\edition}[2]{
+        \newcommand{\theEdition}{#1}
+        \newcommand{\theYear}{#2}
+    }
+
+    \newcommand{\dedicate}[2]{
+        \newcommand{\theDedicatee}{#1}
+        \newcommand{\theMessage}{#2}
+    }
+
+    \newcommand{\thank}[1]{
+        \newcommand{\theThankyou}{#1}
+    }
+
+    % Compile and print frontmatter. Handles undefined values.
     \newcommand{\metadata}{%
 
         % Check if cover was given.
@@ -151,22 +171,64 @@
 
         % Metadata page.
         \thispagestyle{metadataPage}%
-        {\clearpage\null\vfill\raggedright\footnotesize%
+        {\clearpage\raggedright\footnotesize%
 
-            % Check if license was given.
-            \@ifpackageloaded{doclicense}{%
-                Copyright 2022--\the\year\ \theAuthor\par
-                \doclicenseLongText \par%
-                \doclicenseIcon%
-            }{}
+            % Check if dedication was given.
+            \begin{minipage}{0.6\linewidth}
+                \@ifundefined{theDedicatee}{}{%
+                    {\large{\textit{To \theDedicatee}}\par%
+                    \vspace{3mm}%
+                    \normalsize{\textit{\theMessage.}}}%
+                }
+            \end{minipage}
+
+            \null\vfill%
+
+            \begin{minipage}{0.6\linewidth}
+
+                % Check if a note was given.
+                \@ifundefined{theNote}{}{%
+                    \textbf{Author's Note}: \theNote%
+                    \vspace{8mm}%
+                }
+
+                % Check if publisher was given.
+                \@ifundefined{thePublisher}{}{%
+                    \textbf{Publisher}: \thePublisher\par%
+                }
+
+                % Check if edition was given.
+                \@ifundefined{theEdition}{}{%
+                    \Ordnumspell{\theEdition} edition, published in \theYear.\par%
+                }
+
+                % Check if thank you was given.
+                \@ifundefined{theThankyou}{}{%
+                    \theThankyou.\par%
+                }
+
+                % Check if license was given.
+                \@ifpackageloaded{doclicense}{%
+                    \vspace{8mm}%
+                    \textbf{Copyright} 2022--\the\year\ \theAuthor\par%
+                    \doclicenseLongText \par%
+                    \vspace{1mm}%
+                    \doclicenseIcon%
+                }{}
+            \end{minipage}
 
             % Check if ISBN was given.
             \@ifpackageloaded{GS1}{%
-                \hfill ISBN: \theIsbn \hspace{2mm} \par\vspace{1mm}%
-                \hfill\expandafter\EANBarcode\expandafter{\theIsbn}%
-            }{}%
+                \vspace{8mm}%
+                ISBN: \theIsbn \hspace{2mm} \par\vspace{1mm}%
+                \expandafter\EANBarcode\expandafter{\theIsbn}%
+            }{}
         }
+    }
 
+    % Call \metadata automatically, when beginning document.
+    \AddToHook{begindocument/end}{%
+        \metadata%
     }
 
 % TABLE OF CONTENTS: -----------------------------------------------------------

@@ -118,6 +118,11 @@
         \maketitle
     }
 
+    % Call \metadata automatically, when beginning document.
+    \AddToHook{begindocument/end}{%
+        \metadata%
+    }
+
 % ABSTRACT: ---------------------------------------------------------------
 
     \renewcommand{\abstract}{\textbf{\textsc{Abstract}}}
