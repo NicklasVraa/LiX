@@ -94,8 +94,17 @@
         \newcommand{\theIsbn}{#1}%
     }
 
+    \newcommand{\size}[2]{
+        \newcommand{\theSize}{#1}
+        \newcommand{\theOrientation}{#2}
+        \geometry{paper= #1paper, #2}
+    }
 
-    % Compile and print frontmatter. Handles undefined.
+    \newcommand{\margins}[4]{
+        \geometry{top=#1, bottom=#2, left=#3, right=#4}
+    }
+
+    % Compile and print frontmatter. Handles undefined values.
     \newcommand{\metadata}{%
 
         % Check if cover was given.
