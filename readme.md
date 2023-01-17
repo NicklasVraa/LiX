@@ -55,39 +55,48 @@ This class is meant for typesetting fiction with the intent to print. This class
 
 ---
 ## 2. Syntax <a name="syntax"></a>
-This is an overview of the commands, which are available in the abstracted classes. To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, and a comment is always prefixed with a percentage symbol `%`.
+This is an overview of the commands, which are available in the abstracted classes. To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`.
 
 ### Metadata <a name="metadata"></a>
-Think of these commands as initializing constants, most of which are optional. These will be used throughout the document in the appropriate places. Currently, there are 16 available constants:
+Think of these commands as initializing constants, most of which are optional. These will be used throughout the document in the appropriate places. Currently, there are 18 available constants.
 ```latex
-\size      {papersize}{orientation}`  % Optional. Defaults depend on the class.
-\margins   {top}{bot}{left}{right}`   % Optional. Defaults depend on the class.
-\lang      {language}                 % Optional. Defaults to English.
-\cover     {path/to/your/cover.pdf}   % Optional.
-\header    {left}{center}{right}      % Optional.
+% Available for all classes.
 \title     {This is your Title}       % Mandatory.
 \subtitle  {And your Subtitle}        % Optional.
-\author    {Name Lastname}            % Only mandatory if license is also used.
+\author    {Name Lastname}            % Optional.
 \date      {01/01/2023}               % Optional.
-\license   {Type}{modifiers}{version} % Optional. E.g \license{CC}{by-nc-sa}{3.0}.
+\size      {standard}{orientation}    % Optional. Defaults depend on the class.
+\margins   {top}{bot}{left}{right}    % Optional. Defaults depend on the class.
+\lang      {language}                 % Optional. Defaults to English.
+
+% Available for paper only.
+\header    {left}{center}{right}      % Optional.
+
+% Available for tome and novel only.
+\front     {path/to/your/cover.pdf}   % Optional.
+\back      {path/to/your/cover.pdf}   % Optional.
+\license   {type}{modifiers}{version} % Optional.
 \isbn      {978-0201529838}           % Optional.
 \edition   {123}{year}                % Optional.
 \publisher {Your Publishing Company}  % Optional.
 \dedicate  {dedicatee}{Messege}       % Optional.
-\thanks    {people or organisations}  % Optional.
+\thank     {people or organisations}  % Optional.
 \note      {Longer author's note}     % Optional.
+\blurb     {Flavor text for the back} % Optional.
 ```
-Remember that whitespace between a command and its input does not matter. The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc. The commands `\cover`, `\license`, and `\isbn` are for `tome` and `novel` classes only. The `header` command is only for the `paper` class.
+Remember that . The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc.
 
-**Paper Sizes**:
+**Sizes**:
 | ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
 |-------|-------|-------|------|----|-------------|
 | `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape` |
+E.g `\size{a4}{portrait}`.
 
 **Licenses**:
 | Types | Modifiers | Versions |
 |-------|-----------|----------|
-| Creative Commons: `cc` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
+| Creative Commons: `CC` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
+E.g `\license{CC}{by-nc-sa}{3.0}`.
 
 ### Heading <a name="heading"></a>
 Top-level headings will act like chapters in tomes and novels.
@@ -166,6 +175,15 @@ Reference your figures, tables, math, codeblocks, etc., using the labels, you pr
 \cite{your_source}     % As defined in your bibliography file.
 \url{label text}{link} % E.g. {this website}{https://www.somewebsite.com}
 \bib{path/to/refs}     % Without the '.bib' extension.
+```
+
+### Additional <a name="additional"></a>
+```latex
+% Prints the appropriately formatted word 'Abstract' in the paper class.
+\abstract
+
+% An intuitive alias for \input{}, which inserts the tex-code from the given file.
+\add{path/to/file.tex}
 ```
 
 ---

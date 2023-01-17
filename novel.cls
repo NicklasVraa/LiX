@@ -66,9 +66,18 @@
     }
 
     % Define new metadata commands.
-    \newcommand{\cover}[1]{%
-        \usepackage{eso-pic}%
-        \newcommand{\theCover}{#1}%
+    \newcommand{\front}[1]{%
+        \@ifundefined{theBack}{% If back not used.
+            \usepackage{eso-pic}
+        }{}
+        \newcommand{\theFront}{#1}%
+    }
+
+    \newcommand{\back}[1]{%
+        \@ifundefined{theFront}{% If front not used.
+            \usepackage{eso-pic}
+        }{}
+        \newcommand{\theBack}{#1}%
     }
 
     \newcommand{\subtitle}[1]{%
@@ -124,20 +133,62 @@
         \newcommand{\theThankyou}{#1}
     }
 
+    \newcommand{\blurb}[1]{
+        \newcommand{\theBlurb}{#1}
+    }
+
     % Compile and print frontmatter. Handles undefined values.
     \newcommand{\metadata}{%
 
         % Check if cover was given.
-        \@ifundefined{theCover}{}{%
+        \@ifundefined{theFront}{}{%
             \AddToShipoutPicture*{%
                 \put(0,0){%
                     \parbox[b][\paperheight]{\paperwidth}{%
                         \vfill\centering%
-                        \includegraphics[width=\paperwidth,height=\paperheight]{\theCover}%
+                        \includegraphics[width=\paperwidth,height=\paperheight]{\theFront}%
                         \vfill%
                     }%
                 }%
             }%
+        }
+        % Check if blurb was given.
+        \@ifundefined{theBlurb}{}{%
+            \AtEndDocument{%
+                \newpage%
+                \thispagestyle{metadataPage}%
+                \@ifundefined{theBack}{}{%
+                    \AddToShipoutPicture*{%
+                        \put(0,0){%
+                            \parbox[b][\paperheight]{\paperwidth}{%
+                                \vfill\centering%
+                                \includegraphics[width=\paperwidth,height=\paperheight]{\theBack}%
+                                \vfill%
+                            }%
+                        }%
+                    }%
+                }
+                \centering
+                \begin{minipage}{0.8\linewidth}%
+                    \centering%
+                    \Large{\textbf{\theTitle}}%
+                \end{minipage}
+                \par\vspace{5mm}
+                \begin{minipage}{0.8\linewidth}%
+                    \Large{\theBlurb}%
+                \end{minipage}
+
+                % Check if ISBN was given.
+                \@ifpackageloaded{GS1}{%
+                    \par\vspace*{\fill}%
+                    \begin{minipage}{0.8\linewidth}%
+                        \hfill%
+                        \colorbox{white}{%
+                            \expandafter\EANBarcode\expandafter{\theIsbn}%
+                        }%
+                    \end{minipage}
+                }{}
+            }
         }
 
         % Check if subtitle was given.
@@ -278,6 +329,12 @@
         \end{figure}
     }
 
-% REFERENCES: -------------------------------------------------------------
+% REFERENCES: ------------------------------------------------------------------
 
     \hypersetup{hidelinks} % Remove box around links.
+
+% ADDITIONAL: ------------------------------------------------------------------
+
+    \newcommand{\add}[1]{%
+        \input{#1}%
+    }
