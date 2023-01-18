@@ -137,6 +137,16 @@ The label is required and the math block will be numbered.
 ... % Regular LaTeX math syntax.
 \end{math}
 ```
+Shortcut commmands in the math environment:
+- `\mean{x}` $\rightarrow \overline{x}$
+- `\Re` $\rightarrow \mathbb{R}$ (Real set)
+- `\Im` $\rightarrow \mathbb{I}$ (Imaginary set)
+- `\N` $\rightarrow \mathbb{N}$ (Natural set)
+- `\Z` $\rightarrow \mathbb{Z}$ (Integer set)
+- `\Q` $\rightarrow \mathbb{Q}$ (Rational set)
+- `\C` $\rightarrow \mathbb{C}$ (Complex set)
+- `\epsilon` $\rightarrow \varepsilon$ (varepsilon)
+
 
 ### Lists <a name="lists"></a>
 The formatting of these lists have been greatly simplified. It is of course possible to nest lists.
@@ -153,14 +163,16 @@ The formatting of these lists have been greatly simplified. It is of course poss
 ### Tables <a name="tables"></a>
 There are three types. These three tables will cover 90% of your table-needs, but you have access to the full power of the tabularray package for more complicated tables. The `&` symbol separates items and `\\` separates rows.
 ```latex
-\cols{label}{caption}{ % The first row acts as the header.
-    ...
+\cols{label}{caption}{
+    ...  % The first row acts as the header.
 }
-\rows{label}{caption}{ % The first column acts as the header.
-    ...
+
+\rows{label}{caption}{
+    ... % The first column acts as the header.
 }
-\grid{label}{caption}{ % Both the first row and column act as headers.
-    ...
+
+\grid{label}{caption}{
+    ... % Both the first row and column act as headers.
 }
 ```
 
