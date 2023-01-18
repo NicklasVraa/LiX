@@ -109,6 +109,7 @@ Top-level headings will act like chapters in tomes and novels.
 \hhh{...} % Numbered heading. Level three.
 % etc...
 ```
+The regular commands, like `\chapter` and `section` can still be used along with their starred counterparts.
 
 ### Formatting <a name="formatting"></a>
 These command names were chosen to ensure that the readability of the source code is minimally affected.
