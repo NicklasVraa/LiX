@@ -164,7 +164,7 @@ There are three types. These three tables will cover 90% of your table-needs, bu
 ```
 
 ### Figures <a name="figures"></a>
-This command will take care of placing your figure correctly and it file-format agnostic i.e. it works the same for both regular images and vector graphics.
+This command will take care of placing your figure correctly and it is file-format agnostic i.e. it works the same for both regular images and vector graphics.
 ```latex
 \fig[scale]{label}{caption}{path} % Scale is optional.
 ```
