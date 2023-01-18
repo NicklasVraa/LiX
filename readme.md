@@ -48,7 +48,7 @@ This class is intended to typeset a large amount of academic content to be print
 
 ---
 ### The `Novel` Class <a name="novel"></a>
-This class is meant for typesetting fiction with the intent to print. This class also supply cover-, title- and metadata pages using very simple commands. Access the full document [here](novel_example.pdf).
+This class is meant for typesetting fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands. Access the full document [here](novel_example.pdf).
 | Source                             | Build                          |
 |------------------------------------|--------------------------------|
 | ![p1](screenshots/src_novel_1.png) | ![p1](screenshots/novel_1.png) |
@@ -84,7 +84,7 @@ Think of these commands as initializing constants, most of which are optional. T
 \note      {Longer author's note}     % Optional.
 \blurb     {Flavor text for the back} % Optional.
 ```
-Remember that . The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc.
+The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc.
 
 **Sizes**:
 | ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
