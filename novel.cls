@@ -4,7 +4,7 @@
 % CLASS CONFIGURATION: ---------------------------------------------------------
 
     \NeedsTeXFormat{LaTeX2e}
-    \ProvidesClass{novel}[2022/12/12 Nicklas Vraa's custom LaTeX class]
+    \ProvidesClass{novel}[2022/12/12 Nicklas Vraa's custom LaTeX class for fiction]
 
     \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
     \ProcessOptions\relax
@@ -15,7 +15,7 @@
     \RequirePackage[utf8]{inputenc}
     \RequirePackage[T1]{fontenc}
     \RequirePackage[indent]{parskip}
-    \RequirePackage{cite, ebgaramond, enumitem, fancyhdr, float, geometry, graphicx, hyperref, microtype, numspell, setspace, silence, svg, titlesec, titling, xcolor}
+    \RequirePackage{cite, ebgaramond, enumitem, fancyhdr, float, geometry, graphicx, hyperref, microtype, numspell, setspace, silence, svg, titlesec, titling, xcolor, xparse}
 
     \WarningsOff* % Ignore all warnings.
 
@@ -66,18 +66,12 @@
     }
 
     % Define new metadata commands.
-    \newcommand{\front}[1]{%
-        \@ifundefined{theBack}{% If back not used.
-            \usepackage{eso-pic}
-        }{}
-        \newcommand{\theFront}{#1}%
-    }
-
-    \newcommand{\back}[1]{%
-        \@ifundefined{theFront}{% If front not used.
-            \usepackage{eso-pic}
-        }{}
-        \newcommand{\theBack}{#1}%
+    \NewDocumentCommand{\cover}{mg}{
+        \usepackage{eso-pic}
+        \newcommand{\theFront}{#1}
+        \IfValueT{#2}{
+            \newcommand{\theBack}{#1}%
+        }
     }
 
     \newcommand{\subtitle}[1]{%
@@ -109,6 +103,8 @@
 
     \newcommand{\margins}[4]{
         \geometry{top=#1, bottom=#2, left=#3, right=#4}
+        \fancyhfoffset[E,O]{0pt}
+        \setlength{\headsep}{5mm}
     }
 
     \newcommand{\note}[1]{
@@ -300,31 +296,55 @@
     \renewcommand*{\@seccntformat}[1]{\csname the#1\endcsname.\hspace{0.5em}}
 
     % Set lowest level of heading that will be numbered.
-    \setcounter{secnumdepth}{4}
+    \setcounter{secnumdepth}{3}
 
     % Shortcuts for headings.
-    \newcommand{\h}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\chapter[#1]{#2}\label{#2}%
-        \thispagestyle{firstPageOfChapter}
+    \NewDocumentCommand{\h}{sm}{%
+        \IfBooleanTF{#1}{%
+            \chapter*{#2}\label{#2}%
+            \addcontentsline{toc}{chapter}{#2}%
+        }{%
+            \chapter{#2}\label{#2}%
+        }
+        \thispagestyle{firstPageOfChapter}%
+    }
+    \NewDocumentCommand{\hh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \section*{#2}\label{#2}%
+            \addcontentsline{toc}{section}{#2}%
+        }{%
+            \section{#2}\label{#2}%
+        }
+    }
+    \NewDocumentCommand{\hhh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsection}{#2}%
+        }{%
+            \subsection{#2}\label{#2}%
+        }
+    }
+    \NewDocumentCommand{\hhhh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsubsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsubsection}{#2}%
+        }{%
+            \subsubsection{#2}\label{#2}%
+        }
     }
 
-    % Non-numbered heading shortcut.
-    \renewcommand{\H}[1]{%
-        \chapter*{#1}\label{#1}\addcontentsline{toc}{chapter}{#1}%
-        \thispagestyle{firstPageOfChapter}
-    }
-
-% FIGURES: ---------------------------------------------------------------------
+% Images: ---------------------------------------------------------------------
 
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
-    \newcommand{\fig}[2][1]{ % One command for vectors and images.
+    \NewDocumentCommand{\fig}{mG{1}}{ % Dor vectors and images.
+
         \begin{figure}[h!]
             \centering
-            \filename@parse{#2}
+            \filename@parse{#1}
             \ifnum\pdfstrcmp{\filename@ext}{svg}=0%
-                \includesvg[width=#1\columnwidth]{#2}%
+                \includesvg[width=#2\columnwidth]{#1}%
             \else%
-                \includegraphics[width=\maxwidth{#1\columnwidth}]{#2}%
+                \includegraphics[width=\maxwidth{#2\columnwidth}]{#1}%
             \fi%
         \end{figure}
     }

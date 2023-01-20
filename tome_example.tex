@@ -1,7 +1,7 @@
 \documentclass[onecolumn]{tome}
 
-\size      {a4}{portrait}
-\margins   {30mm}{30mm}{30mm}{30mm}
+\size      {letter}{portrait}
+\margins   {26mm}{20mm}{20mm}{20mm}
 \lang      {english}
 \title     {Showcasing The Tome Class}
 \subtitle  {Bring Your Focus Back on Writing}
@@ -21,7 +21,7 @@
 \begin{document}
 \toc
 
-\H{Preface}
+\h*{Preface}
 This is a showcase of a LaTeX template for academic writing. The template uses custom commands and environments, which allows a higher level of abstraction, to speed up writing. This short pdf is the result of compiling a TeX-document, which was written using the Academic document class. This PDF by itself is not particularly interesting. Instead look at its source-code.
 
 \h{Introduction}
@@ -120,14 +120,14 @@ The \c{\fig[size...]{label...}{caption...}{path...}} command only needs to know 
 \hh{Referencing}
 Here is a link to a \url{webpage}{https://www.overleaf.com/}, made using \c{\url{text...}{address...}}. Internal referencing is done using \c{\r{label...}} These are references to the previous \r{euler}, \r{snip}, \r{table1}, \r{my_svg} and \r{my_png}. \R{euler} is an example of how to easily capitalize the reference name with \c{\R{label...}} when appropriate. Labels are also automatically added to sections, like \r{Introduction} and \r{Mathematics}. The internal labels are the same as the section text. For all references, both the name and number are links. Of cource, you can cite sources using \c{\cite{...}}, like this \cite{minted} or this \cite{tabularray}. Insert your bibliography using \c{\bib{file...}}.
 
-\H{Conclusion}
+\h*{Conclusion}
 This class offers a layer of abstraction for those who want an easy way to produce professional-looking academic papers, while not worrying too much about learning all the intricacies of LaTeX, but still having access to the full power of the standard \c{article} class, should it be necessary.
 
 The plan is to formulate a markup language inspired by YAML and Markdown with a transpiler written in Python, that will translate it into TeX, and using this document class, produce PDF's. I don't like the way lists and tables are handled in LaTeX. Taking inspiration from Markdown, these two elements in particular, could be made much more intuitive. This development will be hosted in its own repository.
 
 Don't agree with some of the stylistic choices? Feel free to change the class. Simply edit \c{academic.cls} to your liking. The file is not very long and fairly simple, so it should be easy for someone with rudamentary knowledge of LaTeX.
 
-\H{Command Overview}
+\h*{Command Overview}
 Commands in alphabetical order.
 \begin{bullets}
     \item \c{\authors{Name Lastname...}}. \\
@@ -182,7 +182,7 @@ Commands in alphabetical order.
     Reference a website.
 \end{bullets}
 
-\H{Acknowlegdements}
+\h*{Acknowlegdements}
 This class leverages the hard work that went into creating all the amazing packages, which it imports. I encourage anyone finding use for this project to visit the individual package repositories. Check out the full list at the top of \c{academic.cls}.
 
 \bib{resources/refs}

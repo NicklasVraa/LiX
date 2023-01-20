@@ -61,28 +61,27 @@ This is an overview of the commands, which are available in the abstracted class
 Think of these commands as initializing constants, most of which are optional. These will be used throughout the document in the appropriate places. Currently, there are 18 available constants.
 ```latex
 % Available for all classes.
-\title     {This is your Title}       % Mandatory.
-\subtitle  {And your Subtitle}        % Optional.
-\author    {Name Lastname}            % Optional.
-\date      {01/01/2023}               % Optional.
-\size      {standard}{orientation}    % Optional. Defaults depend on the class.
-\margins   {top}{bot}{left}{right}    % Optional. Defaults depend on the class.
-\lang      {language}                 % Optional. Defaults to English.
+\size      {standard}{orientation} % Defaults depend on class.
+\margins   {top}{bot}{left}{right} % Defaults depend on class.
+\lang      {language}              % Defaults to English.
+\title     {This is your Title}    % Only mandatory command.
+\subtitle  {And your Subtitle}
+\author    {Name Lastname}
+\date      {01/01/2023}
 
 % Available for paper only.
-\header    {left}{center}{right}      % Optional.
+\header    {left}{center}{right}
 
 % Available for tome and novel only.
-\front     {path/to/your/cover.pdf}   % Optional.
-\back      {path/to/your/cover.pdf}   % Optional.
-\license   {type}{modifiers}{version} % Optional.
-\isbn      {978-0201529838}           % Optional.
-\edition   {123}{year}                % Optional.
-\publisher {Your Publishing Company}  % Optional.
-\dedicate  {dedicatee}{Messege}       % Optional.
-\thank     {people or organisations}  % Optional.
-\note      {Longer author's note}     % Optional.
-\blurb     {Flavor text for the back} % Optional.
+\cover     {path/to/front.pdf}{path/to/back.pdf}
+\license   {type}{modifiers}{version}
+\isbn      {978-0201529838}
+\edition   {123}{year}
+\publisher {Your Publishing Company}
+\dedicate  {dedicatee}{Messege}
+\thank     {people or organisations}
+\note      {Longer author's note}
+\blurb     {Flavor text for the back}
 ```
 The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc.
 
@@ -101,12 +100,11 @@ E.g `\size{a4}{portrait}`.
 E.g `\license{CC}{by-nc-sa}{3.0}`.
 
 ### Heading <a name="heading"></a>
-Top-level headings will act like chapters in tomes and novels.
+Top-level headings will act like chapters in tomes and novels. Headings will be numbered automatically, unless a `*` is added to the command, e.g. `\h*{...}`.
 ```latex
-\H{...}   % Unnumbered heading.
-\h{...}   % Numbered heading. Level one.
-\hh{...}  % Numbered heading. Level two.
-\hhh{...} % Numbered heading. Level three.
+\h{...}   % Level one.
+\hh{...}  % Level two.
+\hhh{...} % Level three.
 % etc...
 ```
 The regular commands, like `\chapter` and `section` can still be used along with their starred counterparts.
@@ -154,7 +152,8 @@ The formatting of these lists have been greatly simplified. It is of course poss
 \begin{bullets} % Always a dot, regardless of nesting.
     \item ...
 \end{bullets}
-
+```
+```latex
 \begin{numbers} % Arabic numbering (1, 2, 3...)
     \item ...
 \end{numbers}
@@ -166,11 +165,13 @@ There are three types. These three tables will cover 90% of your table-needs, bu
 \cols{label}{caption}{
     ...  % The first row acts as the header.
 }
-
+```
+```latex
 \rows{label}{caption}{
     ... % The first column acts as the header.
 }
-
+```
+```latex
 \grid{label}{caption}{
     ... % Both the first row and column act as headers.
 }
@@ -185,6 +186,7 @@ This command will take care of placing your figure correctly and it is file-form
 ### Referencing <a name="referencing"></a>
 Reference your figures, tables, math, codeblocks, etc., using the labels, you provided. Cite external sources from your bibliography. Link to external sources.
 ```latex
+\toc                   % Print table of contents.
 \r{label}              % Reference figures, tables, etc., with a lowercase name.
 \R{label}              % Uppercase equivalent of \r.
 \cite{your_source}     % As defined in your bibliography file.
@@ -210,6 +212,6 @@ If you are working locally, you need to have all package dependencies installed.
 ---
 ## 4. Plans <a name="plans"></a>
 - Simplify the way lists are defined.
-- Add placement argument to `\cover` command for title, subtitle, etc.
-- Add commands to be printed on metadata page.
-    - `\keywords{...}`.
+- Add optional argument to `\title`, `\subtitle`, etc. for placement.
+- Add `\keywords{...}` command.
+- Add option to `\toc` for alternate sorting.

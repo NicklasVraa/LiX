@@ -166,25 +166,29 @@
     \setcounter{secnumdepth}{3}
 
     % Shortcuts for headings.
-    \newcommand{\h}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\section[#1]{#2}\label{#2}%
+    \NewDocumentCommand{\h}{sm}{%
+        \IfBooleanTF{#1}{%
+            \section*{#2}\label{#2}%
+            \addcontentsline{toc}{section}{#2}%
+        }{%
+            \section{#2}\label{#2}%
+        }
     }
-    \newcommand{\hh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\subsection[#1]{#2}\label{#2}%
+    \NewDocumentCommand{\hh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsection}{#2}%
+        }{%
+            \subsection{#2}\label{#2}%
+        }
     }
-    \newcommand{\hhh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\subsubsection[#1]{#2}\label{#2}%
-    }
-    \newcommand{\hhhh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\paragraph[#1]{#2}\label{#2}%
-    }
-    \newcommand{\hhhhh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\subparagraph[#1]{#2}\label{#2}%
-    }
-
-    % Non-numbered heading shortcut.
-    \renewcommand{\H}[1]{%
-        \section*{#1}\label{#1}\addcontentsline{toc}{section}{#1}%
+    \NewDocumentCommand{\hhh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsubsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsubsection}{#2}%
+        }{%
+            \subsubsection{#2}\label{#2}%
+        }
     }
 
 % CODE: ------------------------------------------------------------------------

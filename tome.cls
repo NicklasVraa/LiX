@@ -22,13 +22,13 @@
     \RequirePackage[utf8]{inputenc}
     \RequirePackage[T1]{fontenc}
     \RequirePackage[nottoc]{tocbibind}
-    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, inconsolata, lastpage, listings, microtype, numspell, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem, xcolor}
+    \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, fancyhdr, float, geometry, graphicx, hyperref, inconsolata, lastpage, listings, microtype, numspell, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, ulem, xcolor, xparse}
 
     \WarningsOff* % Ignore all warnings.
 
 % WHITESPACE: ------------------------------------------------------------------
 
-    \geometry{letterpaper, top=40mm, left=34mm, right=34mm, bottom=34mm}
+    \geometry{letterpaper, top=30mm, left=24mm, right=24mm, bottom=24mm}
 
 % HEADER & FOOTER: -------------------------------------------------------------
 
@@ -42,7 +42,9 @@
 
     % Specifically for pages containing the chapter heading.
     \fancypagestyle{firstPageOfChapter}{%
-        \fancyhead{}%
+        \fancyhead[L]{}
+        \fancyhead[R]{\small\scshape\color{darkgray} Page \thepage\ of \pageref{LastPage}}
+        \fancyfoot[C]{}
         \renewcommand{\headrulewidth}{0pt}%
     }
 
@@ -72,18 +74,12 @@
     }
 
     % Define new metadata commands.
-    \newcommand{\front}[1]{%
-        \@ifundefined{theBack}{% If back not used.
-            \usepackage{eso-pic}
-        }{}
-        \newcommand{\theFront}{#1}%
-    }
-
-    \newcommand{\back}[1]{%
-        \@ifundefined{theFront}{% If front not used.
-            \usepackage{eso-pic}
-        }{}
-        \newcommand{\theBack}{#1}%
+    \NewDocumentCommand{\cover}{mg}{
+        \usepackage{eso-pic}
+        \newcommand{\theFront}{#1}
+        \IfValueT{#2}{
+            \newcommand{\theBack}{#1}%
+        }
     }
 
     \newcommand{\subtitle}[1]{%
@@ -114,7 +110,9 @@
     }
 
     \newcommand{\margins}[4]{
-        \geometry{top=#1, bottom=#2, left=#3, right=#4}
+        \geometry{top=#1, left=#3, right=#4, bottom=#2}
+        \fancyhfoffset[E,O]{0pt}
+        \setlength{\headsep}{5mm}
     }
 
     \newcommand{\note}[1]{
@@ -282,7 +280,6 @@
         \metadata%
     }
 
-
 % TABLE OF CONTENTS: -----------------------------------------------------------
 
     % Adjust indentation and formatting of entries.
@@ -291,7 +288,7 @@
     \titlecontents{subsubsection}[0em]{\hspace*{2.8em}}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
 
     \newcommand{\toc}{%
-        \tableofcontents\thispagestyle{firstPageOfChapter}%
+        \tableofcontents\thispagestyle{metadataPage}%
     }
 
 % FORMATTING: ------------------------------------------------------------------
@@ -307,7 +304,7 @@
     \titleformat{\chapter}[display]{%
         \normalsize%
     }{% Prefix.
-        \hspace{1pt}\small\scshape\color{darkgray}\chaptertitlename \ \thechapter \hfill Page \thepage\ of \pageref{LastPage}%
+        \hspace{1pt}\small\scshape\color{darkgray}\chaptertitlename \ \thechapter%
     }{% Vertical space between.
         \ifnum\pdfstrcmp{\onecol}{true}=0%
             -9pt%
@@ -319,7 +316,7 @@
     }
 
     % Adjust spacing between heading and text.
-    \titlespacing{\chapter}{-1pt}{-44pt}{4pt}
+    \titlespacing{\chapter}{-1pt}{-45pt}{4pt}
     \titlespacing\numberless{0pt}{14pt}{4pt}
     \titlespacing\section{0pt}{14pt}{4pt}
     \titlespacing\subsection{0pt}{14pt}{4pt}
@@ -339,27 +336,38 @@
     \setcounter{secnumdepth}{4}
 
     % Shortcuts for headings.
-    \newcommand{\h}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\chapter[#1]{#2}\label{#2}%
-        \thispagestyle{firstPageOfChapter}
+    \NewDocumentCommand{\h}{sm}{%
+        \IfBooleanTF{#1}{%
+            \chapter*{#2}\label{#2}%
+            \addcontentsline{toc}{chapter}{#2}%
+        }{%
+            \chapter{#2}\label{#2}%
+        }
+        \thispagestyle{firstPageOfChapter}%
     }
-    \newcommand{\hh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\section[#1]{#2}\label{#2}%
+    \NewDocumentCommand{\hh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \section*{#2}\label{#2}%
+            \addcontentsline{toc}{section}{#2}%
+        }{%
+            \section{#2}\label{#2}%
+        }
     }
-    \newcommand{\hhh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\subsection[#1]{#2}\label{#2}%
+    \NewDocumentCommand{\hhh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsection}{#2}%
+        }{%
+            \subsection{#2}\label{#2}%
+        }
     }
-    \newcommand{\hhhh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\subsubsection[#1]{#2}\label{#2}%
-    }
-    \newcommand{\hhhhh}[2][\DefaultOpt]{%
-        \def\DefaultOpt{#2}\paragraph[#1]{#2}\label{#2}%
-    }
-
-    % Non-numbered heading shortcut.
-    \renewcommand{\H}[1]{%
-        \chapter*{#1}\label{#1}\addcontentsline{toc}{chapter}{#1}%
-        \thispagestyle{firstPageOfChapter}
+    \NewDocumentCommand{\hhhh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsubsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsubsection}{#2}%
+        }{%
+            \subsubsection{#2}\label{#2}%
+        }
     }
 
 % CODE: ------------------------------------------------------------------------
