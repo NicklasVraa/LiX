@@ -209,7 +209,11 @@ All classes work out-of-the-box with [Overleaf](https://www.overleaf.com). Simpl
 
 If you are working locally, you need to have all package dependencies installed. Depending on commands are used, the classes may import the following packages:
 ```latex
-amsfonts, amsmath, amssymb, babel, caption, cite, doclicense, enumitem, esint, eso-pic, fancyhdr, float, fontenc, geometry, graphicx, hyperref, inconsolata, inputenc, lastpage, listings, microtype, numspell, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, tocbibind, ulem, xcolor, xparse
+amsfonts, amsmath, amssymb, babel, caption, cite, doclicense, enumitem,
+esint, eso-pic, fancyhdr, float, fontenc, geometry, graphicx, hyperref,
+inconsolata, inputenc, lastpage, listings, microtype, numspell, parskip,
+setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling,
+tocbibind, ulem, xcolor, xparse
 ```
 All of which are available through CTAN.
 
