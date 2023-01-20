@@ -207,7 +207,55 @@ Reference your figures, tables, math, codeblocks, etc., using the labels, you pr
 ## 3. Installation <a name="installation"></a>
 All classes work out-of-the-box with [Overleaf](https://www.overleaf.com). Simply include the appropriate `.cls` file in your project folder.
 
-If you are working locally, you need to have all package dependencies installed. Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
+If you are working locally, you need to have all package dependencies installed. Depending on commands are used, the classes may import the following packages:
+```latex
+amsfonts, amsmath, amssymb, babel, caption, cite, doclicense, enumitem, esint, eso-pic, fancyhdr, float, fontenc, geometry, graphicx, hyperref, inconsolata, inputenc, lastpage, listings, microtype, numspell, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, tocbibind, ulem, xcolor, xparse
+```
+All of which are available through CTAN.
+
+Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
+
+For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, and adding this to your `settings.json`:
+```json
+"workbench.editorAssociations": {
+    "*.pdf": "latex-workshop-pdf-hook"
+},
+"latex-workshop.latex.tools": [
+    {
+        "name": "latexmk",
+        "command": "latexmk",
+        "args": [
+            "--shell-escape",
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "-pdf",
+            "-outdir=%OUTDIR%",
+            "%DOC%"
+        ]
+    },
+    {
+        "name": "pdflatex",
+        "command": "pdflatex",
+        "args": [
+            "--shell-escape",
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOC%"
+        ]
+    },
+    {
+        "name": "bibtex",
+        "command": "bibtex",
+        "args": [
+            "%DOCFILE%"
+        ]
+    }
+],
+"latex-workshop.latex.autoBuild.run": "never",
+"latex-workshop.latex.autoClean.run": "onBuilt",
+```
 
 ---
 ## 4. Plans <a name="plans"></a>
