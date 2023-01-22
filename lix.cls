@@ -7,21 +7,17 @@
     \ProvidesClass{lix}[2022/12/12 Nicklas Vraa's custom LaTeX class for fiction]
 
     % Defaults without options given.
-    \newcommand{\theClass}{paper}
     \newcommand{\theBase}{article}
     \newcommand{\numColumns}{1}
 
     % Set base class.
     \DeclareOption{article}{
-        \renewcommand{\theClass}{paper}
         \renewcommand{\theBase}{article}
     }
     \DeclareOption{report}{
-        \renewcommand{\theClass}{tome}
         \renewcommand{\theBase}{report}
     }
     \DeclareOption{book}{
-        \renewcommand{\theClass}{novel}
         \renewcommand{\theBase}{book}
     }
 
@@ -43,13 +39,13 @@
     \RequirePackage[nottoc]{tocbibind}
     \RequirePackage{fancyhdr, float, geometry, graphicx, hyperref, lastpage, microtype, setspace, silence, svg, titlesec, titletoc, titling, ulem, xcolor, xparse}
 
-    \ifnum\pdfstrcmp{\theClass}{paper}=0%
+    \ifnum\pdfstrcmp{\theBase}{article}=0%
         \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, inconsolata, listings, parskip, siunitx, tabularray}
 
-    \else\ifnum\pdfstrcmp{\theClass}{tome}=0%
+    \else\ifnum\pdfstrcmp{\theBase}{report}=0%
         \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, inconsolata, listings, numspell, parskip, siunitx, tabularray}
 
-    \else\ifnum\pdfstrcmp{\theClass}{novel}=0%
+    \else\ifnum\pdfstrcmp{\theBase}{book}=0%
         \RequirePackage[indent]{parskip}
         \RequirePackage{ebgaramond, numspell}
 
@@ -71,10 +67,10 @@
 
     % PAGE STYLES: -------------------------------------------------------------
 
-        \ifnum\pdfstrcmp{\theClass}{paper}=0%
+        \ifnum\pdfstrcmp{\theBase}{article}=0%
             \setlength{\droptitle}{-5em}%
 
-        \else\ifnum\pdfstrcmp{\theClass}{tome}=0%
+        \else\ifnum\pdfstrcmp{\theBase}{report}=0%
             \setlength{\headsep}{5mm}%
             \pagestyle{fancy}%
             \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}%
@@ -94,7 +90,7 @@
                 \renewcommand{\headrulewidth}{0pt}%
             }
 
-        \else\ifnum\pdfstrcmp{\theClass}{novel}=0%
+        \else\ifnum\pdfstrcmp{\theBase}{book}=0%
             \setlength{\headsep}{5mm}%
             \pagestyle{fancy}%
             \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}%
@@ -121,16 +117,16 @@
         \titlecontents{subsection}[0em]{\hspace*{1.4em}}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
         \titlecontents{subsubsection}[0em]{\hspace*{2.8em}}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
 
-        \ifnum\pdfstrcmp{\theClass}{paper}=0%
+        \ifnum\pdfstrcmp{\theBase}{article}=0%
             \newcommand{\toc}{\tableofcontents}
 
-        \else\ifnum\pdfstrcmp{\theClass}{tome}=0%
+        \else\ifnum\pdfstrcmp{\theBase}{report}=0%
             \newcommand{\toc}{%
                 \tableofcontents%
                 \thispagestyle{metadataPage}%
             }
 
-        \else\ifnum\pdfstrcmp{\theClass}{novel}=0%
+        \else\ifnum\pdfstrcmp{\theBase}{book}=0%
             \newcommand{\toc}{%
                 \tableofcontents%
                 \thispagestyle{metadataPage}%
@@ -161,7 +157,7 @@
         \titlespacing\subsection{0pt}{14pt}{4pt}
         \titlespacing\subsubsection{0pt}{14pt}{4pt}
 
-        \ifnum\pdfstrcmp{\theClass}{paper}=0%
+        \ifnum\pdfstrcmp{\theBase}{article}=0%
             % Shortcuts for headings.
             \NewDocumentCommand{\h}{sm}{%
                 \IfBooleanTF{#1}{%
@@ -190,7 +186,7 @@
 
             \renewcommand{\abstract}{\textbf{\textsc{Abstract}: }}
 
-        \else\ifnum\pdfstrcmp{\theClass}{tome}=0%
+        \else\ifnum\pdfstrcmp{\theBase}{report}=0%
             \titleformat{\chapter}[display]{%
                 \normalsize%
             }{% Prefix.
@@ -209,10 +205,11 @@
                 \IfBooleanTF{#1}{%
                     \chapter*{#2}\label{#2}%
                     \addcontentsline{toc}{chapter}{#2}%
+                    \thispagestyle{metadataPage}%
                 }{%
                     \chapter{#2}\label{#2}%
+                    \thispagestyle{firstPageOfChapter}%
                 }
-                \thispagestyle{firstPageOfChapter}%
             }
             \NewDocumentCommand{\hh}{sm}{%
                 \IfBooleanTF{#1}{%
@@ -239,7 +236,7 @@
                 }
             }
 
-        \else\ifnum\pdfstrcmp{\theClass}{novel}=0%
+        \else\ifnum\pdfstrcmp{\theBase}{book}=0%
             \titleformat{\chapter}[display]{%
                 \normalsize%
             }{% Prefix.
@@ -265,6 +262,26 @@
         \fi\fi\fi
 
 % INTERFACE COMMANDS: ----------------------------------------------------------
+
+    % \margins{top:length}{left:length}{right:length}{bottom:length}
+    \NewDocumentCommand{\margins}{mggg}{% Arguments 2,3,4 are optional.
+
+        \IfValueTF{#4}{% If four arguments are given.
+            \geometry{top=#1, bottom=#2, left=#3, right=#4}%
+        }{%
+            \IfValueTF{#3}{% If three arguments are given.
+                \geometry{top=#1, bottom=#1, left=#2, right=#3}%
+            }{%
+                \IfValueTF{#2}{% If two arguments are given.
+                    \geometry{top=#1, bottom=#1, left=#2, right=#2}%
+                }{% If one argument is given.
+                    \geometry{top=#1, bottom=#1, left=#1, right=#1}%
+                }
+            }
+        }
+        \fancyhfoffset[E,O]{0pt}
+        \setlength{\headsep}{5mm}
+    }
 
     % \title{string}.
     \renewcommand{\title}[1]{%
@@ -327,28 +344,11 @@
     % \size{size:string}{orientation:string}.
     \NewDocumentCommand{\size}{mg}{% Argument 2 is optional.
         \newcommand{\theSize}{#1}%
-        \IfValueT{#2}{%
-            \newcommand{\theOrientation}{#2}%
-        }
-    }
-
-    % \margins{top:length}{left:length}{right:length}{bottom:length}
-    \NewDocumentCommand{\margins}{mggg}{% Arguments 2,3,4 are optional.
-        \newcommand{\theTopMargin}{#1}%
+        \newcommand{\theOrientation}{#2}%
         \IfValueTF{#2}{%
-            \newcommand{\theLeftMargin}{#2}%
-        }{%
-            \newcommand{\theLeftMargin}{#1}%
-        }
-        \IfValueTF{#3}{%
-            \newcommand{\theRightMargin}{#3}%
-        }{%
-            \newcommand{\theRightMargin}{#1}%
-        }
-        \IfValueTF{#4}{%
-            \newcommand{\theBottomMargin}{#3}%
-        }{%
-            \newcommand{\theBottomMargin}{#1}%
+            \geometry{paper= #1paper, #2}
+        }{
+            \geometry{paper= #1paper}
         }
     }
 
@@ -419,7 +419,7 @@
 
         % Cover.
         \@ifundefined{theFront}{}{%
-            \ifnum\pdfstrcmp{\theClass}{paper}=0%
+            \ifnum\pdfstrcmp{\theBase}{article}=0%
                 % Not defined for article.
             \else
                 \AddToShipoutPicture*{%
@@ -435,7 +435,7 @@
         }
         % Check if blurb was given.
         \@ifundefined{theBlurb}{}{%
-            \ifnum\pdfstrcmp{\theClass}{paper}=0%
+            \ifnum\pdfstrcmp{\theBase}{article}=0%
                 % Not defined for article.
             \else
                 \AtEndDocument{%
@@ -478,7 +478,7 @@
 
         \maketitle%
 
-        \ifnum\pdfstrcmp{\theClass}{paper}=0%
+        \ifnum\pdfstrcmp{\theBase}{article}=0%
             % Not defined for article.
         \else
             \thispagestyle{metadataPage}%

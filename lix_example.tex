@@ -3,7 +3,7 @@
 %\documentclass[book,onecolumn,oneside]{lix}
 
 \size      {a4}{portrait}
-\margins   {20mm}{20mm}{20mm}{20mm}
+\margins   {26mm}{20mm}{20mm}{20mm}
 \lang      {english}
 \title     {Showcasing The LiX Class}
 \subtitle  {Bring Your Focus Back on Writing}
@@ -22,30 +22,33 @@
 
 \begin{document}
 
-\abstract
-This is a showcase of a LaTeX template for academic writing. The template uses custom commands and environments, which allows a higher level of abstraction, to speed up writing. This short pdf is the result of compiling a TeX-document, which was written using the Academic document class. This PDF by itself is not particularly interesting. Instead look at its source-code.
-
 \toc
 
-\h*{Introduction}
+\h*{Preface}
+This is a showcase of a LaTeX template for academic writing. The template uses custom commands and environments, which allows a higher level of abstraction, to speed up writing. This short pdf is the result of compiling a TeX-document, which was written using the Academic document class. This PDF by itself is not particularly interesting. Instead look at its source-code.
+
+\h{Introduction}
 This document-class aims to simplify the process of writing beautiful and minimalistic academic papers. \c{paper} extends the ever-popular \c{article} class, but greatly simplifies the syntax with which you typeset your document. In the following sections, we showcase this syntax by actually using it to define the document, you are looking at now. To use the \c{Paper} document class for your document, simply add \c{\usepackage[]{paper}}. It will pass through any optional arguments to the basic \c{article} class, e.g. \c{[twocolumn]}.
 
-\h*{Motivation}
+\hh{Motivation}
 While LaTeX is the indisputable king for typesetting academic papers, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the focus back on the content, the syntax should be as light as possible - hence this humble project.
 
-\h{Formatting}
+\h{Syntax}
+This section will describe the syntax of the \c{tome} class.
+
+\hh{Formatting}
 This is \b{bold font}. Here is some \i{italic font}. Maybe you need to \u{underline}, or \s{strike} it. You've already seen some \c{inline code}, and of course you can write inline \m{math^2}. In order, the commands for these are \c{\b}, \c{\i}, \c{\u}, \c{\s}, \c{\c} and \c{\m}. These were chosen to be easily remembered.
 
-\h{Metadata}
+\hh{Metadata}
 To add titles, use \c{\titles{title...}} and \c{\subtitle{subtitle...}}. Similarly, there are the \c{\author{Name Lastname}} and the \c{\date{...}} commands. If you wish to have the author and date on one line, simply write the date in the \c{\author} command and disregard the \c{\date} command. To add a table of contents, use \c{\toc}. You can add a header using \c{\header{left...}{center...}{right...}}. All parameters can of course be left blank. To include this frontmatter, use \c{\front} after \c{\begin{document}}.
 
-\h{Headings}
+\hh{Headings}
 To make a heading, simple use the \c{\h} command. For a subheading, just add another \c{h}, i.e. \c{\hh}. If you have ever used Markdown, this should be familier. For a non-numbered heading, use \c{\H}. These will also be included in the table of contents.
 
-\h{Environments}
+\hh{Environments}
 This section showcases the various environments which are available in the Academic class. The available environments are \c{bullets, numbers, code} and \c{math}. Begin and end them with \c{\begin{}} and \c{\end{}}.
 
-\hh{Code Blocks}
+\hhh{Code Blocks}
 Here is a code block. The declaration always follow \c{\begin{code}{label...}{lang...}{caption...} ... \end{code}}. The fencing horizontal lines are separate entities and will position themselves vertically, such that they appear natural.
 
 \begin{code}{snip}{python}{This is some python code.}
@@ -56,7 +59,7 @@ def add(x,y):
 # This is a long comment. Note that lines will wrap naturally.
 \end{code}
 
-\hh{Lists}
+\hhh{Lists}
 This is an unordered list, using the environment \c{\begin{bullets}...\end{bullets}}
 \begin{bullets}
     \item This is a very long item to test the wrapping of text in the unordered environment.
@@ -82,13 +85,13 @@ This is a numbered list, using the environment \c{\begin{numbers}...\end{numbers
     \item Last item.
 \end{numbers}
 
-\hh{Mathematics}
+\hhh{Mathematics}
 Here is a cool equation. The declaration always follow \c{\begin{math}{label} ... \end{math}}
 \begin{math}{euler}
     e^{i\pi}+1=0
 \end{math}
 
-\h{Tables}
+\hh{Tables}
 Here are some tables. There are three types, namely the \c{\cols, \rows} and \c{\grid} tables. The declaration always follow \c{\<type>{label}{caption}{...}}. Take a look at the source-files to see how simple it is to create a decent-looking table using these commands. These three tables will cover 90\% of your table-needs, but since this is just the article-class extended, you have access to the full power of the \c{tabularray}\cite{tabularray} package for more complicated tables.
 
 \cols{table1}{This is a column-table. Notice that the description lines up with the table.}{
@@ -110,23 +113,23 @@ Here are some tables. There are three types, namely the \c{\cols, \rows} and \c{
     table & 3  & 6 & 9     \\
 }
 
-\h{Figures}
+\hh{Figures}
 The \c{\fig[scale...]{label...}{caption...}{path...}} command only needs to know an internal label for referencing, the path of your resource, and a caption. It takes care of placing it correctly and is file-format agnostic, i.e. it works the same for both regular images and vector graphics. Optionally, you can specify a scale, like \c{[0.5]}, which will shrink the image to half the width of the column.
 
 \fig[0.7]{my_svg}{This is an svg-figure scaled by 0.7, and this is a very long description of the figure to showcase how captions will automatically fit itself underneath its figure.}{resources/placeholder.svg}
 
 \fig{my_png}{This is a png-figure.}{resources/placeholder.png}
 
-\h{Referencing}
+\hh{Referencing}
 Here is a link to a \url{webpage}{https://www.overleaf.com/}, made using \c{\url{text...}{address...}}. Internal referencing is done using \c{\r{label...}} These are references to the previous \r{euler}, \r{snip}, \r{table1}, \r{my_svg} and \r{my_png}. \R{euler} is an example of how to easily capitalize the reference name with \c{\R{label...}} when appropriate. Labels are also automatically added to sections, like \r{Introduction} and \r{Mathematics}. The internal labels are the same as the section text. For all references, both the name and number are links. Of cource, you can cite sources using \c{\cite{...}}, like this \cite{minted} or this \cite{tabularray}. Insert your bibliography using \c{\bib{file...}}.
 
-\h*{Personalization}
-Don't agree with some of the stylistic choices? Feel free to change the class. Simply edit \c{academic.cls} to your liking. The file is not very long and fairly simple, so it should be easy for someone with rudamentary knowledge of LaTeX.
-
-\h*{Conclusion}
+\h{Conclusion}
 This class offers a layer of abstraction for those who want an easy way to produce professional-looking academic papers, while not worrying too much about learning all the intricacies of LaTeX, but still having access to the full power of the standard \c{article} class, should it be necessary.
 
 The plan is to formulate a markup language inspired by YAML and Markdown with a transpiler written in Python, that will translate it into TeX, and using this document class, produce PDF's. I don't like the way lists and tables are handled in LaTeX. Taking inspiration from Markdown, these two elements in particular, could be made much more intuitive. This development will be hosted in its own repository.
+
+\hh{Personalization}
+Don't agree with some of the stylistic choices? Feel free to change the class. Simply edit \c{academic.cls} to your liking. The file is not very long and fairly simple, so it should be easy for someone with rudamentary knowledge of LaTeX.
 
 \h*{Acknowlegdements}
 This class leverages the hard work that went into creating all the amazing packages, which it imports. I encourage anyone finding use for this project to visit the individual package repositories. Check out the full list at the top of \c{academic.cls}.

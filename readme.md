@@ -32,7 +32,7 @@ While LaTeX is the indisputable king for typesetting academic papers, it does ha
 ## 1. Examples <a name="examples"></a>
 
 ### The `Paper` Class <a name="paper"></a>
-This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](paper_example.pdf).
+This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](classes/paper_example.pdf).
 | Source                             | Build (Two-column)             |
 |------------------------------------|--------------------------------|
 | ![p1](screenshots/src_paper_1.png) | ![p1](screenshots/paper_1.png) |
@@ -40,7 +40,7 @@ This class strives to pack as much information as possible, into a visually cohe
 
 ---
 ### The `Tome` Class <a name="tome"></a>
-This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](tome_example.pdf).
+This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](classes/tome_example.pdf).
 | Source                            | Build (One-column)            |
 |-----------------------------------|-------------------------------|
 | ![p1](screenshots/src_tome_1.png) | ![p1](screenshots/tome_1.png) |
@@ -48,7 +48,7 @@ This class is intended to typeset a large amount of academic content to be print
 
 ---
 ### The `Novel` Class <a name="novel"></a>
-This class is meant for typesetting fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands. Access the full document [here](novel_example.pdf).
+This class is meant for typesetting fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands. Access the full document [here](classes/novel_example.pdf).
 | Source                             | Build                          |
 |------------------------------------|--------------------------------|
 | ![p1](screenshots/src_novel_1.png) | ![p1](screenshots/novel_1.png) |
