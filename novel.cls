@@ -296,7 +296,7 @@
     \renewcommand*{\@seccntformat}[1]{\csname the#1\endcsname.\hspace{0.5em}}
 
     % Set lowest level of heading that will be numbered.
-    \setcounter{secnumdepth}{3}
+    \setcounter{secnumdepth}{4}
 
     % Shortcuts for headings.
     \NewDocumentCommand{\h}{sm}{%
