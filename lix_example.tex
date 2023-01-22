@@ -1,9 +1,9 @@
-\documentclass[article,twocolumn]{lix}
-%\documentclass[report,onecolumn]{lix}
+%\documentclass[research,twocolumn]{lix}
+\documentclass[tome,onecolumn]{lix}
 %\documentclass[book,onecolumn,oneside]{lix}
 
 \size      {a4}{portrait}
-\margins   {26mm}{20mm}{20mm}{20mm}
+\margins   {20mm}{20mm}{20mm}{20mm}
 \lang      {english}
 \title     {Showcasing The LiX Class}
 \subtitle  {Bring Your Focus Back on Writing}
@@ -22,10 +22,10 @@
 
 \begin{document}
 
-\toc
-
 \h*{Preface}
 This is a showcase of a LaTeX template for academic writing. The template uses custom commands and environments, which allows a higher level of abstraction, to speed up writing. This short pdf is the result of compiling a TeX-document, which was written using the Academic document class. This PDF by itself is not particularly interesting. Instead look at its source-code.
+
+\toc
 
 \h{Introduction}
 This document-class aims to simplify the process of writing beautiful and minimalistic academic papers. \c{paper} extends the ever-popular \c{article} class, but greatly simplifies the syntax with which you typeset your document. In the following sections, we showcase this syntax by actually using it to define the document, you are looking at now. To use the \c{Paper} document class for your document, simply add \c{\usepackage[]{paper}}. It will pass through any optional arguments to the basic \c{article} class, e.g. \c{[twocolumn]}.

@@ -7,18 +7,26 @@
     \ProvidesClass{lix}[2022/12/12 Nicklas Vraa's custom LaTeX class for fiction]
 
     % Defaults without options given.
+    \newcommand{\theClass}{paper}
     \newcommand{\theBase}{article}
     \newcommand{\numColumns}{1}
+    \newcommand{\custom}{0} % False.
 
     % Set base class.
-    \DeclareOption{article}{
+    \DeclareOption{research}{
+        \renewcommand{\theClass}{paper}
         \renewcommand{\theBase}{article}
+        \renewcommand{\custom}{1} % True.
     }
-    \DeclareOption{report}{
+    \DeclareOption{tome}{
+        \renewcommand{\theClass}{tome}
         \renewcommand{\theBase}{report}
+        \renewcommand{\custom}{1} % True.
     }
-    \DeclareOption{book}{
+    \DeclareOption{novel}{
+        \renewcommand{\theClass}{novel}
         \renewcommand{\theBase}{book}
+        \renewcommand{\custom}{1} % True.
     }
 
     % Intercept class options.
@@ -39,13 +47,13 @@
     \RequirePackage[nottoc]{tocbibind}
     \RequirePackage{fancyhdr, float, geometry, graphicx, hyperref, lastpage, microtype, setspace, silence, svg, titlesec, titletoc, titling, ulem, xcolor, xparse}
 
-    \ifnum\pdfstrcmp{\theBase}{article}=0%
+    \ifnum\pdfstrcmp{\theClass}{paper}=0%
         \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, inconsolata, listings, parskip, siunitx, tabularray}
 
-    \else\ifnum\pdfstrcmp{\theBase}{report}=0%
+    \else\ifnum\pdfstrcmp{\theClass}{tome}=0%
         \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, inconsolata, listings, numspell, parskip, siunitx, tabularray}
 
-    \else\ifnum\pdfstrcmp{\theBase}{book}=0%
+    \else\ifnum\pdfstrcmp{\theClass}{novel}=0%
         \RequirePackage[indent]{parskip}
         \RequirePackage{ebgaramond, numspell}
 
@@ -60,95 +68,186 @@
     \NewCommandCopy{\oldauthor}{\author}%
     \NewCommandCopy{\olddate}{\date}%
 
-    % Global settings.
-    \setlength{\columnsep}{5mm}%
-    \hypersetup{hidelinks}% Remove box around links.
-    \normalem % Allow italized and underlined text.
+% PAGE STYLES: ---------------------------------------------------------
 
-    % PAGE STYLES: -------------------------------------------------------------
+    \ifnum\pdfstrcmp{\theClass}{paper}=0%
+        \setlength{\droptitle}{-3em}%
 
-        \ifnum\pdfstrcmp{\theBase}{article}=0%
-            \setlength{\droptitle}{-5em}%
+    \else\ifnum\pdfstrcmp{\theClass}{tome}=0%
+        \setlength{\droptitle}{-120mm}%
+        \setlength{\headsep}{5mm}%
+        \pagestyle{fancy}%
+        \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}%
+        \fancyhead[L]{\small\scshape\color{darkgray} \chaptername\ \thechapter\ --\ \leftmark}%
+        \fancyhead[R]{\small\scshape\color{darkgray} Page \thepage\ of \pageref{LastPage}}%
+        \fancyfoot[C]{}%
+        \renewcommand{\headrulewidth}{0pt}%
 
-        \else\ifnum\pdfstrcmp{\theBase}{report}=0%
-            \setlength{\headsep}{5mm}%
-            \pagestyle{fancy}%
-            \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}%
-            \fancyhead[L]{\small\scshape\color{darkgray} \chaptername\ \thechapter\ --\ \leftmark}%
+        \fancypagestyle{firstPageOfChapter}{%
+            \fancyhead[L]{}%
             \fancyhead[R]{\small\scshape\color{darkgray} Page \thepage\ of \pageref{LastPage}}%
             \fancyfoot[C]{}%
             \renewcommand{\headrulewidth}{0pt}%
-
-            \fancypagestyle{firstPageOfChapter}{%
-                \fancyhead[L]{}%
-                \fancyhead[R]{\small\scshape\color{darkgray} Page \thepage\ of \pageref{LastPage}}%
-                \fancyfoot[C]{}%
-                \renewcommand{\headrulewidth}{0pt}%
-            }
-            \fancypagestyle{metadataPage}{%
-                \fancyhead{}\fancyfoot{}%
-                \renewcommand{\headrulewidth}{0pt}%
-            }
-
-        \else\ifnum\pdfstrcmp{\theBase}{book}=0%
-            \setlength{\headsep}{5mm}%
-            \pagestyle{fancy}%
-            \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}%
-            \fancyhead[L]{}%
-            \fancyhead[C]{\small\scshape\color{darkgray} \chaptername\ \thechapter\ --\ \leftmark}%
-            \fancyhead[R]{}%
-            \fancyfoot[C]{\large\scshape\thepage}%
+        }
+        \fancypagestyle{metadataPage}{%
+            \fancyhead{}\fancyfoot{}%
             \renewcommand{\headrulewidth}{0pt}%
+        }
 
-            \fancypagestyle{firstPageOfChapter}{%
-                \fancyhead{}%
-                \renewcommand{\headrulewidth}{0pt}%
-            }
-            \fancypagestyle{metadataPage}{%
-                \fancyhead{}\fancyfoot{}%
-                \renewcommand{\headrulewidth}{0pt}%
-            }
+    \else\ifnum\pdfstrcmp{\theClass}{novel}=0%
+        \setlength{\headsep}{5mm}%
+        \pagestyle{fancy}%
+        \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}%
+        \fancyhead[L]{}%
+        \fancyhead[C]{\small\scshape\color{darkgray} \chaptername\ \thechapter\ --\ \leftmark}%
+        \fancyhead[R]{}%
+        \fancyfoot[C]{\large\scshape\thepage}%
+        \renewcommand{\headrulewidth}{0pt}%
 
-        \fi\fi\fi
+        \fancypagestyle{firstPageOfChapter}{%
+            \fancyhead{}%
+            \renewcommand{\headrulewidth}{0pt}%
+        }
+        \fancypagestyle{metadataPage}{%
+            \fancyhead{}\fancyfoot{}%
+            \renewcommand{\headrulewidth}{0pt}%
+        }
+
+    \fi\fi\fi
+
+% CUSTOM DOCUMENT COMMANDS: ----------------------------------------------------
 
     % TABLE OF CONTENTS: -------------------------------------------------------
+    \newcommand{\toc}{\tableofcontents}
+
+    % HEADINGS: ----------------------------------------------------------------
+    \ifnum\pdfstrcmp{\theBase}{article}=0%
+        \NewDocumentCommand{\h}{sm}{%
+            \IfBooleanTF{#1}{%
+                \section*{#2}\label{#2}%
+                \addcontentsline{toc}{section}{#2}%
+            }{%
+                \section{#2}\label{#2}%
+            }
+        }
+        \NewDocumentCommand{\hh}{sm}{%
+            \IfBooleanTF{#1}{%
+                \subsection*{#2}\label{#2}%
+                \addcontentsline{toc}{subsection}{#2}%
+            }{%
+                \subsection{#2}\label{#2}%
+            }
+        }
+        \NewDocumentCommand{\hhh}{sm}{%
+            \IfBooleanTF{#1}{%
+                \subsubsection*{#2}\label{#2}%
+                \addcontentsline{toc}{subsubsection}{#2}%
+            }{%
+                \subsubsection{#2}\label{#2}%
+            }
+        }
+
+        \renewcommand{\abstract}{\textbf{\textsc{Abstract}: }}
+
+    \else\ifnum\pdfstrcmp{\theBase}{report}=0%
+        \NewDocumentCommand{\h}{sm}{%
+            \IfBooleanTF{#1}{%
+                \chapter*{#2}\label{#2}%
+                \addcontentsline{toc}{chapter}{#2}%
+                \thispagestyle{metadataPage}%
+            }{%
+                \chapter{#2}\label{#2}%
+                \thispagestyle{firstPageOfChapter}%
+            }
+        }
+        \NewDocumentCommand{\hh}{sm}{%
+            \IfBooleanTF{#1}{%
+                \section*{#2}\label{#2}%
+                \addcontentsline{toc}{section}{#2}%
+            }{%
+                \section{#2}\label{#2}%
+            }
+        }
+        \NewDocumentCommand{\hhh}{sm}{%
+            \IfBooleanTF{#1}{%
+                \subsection*{#2}\label{#2}%
+                \addcontentsline{toc}{subsection}{#2}%
+            }{%
+                \subsection{#2}\label{#2}%
+            }
+        }
+        \NewDocumentCommand{\hhhh}{sm}{%
+            \IfBooleanTF{#1}{%
+                \subsubsection*{#2}\label{#2}%
+                \addcontentsline{toc}{subsubsection}{#2}%
+            }{%
+                \subsubsection{#2}\label{#2}%
+            }
+        }
+
+    \else\ifnum\pdfstrcmp{\theBase}{book}=0%
+        \NewDocumentCommand{\h}{sm}{%
+            \IfBooleanTF{#1}{%
+                \chapter*{#2}\label{#2}%
+                \addcontentsline{toc}{chapter}{#2}%
+            }{%
+                \chapter{#2}\label{#2}%
+            }
+            \thispagestyle{firstPageOfChapter}%
+        }
+
+        \newcommand{\abstract}{\textbf{\textsc{Abstract}}}
+
+    \fi\fi\fi
+
+    % INLINE FORMATTING: -------------------------------------------------------
+    \renewcommand{\b}[1]{\textbf{#1}} % Bold.
+    \renewcommand{\i}[1]{\textit{#1}} % Italic.
+    \renewcommand{\u}[1]{\uline{#1}} % Underline.
+    \newcommand{\m}[1]{$#1$} % Inline math.
+    \newcommand{\s}[1]{\sout{#1}} % Strikethrough.
+
+    % INPUT: -------------------------------------------------------------------
+    \newcommand{\add}[1]{\input{#1}}
+
+
+% CUSTOM STYLING: --------------------------------------------------------------
+
+    \ifnum\custom=1
+
+        \setlength{\columnsep}{5mm}%
+        \hypersetup{hidelinks}% Remove box around links.
+        \normalem % Allow italized and underlined text.
+
+        % TABLE OF CONTENTS: ---------------------------------------------------
 
         \titlecontents{section}[0em]{}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
         \titlecontents{subsection}[0em]{\hspace*{1.4em}}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
         \titlecontents{subsubsection}[0em]{\hspace*{2.8em}}{\thecontentslabel.\hspace*{0.5em}}{}{\titlerule*[0.5pc]{.}\contentspage}
 
-        \ifnum\pdfstrcmp{\theBase}{article}=0%
-            \newcommand{\toc}{\tableofcontents}
-
-        \else\ifnum\pdfstrcmp{\theBase}{report}=0%
-            \newcommand{\toc}{%
+        \ifnum\pdfstrcmp{\theClass}{tome}=0%
+            \renewcommand{\toc}{%
                 \tableofcontents%
                 \thispagestyle{metadataPage}%
             }
 
-        \else\ifnum\pdfstrcmp{\theBase}{book}=0%
-            \newcommand{\toc}{%
+        \else\ifnum\pdfstrcmp{\theClass}{novel}=0%
+            \renewcommand{\toc}{%
                 \tableofcontents%
                 \thispagestyle{metadataPage}%
             }
 
-        \fi\fi\fi
+        \fi\fi
 
-    % HEADINGS: ----------------------------------------------------------------
+        % HEADINGS: ------------------------------------------------------------
 
-        % Add '.' after number to numbered headings.
+        % Add dot after number to numbered headings.
         \renewcommand*{\@seccntformat}[1]{%
             \csname the#1\endcsname.\hspace{0.5em}%
         }
 
-        \setcounter{secnumdepth}{4} % Levels of heading that will be numbered.
-
-        % Set formatting of headings.
-        \titleformat*{\section}{\bfseries\scshape}
-        \titleformat*{\subsection}{\bfseries\scshape}
-        \titleformat*{\subsubsection}{\bfseries\scshape}
-        \titleformat*{\paragraph}{\bfseries\scshape}
-        \titleformat*{\subparagraph}{\bfseries\scshape}
+        % Levels of heading that will be numbered.
+        \setcounter{secnumdepth}{4}
 
         % Adjust spacing between heading and text.
         \titlespacing{\chapter}{-1pt}{-45pt}{4pt}
@@ -157,36 +256,14 @@
         \titlespacing\subsection{0pt}{14pt}{4pt}
         \titlespacing\subsubsection{0pt}{14pt}{4pt}
 
-        \ifnum\pdfstrcmp{\theBase}{article}=0%
-            % Shortcuts for headings.
-            \NewDocumentCommand{\h}{sm}{%
-                \IfBooleanTF{#1}{%
-                    \section*{#2}\label{#2}%
-                    \addcontentsline{toc}{section}{#2}%
-                }{%
-                    \section{#2}\label{#2}%
-                }
-            }
-            \NewDocumentCommand{\hh}{sm}{%
-                \IfBooleanTF{#1}{%
-                    \subsection*{#2}\label{#2}%
-                    \addcontentsline{toc}{subsection}{#2}%
-                }{%
-                    \subsection{#2}\label{#2}%
-                }
-            }
-            \NewDocumentCommand{\hhh}{sm}{%
-                \IfBooleanTF{#1}{%
-                    \subsubsection*{#2}\label{#2}%
-                    \addcontentsline{toc}{subsubsection}{#2}%
-                }{%
-                    \subsubsection{#2}\label{#2}%
-                }
-            }
+        % Set formatting of headings.
+        \titleformat*{\section}{\bfseries\scshape}
+        \titleformat*{\subsection}{\bfseries\scshape}
+        \titleformat*{\subsubsection}{\bfseries\scshape}
+        \titleformat*{\paragraph}{\bfseries\scshape}
+        \titleformat*{\subparagraph}{\bfseries\scshape}
 
-            \renewcommand{\abstract}{\textbf{\textsc{Abstract}: }}
-
-        \else\ifnum\pdfstrcmp{\theBase}{report}=0%
+        \ifnum\pdfstrcmp{\theClass}{tome}=0%
             \titleformat{\chapter}[display]{%
                 \normalsize%
             }{% Prefix.
@@ -201,42 +278,7 @@
                 \LARGE\bfseries\scshape%
             }
 
-            \NewDocumentCommand{\h}{sm}{%
-                \IfBooleanTF{#1}{%
-                    \chapter*{#2}\label{#2}%
-                    \addcontentsline{toc}{chapter}{#2}%
-                    \thispagestyle{metadataPage}%
-                }{%
-                    \chapter{#2}\label{#2}%
-                    \thispagestyle{firstPageOfChapter}%
-                }
-            }
-            \NewDocumentCommand{\hh}{sm}{%
-                \IfBooleanTF{#1}{%
-                    \section*{#2}\label{#2}%
-                    \addcontentsline{toc}{section}{#2}%
-                }{%
-                    \section{#2}\label{#2}%
-                }
-            }
-            \NewDocumentCommand{\hhh}{sm}{%
-                \IfBooleanTF{#1}{%
-                    \subsection*{#2}\label{#2}%
-                    \addcontentsline{toc}{subsection}{#2}%
-                }{%
-                    \subsection{#2}\label{#2}%
-                }
-            }
-            \NewDocumentCommand{\hhhh}{sm}{%
-                \IfBooleanTF{#1}{%
-                    \subsubsection*{#2}\label{#2}%
-                    \addcontentsline{toc}{subsubsection}{#2}%
-                }{%
-                    \subsubsection{#2}\label{#2}%
-                }
-            }
-
-        \else\ifnum\pdfstrcmp{\theBase}{book}=0%
+        \else\ifnum\pdfstrcmp{\theClass}{novel}=0%
             \titleformat{\chapter}[display]{%
                 \normalsize%
             }{% Prefix.
@@ -247,21 +289,10 @@
                 \centering\LARGE\bfseries\scshape%
             }
 
-            \NewDocumentCommand{\h}{sm}{%
-                \IfBooleanTF{#1}{%
-                    \chapter*{#2}\label{#2}%
-                    \addcontentsline{toc}{chapter}{#2}%
-                }{%
-                    \chapter{#2}\label{#2}%
-                }
-                \thispagestyle{firstPageOfChapter}%
-            }
+        \fi\fi
+    \fi
 
-            \newcommand{\abstract}{\textbf{\textsc{Abstract}}}
-
-        \fi\fi\fi
-
-% INTERFACE COMMANDS: ----------------------------------------------------------
+% STYLE INTERFACE: -------------------------------------------------------------
 
     % \margins{top:length}{left:length}{right:length}{bottom:length}
     \NewDocumentCommand{\margins}{mggg}{% Arguments 2,3,4 are optional.
@@ -280,7 +311,9 @@
             }
         }
         \fancyhfoffset[E,O]{0pt}
-        \setlength{\headsep}{5mm}
+        \ifnum\custom=1
+            \setlength{\headsep}{5mm}
+        \fi
     }
 
     % \title{string}.
@@ -390,17 +423,29 @@
     \AddToHook{begindocument/end}{%
 
         % Title.
-        \@ifundefined{theTitle}{%
-            \oldtitle{Placeholder Title}%
-        }{%
-            \oldtitle{\theTitle}%
-        }
+        \@ifundefined{theTitle}{}{%
 
-        % Subtitle.
-        \@ifundefined{theSubtitle}{%
-            \oldtitle{\huge\textbf{\textsc{\theTitle}}}%
-        }{%
-            \oldtitle{\huge\textbf{\textsc{\theTitle}}\\[0.4ex] \Large\scshape \theSubtitle}%
+            \ifnum\pdfstrcmp{\theClass}{paper}=0
+                \newcommand{\theStyledTitle}{\huge\textbf{\textsc{\theTitle}}}
+
+            \else\ifnum\pdfstrcmp{\theClass}{tome}=0
+                \newcommand{\theStyledTitle}{\Huge\textbf{\textsc{\theTitle}}}
+
+            \else\ifnum\pdfstrcmp{\theClass}{novel}=0
+                \newcommand{\theStyledTitle}{\huge\textbf{\textsc{\theTitle}}}
+
+            \else
+                \newcommand{\theStyledTitle}{\theTitle}
+
+            \fi\fi\fi
+
+            % Subtitle.
+            \@ifundefined{theSubtitle}{%
+                \oldtitle{\theStyledTitle}%
+            }{%
+                \oldtitle{\theStyledTitle\\[0.4ex]%
+                \Large\scshape\theSubtitle}%
+            }
         }
 
         % Author.
@@ -419,7 +464,7 @@
 
         % Cover.
         \@ifundefined{theFront}{}{%
-            \ifnum\pdfstrcmp{\theBase}{article}=0%
+            \ifnum\pdfstrcmp{\theClass}{paper}=0%
                 % Not defined for article.
             \else
                 \AddToShipoutPicture*{%
@@ -435,7 +480,7 @@
         }
         % Check if blurb was given.
         \@ifundefined{theBlurb}{}{%
-            \ifnum\pdfstrcmp{\theBase}{article}=0%
+            \ifnum\pdfstrcmp{\theClass}{paper}=0%
                 % Not defined for article.
             \else
                 \AtEndDocument{%
@@ -476,9 +521,11 @@
             \fi
         }
 
-        \maketitle%
+        \@ifundefined{theTitle}{}{%
+            \maketitle%
+        }
 
-        \ifnum\pdfstrcmp{\theBase}{article}=0%
+        \ifnum\pdfstrcmp{\theClass}{paper}=0%
             % Not defined for article.
         \else
             \thispagestyle{metadataPage}%
@@ -732,14 +779,3 @@
         \bibliographystyle{unsrt} % Sort by order of appearance.
         \newcommand{\bib}[1]{\bibliography{#1}} % Shortcut.
     }{}
-
-% ADDITIONAL: ------------------------------------------------------------------
-
-    % Inline formatting.
-    \renewcommand{\b}[1]{\textbf{#1}} % Bold.
-    \renewcommand{\i}[1]{\textit{#1}} % Italic.
-    \renewcommand{\u}[1]{\uline{#1}} % Underline.
-    \newcommand{\m}[1]{$#1$} % Inline math.
-    \newcommand{\s}[1]{\sout{#1}} % Strikethrough.
-
-    \newcommand{\add}[1]{\input{#1}}

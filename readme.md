@@ -9,7 +9,6 @@ While LaTeX is the indisputable king for typesetting academic papers, it does ha
 - `Tome` is for typesetting academic litterature, like textbooks and dissertations. It abstracts the report class.
 - `Novel` is for typesetting fiction, like novels or a short-stories. It abstracts the book class.
 
-
 **Overview**:
 1. [Examples](#examples) - What your finished result might look like.
    - [Paper](#paper) - Research papers and university assignments.
