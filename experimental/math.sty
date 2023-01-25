@@ -1,0 +1,26 @@
+% AUTHOR: Nicklas Vraa
+% A collection of packages, commands, and settings for including
+% mathematic equations, etc. in a document.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{math}
+
+\RequirePackage{amsfonts, amsmath, amssymb, esint, siunitx, xparse}
+
+\newcommand{\mean}[1]{\overline{#1}}
+\renewcommand{\epsilon}{\varepsilon}
+
+\renewcommand{\Re}{\mathbb{R}} % Real set.
+\renewcommand{\Im}{\mathbb{I}} % Imaginary set.
+\newcommand{\N}{\mathbb{N}}    % Natural set.
+\newcommand{\Z}{\mathbb{Z}}    % Integer set.
+\newcommand{\Q}{\mathbb{Q}}    % Rational set.
+\newcommand{\C}{\mathbb{C}}    % Complex set.
+
+\newcommand{\m}[1]{$#1$} % Inline math.
+
+\RenewDocumentCommand{\math}{mm}{% Block of math.
+    \begin{equation}\label{#1}
+        #2
+    \end{equation}
+}

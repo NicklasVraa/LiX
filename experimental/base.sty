@@ -1,0 +1,104 @@
+% AUTHOR: Nicklas Vraa
+% A collection of essential packages and sensible default configurations.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{base}
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[nottoc]{tocbibind}
+\RequirePackage{cite, fancyhdr, hyperref, enumitem, microtype, ulem, xparse}
+
+% TABLE OF CONTENTS: -----------------------------------------------------------
+\newcommand{\toc}{\tableofcontents}
+\@ifundefined{chapter}{}{% If class is article-like.
+    \addtocontents{toc}{\protect\thispagestyle{empty}}
+}
+
+% FORMATTING: ------------------------------------------------------------------
+\hypersetup{hidelinks} % Remove box around links.
+\normalem % Allow italized and underlined text.
+
+\renewcommand{\b}[1]{\textbf{#1}} % Bold.
+\renewcommand{\i}[1]{\textit{#1}} % Italic.
+\renewcommand{\u}[1]{\uline{#1}}  % Underline.
+\newcommand{\s}[1]{\sout{#1}}     % Strikethrough.
+\renewcommand{\url}[2]{\href{#2}{#1}}
+
+% IMPORTING: -------------------------------------------------------------------
+\newcommand{\add}[1]{\input{#1}}
+
+% HEADINGS: --------------------------------------------------------------------
+\@ifundefined{chapter}{% If class is article-like.
+    \NewDocumentCommand{\h}{sm}{%
+        \IfBooleanTF{#1}{%
+            \section*{#2}\label{#2}%
+            \addcontentsline{toc}{section}{#2}%
+        }{%
+            \section{#2}\label{#2}%
+        }
+    }
+    \NewDocumentCommand{\hh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsection}{#2}%
+        }{%
+            \subsection{#2}\label{#2}%
+        }
+    }
+    \NewDocumentCommand{\hhh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsubsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsubsection}{#2}%
+        }{%
+            \subsubsection{#2}\label{#2}%
+        }
+    }
+    \NewDocumentCommand{\hhhh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \paragraph*{#2}
+        }{%
+            \paragraph{#2}
+        }
+    }
+}{% If class is book-like.
+    \NewDocumentCommand{\h}{sm}{%
+        \IfBooleanTF{#1}{%
+            \chapter*{#2}\label{#2}%
+            \addcontentsline{toc}{chapter}{#2}%
+        }{%
+            \chapter{#2}\label{#2}%
+        }
+    }
+    \NewDocumentCommand{\hh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \section*{#2}\label{#2}%
+            \addcontentsline{toc}{section}{#2}%
+        }{%
+            \section{#2}\label{#2}%
+        }
+    }
+    \NewDocumentCommand{\hhh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsection}{#2}%
+        }{%
+            \subsection{#2}\label{#2}%
+        }
+    }
+    \NewDocumentCommand{\hhhh}{sm}{%
+        \IfBooleanTF{#1}{%
+            \subsubsection*{#2}\label{#2}%
+            \addcontentsline{toc}{subsubsection}{#2}%
+        }{%
+            \subsubsection{#2}\label{#2}%
+        }
+    }
+}
+
+% REFERENCING: -----------------------------------------------------------------
+\renewcommand{\r}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}
+
+\newcommand{\R}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
+
+\newcommand{\bib}[1]{\bibliography{#1}}

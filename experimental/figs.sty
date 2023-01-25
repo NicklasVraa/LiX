@@ -1,0 +1,23 @@
+% AUTHOR: Nicklas Vraa
+% A collection of packages, commands, and settings for including
+% figures and images in a document.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{figs}
+
+\RequirePackage{float, graphicx, svg, xparse}
+
+\def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
+
+\NewDocumentCommand{\fig}{mmmG{1}}{ % One command for vectors and images.
+    \begin{figure}[h!]
+        \centering
+        \filename@parse{#3}
+        \ifnum\pdfstrcmp{\filename@ext}{svg}=0%
+            \sbox0{\includesvg[width=#4\columnwidth]{#3}}%
+        \else%
+            \sbox0{\includegraphics[width=\maxwidth{#4\columnwidth}]{#3}}%
+        \fi%
+        \begin{minipage}{\wd0}\usebox0\caption{#2}\label{#1}\end{minipage}
+    \end{figure}
+}
