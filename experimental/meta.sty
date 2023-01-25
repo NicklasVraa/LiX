@@ -5,8 +5,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{meta}
 
-\RequirePackage{fancyhdr, geometry, xparse}
-
+\RequirePackage{fancyhdr, geometry, lastpage, xparse}
 
 % SIZE: ------------------------------------------------------------------------
 \NewDocumentCommand{\size}{mg}{% Argument 2 is optional.
@@ -41,6 +40,17 @@
     \newcommand{\theLanguage}{#1}%
 }
 
+% HEADER: ----------------------------------------------------------------------
+\NewDocumentCommand{\header}{mgg}{%
+    \newcommand{\theLeftHeader}{#1}%
+    \IfValueT{#2}{%
+        \newcommand{\theCenterHeader}{#2}%
+    }
+    \IfValueT{#3}{%
+        \newcommand{\theRightHeader}{#3}%
+    }
+}
+
 % TITLE: -----------------------------------------------------------------------
 \NewCommandCopy{\oldtitle}{\title}%
 \RenewDocumentCommand{\title}{m}{%
@@ -48,7 +58,6 @@
 }
 
 % SUBTITLE: --------------------------------------------------------------------
-
 \NewDocumentCommand{\subtitle}{m}{%
 \newcommand{\theSubtitle}{#1}%
 }
