@@ -262,7 +262,4 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 
 ---
 ## 4. Plans <a name="plans"></a>
-- Simplify the way lists are defined.
-- Add optional argument to `\title`, `\subtitle`, etc. for placement.
-- Add `\keywords{...}` command.
-- Add option to `\toc` for alternate sorting.
+- Split lix.cls into academic.cls and fiction.cls

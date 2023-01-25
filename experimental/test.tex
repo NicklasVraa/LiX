@@ -1,0 +1,71 @@
+\documentclass{paper}
+
+\size      {letter}{portrait}
+\lang      {english}
+\title     {Showcasing The LiX Class}
+\subtitle  {Bring Your Focus Back on Writing}
+\author    {Nicklas Vraa}
+
+\begin{document}
+
+\toc
+
+\h{Headings}
+Ultrices felis sed eros vulputate, ac eleifend urna vulputate. Suspendisse potenti. Magna orci volutpat sem, in vulputate elit sapien in dui. Sed euismod felis lacus, rutrum tristique magna lacinia dictum.
+
+\hh{Subheading}
+Nam non rutrum nisi, a maximus erat. Fusce sem arcu, porta vitae sodales ultrices, placerat quis neque. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque luctus, urna ac ultricies mattis.
+
+\hhh{Subsubheading}
+Nullam mattis auctor dolor id tempus. Curabitur nisl purus, rutrum et ipsum in, aliquet tristique magna. Praesent vitae fringilla odio, non euismod elit. Suspendisse nisi elit, volutpat vel nibh consequat.
+
+\hhhh{Subsubsubheading}
+Nulla non lacus vitae nisi fringilla rutrum. Nullam pharetra eros nisl, ac euismod nisl egestas ac. Etiam pellentesque dolor in diam eleifend, a eleifend arcu semper. Aenean a elit vel nisi hendrerit tempor.
+
+\h{Code}
+Sed mollis tellus sapien, sagittis rutrum erat aliquam vel. Phasellus elementum in lacus nec fringilla. Quisque porttitor, erat nec aliquet posuere, arcu ante condimentum orci, eu semper est nisl id velit curabitur.
+
+\code{snip}{python}{This is a caption describing the code.}{
+# This comment is unnecessarily long to showcase how line wrapping looks when inputting source code.
+
+is_prime = False
+
+if num == 1:
+    print(num, "is not a prime number")
+
+elif num > 1:
+    for i in range(2, num):
+        if (num % i) == 0:
+            is_prime = True
+            break
+}
+
+\h{Math}
+Aenean ut odio lectus. Etiam egestas rhoncus risus, in commodo quam convallis non. Morbi nec nunc lobortis, luctus neque eget, molestie arcu. Praesent consequat eu enim a eleifend. Suspendisse felis nisi semper.
+
+\math{euler}{
+    e^{i\pi}+1=0
+}
+
+\h{Tables}
+Ut egestas molestie aliquet. Praesent quis faucibus justo. Integer posuere nec lacus vel facilisis. In vitae justo a odio sollicitudin faucibus sit amet non ipsum. Aenean vitae dapibus ex, ut egestas ligula.
+
+\tabs{mytable}{cols}{This is a caption describing the table.}{
+    This & is & a & cool & table \\
+    1    & 2  & 3 & 4    & 5     \\
+    a    & b  & c & d    & e     \\
+}
+
+\h{Figures}
+Sed id iaculis lorem eleifend consectetur. Aliquam tristique quis nisl vitae semper. Ut ornare arcu non magna congue rutrum non at enim. Vestibulum elementum cursus dui, vitae tristique est dictum in.
+
+\fig{my_svg}{This is an svg-figure.}{../resources/placeholder.svg}{0.5}
+\fig{my_png}{This is a png-figure. Notice that the caption text will fit itself under the figure.}{../resources/placeholder.png}
+
+\h{References}
+This is a reference to \r{snip}. This is a reference to \r{euler}.
+
+\h{Regular Text}
+Mauris pellentesque tincidunt quam eu sagittis. Vivamus in neque lacus. In sit amet erat. Sed hendrerit urna ut finibus blandit. Vivamus ac placerat arcu.  Donec metus mauris, luctus non lacus quis, luctus finibus lacus. Etiam ut turpis et lorem bibendum elementum a suscipit lectus. Phasellus et ultrices risus. Donec convallis enim in ullamcorper tempor. Nunc non interdum lacus, sed feugiat arcu. Maecenas dignissim pharetra consequat. Nullam ultricies dignissim eros eget iaculis. Sed vestibulum eget sem in vulputate. Praesent hendrerit dui mi, non fermentum purus accumsan non. Etiam sit amet nulla vitae justo interdum lacinia at vel ipsum. Sed interdum magna sit amet massa accumsan maximus. In tristique, nunc ut sollicitudin laoreet, dolor nisl viverra massa, vel pulvinar ligula magna rutrum magna. Nulla sit amet odio tempor, sollicitudin est sit amet, ultricies eros. Aenean ornare, augue eget lacinia sollicitudin, lorem ex efficitur dolor, ut bibendum arcu ligula semper neque.
+
+\end{document}
