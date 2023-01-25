@@ -1,40 +1,3 @@
-\NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{lix}[2022/12/12 Meta class]
-
-% Intercept class options.
-\DeclareOption{twocolumn}{
-    \renewcommand{\numColumns}{2}
-    \PassOptionsToClass{\CurrentOption}{\theBase}
-}
-
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{\theBase}}
-\ProcessOptions\relax
-\LoadClass{\theBase}
-
-% PACKAGES: --------------------------------------------------------------------
-
-    % Conditionally import packages, based on the chosen style.
-    \RequirePackage[utf8]{inputenc}
-    \RequirePackage[T1]{fontenc}
-    \RequirePackage[nottoc]{tocbibind}
-    \RequirePackage{fancyhdr, float, geometry, graphicx, hyperref, lastpage, microtype, setspace, silence, svg, titlesec, titletoc, titling, ulem, xcolor, xparse}
-
-    \ifnum\pdfstrcmp{\theClass}{paper}=0%
-        \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, inconsolata, listings, parskip, siunitx, tabularray}
-
-    \else\ifnum\pdfstrcmp{\theClass}{tome}=0%
-        \RequirePackage{amsfonts, amsmath, amssymb, caption, cite, enumitem, esint, inconsolata, listings, numspell, parskip, siunitx, tabularray}
-
-    \else\ifnum\pdfstrcmp{\theClass}{novel}=0%
-        \RequirePackage[indent]{parskip}
-        \RequirePackage{ebgaramond, numspell}
-
-    \fi\fi\fi
-
-% INITIAL SETUP: ---------------------------------------------------------------
-
-    \WarningsOff* % Ignore all warnings.
-
 % PAGE STYLES: ---------------------------------------------------------
 
     \ifnum\pdfstrcmp{\theClass}{paper}=0%
@@ -179,70 +142,6 @@
         \IfValueT{#3}{%
             \newcommand{\theRightHeader}{#3}%
         }
-    }
-
-    % \cover{front:path}{back:path}.
-    \NewDocumentCommand{\cover}{mg}{% Argument 2 is optional.
-        \usepackage{eso-pic}%
-        \newcommand{\theFront}{#1}%
-        \IfValueT{#2}{%
-            \newcommand{\theBack}{#2}%
-        }
-    }
-
-    % \license{type:string}{modifier:string}{version:float}.
-    \NewDocumentCommand{\license}{mmm}{%
-        \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}%
-    }
-
-    % \isbn{integer}.
-    \NewDocumentCommand{\isbn}{m}{%
-        \usepackage{GS1}%
-        \GSSetup{ocrb=true,module_height=5ex}%
-        \newcommand{\theIsbn}{#1}%
-    }
-
-    % \size{size:string}{orientation:string}.
-    \NewDocumentCommand{\size}{mg}{% Argument 2 is optional.
-        \newcommand{\theSize}{#1}%
-        \newcommand{\theOrientation}{#2}%
-        \IfValueTF{#2}{%
-            \geometry{paper= #1paper, #2}
-        }{
-            \geometry{paper= #1paper}
-        }
-    }
-
-    % \note{string}.
-    \NewDocumentCommand{\note}{m}{%
-        \newcommand{\theNote}{#1}%
-    }
-
-    % \publisher{string}.
-    \NewDocumentCommand{\publisher}{m}{%
-        \newcommand{\thePublisher}{#1}%
-    }
-
-    % \edition{string}{integer}.
-    \NewDocumentCommand{\edition}{mm}{
-        \newcommand{\theEdition}{#1}%
-        \newcommand{\theYear}{#2}%
-    }
-
-    % \dedicate{dedicatee:string}{messege:string}.
-    \NewDocumentCommand{\dedicate}{mm}{%
-        \newcommand{\theDedicatee}{#1}%
-        \newcommand{\theMessage}{#2}%
-    }
-
-    % \thank{string}.
-    \NewDocumentCommand{\thank}{m}{%
-        \newcommand{\theThankyou}{#1}%
-    }
-
-    % \blurb{string}.
-    \NewDocumentCommand{\blurb}{m}{%
-        \newcommand{\theBlurb}{#1}%
     }
 
 % APPLY CONSTANTS: -------------------------------------------------------------
@@ -413,19 +312,3 @@
             \newpage%
         \fi
     }
-
-% CAPTIONS: --------------------------------------------------------------------
-
-    % Set formatting of caption text.
-    \DeclareCaptionFormat{myformat}{\fontsize{8}{9}\selectfont#1#2#3}
-    \captionsetup{
-        format=plain,
-        labelfont=bf,
-        font=scriptsize,
-        justification=raggedright,
-        singlelinecheck=false
-    }
-
-% REFERENCES: ------------------------------------------------------------------
-
-    \bibliographystyle{unsrt} % Sort by order of appearance.

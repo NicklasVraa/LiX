@@ -1,0 +1,16 @@
+% AUTHOR: Nicklas Vraa
+% A collection of packages, commands, and settings for including
+% lists in a document.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{list}
+
+\RequirePackage{enumitem}
+
+\newlist{bullets}{itemize}{10}
+\setlist[bullets,1]{leftmargin=4mm}
+\setlist[bullets]{leftmargin=*,label=$\vcenter{\hbox{\tiny$\bullet$}}$,labelindent=\parindent}
+
+\newlist{numbers}{enumerate}{10}
+\setlist[numbers,1]{leftmargin=4mm}
+\setlist[numbers]{leftmargin=*,label*=\arabic*.,labelindent=\parindent}
