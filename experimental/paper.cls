@@ -13,7 +13,7 @@
 \LoadClass{article}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage{base, code, figs, list, math, meta, tabs} % Collections.
+\RequirePackage[all]{lix}
 \RequirePackage{parskip, setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*

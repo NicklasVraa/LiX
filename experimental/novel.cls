@@ -13,7 +13,7 @@
 \LoadClass[12pt,oneside]{book}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage{base, meta, front} % Collections.
+\RequirePackage[all]{lix}
 \RequirePackage[indent]{parskip}
 \RequirePackage{ebgaramond, setspace, silence, titlesec, titletoc, titling}
 
@@ -85,101 +85,12 @@
     }{%
         \olddate{\normalsize{\theDate}}%
     }
-    \@ifundefined{theFront}{}{%
-        \AddToShipoutPicture*{%
-            \put(0,0){%
-                \parbox[b][\paperheight]{\paperwidth}{%
-                    \vfill\centering%
-                    \includegraphics[width=\paperwidth,height=\paperheight]{\theFront}%
-                    \vfill%
-                }%
-            }%
-        }%
-    }
-    \@ifundefined{theBlurb}{}{%
-        \AtEndDocument{%
-            \newpage\thispagestyle{metadataPage}%
-            \@ifundefined{theBack}{}{%
-                \AddToShipoutPicture*{%
-                    \put(0,0){%
-                        \parbox[b][\paperheight]{\paperwidth}{%
-                            \vfill\centering%
-                            \includegraphics[width=\paperwidth,height=\paperheight]{\theBack}%
-                            \vfill%
-                        }%
-                    }%
-                }%
-            }
-
-            \centering
-            \begin{minipage}{0.8\linewidth}%
-                \centering%
-                \Large{\textbf{\theTitle}}%
-            \end{minipage}%
-
-            \par\vspace{5mm}%
-
-            \begin{minipage}{0.9\linewidth}%
-                \Large{\theBlurb}%
-            \end{minipage}%
-
-            \@ifundefined{theIsbn}{}{%
-                \par\vspace*{\fill}%
-                \begin{minipage}{0.9\linewidth}%
-                    \hfill%
-                    \colorbox{white}{%
-                        \expandafter\EANBarcode\expandafter{\theIsbn}%
-                    }%
-                \end{minipage}%
-            }
-        }
-    }
+    \addFrontCover
+    \addBackCover
 
     \@ifundefined{theTitle}{}{%
         \maketitle%
     }
 
-    \thispagestyle{metadataPage}{%
-        \clearpage\raggedright\footnotesize%
-        \begin{minipage}{0.6\linewidth}
-            \@ifundefined{theDedicatee}{}{%
-                {\large{\textit{To \theDedicatee}}\par%
-                \vspace{3mm}%
-                \normalsize{\textit{\theMessage.}}}%
-            }
-        \end{minipage}
-
-        \null\vfill%
-
-        \begin{minipage}{0.6\linewidth}
-            \@ifundefined{theNote}{}{%
-                \textbf{Author's Note}: \theNote%
-                \vspace{8mm}\par%
-            }
-            \@ifundefined{thePublisher}{}{%
-                \textbf{Publisher}: \thePublisher\par%
-            }
-            \@ifundefined{theEdition}{}{%
-                \Ordnumspell{\theEdition} edition, published in \theYear.\par%
-            }
-            \@ifundefined{theThankyou}{}{%
-                \theThankyou.\par%
-            }
-            \@ifpackageloaded{doclicense}{%
-                \vspace{8mm}%
-                \textbf{Copyright} 2022--\the\year\ \theAuthor\par%
-                \doclicenseLongText \par%
-                \vspace{1mm}%
-                \doclicenseIcon%
-                \par%
-            }{}
-        \end{minipage}
-
-        \@ifundefined{theIsbn}{}{%
-            \vspace{8mm}%
-            ISBN: \theIsbn \hspace{2mm} \par\vspace{1mm}%
-            \expandafter\EANBarcode\expandafter{\theIsbn}%
-        }
-    }%
-    \newpage%
+    \addVersoPage
 }
