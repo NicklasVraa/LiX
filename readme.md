@@ -1,5 +1,5 @@
 # LiX <!-- omit in toc -->
-Lix is a package, which bundle other packages and commands. These bundles may be specified when importing the LiX package by document-classes or directly in your main document. The goal of this package is to simplify the process of defining your own class, and to speed up writing your own documents.
+Lix is a package which bundles other packages and commands. These bundles may be specified when importing the LiX package by document-classes or directly in your main document. The goal of this package is to simplify the process of defining your own class, and to speed up writing your own documents.
 
 **Motivation**: \
 While LaTeX is the indisputable king for typesetting academic papers, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the focus back on the content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
