@@ -26,6 +26,8 @@
 \newcommand{\useToc}{0}
 \newcommand{\useVerso}{0}
 
+\newcommand{\useStdClass}{0} % If using a class not created using LiX.
+
 % SWITCH INTERFACE: ------------------------------------------------------------
 \DeclareOption{code}{\renewcommand{\useCode}{1}}
 \DeclareOption{configs}{\renewcommand{\useConfigs}{1}}
@@ -42,6 +44,8 @@
 \DeclareOption{titlepage}{\renewcommand{\useTitlepage}{1}}
 \DeclareOption{toc}{\renewcommand{\useToc}{1}}
 \DeclareOption{verso}{\renewcommand{\useVerso}{1}}
+
+\DeclareOption{stdclass}{\renewcommand{\useStdClass}{1}}
 
 \DeclareOption{all}{
     \renewcommand{\useCode}{1}
@@ -329,7 +333,16 @@
 
     \newcommand{\R}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
 
-    \newcommand{\bib}[1]{\bibliography{#1}}
+
+    \NewDocumentCommand{\bib}{mg}{%
+        \IfValueTF{#2}{%
+            \bibliographystyle{#2}
+        }{%
+            \bibliographystyle{unsrt} % Sort by order of appearance.
+        }
+
+        \bibliography{#1}
+    }
 \fi
 
 % TABLES: ----------------------------------------------------------------------
@@ -543,4 +556,34 @@
     \renewcommand{\i}[1]{\textit{#1}} % Italic.
     \renewcommand{\u}[1]{\uline{#1}}  % Underline.
     \newcommand{\s}[1]{\sout{#1}}     % Strikethrough.
+\fi
+
+
+% LAYOUT -----------------------------------------------------------------------
+\ifnum\useStdClass=1
+    \AddToHook{begindocument/end}{%
+        \@ifundefined{theTitle}{}{%
+
+            \@ifundefined{theSubtitle}{%
+                \oldtitle{\theTitle}%
+            }{%
+                \oldtitle{\theTitle\\[0.4ex]%
+                \large\theSubtitle}%
+            }
+        }
+        \@ifundefined{theAuthor}{%
+            \oldauthor{}%
+        }{%
+            \oldauthor{\theAuthor}%
+        }
+        \@ifundefined{theDate}{%
+            \olddate{}%
+        }{%
+            \olddate{\theDate}%
+        }
+
+        \@ifundefined{theTitle}{}{%
+            \maketitle%
+        }
+    }
 \fi

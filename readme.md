@@ -16,6 +16,12 @@ Using the LiX package, I have defined some classes, which are ready for use.
 - `Textbook` is for typesetting academic litterature, like textbooks and dissertations. It builds on top of the report class.
 - `Novel` is for typesetting fiction, like novels or a short-stories. It builds on top of the book class.
 
+Using the LiX package with any other standard class is also possible, if one prefers the standard look-and-feel, but still want the benefits of simplified syntax. Simply import the package and specify the `stdclass` option, along with any bundles, e.g.:
+```latex
+\documentclass{article}
+\usepackage[stdclass, ...]{lix}
+```
+
 **Overview**:
 - [1. Class Examples ](#1-class-examples-)
   - [The `Paper` Class ](#the-paper-class-)
@@ -226,7 +232,13 @@ Reference your figures, tables, math, codeblocks, etc., using the labels, you pr
 
 \cite{your_source} % As defined in your bibliography file
 
-\bib{path/to/refs} % Without the '.bib' extension.
+\bib{path/to/refs}{style}
+% Without the '.bib' extension.
+% Style is optional, default is in order of appearence.
+```
+Bibliography Styles:
+```latex
+abbrv, acm, alpha, apalike, ieeetr, plain, siam, unsrt
 ```
 
 

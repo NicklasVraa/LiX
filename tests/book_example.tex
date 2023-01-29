@@ -1,0 +1,111 @@
+\documentclass{book}
+\usepackage[all, stdclass]{lix}
+
+\title    {An Interesting and Cool Title}
+\subtitle {Some Equally Interesting Buzzwords to Entice The Reader}
+\author   {Nicklas Vraa -- \today}
+
+\begin{document}
+
+\h*{Non-Numbered Heading}
+Fusce cursus auctor ipsum quis gravida. Cras suscipit, quam ac tempor fringilla, libero felis euismod metus, ac egestas tortor ipsum vel mi. Donec feugiat, enim et tempus consectetur, ante metus commodo velit, quis rhoncus justo tellus vitae mauris. Aliquam ut accumsan mauris. Pellentesque mi justo, tempus nec tempus at, lacinia nec metus. Fusce sit amet lacus dignissim, dapibus diam vulputate, gravida magna. Aenean rhoncus quam vel scelerisque dictum.
+
+\h{Numbered Heading}
+Quisque dignissim sapien at tellus porttitor tempus. Etiam nec auctor diam, sed consectetur sapien. Fusce nec urna egestas, euismod ipsum quis, malesuada est. Duis consectetur magna eros, at mollis lacus bibendum vel. Proin convallis felis nec pellentesque fermentum. Suspendisse ut congue dolor. Etiam ornare sem molestie, faucibus urna in, dapibus leo.
+
+\hh{Subheading}
+Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent velit turpis, pulvinar ac dapibus congue, ultrices at quam. Nullam dui libero, lobortis vel magna et, egestas venenatis ex. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum vehicula nec nisl non placerat. Ut lobortis tincidunt varius. Curabitur in mattis sem.
+
+\hhh{Subsubheading}
+Etiam eu orci ac lectus rutrum cursus a nec neque. Cras leo nibh, blandit et pretium vel, auctor sed orci. Phasellus tincidunt vitae mauris eget ultricies. Donec vehicula egestas lorem ut dictum. Integer quis diam ullamcorper, tempor diam in, iaculis enim. Etiam non nulla venenatis, volutpat tortor id, vestibulum ligula.
+
+\h{Formats}
+Nunc ante \b{bold} lectus, pretium id \i{italic} sodales, dapibus \s{strikethrough} urna. Suspendisse maximus \u{underlined} metus sed ante commodo efficitur. Some inline code: \c{def func(a,b): return a+b}
+
+\h{Mathematics}
+Pellentesque sagittis orci ut lorem blandit, vel cursus urna interdum. Mauris malesuada fermentum ipsum, accumsan varius velit porttitor ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum sem orci, eget ornare justo sodales.
+
+    \math{my_equation}{\hat{x}_i = \frac{x_i-\mu}{\sqrt{\sigma^2+\epsilon}}}
+
+\h{Code Blocks}
+Nullam congue ligula vitae urna convallis commodo. Proin nunc mi, vulputate quis viverra eu, consequat vitae risus sed venenatis. Praesent ut libero in dui mattis maximus.
+
+    \code{my_code}{python}{
+    # Mauris viverra massa id lorem pretium gravida.
+
+    if num == 1:
+      print(num, "is not a prime.")
+    elif num > 1:
+      for i in range(2, num):
+        if (num % i) == 0:
+          print(num, "is a prime.")
+          break
+    }
+    {This is some code.}
+
+\h{Tables}
+Cras vitae sem egestas, elementum felis vitae, ultricies ante. Fusce pellen tesque massa vitae massa molestie, at cursus urna scelerisque. Aliquam malesuada nunc at est vulputate condimentum.
+
+    \tabs{my_table}{cols}{
+    This & is & a & cool & table \\
+    1    & 2  & 3 & 4    & 5     \\
+    a    & b  & c & d    & e     \\
+    }
+    {This is a table - Notice that the description wraps.}
+
+\h{Figures}
+Nullam massa nunc, sollicitudin id eleifend vitae, pellentesque sit amet lectus. Morbi vestibulum leo quis tempor lacinia. Praesent vitae est ante. Fusce dignissim in urna et posuere.
+
+    \fig{my_svg}{0.7}{resources/placeholder.svg}
+    {This is an svg-figure scaled by 0.7, and this is a very long description.}
+
+Integer sed metus malesuada, volutpat urna condimentum, aliquet metus. Phasellus interdum.
+
+    \fig{my_png}{0.7}{resources/placeholder.png}
+    {This is a png-figure.}
+
+\hh{Lists}
+ Elit vel sagittis luctus, arcu libero pellentesque nisi, sed consectetur quam neque a elit. Donec consectetur cursus nulla eu feugiat.
+
+    \begin{bullets}
+        \item This is a very long item to test the wrapping of text in the unordered environment.
+        \begin{bullets}
+            \item Another item, but indented.
+            \begin{bullets}
+                \item Yet another item.
+                \item An item on the same level.
+            \end{bullets}
+        \end{bullets}
+    \end{bullets}
+
+Donec sed justo auctor, auctor lorem vitae, fermentum diam. Phasellus at elementum leo. Donec lacinia tincidunt nisl, vitae aliquet orci dictum vitae. Sed mollis augue non risus mollis, vitae semper arcu molestie.
+
+    \begin{numbers}
+        \item This is an item.
+        \begin{numbers}
+            \item Another item, but indented.
+            \begin{numbers}
+                \item Yet another item.
+                \item An item on the same level.
+            \end{numbers}
+        \end{numbers}
+        \item Last item.
+    \end{numbers}
+
+Pellentesque et blandit leo. Sed lacinia, sapien sit amet posuere tempor, eros nunc consectetur massa, id pulvinar diam nulla ut felis. Nam id iaculis dui. Pellentesque dapibus, ligula non gravida euismod, risus odio feugiat quam, id ultrices tellus est et dui.
+
+\h{Referencing}
+Here is a hyperlink to a \url{webpage}{https://www.overleaf.com/}. This is a reference to \r{my_equation}, and this refers to \r{my_svg}. You can also refer to headings like \r{Tables}. \R{my_code} is a capitalized variant. For all references, both the name and number are links. Of cource, you can cite sources using \c{\cite{...}}, like this \cite{minted} or this \cite{tabularray}. You can also insert a bibliography.
+
+\h{Conclusion}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in nunc porta magna faucibus lacinia. Nulla ligula libero, ornare vitae tristique vitae, porta eu elit. Vivamus porta nunc quis posuere ornare. Nunc condimentum ultricies sem at ullamcorper. Etiam id nunc non urna facilisis interdum ac eget sapien. Curabitur semper pharetra odio, ut tempus lacus semper sit amet. Curabitur faucibus risus id ipsum blandit auctor.
+
+Proin luctus ante felis, ut congue magna finibus facilisis. Maecenas pellentesque nisl sapien, et iaculis lorem facilisis ac. Mauris ac tellus sit amet ante porttitor rhoncus ut ut erat. Nunc eu metus mattis sapien commodo ultrices posuere ut ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices.
+
+Aliquam luctus tellus id ipsum facilisis facilisis. Cras eu egestas magna. Aenean id nunc odio. Integer sit amet justo mi. Integer lorem neque, sodales et tellus finibus, vestibulum malesuada augue. Donec lacinia ultricies nisl.
+
+\toc
+
+\bib{resources/refs}
+
+\end{document}
