@@ -17,11 +17,11 @@ Using the LiX package, I have defined some classes, which are ready for use.
 - `Novel` is for typesetting fiction, like novels or a short-stories. It builds on top of the book class.
 
 **Overview**:
-- [1. Examples ](#1-examples-)
+- [1. Class Examples ](#1-class-examples-)
   - [The `Paper` Class ](#the-paper-class-)
   - [The `Textbook` Class ](#the-textbook-class-)
   - [The `Novel` Class ](#the-novel-class-)
-- [2. Syntax ](#2-syntax-)
+- [2. LiX Syntax ](#2-lix-syntax-)
   - [Aliases ](#aliases-)
   - [Code ](#code-)
   - [Configs ](#configs-)
@@ -43,7 +43,7 @@ Using the LiX package, I have defined some classes, which are ready for use.
 
 
 ---
-## 1. Examples <a name="examples"></a>
+## 1. Class Examples <a name="examples"></a>
 
 ### The `Paper` Class <a name="paper"></a>
 This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions. Below is an example. Access the full document [here](paper_example.pdf).
@@ -85,7 +85,7 @@ The novel class imports LiX with these options:
 
 
 ---
-## 2. Syntax <a name="syntax"></a>
+## 2. LiX Syntax <a name="syntax"></a>
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`.
 
 
