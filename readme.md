@@ -46,7 +46,7 @@ Using the LiX package, I have defined some classes, which are ready for use.
 ## 1. Class Examples <a name="examples"></a>
 
 ### The `Paper` Class <a name="paper"></a>
-This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions. Below is an example. Access the full document [here](paper_example.pdf).
+This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions.
 
 | Source                             | Build (Two-column)             |
 |------------------------------------|--------------------------------|
@@ -57,9 +57,10 @@ The paper class imports LiX with these options:
 ```latex
 \RequirePackage[code, configs, figures, formats, header, headings, links, lists, math, refs, tables, titlepage, toc]{lix}
 ```
+Take a look at the full [tex code](paper_example.tex) and [resulting pdf](paper_example.pdf).
 
 ### The `Textbook` Class <a name="tome"></a>
-This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions. Below is an example. Access the full document [here](textbook_example.pdf).
+This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions.
 
 | Source                            | Build (One-column)            |
 |-----------------------------------|-------------------------------|
@@ -70,9 +71,11 @@ The textbook class imports LiX with these options:
 ```latex
 \RequirePackage[all]{lix}
 ```
+Take a look at the full [tex code](textbook_example.tex) and [resulting pdf](textbook_example.pdf).
+
 
 ### The `Novel` Class <a name="novel"></a>
-This class is meant for typesetting fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands. Below is an example. Access the full document [here](novel_example.pdf).
+This class is meant for typesetting fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands.
 
 | Source                             | Build                          |
 |------------------------------------|--------------------------------|
@@ -82,6 +85,8 @@ The novel class imports LiX with these options:
 ```latex
 \RequirePackage[configs, cover, figures, formats, header, headings, links, titlepage, toc, verso]{lix}
 ```
+Take a look at the full [tex code](novel_example.tex) and [resulting pdf](novel_example.pdf).
+
 
 
 ---
