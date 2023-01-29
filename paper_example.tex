@@ -27,68 +27,72 @@ Nunc ante \b{bold} lectus, pretium id \i{italic} sodales, dapibus \s{strikethrou
 \h{Mathematics}
 Pellentesque sagittis orci ut lorem blandit, vel cursus urna interdum. Mauris malesuada fermentum ipsum, accumsan varius velit porttitor ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum sem orci, eget ornare justo sodales.
 
-\math{my_equation}{
-\hat{x}_i = \frac{x_i-\mu}{\sqrt{\sigma^2+\epsilon}}
-}
+    \math{my_equation}{\hat{x}_i = \frac{x_i-\mu}{\sqrt{\sigma^2+\epsilon}}}
 
 \h{Code Blocks}
 Nullam congue ligula vitae urna convallis commodo. Proin nunc mi, vulputate quis viverra eu, consequat vitae risus sed venenatis. Praesent ut libero in dui mattis maximus.
 
-\code{my_code}{python}{This is some code.}{
-# Mauris viverra massa id lorem pretium gravida sed convallis.
+    \code{my_code}{python}{
+    # Mauris viverra massa id lorem pretium gravida.
 
-if num == 1:
-  print(num, "is not a prime.")
-elif num > 1:
-  for i in range(2, num):
-    if (num % i) == 0:
-      print(num, "is a prime.")
-      break
-}
+    if num == 1:
+      print(num, "is not a prime.")
+    elif num > 1:
+      for i in range(2, num):
+        if (num % i) == 0:
+          print(num, "is a prime.")
+          break
+    }
+    {This is some code.}
 
 \h{Tables}
 Cras vitae sem egestas, elementum felis vitae, ultricies ante. Fusce pellen tesque massa vitae massa molestie, at cursus urna scelerisque. Aliquam malesuada nunc at est vulputate condimentum.
 
-\tabs{my_table}{cols}{This is a table - Notice that the description wraps.}{
+    \tabs{my_table}{cols}{
     This & is & a & cool & table \\
     1    & 2  & 3 & 4    & 5     \\
     a    & b  & c & d    & e     \\
-}
+    }
+    {This is a table - Notice that the description wraps.}
 
 \h{Figures}
 Nullam massa nunc, sollicitudin id eleifend vitae, pellentesque sit amet lectus. Morbi vestibulum leo quis tempor lacinia. Praesent vitae est ante. Fusce dignissim in urna et posuere.
 
-\fig{my_svg}{This is an svg-figure scaled by 0.7, and this is a very long description.}{resources/placeholder.svg}{0.7}
+    \fig{my_svg}{0.7}{resources/placeholder.svg}
+    {This is an svg-figure scaled by 0.7, and this is a very long description.}
 
-\fig{my_png}{This is a png-figure.}{resources/placeholder.png}{0.7}
+Integer sed metus malesuada, volutpat urna condimentum, aliquet metus. Phasellus interdum.
+
+    \fig{my_png}{0.7}{resources/placeholder.png}
+    {This is a png-figure.}
 
 \hh{Lists}
-nteger sed metus malesuada, volutpat urna condimentum, aliquet metus. Phasellus interdum, elit vel sagittis luctus, arcu libero pellentesque nisi, sed consectetur quam neque a elit. Donec consectetur cursus nulla eu feugiat.
+ Elit vel sagittis luctus, arcu libero pellentesque nisi, sed consectetur quam neque a elit. Donec consectetur cursus nulla eu feugiat.
 
-\begin{bullets}
-    \item This is a very long item to test the wrapping of text in the unordered environment.
     \begin{bullets}
-        \item Another item, but indented.
+        \item This is a very long item to test the wrapping of text in the unordered environment.
         \begin{bullets}
-            \item Yet another item.
-            \item An item on the same level.
+            \item Another item, but indented.
+            \begin{bullets}
+                \item Yet another item.
+                \item An item on the same level.
+            \end{bullets}
         \end{bullets}
     \end{bullets}
-\end{bullets}
 
 Donec sed justo auctor, auctor lorem vitae, fermentum diam. Phasellus at elementum leo. Donec lacinia tincidunt nisl, vitae aliquet orci dictum vitae. Sed mollis augue non risus mollis, vitae semper arcu molestie.
 
-\begin{numbers}
-    \item This is an item.
     \begin{numbers}
-        \item Another item, but indented.
+        \item This is an item.
         \begin{numbers}
-            \item Yet another item.
-            \item An item on the same level.
+            \item Another item, but indented.
+            \begin{numbers}
+                \item Yet another item.
+                \item An item on the same level.
+            \end{numbers}
         \end{numbers}
+        \item Last item.
     \end{numbers}
-    \item Last item.
-\end{numbers}
 
 Pellentesque et blandit leo. Sed lacinia, sapien sit amet posuere tempor, eros nunc consectetur massa, id pulvinar diam nulla ut felis. Nam id iaculis dui. Pellentesque dapibus, ligula non gravida euismod, risus odio feugiat quam, id ultrices tellus est et dui.
 

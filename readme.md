@@ -1,114 +1,147 @@
-# LaTeX Class Abstractions
-This is a collection of classes, which simplify the user's interaction with the basic LaTeX-classes by abstracting much of the functionality into higher-level functions with intuitive syntax, much like Markdown, which speeds up writing and allows one to focus on the contents, rather than the typesetting.
+# LiX <!-- omit in toc -->
+Lix is a package, which bundle other packages and commands. These bundles may be specified when importing the LiX package by document-classes or directly in your main document. The goal of this package is to simplify the process of defining your own class, and to speed up writing your own documents.
 
 **Motivation**: \
-While LaTeX is the indisputable king for typesetting academic papers, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the focus back on the content, the syntax should be as light as possible - hence this humble project.
+While LaTeX is the indisputable king for typesetting academic papers, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the focus back on the content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
 
-**Classes**:
-- `Paper` is for typesetting academic research papers and university assignments. It abstracts the article class.
-- `Tome` is for typesetting academic litterature, like textbooks and dissertations. It abstracts the report class.
-- `Novel` is for typesetting fiction, like novels or a short-stories. It abstracts the book class.
+**Bundles**: \
+The currently available bundles are (in alphabetical order):
+```latex
+code, configs, cover, figures, formats, header, headings, links, lists, math, refs, tables, titlepage, toc, verso
+```
+
+**Classes**: \
+Using the LiX package, I have defined some classes, which are ready for use.
+- `Paper` is for typesetting academic research papers and university assignments. It builds on top of the article class.
+- `Textbook` is for typesetting academic litterature, like textbooks and dissertations. It builds on top of the report class.
+- `Novel` is for typesetting fiction, like novels or a short-stories. It builds on top of the book class.
 
 **Overview**:
-1. [Examples](#examples) - What your finished result might look like.
-   - [Paper](#paper) - Research papers and university assignments.
-   - [Tome](#tome) - Textbooks and dissertations.
-   - [Novel](#novel) - Novels or a short-stories.
-2. [Syntax](#syntax) - How to use the classes.
-   - [Metadata](#metadata) - Covers, title, subtitle, author, licensing, isbn, etc.
-   - [Heading](#heading) - The various levels of headings.
-   - [Formatting](#formatting) - Embolden and italicize text, etc.
-   - [Codeblocks](#codeblocks) - How to define blocks of code.
-   - [Math](#math) - How to define math blocks.
-   - [Lists](#lists) - How to define various types of lists.
-   - [Tables](#tables) - How to create various types of tables.
-   - [Figures](#figures) - How to place external figures, like images or svg's.
-   - [Referencing](#referencing) - Internally reference, cite and link.
-3. [Installation](#installation) - Notes on using the classes locally or in Overleaf.
-4. [Plans](#plans) - What's next?
+- [1. Examples ](#1-examples-)
+  - [The `Paper` Class ](#the-paper-class-)
+  - [The `Textbook` Class ](#the-textbook-class-)
+  - [The `Novel` Class ](#the-novel-class-)
+- [2. Syntax ](#2-syntax-)
+  - [Aliases ](#aliases-)
+  - [Code ](#code-)
+  - [Configs ](#configs-)
+  - [Cover ](#cover-)
+  - [Figures ](#figures-)
+  - [Formats ](#formats-)
+  - [Header ](#header-)
+  - [Heading ](#heading-)
+  - [Links ](#links-)
+  - [Lists ](#lists-)
+  - [Math ](#math-)
+  - [Refs ](#refs-)
+  - [Tables ](#tables-)
+  - [Titlepage ](#titlepage-)
+  - [Toc ](#toc-)
+  - [Verso ](#verso-)
+- [3. Installation ](#3-installation-)
+- [4. Plans ](#4-plans-)
+
 
 ---
 ## 1. Examples <a name="examples"></a>
 
 ### The `Paper` Class <a name="paper"></a>
-This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](classes/paper_example.pdf).
+This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions. Below is an example. Access the full document [here](paper_example.pdf).
+
 | Source                             | Build (Two-column)             |
 |------------------------------------|--------------------------------|
 | ![p1](screenshots/src_paper_1.png) | ![p1](screenshots/paper_1.png) |
 | ![p1](screenshots/src_paper_2.png) | ![p1](screenshots/paper_2.png) |
 
----
-### The `Tome` Class <a name="tome"></a>
-This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions. Below is an example, which also acts as a manual. Access the full document [here](classes/tome_example.pdf).
+The paper class imports LiX with these options:
+```latex
+\RequirePackage[code, configs, figures, formats, header, headings, links, lists, math, refs, tables, titlepage, toc]{lix}
+```
+
+### The `Textbook` Class <a name="tome"></a>
+This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions. Below is an example. Access the full document [here](textbook_example.pdf).
+
 | Source                            | Build (One-column)            |
 |-----------------------------------|-------------------------------|
 | ![p1](screenshots/src_tome_1.png) | ![p1](screenshots/tome_1.png) |
 | ![p1](screenshots/src_tome_2.png) | ![p1](screenshots/tome_2.png) |
 
----
+The textbook class imports LiX with these options:
+```latex
+\RequirePackage[all]{lix}
+```
+
 ### The `Novel` Class <a name="novel"></a>
-This class is meant for typesetting fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands. Access the full document [here](classes/novel_example.pdf).
+This class is meant for typesetting fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands. Below is an example. Access the full document [here](novel_example.pdf).
+
 | Source                             | Build                          |
 |------------------------------------|--------------------------------|
 | ![p1](screenshots/src_novel_1.png) | ![p1](screenshots/novel_1.png) |
 
+The novel class imports LiX with these options:
+```latex
+\RequirePackage[configs, cover, figures, formats, header, headings, links, titlepage, toc, verso]{lix}
+```
+
+
 ---
 ## 2. Syntax <a name="syntax"></a>
-This is an overview of the commands, which are available in the abstracted classes. To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`.
+This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`.
 
-### Metadata <a name="metadata"></a>
-Think of these commands as initializing constants, most of which are optional. These will be used throughout the document in the appropriate places. Currently, there are 18 available constants.
+
+### Aliases <a name="aliases"></a>
+These are always available.
 ```latex
-% Available for all classes.
-\size      {standard}{orientation} % Defaults depend on class.
-\margins   {top}{bot}{left}{right} % Defaults depend on class.
-\lang      {language}              % Defaults to English.
-\title     {This is your Title}    % Only mandatory command.
-\subtitle  {And your Subtitle}
-\author    {Name Lastname}
-\date      {01/01/2023}
-
-% Available for paper only.
-\header    {left}{center}{right}
-
-% Available for tome and novel only.
-\cover     {path/to/front.pdf}{path/to/back.pdf}
-\license   {type}{modifiers}{version}
-\isbn      {978-0201529838}
-\edition   {123}{year}
-\publisher {Your Publishing Company}
-\dedicate  {dedicatee}{Messege}
-\thank     {people or organisations}
-\note      {Longer author's note}
-\blurb     {Flavor text for the back}
+\abstract % Prints the appropriately formatted word 'Abstract'.
+\add{path/to/file.tex} % Inserts the tex-code from the given file.
+\use{package1, package2, ...} % Import packages.
 ```
-The values of these may be used anywhere in the document using `\theCover`, `theTitle`, etc.
 
-**Sizes**:
+
+### Code <a name="code"></a>
+Code blocks will be subtly highlighted according to the given language.
+```latex
+% Available with the 'code' option.
+\code{label}{language}{
+    % Your code.
+}{caption}
+```
+For no highlighting, set the language to `text`.
+
+
+### Configs <a name="configs"></a>
+For setting up the basic characteristics of your document.
+```latex
+% Available with the 'configs' option.
+\size{standard}{orientation} % See table below.
+\margins{top}{bot}{left}{right}
+\lang{language}
+```
+
 | ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
 |-------|-------|-------|------|----|-------------|
 | `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape` |
 
 E.g `\size{a4}{portrait}`.
 
-**Licenses**:
-| Types | Modifiers | Versions |
-|-------|-----------|----------|
-| Creative Commons: `CC` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
 
-E.g `\license{CC}{by-nc-sa}{3.0}`.
-
-### Heading <a name="heading"></a>
-Top-level headings will act like chapters in tomes and novels. Headings will be numbered automatically, unless a `*` is added to the command, e.g. `\h*{...}`.
+### Cover <a name="cover"></a>
+The front and back of a book.
 ```latex
-\h{...}   % Level one.
-\hh{...}  % Level two.
-\hhh{...} % Level three.
-% etc...
+% Available with the 'cover' option.
+\cover{path/to/front.pdf}{path/to/back.pdf}
+\blurb{Flavor text for the back}
 ```
-The regular commands, like `\chapter` and `section` can still be used along with their starred counterparts.
 
-### Formatting <a name="formatting"></a>
+
+### Figures <a name="figures"></a>
+This command will take care of placing your figure correctly and it is file-format agnostic i.e. it works the same for both regular images and vector graphics.
+```latex
+\fig{label}{scale}{path}{caption}
+```
+
+
+### Formats <a name="formats"></a>
 These command names were chosen to ensure that the readability of the source code is minimally affected.
 ```latex
 \b{...} % Bold text.
@@ -116,23 +149,56 @@ These command names were chosen to ensure that the readability of the source cod
 \u{...} % Underline text.
 \s{...} % Strikeout.
 \c{...} % Inline code.
-\m{...} % Inline math. Equivalent to $...$
+\m{...} % Inline math.
 ```
 
-### Codeblocks <a name="codeblocks"></a>
-Codeblocks will be subtly highlighted according to the given language.
+
+### Header <a name="header"></a>
+The strip of text at the top of each page.
 ```latex
-\begin{code}{label}{language}{caption}
-... % Code, as is (verbatim).
-\end{code}
+% Available with the 'header' option.
+\header{left}{center}{right}
 ```
+
+
+### Heading <a name="heading"></a>
+Top-level headings will act like chapters in book-like classes, but as a section article-like classes. Headings will be numbered, unless a `*` is added to the command, e.g. `\h*{...}`.
+```latex
+\h{...}    % Level one.
+\hh{...}   % Level two.
+\hhh{...}  % Level three.
+\hhhh{...} % Level four.
+```
+The regular commands, like `\chapter` and `section` can still be used along with their starred counterparts.
+
+
+### Links <a name="links"></a>
+This will eventually support generating a qr-code.
+```latex
+\url{label text}{link} % E.g. {this website}{https://www.somewebsite.com}
+```
+
+
+### Lists <a name="lists"></a>
+The styling of these lists have been simplified. It is of course possible to nest lists.
+```latex
+\begin{bullets} % Always a dot, regardless of nesting.
+    \item ...
+\end{bullets}
+```
+```latex
+\begin{numbers} % 1, 2, 3...
+    \item ...
+\end{numbers}
+```
+
 
 ### Math <a name="math"></a>
 The label is required and the math block will be numbered.
 ```latex
-\begin{math}{label}
-... % Regular LaTeX math syntax.
-\end{math}
+\math{label}{
+    % Regular latex math.
+}
 ```
 Shortcut commmands in the math environment:
 - `\mean{x}` $\rightarrow \overline{x}$
@@ -145,74 +211,78 @@ Shortcut commmands in the math environment:
 - `\epsilon` $\rightarrow \varepsilon$ (varepsilon)
 
 
-### Lists <a name="lists"></a>
-The formatting of these lists have been greatly simplified. It is of course possible to nest lists.
+### Refs <a name="refs"></a>
+Reference your figures, tables, math, codeblocks, etc., using the labels, you provided. Cite external sources from your bibliography. Link to external sources.
 ```latex
-\begin{bullets} % Always a dot, regardless of nesting.
-    \item ...
-\end{bullets}
+\r{label}          % Reference figures, tables, etc.
+\R{label}          % Uppercase equivalent of \r.
+
+\cite{your_source} % As defined in your bibliography file
+
+\bib{path/to/refs} % Without the '.bib' extension.
 ```
-```latex
-\begin{numbers} % Arabic numbering (1, 2, 3...)
-    \item ...
-\end{numbers}
-```
+
 
 ### Tables <a name="tables"></a>
 There are three types. These three tables will cover 90% of your table-needs, but you have access to the full power of the tabularray package for more complicated tables. The `&` symbol separates items and `\\` separates rows.
 ```latex
-\cols{label}{caption}{
-    ...  % The first row acts as the header.
-}
+\tabs{label}{type}{
+    % Your table content.
+}{caption}
 ```
+Types:
+- `cols`: Classic table, the top row acts as the header.
+- `rows`: The left-most column acts as the header.
+- `grid`: Both the top row and left-most column act as headers.
+
+Formatting code for the table can also be given explicitly in the type field.
+
+
+### Titlepage <a name="titlepage"></a>
+Automatically imported, if `cover` option is specified.
 ```latex
-\rows{label}{caption}{
-    ... % The first column acts as the header.
-}
-```
-```latex
-\grid{label}{caption}{
-    ... % Both the first row and column act as headers.
-}
+% Available with the 'titlepage' option.
+\title    {This is your Title}
+\subtitle {And your Subtitle}
+\author   {Name Lastname}
+\date     {01/01/2023} % \today is also available.
 ```
 
-### Figures <a name="figures"></a>
-This command will take care of placing your figure correctly and it is file-format agnostic i.e. it works the same for both regular images and vector graphics.
+
+### Toc <a name="toc"></a>
+Print table of content, as is appropriate for your current document-class.
 ```latex
-\fig[scale]{label}{caption}{path} % Scale is optional.
+\toc
 ```
 
-### Referencing <a name="referencing"></a>
-Reference your figures, tables, math, codeblocks, etc., using the labels, you provided. Cite external sources from your bibliography. Link to external sources.
+
+### Verso <a name="verso"></a>
+The page after the front-cover of a book, which contains formal information.
 ```latex
-\toc                   % Print table of contents.
-\r{label}              % Reference figures, tables, etc., with a lowercase name.
-\R{label}              % Uppercase equivalent of \r.
-\cite{your_source}     % As defined in your bibliography file.
-\url{label text}{link} % E.g. {this website}{https://www.somewebsite.com}
-\bib{path/to/refs}     % Without the '.bib' extension.
+% Available with the 'verso' option.
+\license   {type}{modifiers}{version}
+\isbn      {978-0201529838}
+\edition   {123}{year}
+\publisher {Your Publishing Company}
+\dedicate  {dedicatee}{Messege}
+\thank     {people or organisations}
+\note      {Longer author's note}
 ```
 
-### Additional <a name="additional"></a>
-```latex
-% Prints the appropriately formatted word 'Abstract' in the paper class.
-\abstract
+| Types | Modifiers | Versions |
+|-------|-----------|----------|
+| Creative Commons: `CC` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
 
-% An intuitive alias for \input{}, which inserts the tex-code from the given file.
-\add{path/to/file.tex}
-```
+E.g `\license{CC}{by-nc-sa}{3.0}`.
+
 
 ---
 ## 3. Installation <a name="installation"></a>
-All classes work out-of-the-box with [Overleaf](https://www.overleaf.com). Simply include the appropriate `.cls` file in your project folder.
+The LiX package and all classes work out-of-the-box with [Overleaf](https://www.overleaf.com). Simply include `lix.sty` and the appropriate `.cls` file in your project folder.
 
-If you are working locally, you need to have all package dependencies installed. Depending on commands are used, the classes may import the following packages:
+If you are working locally, you need to have all package dependencies installed. Depending on which bundles are imported, LiX may import the following packages:
 ```latex
-amsfonts, amsmath, amssymb, babel, caption, cite, doclicense, ebgaramond,
-enumitem, esint, eso-pic, fancyhdr, float, fontenc, geometry, graphicx,
-GS1, hyperref, inconsolata, inputenc, lastpage, listings, microtype,
-numspell, parskip, setspace, silence, siunitx, svg, tabularray, titlesec,
-titletoc, titling, tocbibind, ulem, xcolor, xparse
+amsfonts, amsmath, amssymb, babel, caption, cite, doclicense, ebgaramond, enumitem, esint, eso-pic, fancyhdr, float, fontenc, geometry, graphicx, GS1, hyperref, inconsolata, inputenc, lastpage, listings, microtype, numspell, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, tocbibind, ulem, xcolor, xparse
 ```
 All of which are available through CTAN.
 
@@ -229,7 +299,7 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
         "command": "latexmk",
         "args": [
             "--shell-escape",
-            "-synctex=1",
+            "-synctex=1", // Optional
             "-interaction=nonstopmode",
             "-file-line-error",
             "-pdf",
@@ -242,7 +312,7 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
         "command": "pdflatex",
         "args": [
             "--shell-escape",
-            "-synctex=1",
+            "-synctex=1", // Optional
             "-interaction=nonstopmode",
             "-file-line-error",
             "%DOC%"
@@ -262,4 +332,8 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 
 ---
 ## 4. Plans <a name="plans"></a>
-- Split lix.cls into academic.cls and fiction.cls
+- Change delimiter in tables from `&` to `|` and `\\` to newline.
+- Add option to generate qr-code to `\url` command.
+- Have the code language appear in the corner of codeblocks inline with the vertical separator.
+- Add mandatory newline before and after code blocks, maybe using `\par\null`.
+- Use `hyperref` to add pdf-metadata, using `\theTitle`, `\theAuthor`, etc. Check documentation to see if this can be done automatically.

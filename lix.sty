@@ -4,9 +4,6 @@
 % revolve around a single element of a document. When defining a new class,
 % these bundles may be imported.
 %
-%   Bundles:
-%     code, configs, cover, figures, formats, header, headings, lists, math,
-%     refs, tables, titlepage, toc, verso.
 % ------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
@@ -118,6 +115,9 @@
             \newcommand{\theBack}{#2}%
         }
     }
+    \NewDocumentCommand{\blurb}{m}{%
+        \newcommand{\theBlurb}{#1}%
+    }
 
     \newcommand{\addFrontCover}{
         \@ifundefined{theFront}{}{%
@@ -181,16 +181,16 @@
 
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
 
-    \NewDocumentCommand{\fig}{mmmG{1}}{ % One command for vectors and images.
+    \NewDocumentCommand{\fig}{mmmm}{ % One command for vectors and images.
         \begin{figure}[h!]
             \centering
             \filename@parse{#3}
             \ifnum\pdfstrcmp{\filename@ext}{svg}=0%
-                \sbox0{\includesvg[width=#4\columnwidth]{#3}}%
+                \sbox0{\includesvg[width=#2\columnwidth]{#3}}%
             \else%
-                \sbox0{\includegraphics[width=\maxwidth{#4\columnwidth}]{#3}}%
+                \sbox0{\includegraphics[width=\maxwidth{#2\columnwidth}]{#3}}%
             \fi%
-            \begin{minipage}{\wd0}\usebox0\caption{#2}\label{#1}\end{minipage}
+            \begin{minipage}{\wd0}\usebox0\caption{#4}\label{#1}\end{minipage}
         \end{figure}
     }
 \fi
@@ -344,7 +344,7 @@
                     \begin{tblr}{%
                         hline{1,2,Z} = {0.1pt,solid},
                         rowsep = {1pt}, hspan = even}%
-                        #4
+                        #3
                     \end{tblr}%
                 }
             \else\ifnum\pdfstrcmp{#2}{rows}=0
@@ -353,7 +353,7 @@
                         hline{1,Z} = {0.1pt,solid},
                         vline{2} = {0.1pt,solid},
                         rowsep = {1pt}, hspan = even}%
-                        #4
+                        #3
                     \end{tblr}%
                 }
             \else\ifnum\pdfstrcmp{#2}{grid}=0
@@ -362,18 +362,18 @@
                         hline{1,2,Z} = {0.1pt,solid},
                         vline{2} = {0.1pt,solid},
                         rowsep = {1pt}, hspan = even}%
-                        #4
+                        #3
                     \end{tblr}%
                 }
             \else
                 \sbox0{%
                     \begin{tblr}{#2}%
-                        #4
+                        #3
                     \end{tblr}%
                 }
             \fi\fi\fi
             \begin{minipage}{\wd0}
-                \usebox0\caption{#3}\label{#1}
+                \usebox0\caption{#4}\label{#1}
             \end{minipage}
         \end{table}
     }
@@ -435,9 +435,6 @@
     }
     \NewDocumentCommand{\thank}{m}{%
         \newcommand{\theThankyou}{#1}%
-    }
-    \NewDocumentCommand{\blurb}{m}{%
-        \newcommand{\theBlurb}{#1}%
     }
 
     \newcommand{\addVersoPage}{
@@ -512,20 +509,20 @@
     }
 
     \ExplSyntaxOn
-        \NewDocumentCommand{\code}{mmm +v}{%
+        \NewDocumentCommand{\code}{mm +v m}{%
             \begingroup%
                 \noindent\rule{\columnwidth}{0.1pt}%
                 \vspace*{-1mm}%
                 \newlinechar=\endlinechar
                 \exp_args:Nx \scantokens{
                     \string\begin{lstlisting}[\unexpanded{language=#2,style=block}]
-                    #4
+                    #3
                     \string\end{lstlisting}
                 }
                 \vspace*{-2mm}%
                 \noindent\rule{\columnwidth}{0.1pt}
                 \captionsetup{type=lstlisting}%
-                \caption{#3}%
+                \caption{#4}%
                 \label{#1}%
                 \vspace*{0.8em}%
             \endgroup%
