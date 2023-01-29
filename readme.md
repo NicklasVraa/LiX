@@ -307,7 +307,7 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
         "command": "latexmk",
         "args": [
             "--shell-escape",
-            "-synctex=1", // Optional
+            "-synctex=1",
             "-interaction=nonstopmode",
             "-file-line-error",
             "-pdf",
@@ -320,7 +320,7 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
         "command": "pdflatex",
         "args": [
             "--shell-escape",
-            "-synctex=1", // Optional
+            "-synctex=1",
             "-interaction=nonstopmode",
             "-file-line-error",
             "%DOC%"
