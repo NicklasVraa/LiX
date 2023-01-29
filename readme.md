@@ -63,7 +63,7 @@ The paper class imports LiX with these options:
 ```latex
 \RequirePackage[code, configs, figures, formats, header, headings, links, lists, math, refs, tables, titlepage, toc]{lix}
 ```
-Take a look at the full [tex code](paper_example.tex) and [resulting pdf](paper_example.pdf).
+Take a look at the full [tex code](tests/paper_example.tex) and [resulting pdf](tests/paper_example.pdf).
 
 ### The `Textbook` Class <a name="tome"></a>
 This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions.
@@ -77,7 +77,7 @@ The textbook class imports LiX with these options:
 ```latex
 \RequirePackage[all]{lix}
 ```
-Take a look at the full [tex code](textbook_example.tex) and [resulting pdf](textbook_example.pdf).
+Take a look at the full [tex code](tests/textbook_example.tex) and [resulting pdf](tests/textbook_example.pdf).
 
 
 ### The `Novel` Class <a name="novel"></a>
@@ -91,8 +91,7 @@ The novel class imports LiX with these options:
 ```latex
 \RequirePackage[configs, cover, figures, formats, header, headings, links, titlepage, toc, verso]{lix}
 ```
-Take a look at the full [tex code](novel_example.tex) and [resulting pdf](novel_example.pdf).
-
+Take a look at the full [tex code](tests/novel_example.tex) and [resulting pdf](tests/novel_example.pdf).
 
 
 ---
