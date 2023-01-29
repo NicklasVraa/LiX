@@ -103,6 +103,7 @@ This is an overview of the commands, which are available when specifying a certa
 These are always available.
 ```latex
 \abstract % Prints the appropriately formatted word 'Abstract'.
+
 \add{path/to/file.tex} % Inserts the tex-code from the given file.
 \use{package1, package2, ...} % Import packages.
 ```
@@ -123,9 +124,9 @@ For no highlighting, set the language to `text`.
 For setting up the basic characteristics of your document.
 ```latex
 % Available with the 'configs' option.
-\lang{language}
-\size{standard}{orientation}
-\margins{top}{bot}{left}{right}
+\lang    {language}
+\size    {standard}{orientation}
+\margins {top}{bot}{left}{right}
 % Alternatively: {all}, {topbot}{leftright}, {top}{bot}{leftright}
 ```
 
