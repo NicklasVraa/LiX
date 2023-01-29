@@ -118,11 +118,13 @@ For no highlighting, set the language to `text`.
 For setting up the basic characteristics of your document.
 ```latex
 % Available with the 'configs' option.
-\size{standard}{orientation} % See table below.
-\margins{top}{bot}{left}{right}
 \lang{language}
+\size{standard}{orientation}
+\margins{top}{bot}{left}{right}
+% Alternatively: {all}, {topbot}{leftright}, {top}{bot}{leftright}
 ```
 
+For the `\size` command:
 | ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
 |-------|-------|-------|------|----|-------------|
 | `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape` |
@@ -274,6 +276,7 @@ The page after the front-cover of a book, which contains formal information.
 \note      {Longer author's note}
 ```
 
+For the `\license` command:
 | Types | Modifiers | Versions |
 |-------|-----------|----------|
 | Creative Commons: `CC` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
