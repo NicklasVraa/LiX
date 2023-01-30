@@ -13,10 +13,11 @@
 \LoadClass{article}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[code, configs, figures, formats, header, headings, links, lists, math, refs, tables, titlepage, toc]{lix}
-\RequirePackage{parskip, setspace, silence, titlesec, titletoc, titling}
+\RequirePackage[code, configs, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc]{lix}
+\RequirePackage{setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*
+\setlength\parindent{0pt}
 \newcommand{\use}[1]{\usepackage{#1}}
 \renewcommand{\abstract}{\textbf{\textsc{Abstract:} }}
 
@@ -89,4 +90,5 @@
     \@ifundefined{theTitle}{}{%
         \maketitle%
     }
+    \addMetadata
 }

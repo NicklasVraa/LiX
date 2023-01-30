@@ -17,6 +17,7 @@
 \RequirePackage{parskip, setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*
+\setlength\parindent{0pt}
 \newcommand{\use}[1]{\usepackage{#1}}
 
 % SIZE, MARGINS: ---------------------------------------------------------------
@@ -115,6 +116,6 @@
     \@ifundefined{theTitle}{}{%
         \maketitle%
     }
-
     \addVersoPage
+    \addMetadata
 }

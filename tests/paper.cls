@@ -1,1 +1,1 @@
-/home/nv/Projects/Latex_class_abstractions/lix_classes/paper.cls
+/home/nv/Projects/LiX/lix_classes/paper.cls

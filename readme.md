@@ -117,7 +117,7 @@ Code blocks will be subtly highlighted according to the given language.
     % Your code.
 }{caption}
 ```
-For no highlighting, set the language to `text`.
+Caption is optional. For no highlighting, set the language to `text`. Indent the code four spaces for best readability in the source file. These will be removed in the resulting pdf.
 
 
 ### Configs <a name="configs"></a>
@@ -152,7 +152,7 @@ This command will take care of placing your figure correctly and it is file-form
 ```latex
 \fig{label}{scale}{path}{caption}
 ```
-
+Caption is optional.
 
 ### Formats <a name="formats"></a>
 These command names were chosen to ensure that the readability of the source code is minimally affected.
@@ -249,6 +249,8 @@ There are three types. These three tables will cover 90% of your table-needs, bu
     % Your table content.
 }{caption}
 ```
+Caption is optional.
+
 Types:
 - `cols`: Classic table, the top row acts as the header.
 - `rows`: The left-most column acts as the header.
@@ -354,6 +356,4 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 ## 4. Plans <a name="plans"></a>
 - Change delimiter in tables from `&` to `|` and `\\` to newline.
 - Add option to generate qr-code to `\url` command.
-- Have the code language appear in the corner of codeblocks inline with the vertical separator.
-- Add mandatory newline before and after code blocks, maybe using `\par\null`.
-- Use `hyperref` to add pdf-metadata, using `\theTitle`, `\theAuthor`, etc. Check documentation to see if this can be done automatically.
+- Use IfValueTF to implement arbitrarily positioned optional arguments for tables and figures.

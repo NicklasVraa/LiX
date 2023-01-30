@@ -13,8 +13,7 @@
 \LoadClass[12pt,oneside]{book}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[configs, cover, figures, formats, header, headings, links, titlepage, toc, verso]{lix}
-\RequirePackage[indent]{parskip}
+\RequirePackage[configs, cover, figures, formats, header, headings, meta, titlepage, toc, verso]{lix}
 \RequirePackage{ebgaramond, setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*
@@ -91,6 +90,6 @@
     \@ifundefined{theTitle}{}{%
         \maketitle%
     }
-
     \addVersoPage
+    \addMetadata
 }

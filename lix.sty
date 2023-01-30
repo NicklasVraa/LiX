@@ -17,9 +17,9 @@
 \newcommand{\useFormats}{0}
 \newcommand{\useHeader}{0}
 \newcommand{\useHeadings}{0}
-\newcommand{\useLinks}{0}
 \newcommand{\useLists}{0}
 \newcommand{\useMath}{0}
+\newcommand{\useMeta}{0}
 \newcommand{\useRefs}{0}
 \newcommand{\useTables}{0}
 \newcommand{\useTitlepage}{0}
@@ -36,9 +36,9 @@
 \DeclareOption{formats}{\renewcommand{\useFormats}{1}}
 \DeclareOption{header}{\renewcommand{\useHeader}{1}}
 \DeclareOption{headings}{\renewcommand{\useHeadings}{1}}
-\DeclareOption{links}{\renewcommand{\useLinks}{1}}
 \DeclareOption{lists}{\renewcommand{\useLists}{1}}
 \DeclareOption{math}{\renewcommand{\useMath}{1}}
+\DeclareOption{meta}{\renewcommand{\useMeta}{1}}
 \DeclareOption{refs}{\renewcommand{\useRefs}{1}}
 \DeclareOption{tables}{\renewcommand{\useTables}{1}}
 \DeclareOption{titlepage}{\renewcommand{\useTitlepage}{1}}
@@ -55,9 +55,9 @@
     \renewcommand{\useFormats}{1}
     \renewcommand{\useHeader}{1}
     \renewcommand{\useHeadings}{1}
-    \renewcommand{\useLinks}{1}
     \renewcommand{\useLists}{1}
     \renewcommand{\useMath}{1}
+    \renewcommand{\useMeta}{1}
     \renewcommand{\useRefs}{1}
     \renewcommand{\useTables}{1}
     \renewcommand{\useTitlepage}{1}
@@ -72,10 +72,15 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[nottoc]{tocbibind}
-\RequirePackage{fancyhdr, microtype}
+\RequirePackage[indent]{parskip}
+\RequirePackage{fancyhdr, hyperref, microtype}
+
+% ESSENTIAL SETUP: -------------------------------------------------------------
+\hypersetup{hidelinks} % Remove box around links.
 
 % ESSENTIAL COMMANDS: ----------------------------------------------------------
 \newcommand{\add}[1]{\input{#1}}
+\renewcommand{\url}[2]{\href{#2}{#1}}
 
 % CONFIGS: ---------------------------------------------------------------------
 \ifnum\useConfigs=1
@@ -185,7 +190,7 @@
 
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
 
-    \NewDocumentCommand{\fig}{mmmm}{ % One command for vectors and images.
+    \NewDocumentCommand{\fig}{mmmg}{ % One command for vectors and images.
         \begin{figure}[h!]
             \centering
             \filename@parse{#3}
@@ -194,7 +199,13 @@
             \else%
                 \sbox0{\includegraphics[width=\maxwidth{#2\columnwidth}]{#3}}%
             \fi%
-            \begin{minipage}{\wd0}\usebox0\caption{#4}\label{#1}\end{minipage}
+            \IfValueTF{#4}{%
+                \begin{minipage}{\wd0}
+                    \usebox0\caption{#4}\label{#1}
+                \end{minipage}
+            }{%
+                \usebox0\label{#1}
+            }
         \end{figure}
     }
 \fi
@@ -312,17 +323,27 @@
     \newcommand{\m}[1]{$#1$} % Inline math.
 
     \RenewDocumentCommand{\math}{mm}{% Block of math.
+        \vspace{-0.5\baselineskip}
         \begin{equation}\label{#1}
             #2
         \end{equation}
     }
 \fi
 
-% LINKS: -----------------------------------------------------------------------
-\ifnum\useLinks=1
-    \RequirePackage{hyperref}
-    \hypersetup{hidelinks} % Remove box around links.
-    \renewcommand{\url}[2]{\href{#2}{#1}}
+% META: ------------------------------------------------------------------------
+\ifnum\useMeta=1
+    \NewDocumentCommand{\keywords}{m}{%
+        \newcommand{\theKeywords}{#1}%
+    }
+    \newcommand{\addMetadata}{%
+        \hypersetup{%
+            pdftitle={\@ifundefined{theTitle}{}{\theTitle}},
+            pdfauthor={\@ifundefined{theAuthor}{}{\theAuthor}},
+            pdfsubject={\@ifundefined{theSubtitle}{}{\theSubtitle}},
+            pdfkeywords={\@ifundefined{theKeywords}{}{\theKeywords}},
+            pdfcreator={LaTeX with the LiX Package}
+        }
+    }
 \fi
 
 % REFERENCES: ------------------------------------------------------------------
@@ -349,7 +370,7 @@
 \ifnum\useTables=1
     \RequirePackage{caption, tabularray, xparse}
 
-    \NewDocumentCommand{\tabs}{mmmm}{
+    \NewDocumentCommand{\tabs}{mmmg}{
         \begin{table}[h!]
             \centering
             \ifnum\pdfstrcmp{#2}{cols}=0
@@ -385,9 +406,13 @@
                     \end{tblr}%
                 }
             \fi\fi\fi
-            \begin{minipage}{\wd0}
-                \usebox0\caption{#4}\label{#1}
-            \end{minipage}
+            \IfValueTF{#4}{%
+                \begin{minipage}{\wd0}%
+                    \usebox0\caption{#4}\label{#1}%
+                \end{minipage}%
+            }{%
+                \usebox0\label{#1}%
+            }
         \end{table}
     }
 \fi
@@ -514,30 +539,32 @@
         commentstyle=\color[rgb]{0.5,0.5,0.5},
         breaklines=true,
         numbers=left,
+        gobble=4,
         numberstyle=\tiny,
         numbersep=7pt,
+        aboveskip=0.5em,
+        belowskip=0em,
         showstringspaces=false,
         xleftmargin=14pt,
         postbreak=\mbox{\hspace{-2.5em}\textcolor{gray}{$\hookrightarrow$}\space\space}
     }
 
     \ExplSyntaxOn
-        \NewDocumentCommand{\code}{mm +v m}{%
+        \NewDocumentCommand{\code}{mm +v g}{%
             \begingroup%
-                \noindent\rule{\columnwidth}{0.1pt}%
-                \vspace*{-1mm}%
+                \noindent{\tiny\dotfill}%
                 \newlinechar=\endlinechar
                 \exp_args:Nx \scantokens{
                     \string\begin{lstlisting}[\unexpanded{language=#2,style=block}]
                     #3
-                    \string\end{lstlisting}
+                    \string\end{lstlisting}%
                 }
-                \vspace*{-2mm}%
-                \noindent\rule{\columnwidth}{0.1pt}
-                \captionsetup{type=lstlisting}%
-                \caption{#4}%
+                \noindent{\tiny\dotfill\ \MakeUppercase#2\ }
+                \IfValueTF{#4}{%
+                    \captionsetup{type=lstlisting}%
+                    \caption{#4}%
+                }{}
                 \label{#1}%
-                \vspace*{0.8em}%
             \endgroup%
         }
     \ExplSyntaxOff
@@ -585,5 +612,6 @@
         \@ifundefined{theTitle}{}{%
             \maketitle%
         }
+        \addMetadata
     }
 \fi

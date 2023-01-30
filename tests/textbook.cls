@@ -1,1 +1,1 @@
-/home/nv/Projects/Latex_class_abstractions/lix_classes/textbook.cls
+/home/nv/Projects/LiX/lix_classes/textbook.cls
