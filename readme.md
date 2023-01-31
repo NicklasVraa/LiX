@@ -2,12 +2,22 @@
 Lix is a package which bundles other packages and commands. These bundles may be specified when importing the LiX package, either in your own document-class, or directly in your main document, when using a predefined class. I would refer to it as a meta-package. The goal of this package is to simplify the process of defining your own class, and to speed up writing your documents.
 
 **Motivation**: \
-While LaTeX is the indisputable king for typesetting professional looking documents, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the author's focus back on their content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
+While LaTeX is the indisputable king for typesetting publishable documents, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the author's focus back on their content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
+
+Advantages:
+- The source code of a document becomes as easy to read and understand as Markdown and is drastically shorter.
+- The style of a document is completely separated from its content, and keeping a consistent style is simpler.
+- Configuring your document is simpler, because you don't interface directly with individual packages, which may employ different syntax.
+- Creating your own class, which implements a custom look-and-feel, is much easier.
+
+Disadvantages:
+- If one wants to change their document into a class that has not been defined using this package, there may be difficulties when compiling. To address this, I've recreated the `IEEEtran` class, as a reference for how to reimplement your favorite class using LiX.
+- You do not have the extreme fine-grained control over your custom class, as you would with pure LaTeX.
 
 **Bundles**: \
 The currently available bundles are (in alphabetical order):
 ```latex
-code, configs, cover, figures, formats, header, headings, links, lists, math, refs, tables, titlepage, toc, verso
+code, configs, cover, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc, verso
 ```
 
 **Classes**: \
@@ -24,7 +34,6 @@ Using the LiX package with any other standard class is also possible, if one pre
 \documentclass{article}
 \usepackage[stdclass, ...]{lix}
 ```
-
 
 **Overview**:
 - [1. Class Examples ](#1-class-examples-)
