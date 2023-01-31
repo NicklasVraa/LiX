@@ -11,13 +11,13 @@ code, configs, cover, figures, formats, header, headings, links, lists, math, re
 ```
 
 **Classes**: \
-Using the LiX package, I have defined some custom classes, which are ready for use.
+Using this package, I've defined some custom classes, which are ready for use.
 - [`Paper`](#the-paper-class-) is for typesetting academic research papers and university assignments. It builds on top of the article class.
 - [`Textbook`](#the-textbook-class-) is for typesetting academic litterature, like textbooks and dissertations. It builds on top of the report class.
 - [`Novel`](#the-novel-class-) is for typesetting fiction, like novels or a short-stories. It builds on top of the book class.
 
 As well as classes, which mimic popular formats:
-- [`IEEE`](tests/popular_classes/ieee.cls) implements the IEEE journal and transactions template. Here is an [example pdf](tests/popular_classes/ieee_example.pdf).
+- [`IEEE`](tests/popular_classes/ieee.cls) implements the IEEE journal and transactions template. Here is an [example pdf](tests/popular_classes/ieee_example.pdf) and it's [source code](tests/popular_classes/ieee_example.tex).
 
 Using the LiX package with any other standard class is also possible, if one prefers the old-school look-and-feel, but still want the benefits of simplified syntax. Simply import the package and specify the `stdclass` option, along with any bundles, e.g.:
 ```latex
