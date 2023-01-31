@@ -11,16 +11,20 @@ code, configs, cover, figures, formats, header, headings, links, lists, math, re
 ```
 
 **Classes**: \
-Using the LiX package, I have defined some classes, which are ready for use.
-- `Paper` is for typesetting academic research papers and university assignments. It builds on top of the article class.
-- `Textbook` is for typesetting academic litterature, like textbooks and dissertations. It builds on top of the report class.
-- `Novel` is for typesetting fiction, like novels or a short-stories. It builds on top of the book class.
+Using the LiX package, I have defined some custom classes, which are ready for use.
+- [`Paper`](#the-paper-class-) is for typesetting academic research papers and university assignments. It builds on top of the article class.
+- [`Textbook`](#the-textbook-class-) is for typesetting academic litterature, like textbooks and dissertations. It builds on top of the report class.
+- [`Novel`](#the-novel-class-) is for typesetting fiction, like novels or a short-stories. It builds on top of the book class.
 
-Using the LiX package with any other standard class is also possible, if one prefers the standard look-and-feel, but still want the benefits of simplified syntax. Simply import the package and specify the `stdclass` option, along with any bundles, e.g.:
+As well as classes, which mimic popular formats:
+- [`IEEE`](tests/popular_classes/ieee.cls) implements the IEEE journal and transactions template. Here is an [example pdf](tests/popular_classes/ieee_example.pdf).
+
+Using the LiX package with any other standard class is also possible, if one prefers the old-school look-and-feel, but still want the benefits of simplified syntax. Simply import the package and specify the `stdclass` option, along with any bundles, e.g.:
 ```latex
 \documentclass{article}
 \usepackage[stdclass, ...]{lix}
 ```
+
 
 **Overview**:
 - [1. Class Examples ](#1-class-examples-)
@@ -63,7 +67,7 @@ The paper class imports LiX with these options:
 ```latex
 \RequirePackage[code, configs, figures, formats, header, headings, links, lists, math, refs, tables, titlepage, toc]{lix}
 ```
-Take a look at the full [tex code](tests/paper_example.tex) and [resulting pdf](tests/paper_example.pdf).
+Take a look at the full [tex code](tests/custom_classes/paper_example.tex) and [resulting pdf](tests/custom_classes/paper_example.pdf).
 
 ### The `Textbook` Class <a name="tome"></a>
 This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions.
@@ -77,7 +81,7 @@ The textbook class imports LiX with these options:
 ```latex
 \RequirePackage[all]{lix}
 ```
-Take a look at the full [tex code](tests/textbook_example.tex) and [resulting pdf](tests/textbook_example.pdf).
+Take a look at the full [tex code](tests/custom_classes/textbook_example.tex) and [resulting pdf](tests/custom_classes/textbook_example.pdf).
 
 
 ### The `Novel` Class <a name="novel"></a>
@@ -91,7 +95,7 @@ The novel class imports LiX with these options:
 ```latex
 \RequirePackage[configs, cover, figures, formats, header, headings, links, titlepage, toc, verso]{lix}
 ```
-Take a look at the full [tex code](tests/novel_example.tex) and [resulting pdf](tests/novel_example.pdf).
+Take a look at the full [tex code](tests/custom_classes/novel_example.tex) and [resulting pdf](tests/custom_classes/novel_example.pdf).
 
 
 ---
@@ -354,7 +358,9 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 
 ---
 ## 4. Plans <a name="plans"></a>
-- Change delimiter in tables from `&` to `|` and `\\` to newline.
+In order of priority:
+- Add support for multiple authors.
+- Add `\idnum` command to be used for things like IEEE publishing ID.
 - Add option to generate qr-code to `\url` command.
 - Use IfValueTF to implement arbitrarily positioned optional arguments for tables and figures.
-- Add support for multiple authors.
+- Change delimiter in tables from `&` to `|` and `\\` to newline.

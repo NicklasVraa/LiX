@@ -13,15 +13,6 @@
 \WarningsOff*
 \newcommand{\use}[1]{\usepackage{#1}}
 
-% COMMAND OVERRIDES ------------------------------------------------------------
-\renewcommand{\abstract}[1]{%
-    {\small\bfseries\textit{Abstract---}#1%
-        \@ifundefined{theKeywords}{}{%
-            \\[0.5em] \indent\textit{Index Terms---}\theKeywords.
-        }
-    }\vspace{0.5em}
-}
-
 % HEADER: ----------------------------------------------------------------------
 \fancypagestyle{plain}{%
     \renewcommand{\headrulewidth}{0pt}%
@@ -67,6 +58,15 @@
 \captionsetup{
     format=plain, labelfont=bf, font=scriptsize,
     justification=raggedright, singlelinecheck=false
+}
+
+% COMMAND OVERRIDES ------------------------------------------------------------
+\renewcommand{\abstract}[1]{%
+    {\small\bfseries\textit{Abstract---}#1%
+        \@ifundefined{theKeywords}{}{%
+            \\[0.5em] \indent\textit{Index Terms---}\theKeywords.
+        }
+    }\vspace{0.5em}
 }
 
 % LAYOUT: ----------------------------------------------------------------------
