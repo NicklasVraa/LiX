@@ -17,7 +17,7 @@
 \renewcommand{\abstract}[1]{%
     {\small\bfseries\textit{Abstract---}#1%
         \@ifundefined{theKeywords}{}{%
-            \\[0.5em] \indent\textit{Index Terms--}\theKeywords.
+            \\[0.5em] \indent\textit{Index Terms---}\theKeywords.
         }
     }\vspace{0.5em}
 }
