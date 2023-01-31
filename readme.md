@@ -130,6 +130,7 @@ For setting up the basic characteristics of your document.
 % Available with the 'configs' option.
 \lang    {language}
 \size    {standard}{orientation}
+
 \margins {top}{bot}{left}{right}
 % Alternatively: {all}, {topbot}{leftright}, {top}{bot}{leftright}
 ```
@@ -192,7 +193,8 @@ The regular commands, like `\chapter` and `section` can still be used along with
 ### Links <a name="links"></a>
 This will eventually support generating a qr-code.
 ```latex
-\url{label text}{link} % E.g. {this website}{https://www.somewebsite.com}
+\url{label text}{link}
+% E.g. {this website}{https://www.somewebsite.com}
 ```
 
 
