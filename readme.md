@@ -357,3 +357,4 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 - Change delimiter in tables from `&` to `|` and `\\` to newline.
 - Add option to generate qr-code to `\url` command.
 - Use IfValueTF to implement arbitrarily positioned optional arguments for tables and figures.
+- Add support for multiple authors.

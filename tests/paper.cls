@@ -1,1 +1,0 @@
-/home/nv/Projects/LiX/lix_classes/paper.cls
