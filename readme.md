@@ -104,7 +104,7 @@ This is an overview of the commands, which are available when specifying a certa
 
 
 ### Aliases <a name="aliases"></a>
-These are always available.
+These are always available, and are simply aliases, which are more intuitive for a new LaTeX-user.
 ```latex
 \abstract % Prints the appropriately formatted word 'Abstract'.
 
@@ -234,7 +234,7 @@ Reference your figures, tables, math, codeblocks, etc., using the labels, you pr
 \r{label}          % Reference figures, tables, etc.
 \R{label}          % Uppercase equivalent of \r.
 
-\cite{your_source} % As defined in your bibliography file
+\cite{your_source} % As defined in your bibliography file.
 
 \bib{path/to/refs}{style}
 % Without the '.bib' extension.
