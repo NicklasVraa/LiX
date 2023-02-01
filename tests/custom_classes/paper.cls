@@ -26,7 +26,7 @@
     \geometry{a4paper, top=28mm, left=34mm, right=34mm, bottom=36mm}
     \setlength{\droptitle}{-3.8em}
 \else\ifnum\numColumns=2
-    \geometry{a4paper, top=22mm, left=26mm, right=26mm, bottom=32mm}
+    \geometry{a4paper, top=20mm, left=24mm, right=24mm, bottom=30mm}
     \setlength{\columnsep}{5mm}
     \setlength{\droptitle}{-2.8em}
 \fi\fi
@@ -64,6 +64,9 @@
     format=plain, labelfont=bf, font=scriptsize,
     justification=raggedright, singlelinecheck=false
 }
+
+% REFERENCES: ------------------------------------------------------------------
+\setbibfont{\footnotesize}
 
 % LAYOUT: ----------------------------------------------------------------------
 \AddToHook{begindocument/end}{%

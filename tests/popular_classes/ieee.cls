@@ -6,7 +6,7 @@
 \LoadClass[twocolumn]{article}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[code, configs, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc]{lix}
+\RequirePackage[code, configs, figures, formats, header, headings, id, lists, math, meta, refs, tables, titlepage, toc]{lix}
 \RequirePackage{setspace, silence, titlesec, titletoc, titling}
 \RequirePackage{times} % Times new Roman font.
 
@@ -14,16 +14,30 @@
 \newcommand{\use}[1]{\usepackage{#1}}
 
 % HEADER: ----------------------------------------------------------------------
-\fancypagestyle{plain}{%
+\fancypagestyle{plain}{% First page.
     \renewcommand{\headrulewidth}{0pt}%
-    \fancyhead[L]{\scriptsize\MakeUppercase\theLeftHeader}
-    \fancyhead[R]{\scriptsize\thepage}
-    \fancyfoot{}
+    \@ifundefined{theLeftHeader}{
+        \fancyhead[L]{}
+    }{%
+        \fancyhead[L]{\scriptsize\MakeUppercase\theLeftHeader}%
+    }
+    \fancyhead[R]{\scriptsize\thepage}%
+    \@ifundefined{theId}{
+        \fancyfoot{}%
+    }{
+        \fancyfoot[C]{\footnotesize\theId\ \copyright\ \the\year\ \theAuthor}%
+    }
 }
-\pagestyle{plain}
+\fancypagestyle{fancy}{%
+    \renewcommand{\headrulewidth}{0pt}%
+    \fancyhead[L]{\scriptsize\MakeUppercase\theLeftHeader}%
+    \fancyhead[R]{\scriptsize\thepage}%
+    \fancyfoot{}%
+}
+\pagestyle{fancy}
 
 % SIZE, MARGINS: ---------------------------------------------------------------
-\geometry{a4paper, top=21mm, left=17mm, right=17mm, bottom=20mm}
+\geometry{a4paper, top=21mm, left=17mm, right=17mm, bottom=21mm}
 \setlength{\columnsep}{4mm}
 \setlength{\droptitle}{-3em}
 \fancyhfoffset[O]{0pt}
@@ -60,7 +74,7 @@
     justification=raggedright, singlelinecheck=false
 }
 
-% COMMAND OVERRIDES ------------------------------------------------------------
+% ABSTRACT: --------------------------------------------------------------------
 \renewcommand{\abstract}[1]{%
     {\small\bfseries\textit{Abstract---}#1%
         \@ifundefined{theKeywords}{}{%
@@ -69,10 +83,13 @@
     }\vspace{0.5em}
 }
 
+% REFERENCES: ------------------------------------------------------------------
+\setbibfont{\footnotesize}
+
 % LAYOUT: ----------------------------------------------------------------------
 \AddToHook{begindocument/end}{%
     \@ifundefined{theTitle}{}{%
-        \oldtitle{\Huge\theTitle}%
+        \oldtitle{\huge\theTitle}%
     }
     \@ifundefined{theAuthor}{%
         \oldauthor{}%

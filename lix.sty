@@ -17,6 +17,7 @@
 \newcommand{\useFormats}{0}
 \newcommand{\useHeader}{0}
 \newcommand{\useHeadings}{0}
+\newcommand{\useId}{0}
 \newcommand{\useLists}{0}
 \newcommand{\useMath}{0}
 \newcommand{\useMeta}{0}
@@ -36,6 +37,7 @@
 \DeclareOption{formats}{\renewcommand{\useFormats}{1}}
 \DeclareOption{header}{\renewcommand{\useHeader}{1}}
 \DeclareOption{headings}{\renewcommand{\useHeadings}{1}}
+\DeclareOption{id}{\renewcommand{\useId}{1}}
 \DeclareOption{lists}{\renewcommand{\useLists}{1}}
 \DeclareOption{math}{\renewcommand{\useMath}{1}}
 \DeclareOption{meta}{\renewcommand{\useMeta}{1}}
@@ -55,6 +57,7 @@
     \renewcommand{\useFormats}{1}
     \renewcommand{\useHeader}{1}
     \renewcommand{\useHeadings}{1}
+    \renewcommand{\useId}{1}
     \renewcommand{\useLists}{1}
     \renewcommand{\useMath}{1}
     \renewcommand{\useMeta}{1}
@@ -293,6 +296,18 @@
     }
 \fi
 
+% ID: --------------------------------------------------------------------------
+\ifnum\useId=1
+    \NewDocumentCommand{\isbn}{m}{%
+        \usepackage{GS1}%
+        \GSSetup{ocrb=true,module_height=5ex}%
+        \newcommand{\theIsbn}{#1}%
+    }
+    \NewDocumentCommand{\id}{m}{%
+        \newcommand{\theId}{#1}%
+    }
+\fi
+
 % LISTS: -----------------------------------------------------------------------
 \ifnum\useLists=1
     \RequirePackage{enumitem}
@@ -354,6 +369,10 @@
 
     \newcommand{\R}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
 
+    \newcommand{\thebibfont}{\normalfont} % Default.
+    \NewDocumentCommand{\setbibfont}{m}{
+        \renewcommand{\thebibfont}{#1}
+    }
 
     \NewDocumentCommand{\bib}{mg}{%
         \IfValueTF{#2}{%
@@ -361,8 +380,8 @@
         }{%
             \bibliographystyle{unsrt} % Sort by order of appearance.
         }
-
-        \bibliography{#1}
+        \renewcommand\refname{\normalsize{References}}
+        {\thebibfont\bibliography{#1}}
     }
 \fi
 
@@ -450,11 +469,6 @@
 
     \NewDocumentCommand{\license}{mmm}{%
         \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}%
-    }
-    \NewDocumentCommand{\isbn}{m}{%
-        \usepackage{GS1}%
-        \GSSetup{ocrb=true,module_height=5ex}%
-        \newcommand{\theIsbn}{#1}%
     }
     \NewDocumentCommand{\note}{m}{%
         \newcommand{\theNote}{#1}%

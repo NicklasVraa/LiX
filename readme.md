@@ -370,8 +370,9 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 ---
 ## 4. Plans <a name="plans"></a>
 In order of priority:
-- Add support for multiple authors.
-- Add `\idnum` command to be used for things like IEEE publishing ID.
-- Add option to generate qr-code to `\url` command.
-- Use IfValueTF to implement arbitrarily positioned optional arguments for tables and figures.
-- Change delimiter in tables from `&` to `|` and `\\` to newline.
+- [x] Add `\idnum` command to be used for things like IEEE publishing ID.
+- [ ] Add more setter commands, like `\setbibfont{}`.
+- [ ] Add support for multiple authors.
+- [ ] Add option to generate qr-code to `\url` command.
+- [ ] Use IfValueTF to implement arbitrarily positioned optional arguments for tables and figures.
+- [ ] Change delimiter in tables from `&` to `|` and `\\` to newline.
