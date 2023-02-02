@@ -18,8 +18,6 @@
 
 \WarningsOff*
 \setlength\parindent{0pt}
-\newcommand{\use}[1]{\usepackage{#1}}
-\renewcommand{\abstract}{\textbf{\textsc{Abstract:} }}
 
 % SIZE, MARGINS: ---------------------------------------------------------------
 \ifnum\numColumns=1
@@ -92,6 +90,10 @@
 
     \@ifundefined{theTitle}{}{%
         \maketitle%
+    }
+
+    \@ifundefined{theAbstract}{}{%
+        \textbf{\textsc{Abstract:}} \theAbstract%
     }
     \addMetadata
 }

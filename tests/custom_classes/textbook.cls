@@ -18,7 +18,6 @@
 
 \WarningsOff*
 \setlength\parindent{0pt}
-\newcommand{\use}[1]{\usepackage{#1}}
 
 % SIZE, MARGINS: ---------------------------------------------------------------
 \geometry{letterpaper, top=28mm, bottom=28mm, left=20mm, right=20mm}

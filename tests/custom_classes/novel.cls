@@ -17,7 +17,6 @@
 \RequirePackage{ebgaramond, setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*
-\newcommand{\use}[1]{\usepackage{#1}}
 
 % SIZE, MARGINS: ---------------------------------------------------------------
 \geometry{letterpaper, top=36mm, bottom=40mm, left=40mm, right=40mm}

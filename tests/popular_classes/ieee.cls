@@ -11,7 +11,6 @@
 \RequirePackage{times} % Times new Roman font.
 
 \WarningsOff*
-\newcommand{\use}[1]{\usepackage{#1}}
 
 % HEADER: ----------------------------------------------------------------------
 \fancypagestyle{plain}{% First page.
@@ -74,15 +73,6 @@
     justification=raggedright, singlelinecheck=false
 }
 
-% ABSTRACT: --------------------------------------------------------------------
-\renewcommand{\abstract}[1]{%
-    {\small\bfseries\textit{Abstract---}#1%
-        \@ifundefined{theKeywords}{}{%
-            \\[0.5em] \indent\textit{Index Terms---}\theKeywords.
-        }
-    }\vspace{0.5em}
-}
-
 % REFERENCES: ------------------------------------------------------------------
 \setbibfont{\footnotesize}
 
@@ -104,6 +94,13 @@
 
     \@ifundefined{theTitle}{}{%
         \maketitle%
+    }
+    \@ifundefined{theAbstract}{}{%
+        {\small\bfseries\textit{Abstract---}\theAbstract%
+        \@ifundefined{theKeywords}{}{%
+            \\[0.5em] \indent\textit{Index Terms---}\theKeywords.
+        }
+        }\vspace{0.5em}
     }
 
     \addMetadata

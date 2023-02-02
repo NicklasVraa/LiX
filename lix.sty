@@ -84,6 +84,7 @@
 % ESSENTIAL COMMANDS: ----------------------------------------------------------
 \newcommand{\add}[1]{\input{#1}}
 \renewcommand{\url}[2]{\href{#2}{#1}}
+%\newcommand{\use}[1]{\usepackage{#1}}
 
 % CONFIGS: ---------------------------------------------------------------------
 \ifnum\useConfigs=1
@@ -380,6 +381,7 @@
         }{%
             \bibliographystyle{unsrt} % Sort by order of appearance.
         }
+        \providecommand{\refname}{}
         \renewcommand\refname{\normalsize{References}}
         {\thebibfont\bibliography{#1}}
     }
@@ -452,6 +454,11 @@
     \NewCommandCopy{\olddate}{\date}%
     \RenewDocumentCommand{\date}{m}{%
         \newcommand{\theDate}{#1}%
+    }
+    \providecommand{\abstract}{}% In case it is not defined.
+    \NewCommandCopy{\oldabstract}{\abstract}%
+    \RenewDocumentCommand{\abstract}{m}{%
+        \newcommand{\theAbstract}{#1}%
     }
 \fi
 
@@ -625,6 +632,10 @@
 
         \@ifundefined{theTitle}{}{%
             \maketitle%
+        }
+
+        \@ifundefined{theAbstract}{}{%
+            \oldabstract \theAbstract%
         }
         \addMetadata
     }
