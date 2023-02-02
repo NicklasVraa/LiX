@@ -49,7 +49,6 @@ Using the LiX package with any other standard class is also possible, if one pre
   - [Formats ](#formats-)
   - [Header ](#header-)
   - [Heading ](#heading-)
-  - [Links ](#links-)
   - [Lists ](#lists-)
   - [Math ](#math-)
   - [Refs ](#refs-)
@@ -115,10 +114,9 @@ This is an overview of the commands, which are available when specifying a certa
 ### Aliases <a name="aliases"></a>
 These are always available, and are simply aliases, which are more intuitive for a new LaTeX-user.
 ```latex
-\abstract % Prints the appropriately formatted word 'Abstract'.
-
-\add{path/to/file.tex} % Inserts the tex-code from the given file.
 \use{package1, package2, ...} % Import packages.
+\add{path/to/file.tex} % Inserts the tex-code from the given file.
+\url{label text}{link} % E.g. {this website}{https://www.somewebsite.com}
 ```
 
 
@@ -199,14 +197,6 @@ Top-level headings will act like chapters in book-like classes, but as a section
 The regular commands, like `\chapter` and `section` can still be used along with their starred counterparts.
 
 
-### Links <a name="links"></a>
-This will eventually support generating a qr-code.
-```latex
-\url{label text}{link}
-% E.g. {this website}{https://www.somewebsite.com}
-```
-
-
 ### Lists <a name="lists"></a>
 The styling of these lists have been simplified. It is of course possible to nest lists.
 ```latex
@@ -282,6 +272,7 @@ Automatically imported, if `cover` option is specified.
 \subtitle {And your Subtitle}
 \author   {Name Lastname}
 \date     {01/01/2023} % \today is also available.
+\abstract {Summary of your findings}
 ```
 
 
