@@ -48,7 +48,7 @@ These are always available, and are simply aliases, which are more intuitive for
 ```latex
 \use{package1, package2, ...} % Import packages.
 \add{path/to/file.tex} % Inserts the tex-code from the given file.
-\url{label text}{link} % E.g. {this website}{https://www.somewebsite.com}
+\url{text}{link} % E.g. {this website}{https://www.somewebsite.com}
 ```
 
 ### Code <a name="code"></a>
