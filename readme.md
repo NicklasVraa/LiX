@@ -15,16 +15,18 @@ Disadvantages:
 - You do not have the extreme fine-grained control over your custom class, as you would with pure LaTeX.
 
 **Bundles**: \
+A bundle has one purpose: To easily enable a certain aspect of a document, like having code blocks. In this case, when defining your own class, you simply specify `code` when importing `lix`.
 The currently available bundles are (in alphabetical order):
 ```latex
 code, configs, cover, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc, verso
 ```
+Exactly what each bundle provides is specified in the [syntax ](#syntax-)-section.
 
 ---
 ## 1. Class Examples <a name="examples"></a>
-Using this package, I've defined some custom classes, which are ready for use, as well as classes which mimic popular formats.
-|  |   |   |   |   |   |   |   |
-| ----- | - | - | - | - | - | - | - |
+Using this package, I've defined some custom classes, which are ready for use, as well as classes which mimic popular formats. Look at the source code for each class to see how easily they were defined.
+|  |   |   |   |   |   |   |
+| ----- | - | - | - | - | - | - |
 | [Paper](tests/custom_classes/paper.cls) packs as much information as possible, while adhering to the standards of academic research papers. | ![p1](screenshots/paper/p1.png) | ![p2](screenshots/paper/p2.png) |
 | [Novel](tests/custom_classes/novel.cls) is meant for fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands.| ![p1](screenshots/novel/p1.png) | ![p2](screenshots/novel/p2.png) | ![p4](screenshots/novel/p4.png) | ![p5](screenshots/novel/p5.png) | ![p6](screenshots/novel/p6.png) | ![p7](screenshots/novel/p7.png) |
 | [Textbook](tests/custom_classes/textbook.cls) is intended for typesetting a large amount of academic content to be printed in book form. | ![p1](screenshots/textbook/p1.png) | ![p2](/screenshots/textbook/p2.png) | ![p4](screenshots/textbook/p4.png) | ![p5](screenshots/textbook/p5.png) | ![p6](screenshots/textbook/p6.png) | ![p7](screenshots/textbook/p7.png) |
