@@ -14,17 +14,9 @@ Disadvantages:
 - If one wants to change their document into a class that has not been defined using this package, there may be difficulties when compiling. To address this, I've recreated the `IEEEtran` class, as a reference for how to reimplement an existing look using LiX.
 - You do not have the extreme fine-grained control over your custom class, as you would with pure LaTeX.
 
-**Bundles**: \
-A bundle has one purpose: To easily enable a certain aspect of a document, like having code blocks. In this case, when defining your own class, you simply specify `code` when importing `lix`.
-The currently available bundles are (in alphabetical order):
-```latex
-code, configs, cover, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc, verso
-```
-Exactly what each bundle provides is specified in the [syntax ](#syntax-)-section.
-
 ---
 ## 1. Class Examples <a name="examples"></a>
-Using this package, I've defined some custom classes, which are ready for use, as well as classes which mimic popular formats. Look at the source code for each class to see how easily they were defined.
+Using this package, I've defined some custom classes, which are ready for use, as well as classes which mimic popular formats. Look at the source code for each class to see how easily they were defined. It's very simple to convert to another class, as they all share the exact same syntax.
 |  |   |   |   |   |   |   |
 | ----- | - | - | - | - | - | - |
 | [Paper](tests/custom_classes/paper.cls) packs as much information as possible, while adhering to the standards of academic research papers. | ![p1](screenshots/paper/p1.png) | ![p2](screenshots/paper/p2.png) |
@@ -38,7 +30,12 @@ It is also possible to use the standard classes, like [article](tests/standard_c
 \documentclass{article}
 \usepackage[stdclass, ...]{lix}
 ```
-It is very simple to convert to another class, as they all share the exact same syntax.
+
+The currently available bundles are (in alphabetical order):
+```latex
+code, configs, cover, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc, verso
+```
+Exactly what each bundle provides is specified in the next section.
 
 ---
 ## 2. LiX Syntax <a name="syntax"></a>
