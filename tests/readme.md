@@ -6,7 +6,6 @@
   - [Paper](#paper)
 - [Popular Classes](#popular-classes)
   - [IEEE Journal and Transactions](#ieee-journal-and-transactions)
-- [|  |  |](#----)
 - [Standard Classes](#standard-classes)
   - [Article](#article)
   - [Report](#report)
@@ -28,6 +27,7 @@
 | Page 1 | Page 2 |
 | ------ | ------ |
 | ![ieee_p1](../screenshots/ieee/ieee_p1.png) | ![ieee_p2](../screenshots/ieee/ieee_p2.png) |
+
 ---
 ## Standard Classes
 ### Article
