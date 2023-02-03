@@ -121,11 +121,17 @@
 
 % COVER: -----------------------------------------------------------------------
 \ifnum\useCover=1
-    \NewDocumentCommand{\cover}{mg}{% Argument 2 is optional.
+    \NewDocumentCommand{\cover}{smg}{% Argument 2 is optional.
         \usepackage{eso-pic}%
-        \newcommand{\theFront}{#1}%
-        \IfValueT{#2}{%
-            \newcommand{\theBack}{#2}%
+        \IfBooleanTF{#1}{%
+            \newcommand{\printOnCover}{0}
+        }{
+            \newcommand{\printOnCover}{1}
+        }
+
+        \newcommand{\theFront}{#2}%
+        \IfValueT{#3}{%
+            \newcommand{\theBack}{#3}%
         }
     }
     \NewDocumentCommand{\blurb}{m}{%
@@ -147,21 +153,20 @@
     }
 
     \newcommand{\addBackCover}{
-        \@ifundefined{theBlurb}{}{%
-            \AtEndDocument{%
-                \newpage\thispagestyle{empty}%
-                \@ifundefined{theBack}{}{%
-                    \AddToShipoutPicture*{%
-                        \put(0,0){%
-                            \parbox[b][\paperheight]{\paperwidth}{%
-                                \vfill\centering%
-                                \includegraphics[width=\paperwidth,height=\paperheight]{\theBack}%
-                                \vfill%
-                            }%
+        \AtEndDocument{%
+            \newpage\thispagestyle{empty}%
+            \@ifundefined{theBack}{}{%
+                \AddToShipoutPicture*{%
+                    \put(0,0){%
+                        \parbox[b][\paperheight]{\paperwidth}{%
+                            \vfill\centering%
+                            \includegraphics[width=\paperwidth,height=\paperheight]{\theBack}%
+                            \vfill%
                         }%
                     }%
-                }
-
+                }%
+            }
+            \@ifundefined{theBlurb}{}{%
                 \centering
                 \begin{minipage}{0.8\linewidth}%
                     \centering%
@@ -173,16 +178,15 @@
                 \begin{minipage}{0.9\linewidth}%
                     \Large{\theBlurb}%
                 \end{minipage}%
-
-                \@ifundefined{theIsbn}{}{%
-                    \par\vspace*{\fill}%
-                    \begin{minipage}{0.9\linewidth}%
-                        \hfill%
-                        \colorbox{white}{%
-                            \expandafter\EANBarcode\expandafter{\theIsbn}%
-                        }%
-                    \end{minipage}%
-                }
+            }
+            \@ifundefined{theIsbn}{}{%
+                \par\vspace*{\fill}%
+                \begin{minipage}{0.9\linewidth}%
+                    \hfill%
+                    \colorbox{white}{%
+                        \expandafter\EANBarcode\expandafter{\theIsbn}%
+                    }%
+                \end{minipage}%
             }
         }
     }

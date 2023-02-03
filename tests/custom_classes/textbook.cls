@@ -80,7 +80,7 @@
         -4pt%
     \fi
 }{% Chapter name.
-    \thispagestyle{empty}\huge\bfseries\scshape%
+    \thispagestyle{empty}\LARGE\bfseries\scshape%
 }
 
 % CAPTIONS: --------------------------------------------------------------------
@@ -112,9 +112,14 @@
     \addFrontCover
     \addBackCover
 
-    \@ifundefined{theTitle}{}{%
-        \maketitle%
-    }
+    \ifnum\printOnCover=1
+        \@ifundefined{theTitle}{}{%
+            \maketitle%
+        }
+    \else
+        \mbox{}\newpage%
+    \fi
+
     \addVersoPage
     \addMetadata
 }

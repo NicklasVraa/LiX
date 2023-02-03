@@ -11,7 +11,7 @@ Advantages:
 - Creating your own class, which implements a custom look-and-feel, is much easier.
 
 Disadvantages:
-- If one wants to change their document into a class that has not been defined using this package, there may be difficulties when compiling. To address this, I've recreated the `IEEEtran` class, as a reference for how to reimplement your favorite class using LiX.
+- If one wants to change their document into a class that has not been defined using this package, there may be difficulties when compiling. To address this, I've recreated the `IEEEtran` class, as a reference for how to reimplement an existing look using LiX.
 - You do not have the extreme fine-grained control over your custom class, as you would with pure LaTeX.
 
 **Bundles**: \
@@ -20,96 +20,29 @@ The currently available bundles are (in alphabetical order):
 code, configs, cover, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc, verso
 ```
 
-**Classes**: \
-Using this package, I've defined some custom classes, which are ready for use.
-- [`Paper`](#the-paper-class-) is for typesetting academic research papers and university assignments. It builds on top of the article class.
-- [`Textbook`](#the-textbook-class-) is for typesetting academic litterature, like textbooks and dissertations. It builds on top of the report class.
-- [`Novel`](#the-novel-class-) is for typesetting fiction, like novels or a short-stories. It builds on top of the book class.
+---
+## 1. Class Examples <a name="examples"></a>
+Using this package, I've defined some custom classes, which are ready for use, as well as classes which mimic popular formats.
+|  |   |   |   |   |   |   |   |
+| ----- | - | - | - | - | - | - | - |
+| [Paper](tests/custom_classes/paper.cls) packs as much information as possible, while adhering to the standards of academic research papers. | ![p1](screenshots/paper/p1.png) | ![p2](screenshots/paper/p2.png) |
+| [Novel](tests/custom_classes/novel.cls) is meant for fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands.| ![p1](screenshots/novel/p1.png) | ![p2](screenshots/novel/p2.png) | ![p4](screenshots/novel/p4.png) | ![p5](screenshots/novel/p5.png) | ![p6](screenshots/novel/p6.png) | ![p7](screenshots/novel/p7.png) |
+| [Textbook](tests/custom_classes/textbook.cls) is intended for typesetting a large amount of academic content to be printed in book form. | ![p1](screenshots/textbook/p1.png) | ![p2](/screenshots/textbook/p2.png) | ![p4](screenshots/textbook/p4.png) | ![p5](screenshots/textbook/p5.png) | ![p6](screenshots/textbook/p6.png) | ![p7](screenshots/textbook/p7.png) |
+| [IEEE](tests/popular_classes/ieee.cls) implements the IEEE journal and transactions template, but using LiX. | ![p1](screenshots/ieee/p1.png) | ![p2](screenshots/ieee/p2.png)
 
-As well as classes, which mimic popular formats:
-- [`IEEE`](tests/popular_classes/ieee.cls) implements the IEEE journal and transactions template. Here is an [example pdf](tests/popular_classes/ieee_example.pdf) and it's [source code](tests/popular_classes/ieee_example.tex).
 
-Using the LiX package with any other standard class is also possible, if one prefers the old-school look-and-feel, but still want the benefits of simplified syntax. Simply import the package and specify the `stdclass` option, along with any bundles, e.g.:
+It is also possible to use the standard classes, like [article](tests/standard_classes/article_example.tex), [report](tests/standard_classes/report_example.tex) and [book](tests/standard_classes/book_example.tex), but still benefits from simplified syntax. Simply import the package and specify the `stdclass` option, along with any bundles, e.g.:
 ```latex
 \documentclass{article}
 \usepackage[stdclass, ...]{lix}
 ```
-
-**Overview**:
-- [1. Class Examples ](#1-class-examples-)
-  - [The `Paper` Class ](#the-paper-class-)
-  - [The `Textbook` Class ](#the-textbook-class-)
-  - [The `Novel` Class ](#the-novel-class-)
-- [2. LiX Syntax ](#2-lix-syntax-)
-  - [Aliases ](#aliases-)
-  - [Code ](#code-)
-  - [Configs ](#configs-)
-  - [Cover ](#cover-)
-  - [Figures ](#figures-)
-  - [Formats ](#formats-)
-  - [Header ](#header-)
-  - [Heading ](#heading-)
-  - [Lists ](#lists-)
-  - [Math ](#math-)
-  - [Refs ](#refs-)
-  - [Tables ](#tables-)
-  - [Titlepage ](#titlepage-)
-  - [Toc ](#toc-)
-  - [Verso ](#verso-)
-- [3. Installation ](#3-installation-)
-- [4. Plans ](#4-plans-)
-
-
----
-## 1. Class Examples <a name="examples"></a>
-
-### The `Paper` Class <a name="paper"></a>
-This class strives to pack as much information as possible, into a visually coherent environment, while adhering to the standards of academic research papers, like having references, citations and captions.
-
-| Source                             | Build (Two-column)             |
-|------------------------------------|--------------------------------|
-| ![p1](screenshots/src_paper_1.png) | ![p1](screenshots/paper_1.png) |
-| ![p1](screenshots/src_paper_2.png) | ![p1](screenshots/paper_2.png) |
-
-The paper class imports LiX with these options:
-```latex
-\RequirePackage[code, configs, figures, formats, header, headings, links, lists, math, refs, tables, titlepage, toc]{lix}
-```
-Take a look at the full [tex code](tests/custom_classes/paper_example.tex) and [resulting pdf](tests/custom_classes/paper_example.pdf).
-
-### The `Textbook` Class <a name="tome"></a>
-This class is intended to typeset a large amount of academic content to be printed in book form. As with the paper class, it focuses on visual coherence, while adhering to the standards of academic printing, like having a cover-, title- and metadata page, references, citations and captions.
-
-| Source                            | Build (One-column)            |
-|-----------------------------------|-------------------------------|
-| ![p1](screenshots/src_tome_1.png) | ![p1](screenshots/tome_1.png) |
-| ![p1](screenshots/src_tome_2.png) | ![p1](screenshots/tome_2.png) |
-
-The textbook class imports LiX with these options:
-```latex
-\RequirePackage[all]{lix}
-```
-Take a look at the full [tex code](tests/custom_classes/textbook_example.tex) and [resulting pdf](tests/custom_classes/textbook_example.pdf).
-
-
-### The `Novel` Class <a name="novel"></a>
-This class is meant for typesetting fiction with the intent to print. This class supplies cover-, title- and metadata pages using very simple commands.
-
-| Source                             | Build                          |
-|------------------------------------|--------------------------------|
-| ![p1](screenshots/src_novel_1.png) | ![p1](screenshots/novel_1.png) |
-
-The novel class imports LiX with these options:
-```latex
-\RequirePackage[configs, cover, figures, formats, header, headings, links, titlepage, toc, verso]{lix}
-```
-Take a look at the full [tex code](tests/custom_classes/novel_example.tex) and [resulting pdf](tests/custom_classes/novel_example.pdf).
-
+It is very simple to convert to another class, as they all share the exact same syntax.
 
 ---
 ## 2. LiX Syntax <a name="syntax"></a>
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`.
 
+Shortcuts: [Aliases ](#aliases-), [Code ](#code-), [Configs ](#configs-), [Cover ](#cover-), [Figures ](#figures-), [Formats ](#formats-), [Header ](#header-), [Heading ](#heading-), [Lists ](#lists-), [Math ](#math-), [Refs ](#refs-), [Tables ](#tables-), [Titlepage ](#titlepage-), [Toc ](#toc-), [Verso ](#verso-)
 
 ### Aliases <a name="aliases"></a>
 These are always available, and are simply aliases, which are more intuitive for a new LaTeX-user.
@@ -118,7 +51,6 @@ These are always available, and are simply aliases, which are more intuitive for
 \add{path/to/file.tex} % Inserts the tex-code from the given file.
 \url{label text}{link} % E.g. {this website}{https://www.somewebsite.com}
 ```
-
 
 ### Code <a name="code"></a>
 Code blocks will be subtly highlighted according to the given language.
@@ -129,7 +61,6 @@ Code blocks will be subtly highlighted according to the given language.
 }{caption}
 ```
 Caption is optional. For no highlighting, set the language to `text`. Indent the code four spaces for best readability in the source file. These will be removed in the resulting pdf.
-
 
 ### Configs <a name="configs"></a>
 For setting up the basic characteristics of your document.
@@ -149,7 +80,6 @@ For the `\size` command:
 
 E.g `\size{a4}{portrait}`.
 
-
 ### Cover <a name="cover"></a>
 The front and back of a book.
 ```latex
@@ -157,7 +87,7 @@ The front and back of a book.
 \cover{path/to/front.pdf}{path/to/back.pdf}
 \blurb{Flavor text for the back}
 ```
-
+`cover*` will **not** print the title, author, etc. on top of the cover. This is useful, if the cover already includes these.
 
 ### Figures <a name="figures"></a>
 This command will take care of placing your figure correctly and it is file-format agnostic i.e. it works the same for both regular images and vector graphics.
@@ -177,14 +107,12 @@ These command names were chosen to ensure that the readability of the source cod
 \m{...} % Inline math.
 ```
 
-
 ### Header <a name="header"></a>
 The strip of text at the top of each page.
 ```latex
 % Available with the 'header' option.
 \header{left}{center}{right}
 ```
-
 
 ### Heading <a name="heading"></a>
 Top-level headings will act like chapters in book-like classes, but as a section article-like classes. Headings will be numbered, unless a `*` is added to the command, e.g. `\h*{...}`.
@@ -195,7 +123,6 @@ Top-level headings will act like chapters in book-like classes, but as a section
 \hhhh{...} % Level four.
 ```
 The regular commands, like `\chapter` and `section` can still be used along with their starred counterparts.
-
 
 ### Lists <a name="lists"></a>
 The styling of these lists have been simplified. It is of course possible to nest lists.
@@ -209,7 +136,6 @@ The styling of these lists have been simplified. It is of course possible to nes
     \item ...
 \end{numbers}
 ```
-
 
 ### Math <a name="math"></a>
 The label is required and the math block will be numbered.
@@ -228,7 +154,6 @@ Shortcut commmands in the math environment:
 - `\C` $\rightarrow \mathbb{C}$ (Complex set)
 - `\epsilon` $\rightarrow \varepsilon$ (varepsilon)
 
-
 ### Refs <a name="refs"></a>
 Reference your figures, tables, math, codeblocks, etc., using the labels, you provided. Cite external sources from your bibliography. Link to external sources.
 ```latex
@@ -246,7 +171,6 @@ Bibliography Styles:
 abbrv, acm, alpha, apalike, ieeetr, plain, siam, unsrt
 ```
 
-
 ### Tables <a name="tables"></a>
 There are three types. These three tables will cover 90% of your table-needs, but you have access to the full power of the tabularray package for more complicated tables. The `&` symbol separates items and `\\` separates rows.
 ```latex
@@ -263,7 +187,6 @@ Types:
 
 Formatting code for the table can also be given explicitly in the type field.
 
-
 ### Titlepage <a name="titlepage"></a>
 Automatically imported, if `cover` option is specified.
 ```latex
@@ -275,13 +198,11 @@ Automatically imported, if `cover` option is specified.
 \abstract {Summary of your findings}
 ```
 
-
 ### Toc <a name="toc"></a>
 Print table of content, as is appropriate for your current document-class.
 ```latex
 \toc
 ```
-
 
 ### Verso <a name="verso"></a>
 The page after the front-cover of a book, which contains formal information.
