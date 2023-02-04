@@ -1,8 +1,8 @@
 # LiX <!-- omit in toc -->
-Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installation)
 
----
 [Lix](lix.sty) is a package which bundles other packages and commands. These bundles may be specified when importing the LiX package, either in your own document-class, or directly in your main document, when using a predefined class. The goal of this package is to speed up writing your documents, but also to simplify the process of defining your own class.
+
+Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installation)
 
 **Motivation**: \
 While LaTeX is the indisputable king for typesetting publishable documents, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the author's focus back on their content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
