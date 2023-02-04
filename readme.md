@@ -43,7 +43,7 @@ All that can be achieved by this:
 
 \end{document}
 ```
-Imagine the LaTeX code, you would have to write to achieve the same, even when using appropriate packages. The layout of each element should be customized by defining a custom class that builds on top of one of the standard classes. Examples are shown later.
+Imagine the LaTeX code, you would have to write to achieve the same - even when using appropriate packages. The layout of each element should be customized by defining a custom class that builds on top of one of the standard classes. Examples are shown later.
 
 Advantages:
 - The source code of a document becomes as easy to read and understand as Markdown and is drastically shorter.
