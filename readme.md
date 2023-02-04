@@ -1,4 +1,7 @@
 # LiX <!-- omit in toc -->
+Shortcuts: [Examples](examples) | [Syntax](syntax) | [Installation](installation)
+
+---
 [Lix](lix.sty) is a package which bundles other packages and commands. These bundles may be specified when importing the LiX package, either in your own document-class, or directly in your main document, when using a predefined class. The goal of this package is to speed up writing your documents, but also to simplify the process of defining your own class.
 
 **Motivation**: \
