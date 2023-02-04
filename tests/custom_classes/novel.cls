@@ -18,6 +18,9 @@
 
 \WarningsOff*
 
+% FONT OVERRIDES: --------------------------------------------------------------
+\authorfont{\normalsize}
+
 % SIZE, MARGINS: ---------------------------------------------------------------
 \geometry{letterpaper, top=36mm, bottom=40mm, left=40mm, right=40mm}
 
@@ -76,7 +79,7 @@
     \@ifundefined{theAuthor}{%
         \oldauthor{}%
     }{%
-        \oldauthor{\normalsize{\theAuthor}}%
+        \oldauthor{\theAuthor}%
     }
     \@ifundefined{theDate}{%
         \olddate{}%

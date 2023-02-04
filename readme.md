@@ -4,6 +4,47 @@
 **Motivation**: \
 While LaTeX is the indisputable king for typesetting publishable documents, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the author's focus back on their content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
 
+**Example**: \
+Say, we want to setup a book with the US letter size and a specific margin, that has cover art with a title, a subtitle, multiple authors, etc, which should be added to the pdf-metadata. We would also like a page containing formal information, such as licensing and an ISBN-code and maybe a barcode. We want to be able to include centered, scaled figures and syntax-highlighted code blocks, both captioned. We would also like the document to be in Danish, because why not.
+
+All that can be achieved by this:
+```latex
+\documentclass{book}
+\usepackage[all]{lix}
+
+\lang     {danish}
+\size     {letter}
+\cover    {path/to/front.pdf}{path/to/back.pdf}
+\margins  {22mm}{20mm}{21mm}{40mm}
+\title    {A Cool Title}
+\subtitle {And a Cool Subtitle}
+\authors  {Nicklas Vraa}{Another Guy}{Yet Another}
+\date     {01/01/2023}
+\isbn     {123456789}
+\license  {CC}{nc}{3.0}{My Company}
+\edition  {3}{2023}
+
+\begin{document}
+% ... No need for \maketitle
+
+\h{Introduction}
+% ...
+
+    \code{my_snippet}{python}{
+    import numpy as np
+    % ...
+    }{This code does this and that...}
+
+% ...
+
+    \fig{ny_figure}{0.8}{path/to/image.png}{This figures explains how...}
+
+% ...
+
+\end{document}
+```
+Imagine the LaTeX code, you would have to write to achieve the same, even when using appropriate packages. The layout of each element should be customized by defining a custom class that builds on top of one of the standard classes. Examples are shown later.
+
 Advantages:
 - The source code of a document becomes as easy to read and understand as Markdown and is drastically shorter.
 - The style of a document is completely separated from its content, and keeping a consistent style is simpler.
@@ -13,6 +54,7 @@ Advantages:
 Disadvantages:
 - If one wants to change their document into a class that has not been defined using this package, there may be difficulties when compiling. To address this, I've recreated the `IEEEtran` class, as a reference for how to reimplement an existing look using LiX.
 - You do not have the extreme fine-grained control over your custom class, as you would with pure LaTeX.
+
 
 ---
 ## 1. Class Examples <a name="examples"></a>
@@ -192,10 +234,11 @@ Automatically imported, if `cover` option is specified.
 % Available with the 'titlepage' option.
 \title    {This is your Title}
 \subtitle {And your Subtitle}
-\author   {Name Lastname}
-\date     {01/01/2023} % \today is also available.
+\authors  {Name Lastname}{Another Name}...
+\date     {01/01/2023} % \today is available.
 \abstract {Summary of your findings}
 ```
+The `authors` command handles up to six entries.
 
 ### Toc <a name="toc"></a>
 Print table of content, as is appropriate for your current document-class.
@@ -207,7 +250,7 @@ Print table of content, as is appropriate for your current document-class.
 The page after the front-cover of a book, which contains formal information.
 ```latex
 % Available with the 'verso' option.
-\license   {type}{modifiers}{version}
+\license   {type}{modifiers}{version}{holder}
 \isbn      {978-0201529838}
 \edition   {123}{year}
 \publisher {Your Publishing Company}
@@ -221,7 +264,7 @@ For the `\license` command:
 |-------|-----------|----------|
 | Creative Commons: `CC` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
 
-E.g `\license{CC}{by-nc-sa}{3.0}`.
+E.g `\license{CC}{by-nc-sa}{3.0}`. Holder is optional.
 
 
 ---
@@ -281,9 +324,6 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 ---
 ## 4. Plans <a name="plans"></a>
 In order of priority:
-- [x] Add `\idnum` command to be used for things like IEEE publishing ID.
-- [ ] Add more setter commands, like `\setbibfont{}`.
-- [ ] Add support for multiple authors.
-- [ ] Add option to generate qr-code to `\url` command.
-- [ ] Use IfValueTF to implement arbitrarily positioned optional arguments for tables and figures.
-- [ ] Change delimiter in tables from `&` to `|` and `\\` to newline.
+- Add option to generate qr-code to `\url` command.
+- Use IfValueTF to implement arbitrarily positioned optional arguments for tables and figures.
+- Change delimiter in tables from `&` to `|` and `\\` to newline.

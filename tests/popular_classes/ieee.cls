@@ -12,6 +12,9 @@
 
 \WarningsOff*
 
+% FONT OVERRIDES: --------------------------------------------------------------
+\bibfont{\footnotesize}
+
 % HEADER: ----------------------------------------------------------------------
 \fancypagestyle{plain}{% First page.
     \renewcommand{\headrulewidth}{0pt}%
@@ -24,7 +27,7 @@
     \@ifundefined{theId}{
         \fancyfoot{}%
     }{
-        \fancyfoot[C]{\footnotesize\theId\ \copyright\ \the\year\ \theAuthor}%
+        \fancyfoot[C]{\footnotesize\theId\ \copyright\ \the\year\ IEEE}%
     }
 }
 \fancypagestyle{fancy}{%
@@ -73,9 +76,6 @@
     justification=raggedright, singlelinecheck=false
 }
 
-% REFERENCES: ------------------------------------------------------------------
-\setbibfont{\footnotesize}
-
 % LAYOUT: ----------------------------------------------------------------------
 \AddToHook{begindocument/end}{%
     \@ifundefined{theTitle}{}{%
@@ -84,7 +84,7 @@
     \@ifundefined{theAuthor}{%
         \oldauthor{}%
     }{%
-        \oldauthor{\large\theAuthor}%
+        \oldauthor{\theAuthor}%
     }
     \@ifundefined{theDate}{%
         \olddate{}%

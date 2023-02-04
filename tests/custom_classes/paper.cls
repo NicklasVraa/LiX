@@ -19,6 +19,10 @@
 \WarningsOff*
 \setlength\parindent{0pt}
 
+% FONT OVERRIDES: --------------------------------------------------------------
+\bibfont{\footnotesize}
+\authorfont{\normalsize}
+
 % SIZE, MARGINS: ---------------------------------------------------------------
 \ifnum\numColumns=1
     \geometry{a4paper, top=28mm, left=34mm, right=34mm, bottom=36mm}
@@ -63,9 +67,6 @@
     justification=raggedright, singlelinecheck=false
 }
 
-% REFERENCES: ------------------------------------------------------------------
-\setbibfont{\footnotesize}
-
 % LAYOUT: ----------------------------------------------------------------------
 \AddToHook{begindocument/end}{%
     \@ifundefined{theTitle}{}{%
@@ -80,7 +81,7 @@
     \@ifundefined{theAuthor}{%
         \oldauthor{}%
     }{%
-        \oldauthor{\normalsize{\theAuthor}}%
+        \oldauthor{\theAuthor}%
     }
     \@ifundefined{theDate}{%
         \olddate{}%

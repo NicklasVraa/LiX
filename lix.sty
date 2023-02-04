@@ -374,9 +374,9 @@
 
     \newcommand{\R}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
 
-    \newcommand{\thebibfont}{\normalfont} % Default.
-    \NewDocumentCommand{\setbibfont}{m}{
-        \renewcommand{\thebibfont}{#1}
+    \newcommand{\theBibfont}{\normalfont} % Default.
+    \NewDocumentCommand{\bibfont}{m}{
+        \renewcommand{\theBibfont}{#1}
     }
 
     \NewDocumentCommand{\bib}{mg}{%
@@ -387,7 +387,7 @@
         }
         \providecommand{\refname}{}
         \renewcommand\refname{\normalsize{References}}
-        {\thebibfont\bibliography{#1}}
+        {\theBibfont\bibliography{#1}}
     }
 \fi
 
@@ -444,6 +444,13 @@
 
 % TITLEPAGE: -------------------------------------------------------------------
 \ifnum\useTitlepage=1
+
+    % Formatting setters.
+    \newcommand{\theAuthorFont}{\normalfont} % Default.
+    \NewDocumentCommand{\authorfont}{m}{
+        \renewcommand{\theAuthorFont}{#1}
+    }
+
     \NewCommandCopy{\oldtitle}{\title}%
     \RenewDocumentCommand{\title}{m}{%
         \newcommand{\theTitle}{#1}%
@@ -453,7 +460,27 @@
     }
     \NewCommandCopy{\oldauthor}{\author}%
     \RenewDocumentCommand{\author}{m}{%
-        \newcommand{\theAuthor}{#1}%
+        \newcommand{\theAuthor}{\theAuthorFont#1}
+    }
+    \NewDocumentCommand{\authors}{mggggg}{%
+        \newcommand{\theAuthor}{%
+            \theAuthorFont#1%
+            \IfValueTF{#2}{%
+                \and \theAuthorFont#2%
+                \IfValueTF{#3}{%
+                    \and \theAuthorFont#3%
+                    \IfValueTF{#4}{%
+                        \and \theAuthorFont#4%
+                        \IfValueTF{#5}{%
+                            \and \theAuthorFont#5%
+                            \IfValueTF{#6}{%
+                                \and \theAuthorFont#6%
+                            }{}%
+                        }{}%
+                    }{}%
+                }{}%
+            }{}%
+        }%
     }
     \NewCommandCopy{\olddate}{\date}%
     \RenewDocumentCommand{\date}{m}{%
@@ -478,8 +505,13 @@
 \ifnum\useVerso=1
     \RequirePackage{xparse}
 
-    \NewDocumentCommand{\license}{mmm}{%
+    \NewDocumentCommand{\license}{mmmg}{%
         \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}%
+        \IfValueTF{#4}{% If two arguments are given.
+            \newcommand{\theCopyrightHolder}{#4}
+        }{
+            \newcommand{\theCopyrightHolder}{}
+        }
     }
     \NewDocumentCommand{\note}{m}{%
         \newcommand{\theNote}{#1}%
@@ -529,7 +561,7 @@
                 }
                 \@ifpackageloaded{doclicense}{%
                     \vspace{8mm}%
-                    \textbf{Copyright} 2022--\the\year\ \theAuthor\par%
+                    \textbf{Copyright} 2022--\the\year\ \theCopyrightHolder\par%
                     \doclicenseLongText \par%
                     \vspace{1mm}%
                     \doclicenseIcon%
