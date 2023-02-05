@@ -275,10 +275,8 @@ E.g `\license{CC}{by-nc-sa}{3.0}`. Holder is optional.
 The LiX package and all classes work out-of-the-box with [Overleaf](https://www.overleaf.com). Simply include `lix.sty` and the appropriate `.cls` file in your project folder.
 
 If you are working locally, you need to have all package dependencies installed. Depending on which bundles are imported, LiX may import the following packages:
-```latex
-amsfonts, amsmath, amssymb, babel, caption, cite, doclicense, ebgaramond, enumitem, esint, eso-pic, fancyhdr, float, fontenc, geometry, graphicx, GS1, hyperref, inconsolata, inputenc, lastpage, listings, microtype, numspell, parskip, setspace, silence, siunitx, svg, tabularray, titlesec, titletoc, titling, tocbibind, ulem, xcolor, xparse
-```
-All of which are available through CTAN.
+
+> [amsfonts](https://ctan.org/pkg/amsfonts), [amsmath](https://ctan.org/pkg/amsmath), [amssymb](https://ctan.org/pkg/amsfonts), [babel](https://ctan.org/pkg/babel), [caption](https://ctan.org/pkg/caption), [cite](https://ctan.org/pkg/cite), [doclicense](https://ctan.org/pkg/doclicense), [ebgaramond](https://ctan.org/pkg/ebgaramond), [enumitem](https://ctan.org/pkg/enumitem), [esint](https://ctan.org/pkg/esint), [eso-pic](https://ctan.org/pkg/eso-pic),, [fancyhdr](https://ctan.org/pkg/fancyhdr), [float](https://ctan.org/pkg/float), [fontenc](https://ctan.org/pkg/fontenc), [geometry](https://ctan.org/pkg/geometry), [graphicx](https://ctan.org/pkg/graphics), [GS1](https://ctan.org/pkg/gs1), [hyperref](https://ctan.org/pkg/hyperref), [inconsolata](https://ctan.org/pkg/inconsolata), [inputenc](https://ctan.org/pkg/inputenc), [lastpage](https://ctan.org/pkg/lastpage), [listings](https://ctan.org/pkg/listings), [microtype](https://ctan.org/pkg/microtype), [numspell](https://ctan.org/pkg/numspell), [parskip](https://ctan.org/pkg/parskip), [setspace](https://ctan.org/pkg/setspace), [silence](https://ctan.org/pkg/silence), [siunitx](https://ctan.org/pkg/siunitx), [svg](https://ctan.org/pkg/svg), [tabularray](https://ctan.org/pkg/tabularray), [titlesec](https://ctan.org/pkg/titlesec), [titletoc](https://ctan.org/pkg/titletoc), [titling](https://ctan.org/pkg/titling), [tocbibind](https://ctan.org/pkg/tocbibind), [ulem](https://ctan.org/pkg/ulem), [xcolor](https://ctan.org/pkg/xcolor), [xparse](https://ctan.org/pkg/xparse)
 
 Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
 
@@ -323,10 +321,3 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 "latex-workshop.latex.autoBuild.run": "never",
 "latex-workshop.latex.autoClean.run": "onBuilt",
 ```
-
----
-## 4. Plans <a name="plans"></a>
-In order of priority:
-- Add option to generate qr-code to `\url` command.
-- Use IfValueTF to implement arbitrarily positioned optional arguments for tables and figures.
-- Change delimiter in tables from `&` to `|` and `\\` to newline.
