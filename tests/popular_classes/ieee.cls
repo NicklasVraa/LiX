@@ -8,7 +8,7 @@
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[code, configs, figures, formats, header, headings, id, lists, math, meta, refs, tables, titlepage, toc]{lix}
 \RequirePackage{setspace, silence, titlesec, titletoc, titling}
-\RequirePackage{times} % Times new Roman font.
+\RequirePackage{times}
 
 \WarningsOff*
 

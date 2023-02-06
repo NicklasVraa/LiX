@@ -84,7 +84,7 @@
 % ESSENTIAL COMMANDS: ----------------------------------------------------------
 \newcommand{\add}[1]{\input{#1}}
 \renewcommand{\url}[2]{\href{#2}{#1}}
-%\newcommand{\use}[1]{\usepackage{#1}}
+\newcommand{\use}[1]{\usepackage{#1}}
 
 % CONFIGS: ---------------------------------------------------------------------
 \ifnum\useConfigs=1
@@ -640,6 +640,11 @@
     \renewcommand{\i}[1]{\textit{#1}} % Italic.
     \renewcommand{\u}[1]{\uline{#1}}  % Underline.
     \newcommand{\s}[1]{\sout{#1}}     % Strikethrough.
+
+    \RequirePackage{lettrine}         % Large first letter (lettrine).
+    \RenewDocumentCommand{\l}{mg}{
+        \lettrine[nindent=2.4pt, findent=-1.5pt, loversize=0.06]{\textbf{#1}}{\IfValueTF{#2}{#2}{}}
+    }
 \fi
 
 
