@@ -315,15 +315,37 @@
 
 % LISTS: -----------------------------------------------------------------------
 \ifnum\useLists=1
-    \RequirePackage{enumitem}
+    \RequirePackage{enumitem, xstring}
 
     \newlist{bullets}{itemize}{10}
-    \setlist[bullets,1]{leftmargin=5mm}
-    \setlist[bullets]{leftmargin=*,label=$\vcenter{\hbox{\tiny$\bullet$}}$,labelindent=\parindent}
+    \setlist[bullets,1]{leftmargin=4mm}
+    \setlist[bullets]{leftmargin=*,label=$\vcenter{\hbox{\tiny$\bullet$}}$,labelindent=1mm}
 
     \newlist{numbers}{enumerate}{10}
     \setlist[numbers,1]{leftmargin=6mm}
-    \setlist[numbers]{leftmargin=*,label*=\arabic*.,labelindent=\parindent}
+    \setlist[numbers]{leftmargin=*,label*=\arabic*.,labelindent=0mm}
+
+    \ExplSyntaxOn
+    \NewDocumentCommand{\items}{s+v}{%
+        \begingroup%
+            \newlinechar=\endlinechar
+            \StrSubstitute{#2}{¤ }{\string\item }[\temp]%
+            \IfBooleanTF{#1}{%
+                \exp_args:Nx \scantokens{%
+                    \string\begin{bullets}
+                    \temp%
+                    \string\end{bullets}%
+                }
+            }{%
+                \exp_args:Nx \scantokens{%
+                    \string\begin{numbers}
+                    \temp%
+                    \string\end{numbers}%
+                }
+            }
+        \endgroup%
+    }
+    \ExplSyntaxOff
 \fi
 
 % MATH: ------------------------------------------------------------------------

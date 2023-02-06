@@ -170,17 +170,18 @@ Top-level headings will act like chapters in book-like classes, but as a section
 The regular commands, like `\chapter` and `section` can still be used along with their starred counterparts.
 
 ### Lists <a name="lists"></a>
-The styling of these lists have been simplified. It is of course possible to nest lists.
+The syntax and styling of these lists has been simplified and it is still possible to nest lists.
 ```latex
-\begin{bullets} % Always a dot, regardless of nesting.
-    \item ...
-\end{bullets}
+\items{
+¤ Something
+¤ Another thing.
+    \items*{
+    ¤ Something else
+    ¤ The final thing.
+    }
+}
 ```
-```latex
-\begin{numbers} % 1, 2, 3...
-    \item ...
-\end{numbers}
-```
+`items{...}` will be numbered, and `items*{...}` will be bullet points. If you want to use a different symbol for denoting a new item, simply find-and-replace it in the `lix.cls` file. The `¤` was chosen because it is never used and it resembles a bullet point.
 
 ### Math <a name="math"></a>
 The label is required and the math block will be numbered.
