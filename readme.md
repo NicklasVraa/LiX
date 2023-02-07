@@ -282,49 +282,9 @@ If you are working locally, you need to have all package dependencies installed.
 
 Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
 
-For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, and adding this [snippet file](lix.code-snippets) to your snippets collection, and this entry to your `settings.json`:
-```json
-"workbench.editorAssociations": {
-    "*.pdf": "latex-workshop-pdf-hook"
-},
-"latex-workshop.latex.tools": [
-    {
-        "name": "latexmk",
-        "command": "latexmk",
-        "args": [
-            "--shell-escape",
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "-pdf",
-            "-outdir=%OUTDIR%",
-            "%DOC%"
-        ]
-    },
-    {
-        "name": "pdflatex",
-        "command": "pdflatex",
-        "args": [
-            "--shell-escape",
-            "-synctex=1",
-            "-interaction=nonstopmode",
-            "-file-line-error",
-            "%DOC%"
-        ]
-    },
-    {
-        "name": "bibtex",
-        "command": "bibtex",
-        "args": [
-            "%DOCFILE%"
-        ]
-    }
-],
-"latex-workshop.latex.autoBuild.run": "never",
-"latex-workshop.latex.autoClean.run": "onBuilt",
-```
+For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, and adding this [snippet file](lix.code-snippets) to your snippets collection, and this [entry](settings.json) to your own `settings.json` file.
 
 ## Plans <a name="plans"></a>
 - Further simplify table syntax.
-- Create snippets for VSCode.
+- Improve snippets for VSCode.
 - Create syntax highlighter for VSCode.
