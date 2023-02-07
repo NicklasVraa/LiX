@@ -26,7 +26,7 @@
     "Insert a bibliography": {
         "scope": "latex",
         "prefix": ["bibliography"],
-        "body": ["\\bib{${1:path/to/file}}{${2:style}}$0"],
+        "body": ["\\bib{${1:path/to/file}}{${2|style,unsrt,ieeetr|}}$0"],
         "description": "Insert a bibliography."
     },
     // BLURB: ------------------------------------------------------------------
@@ -40,9 +40,7 @@
     "Insert a codeblock": {
         "scope": "latex",
         "prefix": ["codeblock"],
-        "body": [
-            "\\code{${1:label}}{${2:lang}}{\n${3:...}\n}{${4:caption}}$0"
-        ],
+        "body": ["\\code{${1:label}}{${2|lang,python,c,c++,javascript,latex|}}{\n${3:...}\n}{${4:caption}}$0"],
         "description": "Insert a codeblock."
     },
     // COVER: ------------------------------------------------------------------
@@ -56,9 +54,7 @@
     "Add a date": {
         "scope": "latex",
         "prefix": ["date"],
-        "body": [
-            "\\date{$CURRENT_MONTH_NAME $CURRENT_DATE, $CURRENT_YEAR}$0"
-        ],
+        "body": ["\\date{$CURRENT_MONTH_NAME $CURRENT_DATE, $CURRENT_YEAR}$0"],
         "description": "Add a date."
     },
     // DEDICATE: ---------------------------------------------------------------
@@ -79,9 +75,7 @@
     "Insert a figure": {
 		"scope": "latex",
 		"prefix": "figure",
-		"body": [
-			"\\fig{${1:label}}{${2:scale}}{${3:path}}{${4:caption}}$0"
-		],
+		"body": ["\\fig{${1:label}}{${2:scale}}{${3:path}}{${4:caption}}$0"],
 		"description": "Insert a figure."
 	},
     // HEADER: -----------------------------------------------------------------
@@ -134,7 +128,7 @@
     "Set document licensing": {
         "scope": "latex",
         "prefix": ["license"],
-        "body": ["\\license{${1:type}}{${2:modifiers}}{${3:version}}{${4:holder}}$0"],
+        "body": ["\\license{${1|type,CC|}}{${2|modifiers,by,sa,nd,nc|}}{${3|version,1.0,3.0,4.0|}}{${4:holder}}$0"],
         "description": "Set document licensing"
     },
     // LISTS: ------------------------------------------------------------------
@@ -148,7 +142,7 @@
     "Set document margins": {
         "scope": "latex",
         "prefix": ["margins"],
-        "body": ["\\margins{${1:top}}{${2:bot}}{${3:left}}{${4:right}}$0"],
+        "body": ["\\margins{${1:top}}{${2:bottom}}{${3:left}}{${4:right}}$0"],
         "description": "Set document margins."
     },
     // MATH: -------------------------------------------------------------------
@@ -176,7 +170,7 @@
     "Set document dimensions": {
         "scope": "latex",
         "prefix": ["size"],
-        "body": ["\\size{${1:standard}}{${2:orientation}}$0"],
+        "body": ["\\size{${1|standard,a4,a5,letter|}}{${2|orientation,portrait,landscape|}}$0"],
         "description": "Set document dimensions."
     },
     // SUBTITLE: ---------------------------------------------------------------
@@ -190,9 +184,7 @@
     "Insert a table": {
 		"scope": "latex",
 		"prefix": "table",
-		"body": [
-			"\\tabs{${1:label}}{${2:type}}{\n${3:...}\n}{${4:caption}}$0"
-		],
+		"body": ["\\tabs{${1:label}}{${2|type,cols,rows,grid|}}{\n${3:...}\n}{${4:caption}}$0"],
 		"description": "Insert a table."
 	},
     // THANK: ------------------------------------------------------------------
