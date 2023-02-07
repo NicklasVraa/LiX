@@ -76,7 +76,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage[indent]{parskip}
-\RequirePackage{fancyhdr, hyperref, microtype}
+\RequirePackage{fancyhdr, hyperref, microtype, multicol}
 
 % ESSENTIAL SETUP: -------------------------------------------------------------
 \hypersetup{hidelinks} % Remove box around links.
@@ -85,6 +85,11 @@
 \newcommand{\add}[1]{\input{#1}}
 \renewcommand{\url}[2]{\href{#2}{#1}}
 \newcommand{\use}[1]{\usepackage{#1}}
+\NewDocumentCommand{\cols}{mm}{
+    \begin{multicols}{#1}%
+        #2
+    \end{multicols}
+}
 
 % CONFIGS: ---------------------------------------------------------------------
 \ifnum\useConfigs=1
@@ -199,7 +204,7 @@
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
 
     \NewDocumentCommand{\fig}{mmmg}{ % One command for vectors and images.
-        \begin{figure}[h!]
+        \begin{figure}[H]
             \centering
             \filename@parse{#3}
             \ifnum\pdfstrcmp{\filename@ext}{svg}=0%
@@ -418,7 +423,7 @@
     \RequirePackage{caption, tabularray, xparse}
 
     \NewDocumentCommand{\tabs}{mmmg}{
-        \begin{table}[h!]
+        \begin{table}[H]
             \centering
             \ifnum\pdfstrcmp{#2}{cols}=0
                 \sbox0{%
