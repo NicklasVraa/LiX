@@ -259,7 +259,7 @@ The page after the front-cover of a book, which contains formal information.
 \isbn      {978-0201529838}
 \edition   {123}{year}
 \publisher {Your Publishing Company}
-\dedicate  {dedicatee}{Messege}
+\dedicate  {dedicatee}{Message}
 \thank     {people or organisations}
 \note      {Longer author's note}
 ```
