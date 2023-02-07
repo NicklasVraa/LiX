@@ -282,7 +282,7 @@ If you are working locally, you need to have all package dependencies installed.
 
 Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
 
-For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, and adding this to your `settings.json`:
+For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, and adding this [snippet file](lix.code-snippets) to your snippets collection, and this entry to your `settings.json`:
 ```json
 "workbench.editorAssociations": {
     "*.pdf": "latex-workshop-pdf-hook"
