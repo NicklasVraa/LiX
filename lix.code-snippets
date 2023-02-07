@@ -1,0 +1,226 @@
+// Snippets for latex writing using the lix package.
+// Author: Nicklas Vraa.
+{
+    // ABSTRACT: ---------------------------------------------------------------
+    "Add an abstract": {
+        "scope": "latex",
+        "prefix": ["abstract"],
+        "body": ["\\abstract{${1:your summary}}$0"],
+        "description": "Add an abstract that summarizes your findings."
+    },
+    // ADD: --------------------------------------------------------------------
+    "Import from separate tex-file": {
+        "scope": "latex",
+        "prefix": ["add", "input", "import"],
+        "body": ["\\add{${1:file.tex}}$0"],
+        "description": "Import from separate tex-file."
+    },
+    // AUTHORS: ----------------------------------------------------------------
+    "Add authors": {
+        "scope": "latex",
+        "prefix": ["authors"],
+        "body": ["\\authors{${1:first}}$0"],
+        "description": "Add authors."
+    },
+    // BIBLIOGRAPHY: -----------------------------------------------------------
+    "Insert a bibliography": {
+        "scope": "latex",
+        "prefix": ["bibliography"],
+        "body": ["\\bib{${1:path/to/file}}{${2:style}}$0"],
+        "description": "Insert a bibliography."
+    },
+    // BLURB: ------------------------------------------------------------------
+    "Add a blurb": {
+        "scope": "latex",
+        "prefix": ["blurb"],
+        "body": ["\\blurb{${1:flavor-text}}$0"],
+        "description": "Add flavor-text to the back cover."
+    },
+    // CODE: -------------------------------------------------------------------
+    "Insert a codeblock": {
+        "scope": "latex",
+        "prefix": ["codeblock"],
+        "body": [
+            "\\code{${1:label}}{${2:lang}}{\n${3:...}\n}{${4:caption}}$0"
+        ],
+        "description": "Insert a codeblock."
+    },
+    // COVER: ------------------------------------------------------------------
+    "Add cover art": {
+        "scope": "latex",
+        "prefix": ["cover"],
+        "body": ["\\cover{${1:path/to/front.pdf}}{${2:path/to/back.pdf}}$0"],
+        "description": "Insert a cover."
+    },
+    // DATE: -------------------------------------------------------------------
+    "Add a date": {
+        "scope": "latex",
+        "prefix": ["date"],
+        "body": [
+            "\\date{$CURRENT_MONTH_NAME $CURRENT_DATE, $CURRENT_YEAR}$0"
+        ],
+        "description": "Add a date."
+    },
+    // DEDICATE: ---------------------------------------------------------------
+    "Add a dedication": {
+        "scope": "latex",
+        "prefix": ["dedicate"],
+        "body": ["\\dedicate{${1:dedicatee}}{${2:message}}$0"],
+        "description": "Add a dedication."
+    },
+    // EDITION: ----------------------------------------------------------------
+    "Specify an edition": {
+        "scope": "latex",
+        "prefix": ["edition"],
+        "body": ["\\edition{${1:number}}{${2:year}}$0"],
+        "description": "Specify an edition"
+    },
+    // FIGURES: ----------------------------------------------------------------
+    "Insert a figure": {
+		"scope": "latex",
+		"prefix": "figure",
+		"body": [
+			"\\fig{${1:label}}{${2:scale}}{${3:path}}{${4:caption}}$0"
+		],
+		"description": "Insert a figure."
+	},
+    // HEADER: -----------------------------------------------------------------
+    "Add a header": {
+        "scope": "latex",
+        "prefix": ["header"],
+        "body": ["\\header{${1:left}}{${2:center}}{${3:right}}$0"],
+        "description": "Add a header."
+    },
+    // HEADING: ----------------------------------------------------------------
+    "Add a top-level heading": {
+        "scope": "latex",
+        "prefix": ["h", "heading", "section", "chapter"],
+        "body": ["\\h{$1}$0"],
+        "description": "Add a top-level heading."
+    },
+    "Add a 2nd-level heading": {
+        "scope": "latex",
+        "prefix": ["hh", "subheading", "subsection"],
+        "body": ["\\hh{$1}$0"],
+        "description": "Add a 2nd-level heading."
+    },
+    "Add a 3rd-level heading": {
+        "scope": "latex",
+        "prefix": ["hhh", "subsubheading", "subsubsection"],
+        "body": ["\\hhh{$1}$0"],
+        "description": "Add a 3rd-level heading."
+    },
+    "Add a 4th-level heading": {
+        "scope": "latex",
+        "prefix": ["hhhh", "subsubsubheading", "subsubsubsection", "paragraph"],
+        "body": ["\\hhhh{$1}$0"],
+        "description": "Add a 4th-level heading."
+    },
+    // ISBN: -------------------------------------------------------------------
+    "Add an ISBN code": {
+        "scope": "latex",
+        "prefix": ["isbn"],
+        "body": ["\\isbn{${1:code}}$0"],
+        "description": "Add an ISBN code."
+    },
+    // LANGUAGE: ---------------------------------------------------------------
+    "Specify a language": {
+        "scope": "latex",
+        "prefix": ["lang"],
+        "body": ["\\lang{${1:english}}$0"],
+        "description": "Specify a language."
+    },
+    // LICENSE: ----------------------------------------------------------------
+    "Set document licensing": {
+        "scope": "latex",
+        "prefix": ["license"],
+        "body": ["\\license{${1:type}}{${2:modifiers}}{${3:version}}{${4:holder}}$0"],
+        "description": "Set document licensing"
+    },
+    // LISTS: ------------------------------------------------------------------
+    "Insert a list of items": {
+        "scope": "latex",
+        "prefix": ["lists", "items"],
+        "body": ["\\items$2{\n¤ $1\n}$0"],
+        "description": "Insert a list."
+    },
+    // MARGINS: ----------------------------------------------------------------
+    "Set document margins": {
+        "scope": "latex",
+        "prefix": ["margins"],
+        "body": ["\\margins{${1:top}}{${2:bot}}{${3:left}}{${4:right}}$0"],
+        "description": "Set document margins."
+    },
+    // MATH: -------------------------------------------------------------------
+    "Insert a math block": {
+        "scope": "latex",
+        "prefix": ["math"],
+        "body": ["\\math{${1:label}}{\n${2:...}\n}$0"],
+        "description": "Insert a math block."
+    },
+    // NOTE: -------------------------------------------------------------------
+    "Add an author's note": {
+        "scope": "latex",
+        "prefix": ["note"],
+        "body": ["\\note{${1:...}}$0"],
+        "description": "Add an author's note on the metadata-page."
+    },
+    // PUBLISHER: --------------------------------------------------------------
+    "Specify a publisher": {
+        "scope": "latex",
+        "prefix": ["publisher"],
+        "body": ["\\publisher{${1:...}}$0"],
+        "description": "Specify a publisher."
+    },
+    // SIZE: -------------------------------------------------------------------
+    "Set document dimensions": {
+        "scope": "latex",
+        "prefix": ["size"],
+        "body": ["\\size{${1:standard}}{${2:orientation}}$0"],
+        "description": "Set document dimensions."
+    },
+    // SUBTITLE: ---------------------------------------------------------------
+    "Add a subtitle": {
+        "scope": "latex",
+        "prefix": ["subtitle"],
+        "body": ["\\subtitle{${1:...}}$0"],
+        "description": "Add a subtitle."
+    },
+    // TABLES: -----------------------------------------------------------------
+    "Insert a table": {
+		"scope": "latex",
+		"prefix": "table",
+		"body": [
+			"\\tabs{${1:label}}{${2:type}}{\n${3:...}\n}{${4:caption}}$0"
+		],
+		"description": "Insert a table."
+	},
+    // THANK: ------------------------------------------------------------------
+    "Add a 'thanks to' section": {
+        "scope": "latex",
+        "prefix": ["thank"],
+        "body": ["\\thank{${1:...}}$0"],
+        "description": "Add a 'thanks to' section."
+    },
+    // TITLE: ------------------------------------------------------------------
+    "Add a title": {
+        "scope": "latex",
+        "prefix": ["title"],
+        "body": ["\\title{${1:...}}$0"],
+        "description": "Add a title."
+    },
+    // URL: --------------------------------------------------------------------
+    "Insert a url": {
+        "scope": "latex",
+        "prefix": ["url"],
+        "body": ["\\url{${1:text}}{${2:website}}$0"],
+        "description": "Insert a URL."
+    },
+    // USE: --------------------------------------------------------------------
+    "Import packages": {
+        "scope": "latex",
+        "prefix": ["use"],
+        "body": ["\\use{${1:pkg1, pkg2}}$0"],
+        "description": "Import latex packages."
+    }
+}
