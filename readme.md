@@ -284,6 +284,7 @@ Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-l
 
 For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, and adding this [snippet file](lix.code-snippets) to your snippets collection, and this [entry](settings.json) to your own `settings.json` file.
 
+---
 ## 4. Plans <a name="plans"></a>
 - Further simplify table syntax.
 - Improve snippets for VSCode.
