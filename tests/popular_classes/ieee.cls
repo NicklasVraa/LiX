@@ -1,3 +1,7 @@
+% AUTHOR: Nicklas Vraa
+% Documentation: https://github.com/NicklasVraa/LiX
+% ------------------------------------------------------------------------------
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{ieee}[For IEEE journals and transactions]
 
