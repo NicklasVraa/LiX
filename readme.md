@@ -294,3 +294,4 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 ## 4. Plans <a name="plans"></a>
 - Further simplify table syntax.
 - Create syntax highlighter for VSCode.
+- Automatically add file extension for `\add{file}`.
