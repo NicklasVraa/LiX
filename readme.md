@@ -172,7 +172,7 @@ Top-level headings will act like chapters in book-like classes, but as sections 
 \hhh{...}  % Level three.
 \hhhh{...} % Level four.
 ```
-The regular commands, like `\chapter` and `section` can still be used along with their starred counterparts.
+The regular commands, like `\chapter` and `\section` can still be used along with their starred counterparts.
 
 ### Lists <a name="lists"></a>
 The syntax and styling of these lists has been simplified and it is still possible to nest lists.
@@ -206,7 +206,7 @@ Shortcut commmands in the math environment:
 - `\epsilon` $\rightarrow \varepsilon$ (varepsilon)
 
 ### Refs <a name="refs"></a>
-Reference your figures, tables, math, codeblocks, etc., using the labels, you provided. Cite external sources from your bibliography. Link to external sources.
+Reference your figures, tables, math, codeblocks, etc., using your own labels. Cite external sources from your bibliography.
 ```latex
 \r{label}          % Reference figures, tables, etc.
 \R{label}          % Uppercase equivalent of \r.
