@@ -76,7 +76,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage[indent]{parskip}
-\RequirePackage{fancyhdr, hyperref, microtype, multicol}
+\RequirePackage{fancyhdr, hyperref, microtype, multicol, xcolor}
 
 % ESSENTIAL SETUP: -------------------------------------------------------------
 \hypersetup{hidelinks} % Remove box around links.
@@ -608,7 +608,7 @@
 
 % CODE: ------------------------------------------------------------------------
 \ifnum\useCode=1
-    \RequirePackage{caption, inconsolata, listings, xcolor, xparse}
+    \RequirePackage{caption, inconsolata, listings, xparse}
 
     \lstdefinestyle{inline}{% Inline styling.
         basicstyle=\ttfamily\small, breaklines=true%

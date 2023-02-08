@@ -50,12 +50,18 @@ Nullam congue ligula vitae urna convallis commodo. Proin nunc mi, vulputate quis
 \h{Tables}
 Cras vitae sem egestas, elementum felis vitae, ultricies ante. Fusce pellen tesque massa vitae massa molestie, at cursus urna scelerisque. Aliquam malesuada nunc at est vulputate condimentum. Aliquam luctus tellus id ipsum facilisis facilisis. Cras eu egestas magna.
 
+    \cols{2}{
     \tabs{my_table}{cols}{
-    This & is & a & cool & table \\
-    1    & 2  & 3 & 4    & 5     \\
-    a    & b  & c & d    & e
+    This & is & a & table \\
+    1    & 2  & 3 & 4     \\
+    a    & b  & c & d
+    }{This is a cols-table. Notice that the description wraps neatly.}
+    \tabs{my_table}{rows}{
+    So   & 1 & 2 & 3 & 4 \\
+    is   & 5 & 6 & 7 & 8 \\
+    this & 9 & 0 & 0 & 0
+    }{And this is a rows-table}
     }
-    {This is a table - Notice that the description wraps.}
 
 \h{Figures}
 Nullam massa nunc, sollicitudin id eleifend vitae, pellentesque sit amet lectus. Morbi vestibulum leo quis tempor lacinia. Praesent vitae est ante. Fusce dignissim in urna et posuere.
@@ -87,8 +93,8 @@ Elit vel sagittis luctus, arcu libero pellentesque nisi, sed consectetur quam ne
         ¤ A subitem.
         ¤ Another subitem.
             \items*{
-            ¤ A subitem.
-            ¤ Another subitem.
+            ¤ A bullet point.
+            ¤ Another bullet point.
             }
         }
     ¤ And another item.
