@@ -165,7 +165,7 @@ The strip of text at the top of each page.
 ```
 
 ### Heading <a name="heading"></a>
-Top-level headings will act like chapters in book-like classes, but as a section article-like classes. Headings will be numbered, unless a `*` is added to the command, e.g. `\h*{...}`.
+Top-level headings will act like chapters in book-like classes, but as sections in article-like classes. Headings will be numbered, unless a `*` is added to the command, e.g. `\h*{...}`.
 ```latex
 \h{...}    % Level one.
 \hh{...}   % Level two.
