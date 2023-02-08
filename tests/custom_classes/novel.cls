@@ -20,6 +20,9 @@
 
 % FONT OVERRIDES: --------------------------------------------------------------
 \authorfont{\normalsize}
+\RenewDocumentCommand{\l}{mg}{
+    \lettrine[nindent=2.4pt, findent=-1.5pt, loversize=0.25]{#1}{\IfValueTF{#2}{#2}{}}
+}
 
 % SIZE, MARGINS: ---------------------------------------------------------------
 \geometry{letterpaper, top=36mm, bottom=40mm, left=40mm, right=40mm}
