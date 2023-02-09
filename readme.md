@@ -48,15 +48,16 @@ All that can be achieved by this:
 ```
 Imagine the LaTeX code, you would have to write to achieve the same - even when using appropriate packages. The layout of each element should be customized by defining a custom class that builds on top of one of the standard classes. Examples are shown later.
 
-Advantages:
+**Advantages**:
 - The source code of a document becomes as easy to read and understand as Markdown and is drastically shorter.
 - The style of a document is completely separated from its content, and keeping a consistent style is simpler.
 - Configuring your document is simpler, because you don't interface directly with individual packages, which may employ different syntax.
 - Creating your own class, which implements a custom look-and-feel, is much easier.
 
-Disadvantages:
+**Disadvantages**:
 - If one wants to change their document into a class that has not been defined using this package, there may be difficulties when compiling. To address this, I've recreated the `IEEEtran` class, as a reference for how to reimplement an existing look using LiX.
 - You do not have the extreme fine-grained control over your custom class, as you would with pure LaTeX.
+- The command names are not as descriptive as standard LaTeX. Minimal impact on source-code readability was prioritized.
 
 
 ---
@@ -89,8 +90,10 @@ This is an overview of the commands, which are available when specifying a certa
 
 Shortcuts: [Aliases ](#aliases-), [Code ](#code-), [Configs ](#configs-), [Cover ](#cover-), [Figures ](#figures-), [Formats ](#formats-), [Header ](#header-), [Heading ](#heading-), [Lists ](#lists-), [Math ](#math-), [Refs ](#refs-), [Tables ](#tables-), [Titlepage ](#titlepage-), [Toc ](#toc-), [Verso ](#verso-)
 
+A [cheatsheet](cheatsheet.md) is also available.
+
 ### Aliases <a name="aliases"></a>
-These are always available, and are simply aliases, which are more intuitive for a new LaTeX-user.
+These are always available and are simply aliases, which are more intuitive for a new LaTeX-user.
 ```latex
 \use{package1, package2, ...} % Import packages.
 \add{path/to/file.tex} % Inserts the tex-code from the given file.
@@ -292,6 +295,5 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 
 ---
 ## 4. Plans <a name="plans"></a>
-- Further simplify table syntax.
+- Further simplify table syntax and add more types.
 - Create syntax highlighter for VSCode.
-- Automatically add file extension for `\add{file}`.

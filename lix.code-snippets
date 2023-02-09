@@ -26,7 +26,7 @@
     "Insert a bibliography": {
         "scope": "latex",
         "prefix": ["bibliography"],
-        "body": ["\\bib{${1:path/to/file}}{${2|style,unsrt,ieeetr|}}$0"],
+        "body": ["\\bib{${1:path/to/file}}{${2|style,unsrt,plain,ieeetr,abbrv,acm,alpha,apalike,ieeetr,siam|}}$0"],
         "description": "Insert a bibliography."
     },
     // BLURB: ------------------------------------------------------------------
