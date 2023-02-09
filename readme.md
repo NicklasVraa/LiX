@@ -1,6 +1,6 @@
 # LiX <!-- omit in toc -->
 
-[Lix](lix.sty) is a package which bundles other packages and commands. To use these bundles, they should be specified when importing the LiX package, either in your own document-class, or directly in your main document when using a predefined class. The goal of this package is to speed up writing your documents, but also to simplify the process of defining your own class.
+[Lix](lix.sty) is a package which bundles other LaTeX packages and commands. To use these bundles, simply specify them when importing the LiX package, either in your own document-class, or directly in your main document when using a predefined class. The goal of this package is to speed up writing your documents, but also to simplify the process of defining your own class.
 
 Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installation) | [Plans](#plans)
 
