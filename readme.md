@@ -82,7 +82,7 @@ It is also possible to use the standard classes, like [article](tests/standard_c
 
 The currently available bundles are (in alphabetical order):
 ```latex
-code, configs, cover, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc, verso
+code, configs, cover, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc, formal
 ```
 Exactly what each bundle provides is specified in the next section.
 
@@ -90,7 +90,7 @@ Exactly what each bundle provides is specified in the next section.
 ## 2. LiX Syntax <a name="syntax"></a>
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`.
 
-Shortcuts: [Aliases ](#aliases-), [Code ](#code-), [Configs ](#configs-), [Cover ](#cover-), [Figures ](#figures-), [Formats ](#formats-), [Header ](#header-), [Heading ](#heading-), [Lists ](#lists-), [Math ](#math-), [Refs ](#refs-), [Tables ](#tables-), [Titlepage ](#titlepage-), [Toc ](#toc-), [Verso ](#verso-)
+Shortcuts: [Aliases ](#aliases-), [Code ](#code-), [Configs ](#configs-), [Cover ](#cover-), [Figures ](#figures-), [Formats ](#formats-), [Header ](#header-), [Heading ](#heading-), [Lists ](#lists-), [Math ](#math-), [Refs ](#refs-), [Tables ](#tables-), [Titlepage ](#titlepage-), [Toc ](#toc-), [Formal](#formal-)
 
 A [cheatsheet](cheatsheet.md) is also available.
 
@@ -261,10 +261,10 @@ Print table of content, as is appropriate for your current document-class.
 \toc
 ```
 
-### Verso <a name="verso"></a>
-The page after the front-cover of a book, which contains formal information.
+### Formal <a name="formal"></a>
+The page after the front-cover of a book, which contain formalities.
 ```latex
-% Available with the 'verso' option.
+% Available with the 'formal' option.
 \license   {type}{modifiers}{version}{holder}
 \isbn      {978-0201529838}
 \edition   {123}{year}

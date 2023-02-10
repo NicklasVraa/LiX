@@ -124,6 +124,6 @@
         \mbox{}\newpage%
     \fi
 
-    \addVersoPage
+    \addFormalPage
     \addMetadata
 }

@@ -28,7 +28,7 @@
 \newcommand{\useTables}{0}
 \newcommand{\useTitlepage}{0}
 \newcommand{\useToc}{0}
-\newcommand{\useVerso}{0}
+\newcommand{\useFormal}{0}
 
 \newcommand{\useStdClass}{0} % If using a class not created using LiX.
 
@@ -48,7 +48,7 @@
 \DeclareOption{tables}{\renewcommand{\useTables}{1}}
 \DeclareOption{titlepage}{\renewcommand{\useTitlepage}{1}}
 \DeclareOption{toc}{\renewcommand{\useToc}{1}}
-\DeclareOption{verso}{\renewcommand{\useVerso}{1}}
+\DeclareOption{formal}{\renewcommand{\useFormal}{1}}
 
 \DeclareOption{stdclass}{\renewcommand{\useStdClass}{1}}
 
@@ -68,7 +68,7 @@
     \renewcommand{\useTables}{1}
     \renewcommand{\useTitlepage}{1}
     \renewcommand{\useToc}{1}
-    \renewcommand{\useVerso}{1}
+    \renewcommand{\useFormal}{1}
 }
 
 \DeclareOption*{\PackageWarning{examplepackage}{Unknown '\CurrentOption'}}
@@ -531,8 +531,8 @@
     }
 \fi
 
-% VERSO: -----------------------------------------------------------------------
-\ifnum\useVerso=1
+% FORMAL: ----------------------------------------------------------------------
+\ifnum\useFormal=1
     \RequirePackage{xparse}
 
     \NewDocumentCommand{\license}{mmmg}{%
@@ -562,7 +562,7 @@
         \newcommand{\theThankyou}{#1}%
     }
 
-    \newcommand{\addVersoPage}{
+    \newcommand{\addFormalPage}{
         \thispagestyle{empty}{%
             \clearpage\raggedright\footnotesize%
             \begin{minipage}{0.6\linewidth}
