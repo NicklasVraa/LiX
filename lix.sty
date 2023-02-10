@@ -1,14 +1,16 @@
 % AUTHOR: Nicklas Vraa
 %
-% DESC: A metapackage that defines bundles of packages and commands which all
-% revolve around a single element of a document. When defining a new class,
-% these bundles may be imported.
+% DESC: A meta-package which bundles other LaTeX packages and commands. To use
+% these bundles, simply specify them when importing the LiX package, either in
+% your own document-class, or directly in your main document when using a
+% predefined class. The goal of this package is to speed up writing your
+% documents, but also to simplify the process of defining your own class.
 %
 % Documentation: https://github.com/NicklasVraa/LiX
 % ------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{lix}
+\ProvidesPackage{lix}[2023/02/10 Meta-package for easy writing]
 
 % SWITCHES: --------------------------------------------------------------------
 \newcommand{\useCode}{0}
