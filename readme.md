@@ -1,6 +1,6 @@
 # LiX <!-- omit in toc -->
 
-[Lix](lix.sty) is a package which bundles other LaTeX packages and commands. To use these bundles, simply specify them when importing the LiX package, either in your own document-class, or directly in your main document when using a predefined class. The goal of this package is to speed up writing your documents, but also to simplify the process of defining your own class.
+[Lix](lix.sty) is a meta-package which bundles other LaTeX packages and commands. To use these bundles, simply specify them when importing the LiX package, either in your own document-class, or directly in your main document when using a predefined class. The goal of this package is to speed up writing your documents, but also to simplify the process of defining your own class.
 
 Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installation) | [Plans](#plans)
 
@@ -112,7 +112,7 @@ Code blocks will be subtly highlighted according to the given language.
     % Your code.
 }{caption}
 ```
-Caption is optional. For no highlighting, set the language to `text`. Indent the code four spaces for best readability in the source file. These will be removed in the resulting pdf.
+Caption is optional. For no highlighting, set the language to `text`. Indent the code four spaces, as these will be gobbled (removed) in the resulting pdf. This is for better readability in the source file. I recommend indenting all code-blocks, tables, figures, etc.
 
 ### Configs <a name="configs"></a>
 For setting up the basic characteristics of your document.
