@@ -3,7 +3,7 @@
 % ------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ieee}[For IEEE journals and transactions]
+\ProvidesClass{ieee}[2023/02/10 For IEEE journals and transactions]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax

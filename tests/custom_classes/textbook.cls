@@ -3,7 +3,7 @@
 % ------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{textbook}[For academic textbooks]
+\ProvidesClass{textbook}[2023/02/10 For academic textbooks]
 
 % Intercept class options.
 \newcommand{\numColumns}{1}
@@ -113,6 +113,8 @@
     }{%
         \olddate{\normalsize{\theDate}}%
     }
+    \addMetadata
+
     \addFrontCover
     \addBackCover
 
@@ -125,5 +127,4 @@
     \fi
 
     \addFormalPage
-    \addMetadata
 }

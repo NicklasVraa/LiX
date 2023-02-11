@@ -3,7 +3,7 @@
 % ------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{novel}[For works of fiction]
+\ProvidesClass{novel}[2023/02/10 For works of fiction]
 
 % Intercept class options.
 \newcommand{\numColumns}{1}
@@ -93,6 +93,8 @@
     }{%
         \olddate{\normalsize{\theDate}}%
     }
+    \addMetadata
+
     \addFrontCover
     \addBackCover
 
@@ -100,5 +102,4 @@
         \maketitle%
     }
     \addFormalPage
-    \addMetadata
 }

@@ -3,7 +3,7 @@
 % ------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{paper}[For academic research papers]
+\ProvidesClass{paper}[2023/02/10 For academic research papers]
 
 % Intercept class options.
 \newcommand{\numColumns}{1}

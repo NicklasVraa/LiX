@@ -3,16 +3,16 @@
 % ------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{novella}[For works of fiction]
+\ProvidesClass{novella}[2023/02/10 For works of fiction]
 
 % Intercept class options.
 \newcommand{\numColumns}{1}
 \DeclareOption{twocolumn}{
     \renewcommand{\numColumns}{2}
-    \PassOptionsToClass{\CurrentOption}{novella}
+    \PassOptionsToClass{\CurrentOption}{book}
 }
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{novella}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass[12pt,oneside]{book}
 
@@ -86,9 +86,9 @@
     }{%
         \olddate{\normalsize{\theDate}}%
     }
+    \addMetadata
 
     \@ifundefined{theTitle}{}{%
         \maketitle%
     }
-    \addMetadata
 }
