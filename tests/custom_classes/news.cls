@@ -18,7 +18,7 @@
 
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[code, configs, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc]{lix}
-\RequirePackage{yfonts, setspace, silence, times, titlesec, titletoc, titling}
+\RequirePackage{setspace, silence, times, titlesec, titletoc, titling, yfonts}
 
 \WarningsOff*
 \setlength\parindent{0pt}
