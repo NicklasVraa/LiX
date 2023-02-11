@@ -9,15 +9,15 @@
 \newcommand{\numColumns}{1}
 \DeclareOption{twocolumn}{
     \renewcommand{\numColumns}{2}
-    \PassOptionsToClass{\CurrentOption}{article}
+    \PassOptionsToClass{\CurrentOption}{book}
 }
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[12pt]{article}
+\LoadClass[12pt]{book}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[code, configs, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc]{lix}
+\RequirePackage[code, configs, figures, formats, header, headings, meta, refs, tables, titlepage]{lix}
 \RequirePackage{setspace, silence, times, titlesec, titletoc, titling, yfonts}
 
 \WarningsOff*
@@ -29,30 +29,14 @@
 
 % SIZE, MARGINS: ---------------------------------------------------------------
 \ifnum\numColumns=1
-    \geometry{a3paper, top=20mm, left=14mm, right=14mm, bottom=20mm}
+    \geometry{a3paper, top=22mm, left=14mm, right=14mm, bottom=18mm}
     \setlength{\droptitle}{-3.8em}
     \setlength{\columnsep}{5mm}
 \fi
 
-% TABLE OF CONTENTS: -----------------------------------------------------------
-\titlecontents{section}[0em]{}{%
-    \thecontentslabel.\hspace*{0.5em}}{}{%
-    \titlerule*[0.5pc]{.}\contentspage%
-}
-\titlecontents{subsection}[0em]{%
-    \hspace*{1.4em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
-    \titlerule*[0.5pc]{.}\contentspage%
-}
-\titlecontents{subsubsection}[0em]{%
-    \hspace*{2.8em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
-    \titlerule*[0.5pc]{.}\contentspage%
-}
-
 % HEADINGS: --------------------------------------------------------------------
-\setcounter{secnumdepth}{3}% Levels of heading that will be numbered.
-\renewcommand*{\@seccntformat}[1]{% Add dot after number.
-    \csname the#1\endcsname.\hspace{0.5em}%
-}
+\setcounter{secnumdepth}{0}% Levels of heading that will be numbered.
+
 \titlespacing\numberless{0pt}{14pt}{4pt}
 \titlespacing\section{0pt}{14pt}{4pt}
 \titlespacing\subsection{0pt}{14pt}{4pt}
@@ -61,6 +45,10 @@
 \titleformat*{\subsection}{\bfseries\scshape}
 \titleformat*{\subsubsection}{\bfseries\scshape}
 \titleformat*{\paragraph}{\bfseries\scshape}
+
+\RenewDocumentCommand{\h}{m}{%
+    \section{#1}\label{#1}%
+}
 
 % CAPTIONS: --------------------------------------------------------------------
 \captionsetup{
