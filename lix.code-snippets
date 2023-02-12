@@ -36,6 +36,13 @@
         "body": ["\\blurb{${1:flavor-text}}$0"],
         "description": "Add flavor-text to the back cover."
     },
+    // BYLINE: -----------------------------------------------------------------
+    "Add a byline": {
+        "scope": "latex",
+        "prefix": ["by"],
+        "body": ["\\by{${1:name}}{${2:contact}}{${3:image.png}}$0"],
+        "description": "Add a byline, optionally with an image."
+    },
     // CODE: -------------------------------------------------------------------
     "Insert a codeblock": {
         "scope": "latex",
