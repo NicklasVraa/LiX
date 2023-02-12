@@ -83,7 +83,7 @@ It is also possible to use the standard classes, like [article](tests/standard_c
 
 The currently available bundles are (in alphabetical order):
 ```latex
-code, configs, cover, figures, formats, header, headings, lists, math, meta, refs, tables, titlepage, toc, formal
+basics, code, cover, figures, formatting, header, headings, isbn, license, lists, math, metadata, periodical, publish, refs, size, tables
 ```
 Exactly what each bundle provides is specified in the next section.
 
@@ -91,67 +91,56 @@ Exactly what each bundle provides is specified in the next section.
 ## 2. LiX Syntax <a name="syntax"></a>
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`.
 
-Shortcuts: [Aliases ](#aliases-), [Code ](#code-), [Configs ](#configs-), [Cover ](#cover-), [Figures ](#figures-), [Formats ](#formats-), [Header ](#header-), [Heading ](#heading-), [Lists ](#lists-), [Math ](#math-), [Refs ](#refs-), [Tables ](#tables-), [Titlepage ](#titlepage-), [Toc ](#toc-), [Formal](#formal-)
+Shortcuts: [Basics](#basics-), [Code](#code-), [Cover](#cover-), [Figures](#figures-), [Formatting](#formatting-), [Header](#header-), [Heading](#heading-), [License](#license-), [Isbn](#isbn-), [Lists](#lists-), [Math](#math-), [Metadata](#metadata-), [Periodical](#periodical-), [Publish](#publish-), [Refs](#refs-), [Size](#size-), [Tables](#tables-).
 
 A [cheatsheet](cheatsheet.md) is also available.
 
-### Aliases <a name="aliases"></a>
-These are always available and are simply aliases, which are more intuitive for a new LaTeX-user.
+### Basics <a name="basics"></a>
+A collection of essential commands and aliases.
 ```latex
-\use{package1, package2, ...} % Import packages.
-\add{path/to/file.tex} % Inserts the tex-code from the given file.
-\url{text}{link} % E.g. {this website}{https://www.somewebsite.com}
-
-\cols{n}{
-... % Will be horizonally aligned across n columns.
-}
+\abstract {summary of findings}            % Alias: \blurb{...}.
+\add      {path/to/file.tex}               % Inserts the tex-code from the given file.
+\authors  {first}{second}{...}{sixth}      % Handles six entries. Alias: \author{...}.
+\by       {name}{email}{path/to/image.png} % Byline, image is optional.
+\cols     {n}{...}                         % Horizonally align content.
+\date     {01/01/2023}                     % The command \today is available.
+\idnum    {123456789}                      % Could be any alphanumeric.
+\keywords {this, that, ...}                % Alias: \subjects {this, that, ...}.
+\lang     {language}                       % Localizes text and sets hyphenation rules.
+\subtitle {Some Buzzwords}                 % Alias: \slogan{...}.
+\title    {A Catchy Title}                 % Alias: \publication {...}.
+\toc                                       % Generate table of contents.
+\url      {text}{link}                     % E.g. {this site}{https://www.website.com}
+\use      {pkg1, pkg2, ...}                % Import packages.
 ```
 
 ### Code <a name="code"></a>
 Code blocks will be subtly highlighted according to the given language.
 ```latex
-% Available with the 'code' option.
 \code{label}{language}{
     % Your code.
 }{caption}
 ```
 Caption is optional. For no highlighting, set the language to `text`. Indent the code four spaces, as these will be gobbled (removed) in the resulting pdf. This is for better readability in the source file. I recommend indenting all code-blocks, tables, figures, etc.
 
-### Configs <a name="configs"></a>
-For setting up the basic characteristics of your document.
-```latex
-% Available with the 'configs' option.
-\lang    {language}
-\size    {standard}{orientation}
-
-\margins {top}{bot}{left}{right}
-% Alternatively: {all}, {topbot}{leftright}, {top}{bot}{leftright}
-```
-
-For the `\size` command:
-| ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
-|-------|-------|-------|------|----|-------------|
-| `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape` |
-
-E.g `\size{a4}{portrait}`.
-
 ### Cover <a name="cover"></a>
 The front and back of a book.
 ```latex
-% Available with the 'cover' option.
 \cover{path/to/front.pdf}{path/to/back.pdf}
-\blurb{Flavor text for the back}
+
+% These should be used in your class definition.
+\addFrontCover
+\addBackCover
 ```
 `cover*` will **not** print the title, author, etc. on top of the cover. This is useful, if the cover already includes these.
 
 ### Figures <a name="figures"></a>
-This command will take care of placing your figure correctly and it is file-format agnostic i.e. it works the same for both regular images and vector graphics.
+This command will take care of placing your figure correctly and it is file-format agnostic i.e. it works the same for both regular images and vector graphics. Caption is optional.
 ```latex
 \fig{label}{scale}{path}{caption}
 ```
-Caption is optional.
 
-### Formats <a name="formats"></a>
+### Formatting <a name="formatting"></a>
 These command names were chosen to ensure that the readability of the source code is minimally affected.
 ```latex
 \b{...} % (b)old text.
@@ -166,7 +155,6 @@ These command names were chosen to ensure that the readability of the source cod
 ### Header <a name="header"></a>
 The strip of text at the top of each page.
 ```latex
-% Available with the 'header' option.
 \header{left}{center}{right}
 ```
 
@@ -179,6 +167,21 @@ Top-level headings will act like chapters in book-like classes, but as sections 
 \hhhh{...} % Level four.
 ```
 The regular commands, like `\chapter` and `\section` can still be used along with their starred counterparts.
+
+### ISBN <a name="isbn"></a>
+```latex
+\isbn{978-0201529838} % Will generate a barcode.
+```
+
+### License <a name="license"></a>
+```latex
+\license{type}{modifiers}{version}{holder}
+```
+| Types | Modifiers | Versions |
+|-------|-----------|----------|
+| Creative Commons: `CC` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
+
+E.g `\license{CC}{by-nc-sa}{3.0}`. The Copyright `holder` is optional.
 
 ### Lists <a name="lists"></a>
 The syntax and styling of these lists has been simplified and it is still possible to nest lists.
@@ -211,6 +214,31 @@ Shortcut commmands in the math environment:
 - `\C` $\rightarrow \mathbb{C}$ (Complex set)
 - `\epsilon` $\rightarrow \varepsilon$ (varepsilon)
 
+### Metadata <a name="metadata"></a>
+If this bundle is loaded, it will automatically fill in the metadata fields of the pdf, like the title, subject, keywords etc.
+
+### Periodical <a name="periodical"></a>
+These will mostly be relevant for the `news` class or similar.
+```latex
+\cost     {\$9.99}
+\issue    {123}
+\location {Copenhagen}
+\volume   {123}
+```
+
+### Publish <a name="publish"></a>
+The page after the front-cover of a book, which contain formalities.
+```latex
+\dedicate  {dedicatee}{Message}
+\edition   {123}{year}
+\note      {Longer author's note}
+\publisher {Your Publishing Company}
+\thank     {people or organisations}
+
+% This should be used in your class definition.
+\addFormalPage
+```
+
 ### Refs <a name="refs"></a>
 Reference your figures, tables, math, codeblocks, etc., using your own labels. Cite external sources from your bibliography.
 ```latex
@@ -220,13 +248,23 @@ Reference your figures, tables, math, codeblocks, etc., using your own labels. C
 \cite{your_source} % As defined in your bibliography file.
 
 \bib{path/to/refs}{style}
-% Without the '.bib' extension.
-% Style is optional, default is in order of appearence.
 ```
-Bibliography Styles:
+Bibliography Styles: `abbrv, acm, alpha, apalike, ieeetr, plain, siam, unsrt` \
+Default to `unsrt` (in order of appearence).
+
+### Size <a name="size"></a>
+For setting up the basic characteristics of your document.
 ```latex
-abbrv, acm, alpha, apalike, ieeetr, plain, siam, unsrt
+\size    {standard}{orientation}
+\margins {top}{bot}{left}{right} % {all}, {topbot}{leftright}, {top}{bot}{leftright}
 ```
+
+For the `\size` command:
+| ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
+|-------|-------|-------|------|----|-------------|
+| `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape` |
+
+E.g `\size{a4}{portrait}`.
 
 ### Tables <a name="tables"></a>
 There are three types. These three tables will cover 90% of your table-needs, but you have access to the full power of the tabularray package for more complicated tables. The `&` symbol separates items and `\\` separates rows.
@@ -243,44 +281,6 @@ Types:
 - `grid`: Both the top row and left-most column act as headers.
 
 Formatting code for the table can also be given explicitly in the type field.
-
-### Titlepage <a name="titlepage"></a>
-Automatically imported, if `cover` option is specified.
-```latex
-% Available with the 'titlepage' option.
-\title    {This is your Title}
-\subtitle {And your Subtitle}
-\authors  {Name Lastname}{Another Name}...
-\date     {01/01/2023} % \today is available.
-\abstract {Summary of your findings}
-```
-The `authors` command handles up to six entries.
-
-### Toc <a name="toc"></a>
-Print table of content, as is appropriate for your current document-class.
-```latex
-\toc
-```
-
-### Formal <a name="formal"></a>
-The page after the front-cover of a book, which contain formalities.
-```latex
-% Available with the 'formal' option.
-\license   {type}{modifiers}{version}{holder}
-\isbn      {978-0201529838}
-\edition   {123}{year}
-\publisher {Your Publishing Company}
-\dedicate  {dedicatee}{Message}
-\thank     {people or organisations}
-\note      {Longer author's note}
-```
-
-For the `\license` command:
-| Types | Modifiers | Versions |
-|-------|-----------|----------|
-| Creative Commons: `CC` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
-
-E.g `\license{CC}{by-nc-sa}{3.0}`. Holder is optional.
 
 
 ---

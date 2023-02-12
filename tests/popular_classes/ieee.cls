@@ -10,7 +10,7 @@
 \LoadClass[twocolumn]{article}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[code, configs, figures, formats, header, headings, id, lists, math, meta, refs, tables, titlepage, toc]{lix}
+\RequirePackage[basics, code, figures, formatting, header, headings, lists, math, metadata, refs, size, tables, toc]{lix}
 \RequirePackage{setspace, silence, titlesec, titletoc, titling}
 \RequirePackage{times}
 
@@ -28,10 +28,10 @@
         \fancyhead[L]{\scriptsize\MakeUppercase\theLeftHeader}%
     }
     \fancyhead[R]{\scriptsize\thepage}%
-    \@ifundefined{theId}{
+    \@ifundefined{theIdnum}{
         \fancyfoot{}%
     }{
-        \fancyfoot[C]{\footnotesize\theId\ \copyright\ \the\year\ IEEE}%
+        \fancyfoot[C]{\footnotesize\theIdnum\ \copyright\ \the\year\ IEEE}%
     }
 }
 \fancypagestyle{fancy}{%

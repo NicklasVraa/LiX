@@ -13,62 +13,67 @@
 \ProvidesPackage{lix}[2023/02/10 Meta-package for easy writing]
 
 % SWITCHES: --------------------------------------------------------------------
+\newcommand{\useBasics}{0}
 \newcommand{\useCode}{0}
-\newcommand{\useConfigs}{0}
 \newcommand{\useCover}{0}
 \newcommand{\useFigures}{0}
-\newcommand{\useFormats}{0}
+\newcommand{\useFormatting}{0}
 \newcommand{\useHeader}{0}
 \newcommand{\useHeadings}{0}
-\newcommand{\useId}{0}
+\newcommand{\useIsbn}{0}
+\newcommand{\useLicense}{0}
 \newcommand{\useLists}{0}
 \newcommand{\useMath}{0}
-\newcommand{\useMeta}{0}
+\newcommand{\useMetadata}{0}
+\newcommand{\usePeriodical}{0}
+\newcommand{\usePublish}{0}
 \newcommand{\useRefs}{0}
+\newcommand{\useSize}{0}
 \newcommand{\useTables}{0}
-\newcommand{\useTitlepage}{0}
-\newcommand{\useToc}{0}
-\newcommand{\useFormal}{0}
 
 \newcommand{\useStdClass}{0} % If using a class not created using LiX.
 
 % SWITCH INTERFACE: ------------------------------------------------------------
+\DeclareOption{basics}{\renewcommand{\useBasics}{1}}
 \DeclareOption{code}{\renewcommand{\useCode}{1}}
-\DeclareOption{configs}{\renewcommand{\useConfigs}{1}}
 \DeclareOption{cover}{\renewcommand{\useCover}{1}}
 \DeclareOption{figures}{\renewcommand{\useFigures}{1}}
-\DeclareOption{formats}{\renewcommand{\useFormats}{1}}
+\DeclareOption{formatting}{\renewcommand{\useFormatting}{1}}
 \DeclareOption{header}{\renewcommand{\useHeader}{1}}
 \DeclareOption{headings}{\renewcommand{\useHeadings}{1}}
-\DeclareOption{id}{\renewcommand{\useId}{1}}
+\DeclareOption{isbn}{\renewcommand{\useIsbn}{1}}
+\DeclareOption{license}{\renewcommand{\useLicense}{1}}
 \DeclareOption{lists}{\renewcommand{\useLists}{1}}
+\DeclareOption{margins}{\renewcommand{\useMargins}{1}}
 \DeclareOption{math}{\renewcommand{\useMath}{1}}
-\DeclareOption{meta}{\renewcommand{\useMeta}{1}}
+\DeclareOption{metadata}{\renewcommand{\useMetadata}{1}}
+\DeclareOption{periodical}{\renewcommand{\usePeriodical}{1}}
+\DeclareOption{publish}{\renewcommand{\usePublish}{1}}
 \DeclareOption{refs}{\renewcommand{\useRefs}{1}}
+\DeclareOption{size}{\renewcommand{\useSize}{1}}
 \DeclareOption{tables}{\renewcommand{\useTables}{1}}
-\DeclareOption{titlepage}{\renewcommand{\useTitlepage}{1}}
-\DeclareOption{toc}{\renewcommand{\useToc}{1}}
-\DeclareOption{formal}{\renewcommand{\useFormal}{1}}
 
 \DeclareOption{stdclass}{\renewcommand{\useStdClass}{1}}
 
 \DeclareOption{all}{
+    \renewcommand{\useBasics}{1}
     \renewcommand{\useCode}{1}
-    \renewcommand{\useConfigs}{1}
     \renewcommand{\useCover}{1}
     \renewcommand{\useFigures}{1}
-    \renewcommand{\useFormats}{1}
+    \renewcommand{\useFormatting}{1}
     \renewcommand{\useHeader}{1}
     \renewcommand{\useHeadings}{1}
-    \renewcommand{\useId}{1}
+    \renewcommand{\useIsbn}{1}
+    \renewcommand{\useLicense}{1}
     \renewcommand{\useLists}{1}
+    \renewcommand{\useMargins}{1}
     \renewcommand{\useMath}{1}
-    \renewcommand{\useMeta}{1}
+    \renewcommand{\useMetadata}{1}
+    \renewcommand{\usePeriodical}{1}
+    \renewcommand{\usePublish}{1}
     \renewcommand{\useRefs}{1}
+    \renewcommand{\useSize}{1}
     \renewcommand{\useTables}{1}
-    \renewcommand{\useTitlepage}{1}
-    \renewcommand{\useToc}{1}
-    \renewcommand{\useFormal}{1}
 }
 
 \DeclareOption*{\PackageWarning{lix}{Unknown '\CurrentOption'}}
@@ -79,51 +84,109 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage[indent]{parskip}
-\RequirePackage{fancyhdr, hyperref, microtype, multicol, xcolor}
+\RequirePackage{hyperref, microtype, multicol, lastpage, xcolor, xparse}
 
 % ESSENTIAL SETUP: -------------------------------------------------------------
 \hypersetup{hidelinks} % Remove box around links.
 
-% ESSENTIAL COMMANDS: ----------------------------------------------------------
-\newcommand{\add}[1]{\input{#1}}
-\renewcommand{\url}[2]{\href{#2}{#1}}
-\newcommand{\use}[1]{\usepackage{#1}}
-\NewDocumentCommand{\cols}{mm}{
-    \begin{multicols}{#1}%
-        #2
-    \end{multicols}
-}
+% BASICS: ----------------------------------------------------------------------
+\ifnum\useBasics=1
+    \newcommand{\add}[1]{\input{#1}}
+    \newcommand{\use}[1]{\usepackage{#1}}
+    \renewcommand{\url}[2]{\href{#2}{#1}}
 
-% CONFIGS: ---------------------------------------------------------------------
-\ifnum\useConfigs=1
-    \RequirePackage{fancyhdr, geometry, lastpage, xparse}
+    \newcommand{\toc}{\tableofcontents}
+    \@ifundefined{chapter}{}{% If class is article-like.
+        \addtocontents{toc}{\protect\thispagestyle{empty}}
+    }
 
-    \NewDocumentCommand{\size}{mg}{% Argument 2 is optional.
-        \IfValueTF{#2}{%
-            \geometry{paper= #1paper, #2}
-        }{
-            \geometry{paper= #1paper}
-        }
+    \NewDocumentCommand{\cols}{mm}{
+        \begin{multicols}{#1}%
+            #2
+        \end{multicols}
     }
-    \NewDocumentCommand{\margins}{mggg}{% Arguments 2,3,4 are optional.
-        \IfValueTF{#4}{% If four arguments are given.
-            \geometry{top=#1, bottom=#2, left=#3, right=#4}%
-        }{%
-            \IfValueTF{#3}{% If three arguments are given.
-                \geometry{top=#1, bottom=#1, left=#2, right=#3}%
-            }{%
-                \IfValueTF{#2}{% If two arguments are given.
-                    \geometry{top=#1, bottom=#1, left=#2, right=#2}%
-                }{% If one argument is given.
-                    \geometry{top=#1, bottom=#1, left=#1, right=#1}%
-                }
-            }
-        }
-        \fancyhfoffset[O]{0pt}
-    }
+
     \NewDocumentCommand{\lang}{m}{%
         \RequirePackage[#1]{babel}
         \newcommand{\theLanguage}{#1}%
+    }
+
+    \providecommand{\abstract}{}% In case it is not defined.
+    \NewCommandCopy{\oldabstract}{\abstract}%
+    \RenewDocumentCommand{\abstract}{m}{%
+        \newcommand{\theAbstract}{#1}%
+    }
+    \NewDocumentCommand{\blurb}{m}{\abstract{#1}} % Alias.
+
+    \newcommand{\theAuthorFont}{\normalfont}
+    \NewDocumentCommand{\authorfont}{m}{
+        \renewcommand{\theAuthorFont}{#1}
+    }
+    \NewCommandCopy{\oldauthor}{\author}%
+    \RenewDocumentCommand{\author}{m}{%
+        \newcommand{\theAuthor}{\theAuthorFont#1}
+    }
+    \NewDocumentCommand{\authors}{mggggg}{%
+        \newcommand{\theAuthor}{%
+            \theAuthorFont#1%
+            \IfValueTF{#2}{%
+                \and \theAuthorFont#2%
+                \IfValueTF{#3}{%
+                    \and \theAuthorFont#3%
+                    \IfValueTF{#4}{%
+                        \and \theAuthorFont#4%
+                        \IfValueTF{#5}{%
+                            \and \theAuthorFont#5%
+                            \IfValueTF{#6}{%
+                                \and \theAuthorFont#6%
+                            }{}%
+                        }{}%
+                    }{}%
+                }{}%
+            }{}%
+        }%
+    }
+
+    \NewDocumentCommand{\by}{mmg}{
+        \IfValueTF{#3}{%
+            \begin{figure}[H]
+                \begin{minipage}[H]{0.2\columnwidth}
+                    \includegraphics[width=\columnwidth]{#3}
+                \end{minipage}%
+                \quad
+                \begin{minipage}[H]{0.55\columnwidth}
+                    #1 \\ {\footnotesize #2}
+                \end{minipage}
+                \vspace*{-5mm}
+            \end{figure}
+        }{
+            #1 \\ {\footnotesize #2}
+        }
+    }
+
+    \NewCommandCopy{\oldtitle}{\title}%
+    \RenewDocumentCommand{\title}{m}{%
+        \newcommand{\theTitle}{#1}%
+    }
+    \NewDocumentCommand{\publication}{m}{\title{#1}} % Alias.
+
+    \NewDocumentCommand{\subtitle}{m}{%
+        \newcommand{\theSubtitle}{#1}%
+    }
+    \NewDocumentCommand{\slogan}{m}{\subtitle{#1}} % Alias.
+
+    \NewCommandCopy{\olddate}{\date}%
+    \RenewDocumentCommand{\date}{m}{%
+        \newcommand{\theDate}{#1}%
+    }
+
+    \NewDocumentCommand{\keywords}{m}{%
+        \newcommand{\theKeywords}{#1}%
+    }
+    \NewDocumentCommand{\subjects}{m}{\keywords{#1}} % Alias.
+
+    \NewDocumentCommand{\idnum}{m}{%
+        \newcommand{\theIdnum}{#1}%
     }
 \fi
 
@@ -136,14 +199,10 @@
         }{
             \newcommand{\printOnCover}{1}
         }
-
         \newcommand{\theFront}{#2}%
         \IfValueT{#3}{%
             \newcommand{\theBack}{#3}%
         }
-    }
-    \NewDocumentCommand{\blurb}{m}{%
-        \newcommand{\theBlurb}{#1}%
     }
 
     \newcommand{\addFrontCover}{
@@ -202,7 +261,7 @@
 
 % FIGURES: ---------------------------------------------------------------------
 \ifnum\useFigures=1
-    \RequirePackage{float, graphicx, svg, xparse}
+    \RequirePackage{caption, float, graphicx, svg}
 
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
 
@@ -228,6 +287,8 @@
 
 % HEADER: ----------------------------------------------------------------------
 \ifnum\useHeader=1
+    \RequirePackage{fancyhdr}
+
     \NewDocumentCommand{\header}{mgg}{%
         \newcommand{\theLeftHeader}{#1}%
         \IfValueT{#2}{%
@@ -309,10 +370,11 @@
     }
 \fi
 
-% ID: --------------------------------------------------------------------------
-\ifnum\useId=1
+% ISBN: ------------------------------------------------------------------------
+\ifnum\useIsbn=1
+    \RequirePackage{GS1}
+
     \NewDocumentCommand{\isbn}{m}{%
-        \usepackage{GS1}%
         \GSSetup{ocrb=true,module_height=5ex}%
         \newcommand{\theIsbn}{#1}%
     }
@@ -358,7 +420,7 @@
 
 % MATH: ------------------------------------------------------------------------
 \ifnum\useMath=1
-    \RequirePackage{amsfonts, amsmath, amssymb, esint, siunitx, xparse}
+    \RequirePackage{amsfonts, amsmath, amssymb, esint, siunitx}
 
     \newcommand{\mean}[1]{\overline{#1}}
     \renewcommand{\epsilon}{\varepsilon}
@@ -380,11 +442,8 @@
     }
 \fi
 
-% META: ------------------------------------------------------------------------
-\ifnum\useMeta=1
-    \NewDocumentCommand{\keywords}{m}{%
-        \newcommand{\theKeywords}{#1}%
-    }
+% METADATA: --------------------------------------------------------------------
+\ifnum\useMetadata=1
     \newcommand{\addMetadata}{%
         \hypersetup{%
             pdftitle={\@ifundefined{theTitle}{}{\theTitle}},
@@ -396,184 +455,46 @@
     }
 \fi
 
-% REFERENCES: ------------------------------------------------------------------
-\ifnum\useRefs=1
-    \RequirePackage{cite}
-
-    \renewcommand{\r}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}
-
-    \newcommand{\R}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
-
-    \newcommand{\theBibfont}{\normalfont} % Default.
-    \NewDocumentCommand{\bibfont}{m}{
-        \renewcommand{\theBibfont}{#1}
+% PERIODICAL: ------------------------------------------------------------------
+\ifnum\usePeriodical=1
+    \NewDocumentCommand{\cost}{m}{%
+        \newcommand{\theCost}{#1}%
     }
 
-    \NewDocumentCommand{\bib}{mg}{%
-        \IfValueTF{#2}{%
-            \bibliographystyle{#2}
-        }{%
-            \bibliographystyle{unsrt} % Sort by order of appearance.
-        }
-        \providecommand{\refname}{}
-        \renewcommand\refname{\normalsize{References}}
-        {\theBibfont\bibliography{#1}}
+    \NewDocumentCommand{\issue}{m}{%
+        \newcommand{\theIssue}{#1}%
+    }
+
+    \NewDocumentCommand{\location}{m}{%
+        \newcommand{\theLocation}{#1}%
+    }
+
+    \NewDocumentCommand{\volume}{m}{%
+        \newcommand{\theVolume}{#1}%
     }
 \fi
 
-% TABLES: ----------------------------------------------------------------------
-\ifnum\useTables=1
-    \RequirePackage{caption, tabularray, xparse}
-
-    \NewDocumentCommand{\tabs}{mmmg}{
-        \begin{table}[H]
-            \centering
-            \ifnum\pdfstrcmp{#2}{cols}=0
-                \sbox0{%
-                    \begin{tblr}{%
-                        hline{1,2,Z} = {0.1pt,solid},
-                        rowsep = {1pt}, hspan = even}%
-                        #3
-                    \end{tblr}%
-                }
-            \else\ifnum\pdfstrcmp{#2}{rows}=0
-                \sbox0{%
-                    \begin{tblr}{%
-                        hline{1,Z} = {0.1pt,solid},
-                        vline{2} = {0.1pt,solid},
-                        rowsep = {1pt}, hspan = even}%
-                        #3
-                    \end{tblr}%
-                }
-            \else\ifnum\pdfstrcmp{#2}{grid}=0
-                \sbox0{%
-                    \begin{tblr}{%
-                        hline{1,2,Z} = {0.1pt,solid},
-                        vline{2} = {0.1pt,solid},
-                        rowsep = {1pt}, hspan = even}%
-                        #3
-                    \end{tblr}%
-                }
-            \else
-                \sbox0{%
-                    \begin{tblr}{#2}%
-                        #3
-                    \end{tblr}%
-                }
-            \fi\fi\fi
-            \IfValueTF{#4}{%
-                \begin{minipage}{\wd0}%
-                    \usebox0\caption{#4}\label{#1}%
-                \end{minipage}%
-            }{%
-                \usebox0\label{#1}%
-            }
-        \end{table}
-    }
-\fi
-
-% TITLEPAGE: -------------------------------------------------------------------
-\ifnum\useTitlepage=1
-
-    % Formatting setters.
-    \newcommand{\theAuthorFont}{\normalfont} % Default.
-    \NewDocumentCommand{\authorfont}{m}{
-        \renewcommand{\theAuthorFont}{#1}
-    }
-
-    \NewCommandCopy{\oldtitle}{\title}%
-    \RenewDocumentCommand{\title}{m}{%
-        \newcommand{\theTitle}{#1}%
-    }
-    \NewDocumentCommand{\subtitle}{m}{%
-    \newcommand{\theSubtitle}{#1}%
-    }
-    \NewCommandCopy{\oldauthor}{\author}%
-    \RenewDocumentCommand{\author}{m}{%
-        \newcommand{\theAuthor}{\theAuthorFont#1}
-    }
-    \NewDocumentCommand{\authors}{mggggg}{%
-        \newcommand{\theAuthor}{%
-            \theAuthorFont#1%
-            \IfValueTF{#2}{%
-                \and \theAuthorFont#2%
-                \IfValueTF{#3}{%
-                    \and \theAuthorFont#3%
-                    \IfValueTF{#4}{%
-                        \and \theAuthorFont#4%
-                        \IfValueTF{#5}{%
-                            \and \theAuthorFont#5%
-                            \IfValueTF{#6}{%
-                                \and \theAuthorFont#6%
-                            }{}%
-                        }{}%
-                    }{}%
-                }{}%
-            }{}%
-        }%
-    }
-    \NewCommandCopy{\olddate}{\date}%
-    \RenewDocumentCommand{\date}{m}{%
-        \newcommand{\theDate}{#1}%
-    }
-    \providecommand{\abstract}{}% In case it is not defined.
-    \NewCommandCopy{\oldabstract}{\abstract}%
-    \RenewDocumentCommand{\abstract}{m}{%
-        \newcommand{\theAbstract}{#1}%
-    }
-    \NewDocumentCommand{\by}{mmg}{
-        \IfValueTF{#3}{%
-            \begin{figure}[H]
-                \begin{minipage}[H]{0.2\columnwidth}
-                    \includegraphics[width=\columnwidth]{#3}
-                \end{minipage}%
-                \quad
-                \begin{minipage}[H]{0.55\columnwidth}
-                    #1 \\ {\footnotesize #2}
-                \end{minipage}
-                \vspace*{-5mm}
-            \end{figure}
-        }{
-            #1 \\ {\footnotesize #2}
-        }
-    }
-\fi
-
-% TOC: -------------------------------------------------------------------------
-\ifnum\useToc=1
-    \newcommand{\toc}{\tableofcontents}
-    \@ifundefined{chapter}{}{% If class is article-like.
-        \addtocontents{toc}{\protect\thispagestyle{empty}}
-    }
-\fi
-
-% FORMAL: ----------------------------------------------------------------------
-\ifnum\useFormal=1
-    \RequirePackage{xparse}
-
-    \NewDocumentCommand{\license}{mmmg}{%
-        \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}%
-        \IfValueTF{#4}{% If two arguments are given.
-            \newcommand{\theCopyrightHolder}{#4}
-        }{
-            \newcommand{\theCopyrightHolder}{}
-        }
-    }
-    \NewDocumentCommand{\note}{m}{%
-        \newcommand{\theNote}{#1}%
-    }
-    \NewDocumentCommand{\publisher}{m}{%
-        \newcommand{\thePublisher}{#1}%
-    }
-    \NewDocumentCommand{\edition}{mm}{
-        \RequirePackage{numspell}
-        \newcommand{\theEdition}{#1}%
-        \newcommand{\theYear}{#2}%
-    }
+% PUBLISH: ---------------------------------------------------------------------
+\ifnum\usePublish=1
     \NewDocumentCommand{\dedicate}{mm}{%
         \newcommand{\theDedicatee}{#1}%
         \newcommand{\theMessage}{#2}%
     }
+
+    \NewDocumentCommand{\edition}{mm}{%
+        \RequirePackage{numspell}%
+        \newcommand{\theEdition}{#1}%
+        \newcommand{\theYear}{#2}%
+    }
+
+    \NewDocumentCommand{\note}{m}{%
+        \newcommand{\theNote}{#1}%
+    }
+
+    \NewDocumentCommand{\publisher}{m}{%
+        \newcommand{\thePublisher}{#1}%
+    }
+
     \NewDocumentCommand{\thank}{m}{%
         \newcommand{\theThankyou}{#1}%
     }
@@ -625,9 +546,127 @@
     }
 \fi
 
+% SIZE: ------------------------------------------------------------------------
+\ifnum\useSize=1
+    \RequirePackage{fancyhdr, geometry}
+
+    \NewDocumentCommand{\size}{mg}{% Argument 2 is optional.
+        \IfValueTF{#2}{%
+            \geometry{paper= #1paper, #2}
+        }{
+            \geometry{paper= #1paper}
+        }
+    }
+
+    \NewDocumentCommand{\margins}{mggg}{% Arguments 2,3,4 are optional.
+        \IfValueTF{#4}{% If four arguments are given.
+            \geometry{top=#1, bottom=#2, left=#3, right=#4}%
+        }{%
+            \IfValueTF{#3}{% If three arguments are given.
+                \geometry{top=#1, bottom=#1, left=#2, right=#3}%
+            }{%
+                \IfValueTF{#2}{% If two arguments are given.
+                    \geometry{top=#1, bottom=#1, left=#2, right=#2}%
+                }{% If one argument is given.
+                    \geometry{top=#1, bottom=#1, left=#1, right=#1}%
+                }
+            }
+        }
+        \fancyhfoffset[O]{0pt}
+    }
+\fi
+
+% REFERENCES: ------------------------------------------------------------------
+\ifnum\useRefs=1
+    \RequirePackage{cite}
+
+    \renewcommand{\r}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}
+
+    \newcommand{\R}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
+
+    \newcommand{\theBibfont}{\normalfont} % Default.
+    \NewDocumentCommand{\bibfont}{m}{
+        \renewcommand{\theBibfont}{#1}
+    }
+
+    \NewDocumentCommand{\bib}{mg}{%
+        \IfValueTF{#2}{%
+            \bibliographystyle{#2}
+        }{%
+            \bibliographystyle{unsrt} % Sort by order of appearance.
+        }
+        \providecommand{\refname}{}
+        \renewcommand\refname{\normalsize{References}}
+        {\theBibfont\bibliography{#1}}
+    }
+\fi
+
+% TABLES: ----------------------------------------------------------------------
+\ifnum\useTables=1
+    \RequirePackage{caption, tabularray}
+
+    \NewDocumentCommand{\tabs}{mmmg}{
+        \begin{table}[H]
+            \centering
+            \ifnum\pdfstrcmp{#2}{cols}=0
+                \sbox0{%
+                    \begin{tblr}{%
+                        hline{1,2,Z} = {0.1pt,solid},
+                        rowsep = {1pt}, hspan = even}%
+                        #3
+                    \end{tblr}%
+                }
+            \else\ifnum\pdfstrcmp{#2}{rows}=0
+                \sbox0{%
+                    \begin{tblr}{%
+                        hline{1,Z} = {0.1pt,solid},
+                        vline{2} = {0.1pt,solid},
+                        rowsep = {1pt}, hspan = even}%
+                        #3
+                    \end{tblr}%
+                }
+            \else\ifnum\pdfstrcmp{#2}{grid}=0
+                \sbox0{%
+                    \begin{tblr}{%
+                        hline{1,2,Z} = {0.1pt,solid},
+                        vline{2} = {0.1pt,solid},
+                        rowsep = {1pt}, hspan = even}%
+                        #3
+                    \end{tblr}%
+                }
+            \else
+                \sbox0{%
+                    \begin{tblr}{#2}%
+                        #3
+                    \end{tblr}%
+                }
+            \fi\fi\fi
+            \IfValueTF{#4}{%
+                \begin{minipage}{\wd0}%
+                    \usebox0\caption{#4}\label{#1}%
+                \end{minipage}%
+            }{%
+                \usebox0\label{#1}%
+            }
+        \end{table}
+    }
+\fi
+
+% LICENSE: ---------------------------------------------------------------------
+\ifnum\useLicense=1
+    \NewDocumentCommand{\license}{mmmg}{%
+        \usepackage[type={#1},modifier={#2},version={#3}]{doclicense}%
+        \IfValueTF{#4}{% If two arguments are given.
+            \newcommand{\theCopyrightHolder}{#4}
+        }{
+            \newcommand{\theCopyrightHolder}{}
+        }
+    }
+\fi
+
 % CODE: ------------------------------------------------------------------------
 \ifnum\useCode=1
-    \RequirePackage{caption, inconsolata, listings, xparse}
+    \RequirePackage{caption, inconsolata, listings}
 
     \lstdefinestyle{inline}{% Inline styling.
         basicstyle=\ttfamily\small, breaklines=true%
@@ -677,8 +716,8 @@
     \providecommand*{\lstlistingautorefname}{snippet}
 \fi
 
-% FORMATS: ---------------------------------------------------------------------
-\ifnum\useFormats=1
+% FORMATTING: ------------------------------------------------------------------
+\ifnum\useFormatting=1
     \RequirePackage{ulem}
 
     \normalem % Allow italized and underlined text.

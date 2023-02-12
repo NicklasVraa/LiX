@@ -17,14 +17,13 @@
 \LoadClass[12pt]{book}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[code, configs, figures, formats, header, headings, meta, refs, tables, titlepage]{lix}
+\RequirePackage[basics, figures, formatting, header, headings, metadata, periodical, publish, size]{lix}
 \RequirePackage{setspace, silence, times, titlesec, titletoc, titling, yfonts}
 
 \WarningsOff*
 \setlength\parindent{0pt}
 
 % FONT OVERRIDES: --------------------------------------------------------------
-\bibfont{\footnotesize}
 \authorfont{\normalsize}
 
 % SIZE, MARGINS: ---------------------------------------------------------------

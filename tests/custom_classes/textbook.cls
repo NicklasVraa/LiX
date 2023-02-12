@@ -17,7 +17,7 @@
 \LoadClass{report}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[all]{lix}
+\RequirePackage[basics, code, cover, figures, formatting, header, headings, isbn, license, lists, math, metadata, publish, refs, size, tables, toc]{lix}
 \RequirePackage{parskip, setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*
