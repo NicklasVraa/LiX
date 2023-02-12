@@ -64,7 +64,7 @@ Imagine the LaTeX code, you would have to write to achieve the same - even when 
 
 ---
 ## 1. Class Examples <a name="examples"></a>
-Using this package, I've defined some custom classes, which are ready for use, as well as classes which mimic popular formats. Look at the source code for each class to see how easily they were defined. It's very simple to convert to another class, as they all share the exact same syntax.
+Using this package, I've defined some custom classes, which are ready for use, as well as classes which mimic popular formats. Look at the source code for each class to see how easily they were defined. It's very simple to convert to another class, as they all share the exact same syntax. Download the pdf's to see the actual quality.
 |  |   |   |   |   |   |   |
 | ----- | - | - | - | - | - | - |
 | [Paper](tests/custom_classes/paper.cls) ([tex](tests/custom_classes/paper_example.tex)\|[pdf](tests/custom_classes/paper_example.pdf)) packs as much information as possible, while adhering to the standards of academic research papers. | ![p1](screenshots/paper/p1.png) | ![p2](screenshots/paper/p2.png) |
