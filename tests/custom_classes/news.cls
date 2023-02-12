@@ -36,17 +36,17 @@
 % HEADERS: ---------------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[C]{{\footnotesize\textbf{\today}}}
-\fancyhead[LE,RO]{\textgoth{\theTitle} -- {\footnotesize\textbf{Vol. III}}}
+\fancyhead[C]{{\footnotesize\textbf{\theDate}}}
+\fancyhead[LE,RO]{\textgoth{\theTitle} -- {\footnotesize\textbf{Vol. \theVolume}}}
 \fancyhead[RE]{{\footnotesize\textbf{International}} -- \textbf{\thepage}}
 \fancyhead[LO]{{\textbf{\thepage} -- \footnotesize\textbf{International}}}
 \renewcommand{\headrule}{\vspace*{-2.5mm}\hspace*{-0.5mm}\noindent{\scriptsize\dotfill\hspace*{-0.5mm}}}
 
 \fancypagestyle{front}{%
     \fancyhf{}
-    \fancyhead[C]{{\footnotesize\textbf{\today}}}
-    \fancyhead[L]{{\footnotesize\textbf{Vol. III -- No. 69 -- Copenhagen}}}
-    \fancyhead[R]{{\footnotesize\textbf{\$49.99}}}
+    \fancyhead[C]{{\footnotesize\textbf{\theDate}}}
+    \fancyhead[L]{{\footnotesize\textbf{Vol. \theVolume\ -- No. \theIssue\ --\ \theLocation}}}
+    \fancyhead[R]{{\footnotesize\textbf{\theCost}}}
 }
 \thispagestyle{front}
 

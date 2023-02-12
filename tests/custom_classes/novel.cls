@@ -17,7 +17,7 @@
 \LoadClass[12pt,oneside]{book}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[basics, cover, figures, formatting, header, headings, isbn, license, metadata, publish, refs, size, toc]{lix}
+\RequirePackage[basics, cover, figures, formatting, header, headings, isbn, license, metadata, publish, refs, size]{lix}
 \RequirePackage{ebgaramond, setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*

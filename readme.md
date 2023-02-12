@@ -267,14 +267,12 @@ For the `\size` command:
 E.g `\size{a4}{portrait}`.
 
 ### Tables <a name="tables"></a>
-There are three types. These three tables will cover 90% of your table-needs, but you have access to the full power of the tabularray package for more complicated tables. The `&` symbol separates items and `\\` separates rows.
+There are three types. These three tables will cover 90% of your table-needs, but you have access to the full power of the tabularray package for more complicated tables. The `&` symbol separates items and `\\` separates rows. Caption is optional.
 ```latex
 \tabs{label}{type}{
     % Your table content.
 }{caption}
 ```
-Caption is optional.
-
 Types:
 - `cols`: Classic table, the top row acts as the header.
 - `rows`: The left-most column acts as the header.

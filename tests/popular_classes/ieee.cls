@@ -10,7 +10,7 @@
 \LoadClass[twocolumn]{article}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[basics, code, figures, formatting, header, headings, lists, math, metadata, refs, size, tables, toc]{lix}
+\RequirePackage[basics, code, figures, formatting, header, headings, lists, math, metadata, refs, size, tables]{lix}
 \RequirePackage{setspace, silence, titlesec, titletoc, titling}
 \RequirePackage{times}
 

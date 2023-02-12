@@ -17,7 +17,7 @@
 \LoadClass{article}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[basics, code, figures, formatting, headings, lists, math, metadata, refs, size, tables, toc]{lix}
+\RequirePackage[basics, code, figures, formatting, headings, lists, math, metadata, refs, size, tables]{lix}
 \RequirePackage{setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*
