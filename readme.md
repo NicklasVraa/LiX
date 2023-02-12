@@ -65,8 +65,8 @@ Imagine the LaTeX code, you would have to write to achieve the same - even when 
 ---
 ## 1. Class Examples <a name="examples"></a>
 Using this package, I've defined some custom classes, which are ready for use, as well as classes which mimic popular formats. Look at the source code for each class to see how easily they were defined. It's very simple to convert to another class, as they all share the exact same syntax. Download the pdf's to see the actual quality.
-|  |   |   |   |   |   |   |
-| ----- | - | - | - | - | - | - |
+|  |   |   |   |   |   |
+| ----- | - | - | - | - | - |
 | [Paper](tests/custom_classes/paper.cls) ([tex](tests/custom_classes/paper_example.tex)\|[pdf](tests/custom_classes/paper_example.pdf)) packs as much information as possible, while adhering to the standards of academic research papers. | ![p1](screenshots/paper/p1.png) | ![p2](screenshots/paper/p2.png) |
 | [Novel](tests/custom_classes/novel.cls) ([tex](tests/custom_classes/novel_example.tex)\|[pdf](tests/custom_classes/novel_example.pdf)) is meant for fiction with the intent to print. This class supplies cover-, title- and metadata pages, etc. | ![p1](screenshots/novel/p1.png) | ![p2](screenshots/novel/p2.png) | ![p4](screenshots/novel/p4.png) | ![p5](screenshots/novel/p5.png) | ![p7](screenshots/novel/p7.png) |
 | [Textbook](tests/custom_classes/textbook.cls) ([tex](tests/custom_classes/textbook_example.tex)\|[pdf](tests/custom_classes/textbook_example.pdf)) is intended for typesetting a large amount of academic content to be printed in book form. | ![p1](screenshots/textbook/p1.png) | ![p2](/screenshots/textbook/p2.png) | ![p4](screenshots/textbook/p4.png) | ![p5](screenshots/textbook/p5.png) | ![p7](screenshots/textbook/p7.png) |
