@@ -34,6 +34,23 @@
     \setlength{\columnsep}{5mm}
 \fi
 
+% HEADERS: ---------------------------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{{\footnotesize\textbf{\today}}}
+\fancyhead[LE,RO]{\textgoth{\theTitle} -- {\footnotesize\textbf{Vol. III}}}
+\fancyhead[RE]{{\footnotesize\textbf{International}} -- \textbf{\thepage}}
+\fancyhead[LO]{{\textbf{\thepage} -- \footnotesize\textbf{International}}}
+\renewcommand{\headrule}{\vspace*{-2.5mm}\hspace*{-0.5mm}\noindent{\scriptsize\dotfill\hspace*{-0.5mm}}}
+
+\fancypagestyle{front}{%
+    \fancyhf{}
+    \fancyhead[C]{{\footnotesize\textbf{\today}}}
+    \fancyhead[L]{{\footnotesize\textbf{Vol. III -- No. 69 -- Copenhagen}}}
+    \fancyhead[R]{{\footnotesize\textbf{\$49.99}}}
+}
+\thispagestyle{front}
+
 % HEADINGS: --------------------------------------------------------------------
 \setcounter{secnumdepth}{0}% Levels of heading that will be numbered.
 
@@ -41,7 +58,7 @@
 \titlespacing\section{0pt}{14pt}{4pt}
 \titlespacing\subsection{0pt}{14pt}{4pt}
 \titlespacing\subsubsection{0pt}{14pt}{4pt}
-\titleformat*{\section}{\bfseries\scshape}
+\titleformat*{\section}{\Large\bfseries\scshape}
 \titleformat*{\subsection}{\bfseries\scshape}
 \titleformat*{\subsubsection}{\bfseries\scshape}
 \titleformat*{\paragraph}{\bfseries\scshape}
@@ -49,6 +66,11 @@
 \RenewDocumentCommand{\h}{m}{%
     \section{#1}\label{#1}%
 }
+\RenewDocumentCommand{\hh}{m}{%
+    \subsection{#1}\label{#1}%
+}
+\RenewDocumentCommand{\hhh}{m}{\hh{#1}}
+\RenewDocumentCommand{\hhhh}{m}{\hh{#1}}
 
 % CAPTIONS: --------------------------------------------------------------------
 \captionsetup{
@@ -60,38 +82,24 @@
 \AddToHook{begindocument/end}{%
     \oldtitle{}
 
-    \begin{center}\scalebox{2}{\Huge\textgoth{\theTitle}}\end{center}
+    \begin{figure}[H]%
+        \begin{minipage}[H]{0.20\columnwidth}%
+            \centering{\small\textit{"\theSubtitle"}}
+        \end{minipage}%
+        \begin{minipage}[H]{0.6\columnwidth}%
+            \begin{center}\scalebox{2}{\Huge\textgoth{\theTitle}}\end{center}
+        \end{minipage}%
+        \begin{minipage}[H]{0.20\columnwidth}%
+            \centering{\small\textit{Editorial Board: \\ \theAuthor}}
+        \end{minipage}%
+    \end{figure}
+    \vspace*{-7.5mm}
     \vspace*{-1mm}\hspace*{-0.5mm}\noindent{\scriptsize\dotfill\hspace*{-0.5mm}}
 
     \oldauthor{}
     \olddate{}
     \addMetadata
-}
 
-% BYLINE: ----------------------------------------------------------------------
-\NewDocumentCommand{\byline}{mmg}{
-    \IfValueTF{#3}{%
-        \begin{figure}[H]
-            \begin{minipage}[H]{0.2\columnwidth}
-                \vspace*{1.2mm}
-                \includegraphics[width=\columnwidth]{#3}
-            \end{minipage}%
-            \quad
-            \begin{minipage}[H]{0.55\columnwidth}
-                #1 \\ {\footnotesize #2}
-            \end{minipage}
-            \vspace*{-5mm}
-        \end{figure}
-    }{
-        #1 \\ {\footnotesize #2}
-    }
+    \begin{multicols}{4}
 }
-
-% HEADERS: ---------------------------------------------------------------------
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[C]{{\footnotesize\textbf{\today}}}
-\fancyhead[LE,RO]{\textgoth{\theTitle} -- {\footnotesize\textbf{Vol. III}}}
-\fancyhead[RE]{{\footnotesize\textbf{International}} -- \textbf{\thepage}}
-\fancyhead[LO]{{\textbf{\thepage} -- \footnotesize\textbf{International}}}
-\renewcommand{\headrule}{\vspace*{-2.5mm}\hspace*{-0.5mm}\noindent{\scriptsize\dotfill\hspace*{-0.5mm}}}
+\AtEndDocument{\end{multicols}}

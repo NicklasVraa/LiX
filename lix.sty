@@ -521,6 +521,22 @@
     \RenewDocumentCommand{\abstract}{m}{%
         \newcommand{\theAbstract}{#1}%
     }
+    \NewDocumentCommand{\by}{mmg}{
+        \IfValueTF{#3}{%
+            \begin{figure}[H]
+                \begin{minipage}[H]{0.2\columnwidth}
+                    \includegraphics[width=\columnwidth]{#3}
+                \end{minipage}%
+                \quad
+                \begin{minipage}[H]{0.55\columnwidth}
+                    #1 \\ {\footnotesize #2}
+                \end{minipage}
+                \vspace*{-5mm}
+            \end{figure}
+        }{
+            #1 \\ {\footnotesize #2}
+        }
+    }
 \fi
 
 % TOC: -------------------------------------------------------------------------
