@@ -143,7 +143,7 @@ Insert code blocks in your document.
     }{caption}
 ..
 ```
-Code-blocks will be subtly highlighted according to the given language. A label is mandatory, but caption is optional. For no highlighting, set the language to `text`. Indent the block four spaces, as these will be gobbled (removed) in the resulting pdf. This is for better readability in the source file. I recommend indenting all code-blocks, tables, figures, etc., to better distinguish them from regular text. Must be called after `\begin{document}`.
+Code-blocks will be subtly highlighted according to the given language. A label is mandatory, but caption is optional. For no highlighting, set the language to `text`. Indent the block four spaces, as these will be gobbled (removed) in the resulting pdf. This is for better readability in the source file. I recommend indenting all code-blocks, tables, figures, etc., to better distinguish them from regular text.
 
 ### Cover <a name="cover"></a>
 Add a cover to your document, as in the front and back of a book.
@@ -158,7 +158,7 @@ In-class commands:
 ### Figures <a name="figures"></a>
 Place figures, i.e. images and illustrations in your document.
 - `\fig{label}{scale}{path}{caption}` \
-  Places your figure at the spot where it's called, if possible. The command is file-format agnostic i.e. it works the same for both regular images and vector graphics. Scale is from 1% to 100% of the current column-width, i.e. from 0.01 to 1. Caption is optional. Must be called after `\begin{document}`.
+  Places your figure at the spot where it's called, if possible. The command is file-format agnostic i.e. it works the same for both regular images and vector graphics. Scale is from 1% to 100% of the current column-width, i.e. from 0.01 to 1. Caption is optional.
 
 ### Formatting <a name="formatting"></a>
 These command names were chosen to ensure that the readability of the source code is minimally affected.
@@ -184,11 +184,11 @@ Add headings to the document.
 Top-level headings will act like chapters in book-like classes, but as sections in article-like classes. Headings will be numbered, unless a `*` is added to the command, e.g. `\h*{...}`. The regular commands, like `\chapter` and `\section` can still be used along with their starred counterparts.
 
 ### ISBN <a name="isbn"></a>
-Add an ISBN-code along with a corresponding barcode to your document.
+Add an ISBN-code along with a corresponding barcode to your document. Should be called before `\begin{document}`.
 - `\isbn{978-0201529838}`
 
 ### License <a name="license"></a>
-Add a license to your document with an automatically generated copyright statement based on the input to the commmand.
+Add a license to your document with an automatically generated copyright statement based on the input to the commmand. Should be called before `\begin{document}`.
 - `\license{type}{modifiers}{version}{holder}` \
   An overview of the possible inputs the command. E.g \license{CC}{by-nc-sa}{3.0}. \
   The Copyright holder is optional.
@@ -231,7 +231,7 @@ The label is required and the math block will be numbered. These are shortcut co
 If this bundle is loaded, it will automatically fill in the metadata fields of the pdf, like the title, subject, keywords etc.
 
 ### Periodical <a name="periodical"></a>
-Add various elements relating to documents that are periodicals, like a newspaper.
+Add various elements relating to documents that are periodicals, like a newspaper. Should be called before `\begin{document}`.
 
 - `\cost{\$9.99}` \
   Add a price tag.
@@ -243,7 +243,7 @@ Add various elements relating to documents that are periodicals, like a newspape
   Add a volume number.
 
 ### Publish <a name="publish"></a>
-Add various elements relating to documents that are published in book-form, like a novel.
+Add various elements relating to documents that are published in book-form, like a novel. Should be called before `\begin{document}`.
 
 - `\dedicate{dedicatee}{Message}` \
   Dedicate your document to someone with a message.
@@ -278,7 +278,7 @@ In-class commands:
   Apply styling commands to the bibliography text.
 
 ### Size <a name="size"></a>
-These are commands for setting up the basic layout characteristics of your document.
+These are commands for setting up the basic layout characteristics of your document. Should be called before `\begin{document}`.
 - `\size{standard}{orientation}` \
   Set the dimensions and orientation of your document by specifying standards. E.g \size{a4}{portrait}.
   | ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
