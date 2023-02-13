@@ -317,7 +317,6 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 
 ---
 ## 4. Plans <a name="plans"></a>
-- Add more font-setters for title, subtitle, etc.
 - Further simplify table syntax and add more types.
 - Create syntax highlighter for VSCode.
 - Make it possible to sort table of contents alphabetically.
