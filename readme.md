@@ -123,7 +123,7 @@ A collection of essential commands and aliases.
 - `\toc` \
   Generate table of contents.
 - `\url{text}{link}` \
-  E.g. {this site}{https://www.github.com}
+  E.g. {label}{actual url}
 
 In-class commands:
 - `\authorfont{\...}` \
@@ -158,7 +158,7 @@ In-class commands:
 ### Figures <a name="figures"></a>
 Place figures, i.e. images and illustrations in your document.
 - `\fig{label}{scale}{path}{caption}` \
-  Places your figure at the spot where it's called, if possible. The command is file-format agnostic i.e. it works the same for both regular images and vector graphics. Scale is from 1% to 100% of the current column-width, i.e. $0<scale\leq1$. Caption is optional. Must be called after `\begin{document}`.
+  Places your figure at the spot where it's called, if possible. The command is file-format agnostic i.e. it works the same for both regular images and vector graphics. Scale is from 1% to 100% of the current column-width, i.e. from 0.01 to 1. Caption is optional. Must be called after `\begin{document}`.
 
 ### Formatting <a name="formatting"></a>
 These command names were chosen to ensure that the readability of the source code is minimally affected.
