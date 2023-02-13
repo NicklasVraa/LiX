@@ -91,26 +91,37 @@
 
 % BASICS: ----------------------------------------------------------------------
 \ifnum\useBasics=1
+
+    % Add ----------------------------------------------------------------------
     \newcommand{\add}[1]{\input{#1}}
+
+    % Use ----------------------------------------------------------------------
     \newcommand{\use}[1]{\usepackage{#1}}
+
+    % URLs ---------------------------------------------------------------------
     \renewcommand{\url}[2]{\href{#2}{#1}}
 
+    % Table of Contents --------------------------------------------------------
     \newcommand{\toc}{\tableofcontents}
     \@ifundefined{chapter}{}{% If class is article-like.
         \addtocontents{toc}{\protect\thispagestyle{empty}}
     }
 
+    % Columns ------------------------------------------------------------------
     \NewDocumentCommand{\cols}{mm}{
         \begin{multicols}{#1}%
             #2
         \end{multicols}
     }
 
-    \NewDocumentCommand{\lang}{m}{%
+    % Language -----------------------------------------------------------------
+    \NewDocumentCommand{\lang}{mg}{%
         \RequirePackage[#1]{babel}
         \newcommand{\theLanguage}{#1}%
+        \babelhyphenation[#1]{#2}
     }
 
+    % Abstract -----------------------------------------------------------------
     \providecommand{\abstract}{}% In case it is not defined.
     \NewCommandCopy{\oldabstract}{\abstract}%
     \RenewDocumentCommand{\abstract}{m}{%
@@ -118,6 +129,7 @@
     }
     \NewDocumentCommand{\blurb}{m}{\abstract{#1}} % Alias.
 
+    % Author -------------------------------------------------------------------
     \newcommand{\theAuthorFont}{\normalfont}
     \NewDocumentCommand{\authorfont}{m}{
         \renewcommand{\theAuthorFont}{#1}
@@ -147,6 +159,7 @@
         }%
     }
 
+    % Byline -------------------------------------------------------------------
     \NewDocumentCommand{\by}{mmg}{
         \IfValueTF{#3}{%
             \begin{figure}[H]
@@ -164,31 +177,37 @@
         }
     }
 
+    % Title --------------------------------------------------------------------
     \NewCommandCopy{\oldtitle}{\title}%
     \RenewDocumentCommand{\title}{m}{%
         \newcommand{\theTitle}{#1}%
     }
     \NewDocumentCommand{\publication}{m}{\title{#1}} % Alias.
 
+    % Subtitle -----------------------------------------------------------------
     \NewDocumentCommand{\subtitle}{m}{%
         \newcommand{\theSubtitle}{#1}%
     }
     \NewDocumentCommand{\slogan}{m}{\subtitle{#1}} % Alias.
 
+    % Date ---------------------------------------------------------------------
     \NewCommandCopy{\olddate}{\date}%
     \RenewDocumentCommand{\date}{m}{%
         \newcommand{\theDate}{#1}%
     }
 
+    % Keywords -----------------------------------------------------------------
     \NewDocumentCommand{\keywords}{m}{%
         \newcommand{\theKeywords}{#1}%
     }
     \NewDocumentCommand{\subjects}{m}{\keywords{#1}} % Alias.
 
+    % Idnum --------------------------------------------------------------------
     \NewDocumentCommand{\idnum}{m}{%
         \newcommand{\theIdnum}{#1}%
     }
 
+    % Wrap ---------------------------------------------------------------------
     \NewDocumentCommand{\wrap}{+m+g}{%
         \AddToHook{begindocument/end}{#1}%
         \IfValueTF{#2}{%
@@ -384,9 +403,6 @@
     \NewDocumentCommand{\isbn}{m}{%
         \GSSetup{ocrb=true,module_height=5ex}%
         \newcommand{\theIsbn}{#1}%
-    }
-    \NewDocumentCommand{\id}{m}{%
-        \newcommand{\theId}{#1}%
     }
 \fi
 
