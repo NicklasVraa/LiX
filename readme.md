@@ -123,7 +123,7 @@ A collection of essential commands and aliases.
 - `\toc` \
   Generate table of contents.
 - `\url{text}{link}` \
-  E.g. {this site}{https:/www.website.com}
+  E.g. {this site}{https://www.github.com}
 
 In-class commands:
 - `\authorfont{\...}` \
