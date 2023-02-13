@@ -188,6 +188,13 @@
     \NewDocumentCommand{\idnum}{m}{%
         \newcommand{\theIdnum}{#1}%
     }
+
+    \NewDocumentCommand{\wrap}{+m+g}{%
+        \AddToHook{begindocument/end}{#1}%
+        \IfValueTF{#2}{%
+            \AtEndDocument{#2}
+        }{}
+    }
 \fi
 
 % COVER: -----------------------------------------------------------------------

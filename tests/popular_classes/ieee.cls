@@ -79,7 +79,7 @@
 }
 
 % LAYOUT: ----------------------------------------------------------------------
-\AddToHook{begindocument/end}{%
+\wrap{%
     \@ifundefined{theTitle}{}{%
         \oldtitle{\huge\theTitle}%
     }

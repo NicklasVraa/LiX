@@ -74,7 +74,7 @@
 }
 
 % LAYOUT: ----------------------------------------------------------------------
-\AddToHook{begindocument/end}{%
+\wrap{%
     \@ifundefined{theTitle}{}{%
         \@ifundefined{theSubtitle}{%
             \oldtitle{\Huge\textbf{\textsc{\theTitle}}}%

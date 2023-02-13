@@ -25,7 +25,7 @@ All that can be achieved by this:
 \margins  {22mm}{20mm}{21mm}{40mm}
 \title    {A Cool Title}
 \subtitle {And a Cool Subtitle}
-\authors  {Nicklas Vraa}{Another Guy}{Yet Another}
+\authors  {Nicklas Vraa}{Another Guy}{And Another}
 \date     {01/01/2023}
 \isbn     {123456789}
 \license  {CC}{nc}{3.0}{My Company}
@@ -298,5 +298,7 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 
 ---
 ## 4. Plans <a name="plans"></a>
+- Add `prepend{}` and `append{}` commands to add code to `begin{document}` and `\end{document}`
+- Add more font-setters for title, subtitle, etc.
 - Further simplify table syntax and add more types.
 - Create syntax highlighter for VSCode.

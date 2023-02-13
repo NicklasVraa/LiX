@@ -78,7 +78,7 @@
 }
 
 % LAYOUT: ----------------------------------------------------------------------
-\AddToHook{begindocument/end}{%
+\wrap{%
     \oldtitle{}
 
     \begin{figure}[H]%
@@ -100,5 +100,6 @@
     \addMetadata
 
     \begin{multicols}{4}
+}{
+    \end{multicols}
 }
-\AtEndDocument{\end{multicols}}

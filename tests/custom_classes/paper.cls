@@ -72,7 +72,7 @@
 }
 
 % LAYOUT: ----------------------------------------------------------------------
-\AddToHook{begindocument/end}{%
+\wrap{%
     \@ifundefined{theTitle}{}{%
 
         \@ifundefined{theSubtitle}{%
