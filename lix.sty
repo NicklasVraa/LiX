@@ -218,13 +218,13 @@
 
 % COVER: -----------------------------------------------------------------------
 \ifnum\useCover=1
+    \newcommand{\printOnCover}{1}
+
     \NewDocumentCommand{\cover}{smg}{% Argument 2 is optional.
         \usepackage{eso-pic}%
         \IfBooleanTF{#1}{%
-            \newcommand{\printOnCover}{0}
-        }{
-            \newcommand{\printOnCover}{1}
-        }
+            \renewcommand{\printOnCover}{0}
+        }{}
         \newcommand{\theFront}{#2}%
         \IfValueT{#3}{%
             \newcommand{\theBack}{#3}%
