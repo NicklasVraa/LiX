@@ -1,5 +1,5 @@
-% AUTHOR: Nicklas Vraa
-% Documentation: https://github.com/NicklasVraa/LiX
+% Auth: Nicklas Vraa
+% Docs: https://github.com/NicklasVraa/LiX
 % ------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}

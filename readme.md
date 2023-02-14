@@ -17,7 +17,7 @@ Say, we want to setup a book with the US letter size and a specific margin, that
 All that can be achieved by this:
 ```latex
 \documentclass{book}
-\usepackage[all]{lix}
+\usepackage[stdclass, all]{lix}
 
 \lang     {danish}
 \size     {letter}
