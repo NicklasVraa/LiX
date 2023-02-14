@@ -318,6 +318,15 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 
 ---
 ## 4. Plans <a name="plans"></a>
-- Further simplify table syntax and add more types.
+General:
 - Create syntax highlighter for VSCode.
-- Make it possible to sort table of contents alphabetically.
+
+LiX package:
+- Further simplify table syntax. Use `|` instead of `&`.
+- Add more types of tables to `\tabs`.
+- Add optional argument to `\toc` for specifying sorting order.
+
+Classes
+- contract.cls
+- presentation.cls
+- handin.cls
