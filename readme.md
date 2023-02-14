@@ -271,7 +271,8 @@ Reference internal elements and cite external sources from your bibliography.
 - `\bib{path/to/refs}{style}` \
   Specify and print your bibliography in a given style. \
   Styles: `abbrv`, `acm`, `alpha`, `apalike`, `ieeetr`, `plain`, `siam`, `unsrt` \
-  Default to `unsrt` (in order of appearence).
+  Default to `unsrt` (in order of appearence). \
+  Do not include the `.bib` extension when specifying the path.
 
 In-class commands:
 - `\bibfont{\...}` \
