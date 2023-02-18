@@ -85,7 +85,7 @@ It is also possible to use the standard classes, like [article](tests/standard_c
 
 The currently available bundles are (in alphabetical order):
 ```latex
-basics, code, cover, figures, formatting, header, headings, isbn, license, lists, math, metadata, periodical, publish, refs, size, tables
+algorithms, basics, code, cover, figures, formatting, header, headings, isbn, license, lists, math, metadata, periodical, publish, refs, size, tables
 ```
 Exactly what each bundle provides is specified in the next section.
 
@@ -93,7 +93,20 @@ Exactly what each bundle provides is specified in the next section.
 ## 2. LiX Syntax <a name="syntax"></a>
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`. In-class commands are not supposed to be used in the main `.tex` document, but rather in your `.cls` file.
 
-Shortcuts: [Basics](#basics-), [Code](#code-), [Cover](#cover-), [Figures](#figures-), [Formatting](#formatting-), [Header](#header-), [Heading](#heading-), [License](#license-), [Isbn](#isbn-), [Lists](#lists-), [Math](#math-), [Metadata](#metadata-), [Periodical](#periodical-), [Publish](#publish-), [Refs](#refs-), [Size](#size-), [Tables](#tables-).
+Shortcuts: [Algorithms](#algorithms-), [Basics](#basics-), [Code](#code-), [Cover](#cover-), [Figures](#figures-), [Formatting](#formatting-), [Header](#header-), [Heading](#heading-), [License](#license-), [Isbn](#isbn-), [Lists](#lists-), [Math](#math-), [Metadata](#metadata-), [Periodical](#periodical-), [Publish](#publish-), [Refs](#refs-), [Size](#size-), [Tables](#tables-).
+
+### Algorithms <a name="algorithms"></a>
+Insert algorithms into your document. Simply type your algorithm in plain text and mix in math typesetting whenever you require, between `$`-signs. No need for any escaped `\keywords`.
+```latex
+...
+    \algo{label}{
+    % Your algorithm.
+    % $some+math$
+    }{caption}
+...
+```
+Algorithms will be subtly highlighted. A label is mandatory, but caption is optional. Indent the block four spaces, as these will be gobbled (removed) in the resulting pdf. This is for better readability in the source file. I recommend indenting all algorithms, tables, figures, etc., to better distinguish them from regular text.
+
 
 ### Basics <a name="basics"></a>
 A collection of essential commands and aliases.
@@ -135,7 +148,7 @@ In-class commands:
 
 
 ### Code <a name="code"></a>
-Insert code blocks in your document.
+Insert code blocks into your document.
 ```latex
 ...
     \code{label}{language}{
@@ -319,7 +332,7 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 ---
 ## 4. Plans <a name="plans"></a>
 General:
-- Create syntax highlighter for VSCode.
+- Create syntax highlighter for VSCode using a grammer injection.
 
 LiX package:
 - Further simplify table syntax. Use `|` instead of `&`.

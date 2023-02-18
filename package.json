@@ -1,0 +1,11 @@
+{
+    "contributes": {
+        "grammars": [
+            {
+            "path": "./syntaxes/injection.json",
+            "scopeName": "todo-comment.injection",
+            "injectTo": ["source.js"]
+            }
+        ]
+    }
+}

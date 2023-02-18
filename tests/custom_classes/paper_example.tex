@@ -68,7 +68,7 @@ Cras vitae sem egestas, elementum felis vitae, ultricies ante. Fusce pellen tesq
     }
 
 \h{Figures}
-Nullam massa nunc, sollicitudin id eleifend vitae, pellentesque sit amet lectus. Morbi vestibulum leo quis tempor lacinia. Praesent vitae est ante. Fusce dignissim in urna et posuere.
+Nullam massa nunc, sollicitudin id eleifend vitae, pellentesque sit amet lectus. Morbi vestibulum leo quis tempor lacinia.
 
     \fig{my_svg}{1}{resources/placeholder.svg}
     {This is an svg-figure scaled by 1, and this is a very long description.}
@@ -79,16 +79,28 @@ Integer sed metus malesuada, volutpat urna condimentum, aliquet metus. Phasellus
     {This is a png-figure scaled by 0.7.}
 
 
-\hh{Columns}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada tortor ac condimentum molestie. In hac habitasse platea dictumst. Aenean molestie erat non ornare lacinia. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed ultrices mattis blandit.
+\h{Columns}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada tortor ac condimentum molestie. In hac habitasse platea dictumst.
 
     \cols{2}{
     \fig{left_fig}{1}{resources/placeholder.png}{This figure has a scale of 1.}
     \fig{right_fig}{1}{resources/placeholder.png}{As does this figure.}
     }
 
-\hh{Lists}
-Elit vel sagittis luctus, arcu libero pellentesque nisi, sed consectetur quam neque a elit. Donec consectetur cursus nulla eu feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla odio tortor, feugiat sit amet justo quis, placerat egestas odio. Vestibulum cursus nulla lectus, id congue neque laoreet eget. Pellentesque et blandit leo. Sed lacinia, sapien sit amet posuere tempor, eros nunc consectetur massa, id pulvinar diam nulla ut felis.
+\h{Algorithms}
+Nulla odio tortor, feugiat sit amet justo quis, placerat egestas odio. Vestibulum cursus nulla lectus, id congue neque laoreet eget. Pellentesque et blandit leo.
+
+    \algo{my_alg}{
+    let $x \in \Z$
+    if $x = 1$
+      do stuff
+    else
+      do another thing
+    }
+    {This is an algorithm described in pseudo-code.}
+
+\h{Lists}
+Elit vel sagittis luctus, arcu libero pellentesque nisi, sed consectetur quam neque a elit. Donec consectetur cursus nulla eu feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
     \items{
     ¤ Something.
@@ -105,12 +117,11 @@ Elit vel sagittis luctus, arcu libero pellentesque nisi, sed consectetur quam ne
     ¤ Last item.
     }
 
-
 \h{Referencing}
 Here is a hyperlink to a \url{webpage}{https://www.overleaf.com/}. This is a reference to \r{my_equation}, and this refers to \r{my_svg}. You can also refer to headings like \r{Tables}. \R{my_code} is a capitalized variant. For all references, both the name and number are links. Of cource, you can cite sources using \c{\cite{...}}, like this \cite{minted} or this \cite{tabularray}. You can also insert a bibliography.
 
 \h{Conclusion}.
-Aliquam luctus tellus id ipsum facilisis facilisis. Cras eu egestas magna. Aenean id nunc odio. Integer sit amet justo mi. Integer lorem neque, sodales et tellus finibus, vestibulum malesuada augue. Donec lacinia ultricies nisl. Nam fermentum magna mauris, pulvinar pretium dolor euismod vel. Mauris elementum rutrum vestibulum. Nam sed magna felis. Nam vitae semper nulla.
+Aliquam luctus tellus id ipsum facilisis facilisis. Cras eu egestas magna. Aenean id nunc odio. Integer sit amet justo mi. Integer lorem neque, sodales et tellus finibus.
 
 \toc
 

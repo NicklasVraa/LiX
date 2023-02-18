@@ -12,6 +12,7 @@
 \ProvidesPackage{lix}[2023/02/10 Meta-package for easy writing]
 
 % SWITCHES: --------------------------------------------------------------------
+\newcommand{\useAlgorithms}{0}
 \newcommand{\useBasics}{0}
 \newcommand{\useCode}{0}
 \newcommand{\useCover}{0}
@@ -33,6 +34,7 @@
 \newcommand{\useStdClass}{0} % If using a class not created using LiX.
 
 % SWITCH INTERFACE: ------------------------------------------------------------
+\DeclareOption{algorithms}{\renewcommand{\useAlgorithms}{1}}
 \DeclareOption{basics}{\renewcommand{\useBasics}{1}}
 \DeclareOption{code}{\renewcommand{\useCode}{1}}
 \DeclareOption{cover}{\renewcommand{\useCover}{1}}
@@ -55,6 +57,7 @@
 \DeclareOption{stdclass}{\renewcommand{\useStdClass}{1}}
 
 \DeclareOption{all}{
+    \renewcommand{\useAlgorithms}{1}
     \renewcommand{\useBasics}{1}
     \renewcommand{\useCode}{1}
     \renewcommand{\useCover}{1}
@@ -736,6 +739,52 @@
     % Add reference category for code blocks.
     \renewcommand{\lstlistingname}{Snippet}
     \providecommand*{\lstlistingautorefname}{snippet}
+\fi
+
+% ALGORITHMS: ------------------------------------------------------------------
+\ifnum\useAlgorithms=1
+    \RequirePackage{caption, inconsolata, listings}
+
+    \lstdefinelanguage{alg}{
+        morekeywords={%
+            assert,def,do,else,end,ensure,for,%
+            function,if,in,let,require,return,then,while%
+        }
+    }
+    \lstdefinestyle{algorithm}{% Block styling.
+        basicstyle=\ttfamily\footnotesize,
+        commentstyle=\color[rgb]{0.5,0.5,0.5},
+        mathescape=true,
+        breaklines=true,
+        numbers=left,
+        gobble=4,
+        numberstyle=\tiny,
+        numbersep=7pt,
+        aboveskip=0.5em,
+        belowskip=0em,
+        showstringspaces=false,
+        xleftmargin=14pt,
+        postbreak=\mbox{\hspace{-2.5em}\textcolor{gray}{$\hookrightarrow$}\space\space}
+    }
+    \ExplSyntaxOn
+        \NewDocumentCommand{\algo}{m +v g}{%
+            \begingroup%
+                \noindent{\tiny\dotfill}%
+                \newlinechar=\endlinechar
+                \exp_args:Nx \scantokens{
+                    \string\begin{lstlisting}[\unexpanded{language=alg,style=algorithm}]
+                    #2
+                    \string\end{lstlisting}%
+                }
+                \noindent{\tiny\dotfill}
+                \IfValueTF{#3}{%
+                    \captionsetup{type=lstlisting}%
+                    \caption{#3}%
+                }{}
+                \label{#1}%
+            \endgroup%
+        }
+    \ExplSyntaxOff
 \fi
 
 % FORMATTING: ------------------------------------------------------------------
