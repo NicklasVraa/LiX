@@ -28,6 +28,7 @@
 \newcommand{\usePeriodical}{0}
 \newcommand{\usePublish}{0}
 \newcommand{\useRefs}{0}
+\newcommand{\useSign}{0}
 \newcommand{\useSize}{0}
 \newcommand{\useTables}{0}
 
@@ -51,6 +52,7 @@
 \DeclareOption{periodical}{\renewcommand{\usePeriodical}{1}}
 \DeclareOption{publish}{\renewcommand{\usePublish}{1}}
 \DeclareOption{refs}{\renewcommand{\useRefs}{1}}
+\DeclareOption{sign}{\renewcommand{\useSign}{1}}
 \DeclareOption{size}{\renewcommand{\useSize}{1}}
 \DeclareOption{tables}{\renewcommand{\useTables}{1}}
 
@@ -73,6 +75,7 @@
     \renewcommand{\usePeriodical}{1}
     \renewcommand{\usePublish}{1}
     \renewcommand{\useRefs}{1}
+    \renewcommand{\useSign}{1}
     \renewcommand{\useSize}{1}
     \renewcommand{\useTables}{1}
 }
@@ -214,6 +217,17 @@
         \IfValueTF{#2}{%
             \AtEndDocument{#2}
         }{}
+    }
+
+    % Anchor -------------------------------------------------------------------
+    \NewDocumentCommand{\anchor}{mm}{%
+        \ifnum\pdfstrcmp{#1}{center}=0
+            \begin{center}#2\end{center}%
+        \else\ifnum\pdfstrcmp{#1}{left}=0
+            \begin{flushleft}#2\end{flushleft}%
+        \else\ifnum\pdfstrcmp{#1}{right}=0
+            \begin{flushright}#2\end{flushright}%
+        \fi\fi\fi
     }
 \fi
 
@@ -567,6 +581,21 @@
             }
         }%
         \newpage%
+    }
+\fi
+
+% SIGN: ------------------------------------------------------------------
+\ifnum\useSign=1
+    \RequirePackage{tabularray}
+
+    \NewDocumentCommand{\sign}{mm}{%
+        \noindent%
+        \begin{tblr}{colspec={cc}, rowsep={0pt}, row{3}={abovesep+=4pt},vspan={minimal}}%
+            \\ \\
+            \cline{2,4}
+            & {\small #1} & & {\small Date} & \\ & {\scriptsize #2}
+        \end{tblr}%
+        \vspace*{0.5em}
     }
 \fi
 

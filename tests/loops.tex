@@ -1,6 +1,14 @@
 \documentclass{article}
 \usepackage[stdclass,all]{lix}
+\usepackage{forloop}
 
 \begin{document}
-Hey
+
+Hey.
+
+\newcounter{x}
+\forloop{x}{1}{\value{x} < 10}{ % value of x is 1...9
+    \arabic{x} % print x in arabic notation
+}
+
 \end{document}

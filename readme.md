@@ -85,7 +85,7 @@ It is also possible to use the standard classes, like [article](classes/standard
 
 The currently available bundles are (in alphabetical order):
 ```latex
-algorithms, basics, code, cover, figures, formatting, header, headings, isbn, license, lists, math, metadata, periodical, publish, refs, size, tables
+algorithms, basics, code, cover, figures, formatting, header, headings, isbn, license, lists, math, metadata, periodical, publish, refs, sign, size, tables
 ```
 Exactly what each bundle provides is specified in the next section.
 
@@ -115,6 +115,8 @@ A collection of essential commands and aliases.
   Alias: \blurb{...}.
 - `\add{path/to/file.tex}` \
   Inserts the tex-code from the given file.
+- `anchor{position}{...}` \
+  Aligns its content either `left`, `right` or `center`.
 - `\authors{first}{second}{...}{sixth}` \
   Handles six entries. Alias: \author{...}.
 - `\by{name}{email}{path/to/image.png}` \
@@ -290,6 +292,11 @@ Reference internal elements and cite external sources from your bibliography.
 In-class commands:
 - `\bibfont{\...}` \
   Apply styling commands to the bibliography text.
+
+### Sign
+Place signature fields in your document.
+- `sign{name}{designation}` \
+  E.g. \sign{Nicklas Vraa}{CEO of the Universe}. To place multiple fields on the same line, don't leave a blank line between command calls.
 
 ### Size <a name="size"></a>
 These are commands for setting up the basic layout characteristics of your document. Should be called before `\begin{document}`.
