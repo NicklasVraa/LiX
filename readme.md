@@ -87,7 +87,8 @@ It is also possible to use the standard classes, like [article](classes/standard
 ## 2. LiX Syntax <a name="syntax"></a>
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`. In-class commands are not supposed to be used in the main `.tex` document, but rather in your `.cls` file.
 
-Bundles: [Algorithms](#algorithms-), [Basics](#basics-), [Code](#code-), [Cover](#cover-), [Figures](#figures-), [Formatting](#formatting-), [Header](#header-), [Heading](#heading-), [License](#license-), [Isbn](#isbn-), [Lists](#lists-), [Math](#math-), [Metadata](#metadata-), [Periodical](#periodical-), [Publish](#publish-), [Refs](#refs-), [Sign](#sign-), [Size](#size-), [Tables](#tables-).
+**Bundles**: \
+[algorithms](#algorithms-), [basics](#basics-), [code](#code-), [cover](#cover-), [figures](#figures-), [formatting](#formatting-), [header](#header-), [heading](#heading-), [license](#license-), [isbn](#isbn-), [lists](#lists-), [math](#math-), [metadata](#metadata-), [periodical](#periodical-), [publish](#publish-), [refs](#refs-), [sign](#sign-), [size](#size-), [tables](#tables-).
 
 ### Algorithms <a name="algorithms"></a>
 Insert algorithms into your document. Simply type your algorithm in plain text and mix in math typesetting whenever you require, between `$`-signs. No need for any escaped `\keywords`.
