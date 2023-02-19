@@ -83,17 +83,11 @@ It is also possible to use the standard classes, like [article](classes/standard
 \usepackage[stdclass, ...]{lix}
 ```
 
-The currently available bundles are (in alphabetical order):
-```latex
-algorithms, basics, code, cover, figures, formatting, header, headings, isbn, license, lists, math, metadata, periodical, publish, refs, sign, size, tables
-```
-Exactly what each bundle provides is specified in the next section.
-
 ---
 ## 2. LiX Syntax <a name="syntax"></a>
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`. In-class commands are not supposed to be used in the main `.tex` document, but rather in your `.cls` file.
 
-Shortcuts: [Algorithms](#algorithms-), [Basics](#basics-), [Code](#code-), [Cover](#cover-), [Figures](#figures-), [Formatting](#formatting-), [Header](#header-), [Heading](#heading-), [License](#license-), [Isbn](#isbn-), [Lists](#lists-), [Math](#math-), [Metadata](#metadata-), [Periodical](#periodical-), [Publish](#publish-), [Refs](#refs-), [Size](#size-), [Tables](#tables-).
+Bundles: [Algorithms](#algorithms-), [Basics](#basics-), [Code](#code-), [Cover](#cover-), [Figures](#figures-), [Formatting](#formatting-), [Header](#header-), [Heading](#heading-), [License](#license-), [Isbn](#isbn-), [Lists](#lists-), [Math](#math-), [Metadata](#metadata-), [Periodical](#periodical-), [Publish](#publish-), [Refs](#refs-), [Sign](#sign-), [Size](#size-), [Tables](#tables-).
 
 ### Algorithms <a name="algorithms"></a>
 Insert algorithms into your document. Simply type your algorithm in plain text and mix in math typesetting whenever you require, between `$`-signs. No need for any escaped `\keywords`.
@@ -293,7 +287,7 @@ In-class commands:
 - `\bibfont{\...}` \
   Apply styling commands to the bibliography text.
 
-### Sign
+### Sign <a name="signature"></a>
 Place signature fields in your document.
 - `sign{name}{designation}` \
   E.g. \sign{Nicklas Vraa}{CEO of the Universe}. To place multiple fields on the same line, don't leave a blank line between command calls.
