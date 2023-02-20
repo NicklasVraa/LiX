@@ -173,6 +173,13 @@
         "body": ["\\publisher{${1:...}}$0"],
         "description": "Specify a publisher."
     },
+    // SIGN: -------------------------------------------------------------------
+    "Add a signature field": {
+        "scope": "latex",
+        "prefix": ["sign"],
+        "body": ["\\sign{${1:name}}{${2:designation}}$0"],
+        "description": "Add a signature field."
+    },
     // SIZE: -------------------------------------------------------------------
     "Set document dimensions": {
         "scope": "latex",
