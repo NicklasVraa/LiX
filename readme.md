@@ -342,7 +342,15 @@ LiX package:
 - Add more types of tables to `\tabs`.
 - Add optional argument to `\toc` for specifying sorting order.
 
-Classes
-- contract.cls
-- presentation.cls
-- handin.cls
+Classes:
+- [x] Research Paper
+- [x] Textbook
+- [x] Formal Contract
+- [x] Newspaper
+- [x] Novel
+- [x] Novella
+- [x] IEEE Journal/transactions
+- [x] Modern IEEE Research Paper
+- [ ] Presentation
+- [ ] Handin
+- [ ] Poem
