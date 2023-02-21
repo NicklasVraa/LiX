@@ -19,7 +19,7 @@
 % FONT OVERRIDES: --------------------------------------------------------------
 \authorfont{\scriptsize}
 \RenewDocumentCommand{\l}{mg}{
-    \lettrine[loversize=0.25]{#1}{\IfValueTF{#2}{#2}{}}
+    \lettrine[lines=1, loversize=-0.3, lraise=-0.1, findent=-2pt]{#1}{\IfValueTF{#2}{#2}{}}
 }
 
 % SIZE, MARGINS: ---------------------------------------------------------------
