@@ -15,6 +15,13 @@
         "body": ["\\add{${1:file.tex}}$0"],
         "description": "Import from separate tex-file."
     },
+    // ANCHOR: -----------------------------------------------------------------
+    "Anchor/align content left, right or center": {
+        "scope": "latex",
+        "prefix": ["anchor", "align"],
+        "body": ["\\anchor{${1|center,left,right|}}{\n$0\n}"],
+        "description": "Anchor/align content left, right or center."
+    },
     // AUTHORS: ----------------------------------------------------------------
     "Add authors": {
         "scope": "latex",

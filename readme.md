@@ -329,18 +329,15 @@ If you are working locally, you need to have all package dependencies installed.
 
 Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
 
-For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, and adding this [snippet file](lix.code-snippets) to your snippets collection, and this [entry](settings.json) to your own `settings.json` file.
+For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, and adding this [snippet file](additional/lix.code-snippets) to your snippets collection, and this [entry](additional/settings.json) to your own `settings.json` file.
 
 
 ---
 ## 4. Plans <a name="plans"></a>
-General:
-- Create syntax highlighter for VSCode using a grammer injection.
-
 LiX package:
-- Further simplify table syntax. Use `|` instead of `&`.
-- Add more types of tables to `\tabs`.
-- Add optional argument to `\toc` for specifying sorting order.
+- [ ] Further simplify table syntax. Use `|` instead of `&`.
+- [ ] Add more types of tables to `\tabs`.
+- [ ] Add optional argument to `\toc` for specifying sorting order.
 
 Classes:
 - [x] Research Paper
@@ -354,3 +351,6 @@ Classes:
 - [ ] Presentation
 - [ ] Handin
 - [ ] Poem
+
+Additional:
+- [ ] Syntax highlighter for VSCode using a grammer injection.
