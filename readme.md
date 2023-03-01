@@ -335,6 +335,7 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 ---
 ## 4. Plans <a name="plans"></a>
 LiX package:
+- [ ] Debug `\authors` command to ensure proper formatting of multiline input.
 - [ ] Further simplify table syntax. Use `|` instead of `&`.
 - [ ] Add more types of tables to `\tabs`.
 - [ ] Add optional argument to `\toc` for specifying sorting order.
@@ -348,6 +349,7 @@ Classes:
 - [x] Novella
 - [x] IEEE Journal/transactions
 - [x] Modern IEEE Research Paper
+- [x] Thesis
 - [ ] Presentation
 - [ ] Handin
 - [ ] Poem

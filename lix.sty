@@ -112,10 +112,16 @@
     }
 
     % Columns ------------------------------------------------------------------
-    \NewDocumentCommand{\cols}{mm}{
-        \begin{multicols}{#1}%
-            #2
-        \end{multicols}
+    \NewDocumentCommand{\cols}{smm}{
+        \IfBooleanTF{#1}{%
+            \begin{multicols*}{#2}%
+                #3
+            \end{multicols*}
+        }{
+            \begin{multicols}{#2}%
+                #3
+            \end{multicols}
+        }
     }
 
     % Language -----------------------------------------------------------------
