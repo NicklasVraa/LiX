@@ -27,6 +27,9 @@
 \bibfont{\footnotesize}
 \authorfont{\normalsize}
 
+% COMMAND OVERRIDES: -----------------------------------------------------------
+\renewcommand{\toc}{\tableofcontents\newpage}
+
 % SIZE, MARGINS: ---------------------------------------------------------------
 \ifnum\numColumns=1
     \geometry{a4paper, top=32mm, left=28mm, right=28mm, bottom=28mm}
@@ -67,8 +70,6 @@
     \hspace*{2.8em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
     \titlerule*[0.5pc]{.}\contentspage%
 }
-
-\renewcommand{\toc}{\tableofcontents\newpage}
 
 % HEADINGS: --------------------------------------------------------------------
 \setcounter{secnumdepth}{3}% Levels of heading that will be numbered.
