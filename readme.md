@@ -345,6 +345,7 @@ LiX package:
 - [ ] Further simplify table syntax. Use `|` instead of `&`.
 - [ ] Add more types of tables to `\tabs`.
 - [ ] Add optional argument to `\toc` for specifying sorting order.
+- [ ] Revision command.
 
 Classes:
 - [x] Research Paper
