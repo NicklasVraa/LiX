@@ -82,7 +82,7 @@ Using this package, I've defined some custom classes, which are ready for use, a
 
 Also check out:
 - [Thesis](classes/custom_classes/thesis.cls) ([tex](classes/custom_classes/thesis_example.tex)\|[pdf](classes/custom_classes/thesis_example.pdf)), which is a mix between the paper and textbook classes, meant for longer academic works.
-- [Poem](classes/custom_classes/poem.cls) ([tex](classes/custom_classes/poem_example.tex)\|[pdf](classes/custom_classes/poem_example.pdf)), which is pretty self explanatory.
+- [Poem](classes/custom_classes/poem.cls) ([tex](classes/custom_classes/poem_example.tex)\|[pdf](classes/custom_classes/poem_example.pdf)), which is self-explanatory.
 
 It is also possible to use the standard classes, like [article](classes/standard_classes/article_example.tex), [report](classes/standard_classes/report_example.tex) and [book](classes/standard_classes/book_example.tex), but still benefits from simplified syntax. Simply import the package and specify the `stdclass` option, along with any bundles, e.g.:
 ```latex
@@ -356,9 +356,9 @@ Classes:
 - [x] IEEE Journal/transactions
 - [x] Modern IEEE Research Paper
 - [x] Thesis
+- [x] Poem
 - [ ] Presentation
 - [ ] Handin
-- [ ] Poem
 
 Additional:
 - [ ] Syntax highlighter for VSCode using a grammer injection.
