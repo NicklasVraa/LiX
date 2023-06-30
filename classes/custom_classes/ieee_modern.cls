@@ -16,8 +16,9 @@
 
 \WarningsOff*
 
-% FONT OVERRIDES: --------------------------------------------------------------
+% OVERRIDES: --------------------------------------------------------------
 \bibfont{\footnotesize}
+\setlength{\parindent}{0pt}
 
 % HEADER: ----------------------------------------------------------------------
 \fancypagestyle{plain}{% First page.
@@ -36,7 +37,11 @@
 }
 \fancypagestyle{fancy}{%
     \renewcommand{\headrulewidth}{0pt}%
-    \fancyhead[L]{\scriptsize\MakeUppercase\theLeftHeader}%
+    \@ifundefined{theLeftHeader}{
+        \fancyhead[L]{}
+    }{%
+        \fancyhead[L]{\scriptsize\MakeUppercase\theLeftHeader}%
+    }
     \fancyhead[R]{\scriptsize\thepage}%
     \fancyfoot{}%
 }
@@ -85,7 +90,14 @@
 % LAYOUT: ----------------------------------------------------------------------
 \wrap{%
     \@ifundefined{theTitle}{}{%
-        \oldtitle{\huge\theTitle}%
+
+
+        \@ifundefined{theSubtitle}{%
+            \oldtitle{\huge\theTitle}%%
+        }{%
+            \oldtitle{\huge\theTitle\\[0.4ex]%
+            \large\theSubtitle}%
+        }
     }
     \@ifundefined{theAuthor}{%
         \oldauthor{}%
