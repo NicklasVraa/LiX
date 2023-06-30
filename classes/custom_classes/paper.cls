@@ -74,7 +74,6 @@
 % LAYOUT: ----------------------------------------------------------------------
 \wrap{%
     \@ifundefined{theTitle}{}{%
-
         \@ifundefined{theSubtitle}{%
             \oldtitle{\LARGE\textbf{\textsc{\theTitle}}}%
         }{%
