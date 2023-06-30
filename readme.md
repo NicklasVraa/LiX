@@ -2,7 +2,7 @@
 
 **News**: The newspaper class is the number one newletter [template](https://www.overleaf.com/latex/templates/tagged/newsletter) on Overleaf as of 04-06-23.
 
-[Lix](lix.sty) is a meta-package which bundles other LaTeX packages and commands. To use these bundles, simply specify them when importing the LiX package, either in your own document-class, or directly in your main document when using a predefined class. The goal of this package is to speed up writing your documents, but also to simplify the process of defining your own class.
+[Lix](lix.sty) is a meta-package which bundles other LaTeX packages and commands. To use these bundles, simply specify them when importing the LiX package, either in your own document-class, or directly in your main document when using a predefined class. The goal of this package is to speed up writing your documents, but also to simplify the process of defining your own class. Separation of layout and content is made much easier.
 
 > LiX aims to be for LaTeX, what LaTeX is for TeX.
 
@@ -14,7 +14,7 @@ Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installat
 While LaTeX is the indisputable king for typesetting publishable documents, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the author's focus back on their content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
 
 **Example**: \
-Say, we want to setup a book with the US letter size and a specific margin, that has cover art with a title, a subtitle, multiple authors, etc, which should be added to the pdf-metadata. We would also like a page containing formal information, such as licensing and an ISBN-code and maybe a barcode. We want to be able to include centered, scaled figures and syntax-highlighted code blocks, both captioned. We would also like the document to be in Danish, because why not.
+Say, we want to setup a book with the US letter size and a specific margin, that has cover art with a title, a subtitle, multiple authors, etc, which should be added to the pdf-metadata. We would also like a page containing formal information, such as licensing and an ISBN-code and maybe a barcode. We want to be able to include centered, scaled figures and syntax-highlighted code blocks, both captioned. We would also like the document to be in Danish, following specific hyphenation rules, etc, because why not.
 
 All that can be achieved by this:
 ```latex
@@ -82,7 +82,7 @@ Using this package, I've defined some custom classes, which are ready for use, a
 
 Also check out:
 - [Thesis](classes/custom_classes/thesis.cls) ([tex](classes/custom_classes/thesis_example.tex)\|[pdf](classes/custom_classes/thesis_example.pdf)), which is a mix between the paper and textbook classes, meant for longer academic works.
-- [Poem](classes/custom_classes/poem.cls) ([tex](classes/custom_classes/poem_example.tex)\|[pdf](classes/custom_classes/poem_example.pdf)), which is pretty self explanatory.
+- [Poem](classes/custom_classes/poem.cls) ([tex](classes/custom_classes/poem_example.tex)\|[pdf](classes/custom_classes/poem_example.pdf)), which is self-explanatory.
 
 It is also possible to use the standard classes, like [article](classes/standard_classes/article_example.tex), [report](classes/standard_classes/report_example.tex) and [book](classes/standard_classes/book_example.tex), but still benefits from simplified syntax. Simply import the package and specify the `stdclass` option, along with any bundles, e.g.:
 ```latex
@@ -345,6 +345,7 @@ LiX package:
 - [ ] Further simplify table syntax. Use `|` instead of `&`.
 - [ ] Add more types of tables to `\tabs`.
 - [ ] Add optional argument to `\toc` for specifying sorting order.
+- [ ] Revision command.
 
 Classes:
 - [x] Research Paper
@@ -356,9 +357,9 @@ Classes:
 - [x] IEEE Journal/transactions
 - [x] Modern IEEE Research Paper
 - [x] Thesis
+- [x] Poem
 - [ ] Presentation
 - [ ] Handin
-- [ ] Poem
 
 Additional:
 - [ ] Syntax highlighter for VSCode using a grammer injection.
