@@ -309,6 +309,7 @@
 % FIGURES: ---------------------------------------------------------------------
 \ifnum\useFigures=1
     \RequirePackage{caption, float, graphicx, svg}
+    \setlength{\belowcaptionskip}{1pt}
 
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
 
@@ -325,8 +326,10 @@
                 \begin{minipage}{\wd0}
                     \usebox0\caption{#4}\label{#1}
                 \end{minipage}
+                \vspace*{-10pt}
             }{%
                 \usebox0\label{#1}
+                \vspace*{-20pt}
             }
         \end{figure}
     }
@@ -780,10 +783,10 @@
     \RequirePackage{caption, inconsolata, listings}
 
     \lstdefinelanguage{alg}{
-        morekeywords={%
-            assert,def,do,else,end,ensure,for,function,%
-            if,in,let,require,return,stop,then,while%
-        }
+        %morekeywords={%
+        %    assert,def,do,else,end,ensure,for,function,%
+        %    if,in,let,require,return,stop,then,while%
+        %}
     }
     \lstdefinestyle{algorithm}{% Block styling.
         basicstyle=\ttfamily\footnotesize,

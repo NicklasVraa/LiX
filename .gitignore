@@ -3,3 +3,4 @@ parsers/
 tests/
 svg-inkscape/
 *.synctex.gz
+*.bbl

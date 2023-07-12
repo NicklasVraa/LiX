@@ -90,8 +90,6 @@
 % LAYOUT: ----------------------------------------------------------------------
 \wrap{%
     \@ifundefined{theTitle}{}{%
-
-
         \@ifundefined{theSubtitle}{%
             \oldtitle{\huge\theTitle}%%
         }{%
