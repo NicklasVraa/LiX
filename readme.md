@@ -14,7 +14,7 @@ Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installat
 While LaTeX is the indisputable king for typesetting publishable documents, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the author's focus back on their content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
 
 **Example**: \
-Say, we want to setup a book with the US letter size and a specific margin, that has cover art with a title, a subtitle, multiple authors, etc, which should be added to the pdf-metadata. We would also like a page containing formal information, such as licensing and an ISBN-code and maybe a barcode. We want to be able to include centered, scaled figures and syntax-highlighted code blocks, both captioned. We would also like the document to be in Danish, following specific hyphenation rules, etc, because why not.
+Say, we want to setup a book with the US letter size and a very specific margin, that has cover art with a title, a subtitle, multiple authors, etc, which should be added to the pdf-metadata. We would also like a page containing formal information, such as licensing and an ISBN-code and maybe a barcode. We want to be able to include centered, scaled figures and syntax-highlighted code blocks, both captioned. We would also like the document to be in Danish, following specific hyphenation rules, etc, because why not.
 
 All that can be achieved by this:
 ```latex
@@ -289,7 +289,8 @@ Reference internal elements and cite external sources from your bibliography.
   Specify and print your bibliography in a given style. \
   Styles: `abbrv`, `acm`, `alpha`, `apalike`, `ieeetr`, `plain`, `siam`, `unsrt` \
   Default to `unsrt` (in order of appearence). \
-  Do not include the `.bib` extension when specifying the path.
+  Do not include the `.bib` extension when specifying the path. \
+  Adding a `*` to the command, i.e. `\bib*{...}` will print the entire given bibliography, regardless of whether entries have been explicitly referenced in your document.
 
 In-class commands:
 - `\bibfont{\...}` \

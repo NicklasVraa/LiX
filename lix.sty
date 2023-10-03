@@ -651,15 +651,18 @@
         \renewcommand{\theBibfont}{#1}
     }
 
-    \NewDocumentCommand{\bib}{mg}{%
-        \IfValueTF{#2}{%
-            \bibliographystyle{#2}
+    \NewDocumentCommand{\bib}{smg}{%
+        \IfBooleanTF{#1}{%
+            \nocite{*}
+        }{}%
+        \IfValueTF{#3}{%
+            \bibliographystyle{#3}
         }{%
             \bibliographystyle{unsrt} % Sort by order of appearance.
         }
         \providecommand{\refname}{}
         \renewcommand\refname{\normalsize{References}}
-        {\theBibfont\bibliography{#1}}
+        {\theBibfont\bibliography{#2}}
     }
 \fi
 
