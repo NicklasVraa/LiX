@@ -123,8 +123,9 @@ A collection of essential commands and aliases.
   Handles six entries. Alias: \author{...}.
 - `\by{name}{email}{path/to/image.png}` \
   Byline, image is optional.
-- `\cols{n}{...}` \
-  Horizonally align content.
+- `\columns{n}{...}` \
+  Horizonally align content. \
+  Use `\begin{columns}{n} ... \end{columns}` if `\columns` doesn't work.
 - `\date{01/01/2023}` \
   The command \today is available.
 - `\idnum{123456789}` \
