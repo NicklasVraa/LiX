@@ -141,6 +141,10 @@ A collection of essential commands and aliases.
   Generate table of contents.
 - `\url{text}{link}` \
   E.g. {label}{actual url}
+- `np` \
+  Simpler alias for `\newpage`.
+- `bl` \
+  Forces a blank line.
 
 In-class commands:
 - `\authorfont{\...}` \
