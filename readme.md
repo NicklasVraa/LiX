@@ -123,9 +123,6 @@ A collection of essential commands and aliases.
   Handles six entries. Alias: \author{...}.
 - `\by{name}{email}{path/to/image.png}` \
   Byline, image is optional.
-- `\columns{n}{...}` \
-  Horizonally align content. \
-  Use `\begin{columns}{n} ... \end{columns}` if `\columns` doesn't work.
 - `\date{01/01/2023}` \
   The command \today is available.
 - `\idnum{123456789}` \
@@ -146,6 +143,9 @@ A collection of essential commands and aliases.
   Simpler alias for `\newpage`.
 - `bl` \
   Forces a blank line.
+- `\cols{n}{...}` \
+  Horizonally align content. \
+  Use `\begin{columns}{n} ... \end{columns}` if `\cols` doesn't work.
 
 In-class commands:
 - `\authorfont{\...}` \
