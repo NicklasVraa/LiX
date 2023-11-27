@@ -1,6 +1,6 @@
 # LiX <!-- omit in toc -->
 
-**News**: The newspaper class is the number one newletter [template](https://www.overleaf.com/latex/templates/tagged/newsletter) on Overleaf as of 04-06-23.
+Check out LiX templates on [Overleaf](https://www.overleaf.com/latex/templates?q=lix).
 
 [Lix](lix.sty) is a meta-package which bundles other LaTeX packages and commands. To use these bundles, simply specify them when importing the LiX package, either in your own document-class, or directly in your main document when using a predefined class. The goal of this package is to speed up writing your documents, but also to simplify the process of defining your own class. Separation of layout and content is made much easier.
 
