@@ -185,12 +185,12 @@ Place figures, i.e. images and illustrations in your document.
 ### Formatting <a name="formatting"></a>
 These command names were chosen to ensure that the readability of the source code is minimally affected.
 - `\b{...}` (b)old text.
-- `\c{...}` \(c\)ode inline.
+- `\c{...}` (c)ode inline.
 - `\i{...}` (i)talic text.
 - `\l{...}` (l)arge letter.
 - `\m{...}` (m)ath inline.
 - `\s{...}` (s)trikeout.
-- `\u{...}` % (u)nderline.
+- `\u{...}` (u)nderline.
 
 ### Header <a name="header"></a>
 Add a strip of text to the top of each page.
