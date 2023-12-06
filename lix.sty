@@ -88,7 +88,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage[indent]{parskip}
-\RequirePackage{hyperref, microtype, multicol, lastpage, xcolor, xparse}
+\RequirePackage{eso-pic, hyperref, microtype, multicol, lastpage, xcolor, xparse}
 
 % ESSENTIAL SETUP: -------------------------------------------------------------
 \hypersetup{hidelinks} % Remove box around links.
@@ -243,6 +243,18 @@
             \begin{flushright}#2\end{flushright}%
         \fi\fi\fi
     }
+
+    \NewDocumentCommand{\watermark}{mg}{%
+        \AddToShipoutPicture{\AtTextCenter{\makebox(0,0)[c]{%
+            \resizebox{\textwidth}{!}{\rotatebox{45}{\textbf{%
+                \IfValueTF{#2}{%
+                    \textcolor{#2}{#1}%
+                }{%
+                    \textcolor{gray!50}{#1}%
+                }%
+            }}}}}%
+        }%
+    }
 \fi
 
 % COVER: -----------------------------------------------------------------------
@@ -250,7 +262,6 @@
     \newcommand{\printOnCover}{1}
 
     \NewDocumentCommand{\cover}{smg}{% Argument 2 is optional.
-        \usepackage{eso-pic}%
         \IfBooleanTF{#1}{%
             \renewcommand{\printOnCover}{0}
         }{}

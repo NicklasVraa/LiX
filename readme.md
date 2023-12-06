@@ -92,7 +92,7 @@ It is also possible to use the standard classes, like [article](classes/standard
 
 ---
 ## 2. LiX Syntax <a name="syntax"></a>
-This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamilier with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`. In-class commands are not supposed to be used in the main `.tex` document, but rather in your `.cls` file.
+This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamiliar with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`. In-class commands are not supposed to be used in the main `.tex` document, but rather in your `.cls` file.
 
 **Bundles**: \
 [algorithms](#algorithms-), [basics](#basics-), [code](#code-), [cover](#cover-), [figures](#figures-), [formatting](#formatting-), [header](#header-), [heading](#heading-), [license](#license-), [isbn](#isbn-), [lists](#lists-), [math](#math-), [metadata](#metadata-), [periodical](#periodical-), [publish](#publish-), [refs](#refs-), [sign](#sign-), [size](#size-), [tables](#tables-).
@@ -145,7 +145,9 @@ A collection of essential commands and aliases.
   Forces a blank line.
 - `\cols{n}{...}` \
   Horizonally align content. \
-  Use `\begin{columns}{n} ... \end{columns}` if `\cols` doesn't work.
+  Use `\begin{columns}{n} ... \end{columns}` if `\cols` doesn't work. \
+- `\watermark{Text}{color!opacity}` \
+  Add text-based watermark, e.g. `DRAFT`, or `CONFIDENTIAL` with an optionally specified color and opacity, e.g. `blue!100`. Defaults to `gray!50`, if not specified.
 
 In-class commands:
 - `\authorfont{\...}` \
@@ -210,7 +212,7 @@ Add an ISBN-code along with a corresponding barcode to your document. Should be 
 - `\isbn{978-0201529838}`
 
 ### License <a name="license"></a>
-Add a license to your document with an automatically generated copyright statement based on the input to the commmand. Should be called before `\begin{document}`.
+Add a license to your document with an automatically generated copyright statement based on the input to the command. Should be called before `\begin{document}`.
 - `\license{type}{modifiers}{version}{holder}` \
   An overview of the possible inputs the command. E.g \license{CC}{by-nc-sa}{3.0}. \
   The Copyright holder is optional.
@@ -239,7 +241,7 @@ Add math-blocks to your document.
     % Regular latex math.
 }
 ```
-The label is required and the math block will be numbered. These are shortcut commmands in the math environment:
+The label is required and the math block will be numbered. These are shortcut commands in the math environment:
 - `\mean{x}` $\rightarrow \overline{x}$
 - `\Re` $\rightarrow \mathbb{R}$ (Real set)
 - `\Im` $\rightarrow \mathbb{I}$ (Imaginary set)
@@ -275,7 +277,7 @@ Add various elements relating to documents that are published in book-form, like
   Add an author's note.
 - `\publisher{Your Publishing Company}` \
   Specify the publisher of your document.
-- `\thank{people or organisations}` \
+- `\thank{people or organizations}` \
   Thank someone in your document.
 
 In-class commands:
@@ -293,7 +295,7 @@ Reference internal elements and cite external sources from your bibliography.
 - `\bib{path/to/refs}{style}` \
   Specify and print your bibliography in a given style. \
   Styles: `abbrv`, `acm`, `alpha`, `apalike`, `ieeetr`, `plain`, `siam`, `unsrt` \
-  Default to `unsrt` (in order of appearence). \
+  Default to `unsrt` (in order of appearance). \
   Do not include the `.bib` extension when specifying the path. \
   Adding a `*` to the command, i.e. `\bib*{...}` will print the entire given bibliography, regardless of whether entries have been explicitly referenced in your document.
 
@@ -368,7 +370,7 @@ Classes:
 - [ ] Handin
 
 Additional:
-- [ ] Syntax highlighter for VSCode using a grammer injection.
+- [ ] Syntax highlighter for VSCode using a grammar injection.
 
 ---
 **LEGAL NOTICE**: This repository, including any and all of its forks and derivatives, may NOT be used in the development or training of any machine learning model of any kind, without the explicit permission of the owner of the original repository.
