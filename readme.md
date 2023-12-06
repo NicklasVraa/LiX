@@ -144,7 +144,7 @@ A collection of essential commands and aliases.
 - `bl` \
   Forces a blank line.
 - `\cols{n}{...}` \
-  Horizonally align content. \
+  Horizontally align content. \
   Use `\begin{columns}{n} ... \end{columns}` if `\cols` doesn't work. \
 - `\watermark{Text}{color!opacity}` \
   Add text-based watermark, e.g. `DRAFT`, or `CONFIDENTIAL` with an optionally specified color and opacity, e.g. `blue!100`. Defaults to `gray!50`, if not specified.
@@ -349,6 +349,7 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 ---
 ## 4. Plans <a name="plans"></a>
 LiX package:
+- [x] Watermark command.
 - [ ] Debug `\authors` command to ensure proper formatting of multiline input.
 - [ ] Further simplify table syntax. Use `|` instead of `&`.
 - [ ] Add more types of tables to `\tabs`.
