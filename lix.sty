@@ -587,10 +587,11 @@
                     \textbf{Publisher}: \thePublisher\par%
                 }
                 \@ifundefined{theEdition}{}{%
-                    \Ordnumspell{\theEdition} edition, published in \theYear.\par%
+                    \Ordnumspell{\theEdition} edition, published in \theYear\par%
                 }
                 \@ifundefined{theThankyou}{}{%
-                    \theThankyou.\par%
+                    \vspace{2mm}%
+                    \theThankyou\par%
                 }
                 \@ifpackageloaded{doclicense}{%
                     \vspace{8mm}%

@@ -98,8 +98,13 @@
     \addFrontCover
     \addBackCover
 
-    \@ifundefined{theTitle}{}{%
-        \maketitle%
-    }
+    \ifnum\printOnCover=1
+        \@ifundefined{theTitle}{}{%
+            \maketitle%
+        }
+    \else
+        \mbox{}\pagestyle{empty}\newpage%
+    \fi
+
     \addFormalPage
 }
