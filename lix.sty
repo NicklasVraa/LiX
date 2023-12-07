@@ -542,9 +542,12 @@
 
 % PUBLISH: ---------------------------------------------------------------------
 \ifnum\usePublish=1
-    \NewDocumentCommand{\dedicate}{mm}{%
+    \NewDocumentCommand{\dedicate}{mg}{%
         \newcommand{\theDedicatee}{#1}%
-        \newcommand{\theMessage}{#2}%
+
+        \IfValueTF{#2}{%
+            \newcommand{\theMessage}{#2}%%
+        }{}
     }
 
     \NewDocumentCommand{\edition}{mm}{%
@@ -568,11 +571,14 @@
     \newcommand{\addFormalPage}{
         \thispagestyle{empty}{%
             \clearpage\raggedright\footnotesize%
-            \begin{minipage}{0.6\linewidth}
+            \begin{minipage}{0.6\linewidth}%
                 \@ifundefined{theDedicatee}{}{%
-                    {\large{\textit{To \theDedicatee}}\par%
-                    \vspace{3mm}%
-                    \normalsize{\textit{\theMessage.}}}%
+                    {\large{\textit{\theDedicatee}}\par%
+
+                    \@ifundefined{theMessage}{}{%
+                        \vspace{3mm}%
+                        \normalsize{\textit{\theMessage}}}%
+                    }
                 }
             \end{minipage}
 
@@ -632,12 +638,16 @@
 \ifnum\useSize=1
     \RequirePackage{fancyhdr, geometry}
 
-    \NewDocumentCommand{\size}{mg}{% Argument 2 is optional.
-        \IfValueTF{#2}{%
-            \geometry{paper= #1paper, #2}
-        }{
-            \geometry{paper= #1paper}
-        }
+    \NewDocumentCommand{\size}{mgg}{% Argument 2 is optional.
+        \ifnum\pdfstrcmp{#1}{custom}=0
+            \geometry{paperwidth=#2, paperheight=#3}%
+        \else
+            \IfValueTF{#2}{%
+                \geometry{paper= #1paper, #2}%
+            }{%
+                \geometry{paper= #1paper}%
+            }
+        \fi
     }
 
     \NewDocumentCommand{\margins}{mggg}{% Arguments 2,3,4 are optional.

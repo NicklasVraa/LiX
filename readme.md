@@ -270,7 +270,7 @@ Add various elements relating to documents that are periodicals, like a newspape
 Add various elements relating to documents that are published in book-form, like a novel. Should be called before `\begin{document}`.
 
 - `\dedicate{dedicatee}{Message}` \
-  Dedicate your document to someone with a message.
+  Dedicate your document to someone, along with an optional message.
 - `\edition{123}{year}` \
   Specify the edition of the document and the year it was published.
 - `\note{Longer author's note}` \
@@ -315,6 +315,8 @@ These are commands for setting up the basic layout characteristics of your docum
   | ISO-A | ISO-B | ISO-C | ANSI | US | Orientation |
   |-------|-------|-------|------|----|-------------|
   | `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape` |
+
+  Alternatively, use `\size{custom}{width}{height}`, e.g. `\size{custom}{6in}{9in}`.
 - `\margins{top}{bot}{left}{right}` \
   Alternatively, the margins may be specified as {all}, {topbot}{leftright}, {top}{bot}{leftright}
 
