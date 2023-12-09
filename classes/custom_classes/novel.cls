@@ -55,23 +55,15 @@
 }
 
 % PAGESTYLES: ------------------------------------------------------------------
-\setlength{\headsep}{5mm}%
+\setlength{\headsep}{3mm}%
 \pagestyle{fancy}%
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}%
 \fancyhead[L]{}%
 \fancyhead[C]{\small\scshape\color{darkgray} \chaptername\ \thechapter\ --\ \leftmark}%
 \fancyhead[R]{}%
-\fancyfoot[C]{\large\scshape\thepage}%
+\fancyfoot[C]{\small\scshape\thepage}%
 \renewcommand{\headrulewidth}{0pt}%
 
-\fancypagestyle{firstPageOfChapter}{%
-    \fancyhead{}%
-    \renewcommand{\headrulewidth}{0pt}%
-}
-\fancypagestyle{metadataPage}{%
-    \fancyhead{}\fancyfoot{}%
-    \renewcommand{\headrulewidth}{0pt}%
-}
 
 % LAYOUT: ----------------------------------------------------------------------
 \wrap{%
@@ -107,4 +99,5 @@
     \fi
 
     \addFormalPage
+    \pagestyle{fancy}
 }
