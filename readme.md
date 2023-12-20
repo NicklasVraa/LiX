@@ -224,15 +224,15 @@ Add a license to your document with an automatically generated copyright stateme
 Add lists to your document. It is possible to nest lists.
 ```latex
 \items{
-¤ Something
-¤ Another thing.
+    \item Something
+    \item Another thing.
     \items*{
-    ¤ Something else
-    ¤ The final thing.
+        \item Something else
+        \item The final thing.
     }
 }
 ```
-`items{...}` will be numbered, and `items*{...}` will be bullet points. The `¤` was chosen because it is never used and it resembles a bullet point.
+`items{...}` will be numbered, and `items*{...}` will be bullet points.
 
 ### Math <a name="math"></a>
 Add math-blocks to your document.
