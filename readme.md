@@ -269,16 +269,18 @@ Add various elements relating to documents that are periodicals, like a newspape
 ### Publish <a name="publish"></a>
 Add various elements relating to documents that are published in book-form, like a novel. Should be called before `\begin{document}`.
 
-- `\dedicate{dedicatee}{Message}` \
+- `\dedicate{dedicatee}{message}` \
   Dedicate your document to someone, along with an optional message.
 - `\edition{123}{year}` \
   Specify the edition of the document and the year it was published.
-- `\note{Longer author's note}` \
+- `\note{longer author's note}` \
   Add an author's note.
-- `\publisher{Your Publishing Company}` \
+- `\publisher{your publishing company}` \
   Specify the publisher of your document.
 - `\thank{people or organizations}` \
   Thank someone in your document.
+- `\epigraph{poem or quotation}` \
+  Add a short paragraph of informal text that suggests the theme of the book.
 
 In-class commands:
 - `\addFormalPage` \

@@ -607,6 +607,27 @@
         }%
         \newpage%
     }
+
+    \NewDocumentCommand{\epigraph}{m}{%
+        \newcommand{\theEpigraph}{#1}%
+    }
+
+    \newcommand{\addEpigraph}{
+        \@ifundefined{theEpigraph}{}{%
+            \thispagestyle{empty}{%
+                \vspace*{\fill}
+                \begin{center}%
+                    \begin{minipage}{.6\textwidth}%
+                        \i{\theEpigraph}%
+                    \end{minipage}%
+                \end{center}%
+                \vspace{3em}%
+                \vspace{\fill}
+            }%
+            \newpage%
+        }
+    }
+
 \fi
 
 % SIGN: ------------------------------------------------------------------

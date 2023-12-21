@@ -64,7 +64,6 @@
 \fancyfoot[C]{\small\scshape\thepage}%
 \renewcommand{\headrulewidth}{0pt}%
 
-
 % LAYOUT: ----------------------------------------------------------------------
 \wrap{%
     \@ifundefined{theTitle}{}{%
@@ -99,5 +98,6 @@
     \fi
 
     \addFormalPage
+    \addEpigraph
     \pagestyle{fancy}
 }
