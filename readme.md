@@ -78,11 +78,12 @@ Using this package, I've defined some custom classes, which are ready for use, a
 | [News](classes/custom_classes/news.cls) ([tex](classes/custom_classes/news_example.tex)\|[pdf](classes/custom_classes/news_example.pdf)) is designed as a classic newspaper akin to the The New York Times. | ![p1](screenshots/news/p1.png) | ![p2](screenshots/news/p2.png) |
 | [IEEE](classes/popular_classes/ieee.cls) ([tex](classes/popular_classes/ieee_example.tex)\|[pdf](classes/popular_classes/ieee_example.pdf)) implements the IEEE journal and transactions template, but using LiX. | ![p1](screenshots/ieee/p1.png) | ![p2](screenshots/ieee/p2.png) |
 | [Contract](classes/custom_classes/contract.cls) ([tex](classes/custom_classes/contract_example.tex)\|[pdf](classes/custom_classes/contract_example.pdf)) is a simple template for a formal contract between an arbitrary number of parties. | ![p1](screenshots/contract/p1.png) |
+| [Poem](classes/custom_classes/poem.cls) ([tex](classes/custom_classes/poem_example.tex)\|[pdf](classes/custom_classes/poem_example.pdf)) is a poem template that features a softer font and can optionally be decorated. | ![p1](screenshots/poem/p1.png) |
 
 
 Also check out:
 - [Thesis](classes/custom_classes/thesis.cls) ([tex](classes/custom_classes/thesis_example.tex)\|[pdf](classes/custom_classes/thesis_example.pdf)), which is a mix between the paper and textbook classes, meant for longer academic works.
-- [Poem](classes/custom_classes/poem.cls) ([tex](classes/custom_classes/poem_example.tex)\|[pdf](classes/custom_classes/poem_example.pdf)), which is self-explanatory.
+
 
 It is also possible to use the standard classes, like [article](classes/standard_classes/article_example.tex), [report](classes/standard_classes/report_example.tex) and [book](classes/standard_classes/book_example.tex), but still benefits from simplified syntax. Simply import the package and specify the `stdclass` option, along with any bundles, e.g.:
 ```latex
@@ -287,7 +288,7 @@ In-class commands:
   The page after the front-cover of a book, which contain formalities.
 
 ### Ornaments <a name="ornaments"></a>
-Add ornamental elements all pages of the document. Browse the types of ornaments are available in the documentation for the `pgfornaments` package.
+Add ornamental elements all pages of the document. Browse the types of ornaments are available in the documentation for the `pgfornaments` package. Check out the [poem](classes/custom_classes/poem_example.pdf) class for a visual example.
 - `\corners{ornament_id}{color!opacity}{width}{padding}` \
   Add ornaments to all four corners of all pages. Only the ID is mandatory.
 - `\borders{ornament_id}{color!opacity}{width}{padding}` \
