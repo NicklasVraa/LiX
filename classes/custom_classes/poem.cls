@@ -51,5 +51,7 @@
     }
 
     \addMetadata
+    \addCorners
+    \addBorders
     \centering
 }

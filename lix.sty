@@ -263,7 +263,7 @@
 \ifnum\useCover=1
     \newcommand{\printOnCover}{1}
 
-    \NewDocumentCommand{\cover}{smg}{% Argument 2 is optional.
+    \NewDocumentCommand{\cover}{smg}{%
         \IfBooleanTF{#1}{%
             \renewcommand{\printOnCover}{0}
         }{}
@@ -925,37 +925,50 @@
     \RequirePackage{pgfornament}
 
     \NewDocumentCommand{\corners}{mggg}{%
+        \newcommand{\theCornerID}{#1}
         \newcommand{\theCornerColor}{\IfValueTF{#2}{#2}{black!100}}
         \newcommand{\theCornerWidth}{\IfValueTF{#3}{#3}{3cm}}
         \newcommand{\theCornerPad}{\IfValueTF{#4}{#4}{0cm}}
-        \AddToShipoutPictureBG{%
-            \begin{tikzpicture}[overlay, color=\theCornerColor]
-                \node[shift={(\theCornerPad,-\theCornerPad)}, anchor=north west] at (current page.north west){%
-                    \pgfornament[width=\theCornerWidth]{#1}};
-                \node[shift={(-\theCornerPad,-\theCornerPad)}, anchor=north east] at (current page.north east){%
-                    \pgfornament[width=\theCornerWidth, symmetry=v]{#1}};
-                \node[shift={(\theCornerPad,\theCornerPad)}, anchor=south west] at (current page.south west){%
-                    \pgfornament[width=\theCornerWidth, symmetry=h]{#1}};
-                \node[shift={(-\theCornerPad,\theCornerPad)}, anchor=south east] at (current page.south east){%
-                    \pgfornament[width=\theCornerWidth, symmetry=c]{#1}};
-            \end{tikzpicture}%
-        }
     }
+
     \NewDocumentCommand{\borders}{mggg}{%
+        \newcommand{\theBorderID}{#1}
         \newcommand{\theBorderColor}{\IfValueTF{#2}{#2}{black!100}}
         \newcommand{\theBorderWidth}{\IfValueTF{#3}{#3}{3cm}}
         \newcommand{\theBorderPad}{\IfValueTF{#4}{#4}{0cm}}
-        \AddToShipoutPictureBG{%
-            \begin{tikzpicture}[overlay, color=\theBorderColor]
-                \node[shift={(0,\theBorderPad)}, anchor=south] at (current page.south){%
-                    \pgfornament[width=\theBorderWidth]{#1}};
-                \node[shift={(0,-\theBorderPad)}, anchor=north] at (current page.north){%
-                    \pgfornament[width=\theBorderWidth, symmetry=h]{#1}};
-                \node[shift={(\theBorderPad,0)}, anchor=north, rotate=90] at (current page.west){%
-                    \pgfornament[width=\theBorderWidth, symmetry=h]{#1}};
-                \node[shift={(-\theBorderPad,0)}, anchor=south, rotate=90] at (current page.east){%
-                    \pgfornament[width=\theBorderWidth, symmetry=h]{#1}};
-            \end{tikzpicture}%
+    }
+
+    \newcommand{\addCorners}{
+        \@ifundefined{theCornerID}{}{
+            \AddToShipoutPictureBG{%
+                \begin{tikzpicture}[overlay, color=\theCornerColor]
+                    \node[shift={(\theCornerPad,-\theCornerPad)}, anchor=north west] at (current page.north west){%
+                        \pgfornament[width=\theCornerWidth]{\theCornerID}};
+                    \node[shift={(-\theCornerPad,-\theCornerPad)}, anchor=north east] at (current page.north east){%
+                        \pgfornament[width=\theCornerWidth, symmetry=v]{\theCornerID}};
+                    \node[shift={(\theCornerPad,\theCornerPad)}, anchor=south west] at (current page.south west){%
+                        \pgfornament[width=\theCornerWidth, symmetry=h]{\theCornerID}};
+                    \node[shift={(-\theCornerPad,\theCornerPad)}, anchor=south east] at (current page.south east){%
+                        \pgfornament[width=\theCornerWidth, symmetry=c]{\theCornerID}};
+                \end{tikzpicture}%
+            }
+        }
+    }
+
+    \newcommand{\addBorders}{
+        \@ifundefined{theBorderID}{}{
+            \AddToShipoutPictureBG{%
+                \begin{tikzpicture}[overlay, color=\theBorderColor]
+                    \node[shift={(0,\theBorderPad)}, anchor=south] at (current page.south){%
+                        \pgfornament[width=\theBorderWidth]{\theBorderID}};
+                    \node[shift={(0,-\theBorderPad)}, anchor=north] at (current page.north){%
+                        \pgfornament[width=\theBorderWidth, symmetry=h]{\theBorderID}};
+                    \node[shift={(\theBorderPad,0)}, anchor=north, rotate=90] at (current page.west){%
+                        \pgfornament[width=\theBorderWidth, symmetry=h]{\theBorderID}};
+                    \node[shift={(-\theBorderPad,0)}, anchor=south, rotate=90] at (current page.east){%
+                        \pgfornament[width=\theBorderWidth, symmetry=h]{\theBorderID}};
+                \end{tikzpicture}%
+            }
         }
     }
 \fi

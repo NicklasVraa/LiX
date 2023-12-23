@@ -98,6 +98,8 @@
     \fi
 
     \addFormalPage
+    \addCorners
+    \addBorders
     \addEpigraph
     \pagestyle{fancy}
 }
