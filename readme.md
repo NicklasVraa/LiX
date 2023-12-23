@@ -95,7 +95,7 @@ It is also possible to use the standard classes, like [article](classes/standard
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamiliar with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`. In-class commands are not supposed to be used in the main `.tex` document, but rather in your `.cls` file.
 
 **Bundles**: \
-[algorithms](#algorithms-), [basics](#basics-), [code](#code-), [cover](#cover-), [figures](#figures-), [formatting](#formatting-), [header](#header-), [heading](#heading-), [license](#license-), [isbn](#isbn-), [lists](#lists-), [math](#math-), [metadata](#metadata-), [periodical](#periodical-), [publish](#publish-), [refs](#refs-), [sign](#sign-), [size](#size-), [tables](#tables-).
+[algorithms](#algorithms-), [basics](#basics-), [code](#code-), [cover](#cover-), [figures](#figures-), [formatting](#formatting-), [header](#header-), [heading](#heading-), [license](#license-), [isbn](#isbn-), [lists](#lists-), [math](#math-), [metadata](#metadata-), [periodical](#periodical-), [publish](#publish-), [ornaments](#ornaments-), [refs](#refs-), [sign](#sign-), [size](#size-), [tables](#tables-).
 
 ### Algorithms <a name="algorithms"></a>
 Insert algorithms into your document. Simply type your algorithm in plain text and mix in math typesetting whenever you require, between `$`-signs. No need for any escaped `\keywords`.
@@ -286,6 +286,13 @@ In-class commands:
 - `\addFormalPage` \
   The page after the front-cover of a book, which contain formalities.
 
+### Ornaments <a name="ornaments"></a>
+Add ornamental elements all pages of the document. Browse the types of ornaments are available in the documentation for the `pgfornaments` package.
+- `\corners{ornament_id}{color!opacity}{width}{padding}` \
+  Add ornaments to all four corners of all pages. Only the ID is mandatory.
+- `\borders{ornament_id}{color!opacity}{width}{padding}` \
+  Add ornaments to all four sides of all pages. Only the ID is mandatory.
+
 ### Refs <a name="refs"></a>
 Reference internal elements and cite external sources from your bibliography.
 - `\r{label}` \
@@ -343,7 +350,7 @@ The LiX package and all classes work out-of-the-box with [Overleaf](https://www.
 
 If you are working locally, you need to have all package dependencies installed. Depending on which bundles are imported and what class is in use, LiX may import the following packages:
 
-> [amsfonts](https://ctan.org/pkg/amsfonts), [amsmath](https://ctan.org/pkg/amsmath), [amssymb](https://ctan.org/pkg/amsfonts), [babel](https://ctan.org/pkg/babel), [caption](https://ctan.org/pkg/caption), [cite](https://ctan.org/pkg/cite), [doclicense](https://ctan.org/pkg/doclicense), [ebgaramond](https://ctan.org/pkg/ebgaramond), [enumitem](https://ctan.org/pkg/enumitem), [esint](https://ctan.org/pkg/esint), [eso-pic](https://ctan.org/pkg/eso-pic),, [fancyhdr](https://ctan.org/pkg/fancyhdr), [float](https://ctan.org/pkg/float), [fontenc](https://ctan.org/pkg/fontenc), [geometry](https://ctan.org/pkg/geometry), [gothic](https://ctan.org/pkg/gothic), [graphicx](https://ctan.org/pkg/graphics), [GS1](https://ctan.org/pkg/gs1), [hyperref](https://ctan.org/pkg/hyperref), [inconsolata](https://ctan.org/pkg/inconsolata), [inputenc](https://ctan.org/pkg/inputenc), [lastpage](https://ctan.org/pkg/lastpage), [lettrine](https://ctan.org/pkg/lettrine), [lipsum](https://ctan.org/pkg/lipsum), [listings](https://ctan.org/pkg/listings), [microtype](https://ctan.org/pkg/microtype), [multicol](https://ctan.org/pkg/multicol), [numspell](https://ctan.org/pkg/numspell), [parskip](https://ctan.org/pkg/parskip), [setspace](https://ctan.org/pkg/setspace), [silence](https://ctan.org/pkg/silence), [siunitx](https://ctan.org/pkg/siunitx), [svg](https://ctan.org/pkg/svg), [tabularray](https://ctan.org/pkg/tabularray), [titlesec](https://ctan.org/pkg/titlesec), [titletoc](https://ctan.org/pkg/titletoc), [titling](https://ctan.org/pkg/titling), [tocbibind](https://ctan.org/pkg/tocbibind), [ulem](https://ctan.org/pkg/ulem), [xcolor](https://ctan.org/pkg/xcolor), [xparse](https://ctan.org/pkg/xparse), [yfonts](https://ctan.org/pkg/yfonts)
+> [amsfonts](https://ctan.org/pkg/amsfonts), [amsmath](https://ctan.org/pkg/amsmath), [amssymb](https://ctan.org/pkg/amsfonts), [babel](https://ctan.org/pkg/babel), [caption](https://ctan.org/pkg/caption), [cite](https://ctan.org/pkg/cite), [doclicense](https://ctan.org/pkg/doclicense), [ebgaramond](https://ctan.org/pkg/ebgaramond), [enumitem](https://ctan.org/pkg/enumitem), [esint](https://ctan.org/pkg/esint), [eso-pic](https://ctan.org/pkg/eso-pic),, [fancyhdr](https://ctan.org/pkg/fancyhdr), [float](https://ctan.org/pkg/float), [fontenc](https://ctan.org/pkg/fontenc), [geometry](https://ctan.org/pkg/geometry), [gothic](https://ctan.org/pkg/gothic), [graphicx](https://ctan.org/pkg/graphics), [GS1](https://ctan.org/pkg/gs1), [hyperref](https://ctan.org/pkg/hyperref), [inconsolata](https://ctan.org/pkg/inconsolata), [inputenc](https://ctan.org/pkg/inputenc), [lastpage](https://ctan.org/pkg/lastpage), [lettrine](https://ctan.org/pkg/lettrine), [lipsum](https://ctan.org/pkg/lipsum), [listings](https://ctan.org/pkg/listings), [microtype](https://ctan.org/pkg/microtype), [multicol](https://ctan.org/pkg/multicol), [numspell](https://ctan.org/pkg/numspell), [parskip](https://ctan.org/pkg/parskip), [pgfornaments](https://ctan.org/pkg/pgfornament), [setspace](https://ctan.org/pkg/setspace), [silence](https://ctan.org/pkg/silence), [siunitx](https://ctan.org/pkg/siunitx), [svg](https://ctan.org/pkg/svg), [tabularray](https://ctan.org/pkg/tabularray), [titlesec](https://ctan.org/pkg/titlesec), [titletoc](https://ctan.org/pkg/titletoc), [titling](https://ctan.org/pkg/titling), [tocbibind](https://ctan.org/pkg/tocbibind), [ulem](https://ctan.org/pkg/ulem), [xcolor](https://ctan.org/pkg/xcolor), [xparse](https://ctan.org/pkg/xparse), [yfonts](https://ctan.org/pkg/yfonts)
 
 Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-latex dependencies. If you have svg's included in your document, the compiler has to be run with the argument: `--shell-escape`.
 
@@ -354,6 +361,7 @@ For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James
 ## 4. Plans <a name="plans"></a>
 LiX package:
 - [x] Watermark command.
+- [x] Add ornamental commands.
 - [ ] Debug `\authors` command to ensure proper formatting of multiline input.
 - [ ] Further simplify table syntax. Use `|` instead of `&`.
 - [ ] Add more types of tables to `\tabs`.

@@ -31,6 +31,7 @@
 \newcommand{\useSign}{0}
 \newcommand{\useSize}{0}
 \newcommand{\useTables}{0}
+\newcommand{\useOrnaments}{0}
 
 \newcommand{\useStdClass}{0} % If using a class not created using LiX.
 
@@ -55,6 +56,7 @@
 \DeclareOption{sign}{\renewcommand{\useSign}{1}}
 \DeclareOption{size}{\renewcommand{\useSize}{1}}
 \DeclareOption{tables}{\renewcommand{\useTables}{1}}
+\DeclareOption{ornaments}{\renewcommand{\useOrnaments}{1}}
 
 \DeclareOption{stdclass}{\renewcommand{\useStdClass}{1}}
 
@@ -916,5 +918,44 @@
             \oldabstract \theAbstract%
         }
         \addMetadata
+    }
+\fi
+
+\ifnum\useOrnaments=1
+    \RequirePackage{pgfornament}
+
+    \NewDocumentCommand{\corners}{mggg}{%
+        \newcommand{\theCornerColor}{\IfValueTF{#2}{#2}{black!100}}
+        \newcommand{\theCornerWidth}{\IfValueTF{#3}{#3}{3cm}}
+        \newcommand{\theCornerPad}{\IfValueTF{#4}{#4}{0cm}}
+        \AddToShipoutPictureBG{%
+            \begin{tikzpicture}[overlay, color=\theCornerColor]
+                \node[shift={(\theCornerPad,-\theCornerPad)}, anchor=north west] at (current page.north west){%
+                    \pgfornament[width=\theCornerWidth]{#1}};
+                \node[shift={(-\theCornerPad,-\theCornerPad)}, anchor=north east] at (current page.north east){%
+                    \pgfornament[width=\theCornerWidth, symmetry=v]{#1}};
+                \node[shift={(\theCornerPad,\theCornerPad)}, anchor=south west] at (current page.south west){%
+                    \pgfornament[width=\theCornerWidth, symmetry=h]{#1}};
+                \node[shift={(-\theCornerPad,\theCornerPad)}, anchor=south east] at (current page.south east){%
+                    \pgfornament[width=\theCornerWidth, symmetry=c]{#1}};
+            \end{tikzpicture}%
+        }
+    }
+    \NewDocumentCommand{\borders}{mggg}{%
+        \newcommand{\theBorderColor}{\IfValueTF{#2}{#2}{black!100}}
+        \newcommand{\theBorderWidth}{\IfValueTF{#3}{#3}{3cm}}
+        \newcommand{\theBorderPad}{\IfValueTF{#4}{#4}{0cm}}
+        \AddToShipoutPictureBG{%
+            \begin{tikzpicture}[overlay, color=\theBorderColor]
+                \node[shift={(0,\theBorderPad)}, anchor=south] at (current page.south){%
+                    \pgfornament[width=\theBorderWidth]{#1}};
+                \node[shift={(0,-\theBorderPad)}, anchor=north] at (current page.north){%
+                    \pgfornament[width=\theBorderWidth, symmetry=h]{#1}};
+                \node[shift={(\theBorderPad,0)}, anchor=north, rotate=90] at (current page.west){%
+                    \pgfornament[width=\theBorderWidth, symmetry=h]{#1}};
+                \node[shift={(-\theBorderPad,0)}, anchor=south, rotate=90] at (current page.east){%
+                    \pgfornament[width=\theBorderWidth, symmetry=h]{#1}};
+            \end{tikzpicture}%
+        }
     }
 \fi
