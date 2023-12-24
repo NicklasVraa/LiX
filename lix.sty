@@ -90,7 +90,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage[indent]{parskip}
-\RequirePackage{eso-pic, hyperref, microtype, multicol, lastpage, xcolor, xparse}
+\RequirePackage{eso-pic, hyperref, microtype, multicol, lastpage, transparent, xcolor, xparse}
 
 % ESSENTIAL SETUP: -------------------------------------------------------------
 \hypersetup{hidelinks} % Remove box around links.
@@ -252,9 +252,21 @@
                 \IfValueTF{#2}{%
                     \textcolor{#2}{#1}%
                 }{%
-                    \textcolor{gray!50}{#1}%
+                    \textcolor{black!10}{#1}%
                 }%
             }}}}}%
+        }%
+    }
+
+    \NewDocumentCommand{\shield}{mg}{%
+        \AddToShipoutPictureFG{\AtTextCenter{\makebox(0,0)[c]{%
+            \resizebox{\textwidth}{\textheight}{%
+                \IfValueTF{#2}{%
+                    \transparent{#2}#1%
+                }{%
+                    \transparent{0}#1%
+                }%
+            }}}%
         }%
     }
 \fi

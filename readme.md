@@ -149,6 +149,8 @@ A collection of essential commands and aliases.
   Use `\begin{columns}{n} ... \end{columns}` if `\cols` doesn't work. \
 - `\watermark{Text}{color!opacity}` \
   Add text-based watermark, e.g. `DRAFT`, or `CONFIDENTIAL` with an optionally specified color and opacity, e.g. `blue!100`. Defaults to `gray!50`, if not specified.
+- `\shield{Text}{opacity}` \
+  Overlays every page with an invisible wall of text to prevent easy extraction of text, i.e. copy-pasting. Opacity is optional and between 0 (invisible) and 1 (black). E.g. `\shield{COPYRIGHTED, NICE TRY}`.
 
 In-class commands:
 - `\authorfont{\...}` \
