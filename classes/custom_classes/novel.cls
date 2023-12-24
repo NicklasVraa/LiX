@@ -18,7 +18,8 @@
 
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[basics, cover, figures, lists, formatting, header, headings, isbn, license, metadata, publish, ornaments, refs, size]{lix}
-\RequirePackage{ebgaramond, setspace, silence, titlesec, titletoc, titling}
+\RequirePackage[lining]{ebgaramond}
+\RequirePackage{setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*
 
