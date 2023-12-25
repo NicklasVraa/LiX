@@ -13,25 +13,26 @@ Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installat
 **Motivation**: \
 While LaTeX is the indisputable king for typesetting publishable documents, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the author's focus back on their content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
 
-**Example**: \
-Say, we want to setup a book with the US letter size and a very specific margin, that has cover art with a title, a subtitle, multiple authors, etc, which should be added to the pdf-metadata. We would also like a page containing formal information, such as licensing and an ISBN-code and maybe a barcode. We want to be able to include centered, scaled figures and syntax-highlighted code blocks, both captioned. We would also like the document to be in Danish, following specific hyphenation rules, etc, because why not.
+<details><summary><b>Code Example</b></summary>
+Say, we want to setup a book with the US letter size and a very specific margin, It should have both front and back cover art with a title, a subtitle, multiple authors, etc, which should be added to the pdf-metadata. We would also like a page containing formal information, such as licensing and an ISBN-code and maybe a barcode. We want to be able to include centered, scaled figures and syntax-highlighted code blocks, both captioned. We would also like the document to be in Danish, following specific hyphenation rules, etc.
 
 All that can be achieved by this:
 ```latex
 \documentclass{book}
 \usepackage[stdclass, all]{lix}
 
-\lang     {danish}
-\size     {letter}
-\cover    {path/to/front.pdf}{path/to/back.pdf}
-\margins  {22mm}{20mm}{21mm}{40mm}
-\title    {A Cool Title}
-\subtitle {And a Cool Subtitle}
-\authors  {Nicklas Vraa}{Another Guy}{And Another}
-\date     {01/01/2023}
-\isbn     {123456789}
-\license  {CC}{nc}{3.0}{My Company}
-\edition  {3}{2023}
+\lang      {danish}
+\size      {letter}
+\cover     {path/to/front.pdf}{path/to/back.pdf}
+\margins   {22mm}{20mm}{21mm}{40mm}
+\title     {A Cool Title}
+\subtitle  {And a Cool Subtitle}
+\authors   {Nicklas Vraa}{Another Guy}{And Another}
+\date      {01/01/2023}
+\isbn      {123456789}
+\license   {CC}{nc}{3.0}{My Company}
+\edition   {3}{2023}
+\watermark {DRAFT}{black!10}
 
 \begin{document}
 % ... No need for \maketitle
@@ -54,17 +55,22 @@ All that can be achieved by this:
 ```
 Imagine the LaTeX code, you would have to write to achieve the same - even when using appropriate packages. The layout of each element should be customized by defining a custom class that builds on top of one of the standard classes. Examples are shown later.
 
-**Advantages**:
+</details>
+
+<details><summary><b>Advantages and Disadvantages</b></summary>
+
+Advantages:
 - The source code of a document becomes as easy to read and understand as Markdown and is drastically shorter.
 - The style of a document is completely separated from its content, and keeping a consistent style is simpler.
 - Configuring your document is simpler, because you don't interface directly with individual packages, which may employ different syntax.
 - Creating your own class, which implements a custom look-and-feel, is much easier.
 
-**Disadvantages**:
+Disadvantages:
 - If one wants to change their document into a class that has not been defined using this package, there may be difficulties when compiling. To address this, I've recreated the `IEEEtran` class, as a reference for how to reimplement an existing look using LiX.
 - You do not have the extreme fine-grained control over your custom class, as you would with pure LaTeX.
 - The command names are not as descriptive as standard LaTeX. Minimal impact on source-code readability was prioritized.
 
+</details>
 
 ---
 ## 1. Class Examples <a name="examples"></a>
@@ -140,10 +146,6 @@ A collection of essential commands and aliases.
   Generate table of contents.
 - `\url{text}{link}` \
   E.g. {label}{actual url}
-- `np` \
-  Simpler alias for `\newpage`.
-- `bl` \
-  Forces a blank line.
 - `\cols{n}{...}` \
   Horizontally align content. \
   Use `\begin{columns}{n} ... \end{columns}` if `\cols` doesn't work. \
@@ -151,6 +153,8 @@ A collection of essential commands and aliases.
   Add text-based watermark, e.g. `DRAFT`, or `CONFIDENTIAL` with an optionally specified color and opacity, e.g. `blue!100`. Defaults to `gray!50`, if not specified.
 - `\shield{Text}{opacity}` \
   Overlays every page with an invisible wall of text to prevent easy extraction of text, i.e. copy-pasting. Opacity is optional and between 0 (invisible) and 1 (black). E.g. `\shield{COPYRIGHTED, NICE TRY}`.
+- `\np` and `\bl` \
+  Simpler alias for `\newpage` and forces a blank line.
 
 In-class commands:
 - `\authorfont{\...}` \
