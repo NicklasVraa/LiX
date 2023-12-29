@@ -14,7 +14,7 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\relax
-\LoadClass{report}
+\LoadClass[twoside, openany]{report}
 
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[basics, code, cover, figures, formatting, header, headings, isbn, license, lists, math, metadata, publish, refs, size, tables]{lix}
