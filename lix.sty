@@ -418,11 +418,28 @@
             }
         }
     }{% If class is book-like.
+        \RequirePackage{changepage}
+
+        \newcommand{\addblank}{}
+        \NewDocumentCommand{\start}{m}{%
+            \ifnum\pdfstrcmp{#1}{odd}=0
+                \renewcommand{\addblank}{%
+                    \checkoddpage\ifoddpage\newpage\clearpage\null\thispagestyle{empty}\fi%
+                }
+            \else\ifnum\pdfstrcmp{#1}{even}=0
+                \renewcommand{\addblank}{%
+                    \checkoddpage\ifoddpage\else\newpage\clearpage\null\thispagestyle{empty}\fi%
+                }
+            \fi\fi
+        }
+
         \NewDocumentCommand{\h}{sm}{%
             \IfBooleanTF{#1}{%
+                \addblank%
                 \chapter*{#2}\label{#2}%
                 \addcontentsline{toc}{chapter}{#2}%
             }{%
+                \addblank%
                 \chapter{#2}\label{#2}%
             }
         }
@@ -677,15 +694,15 @@
 
     \NewDocumentCommand{\margins}{mggg}{% Arguments 2,3,4 are optional.
         \IfValueTF{#4}{% If four arguments are given.
-            \geometry{top=#1, bottom=#2, left=#3, right=#4}%
+            \geometry{top=#1, bottom=#2, inner=#3, outer=#4}%
         }{%
             \IfValueTF{#3}{% If three arguments are given.
-                \geometry{top=#1, bottom=#1, left=#2, right=#3}%
+                \geometry{top=#1, bottom=#1, inner=#2, outer=#3}%
             }{%
                 \IfValueTF{#2}{% If two arguments are given.
-                    \geometry{top=#1, bottom=#1, left=#2, right=#2}%
+                    \geometry{top=#1, bottom=#1, inner=#2, outer=#2}%
                 }{% If one argument is given.
-                    \geometry{top=#1, bottom=#1, left=#1, right=#1}%
+                    \geometry{top=#1, bottom=#1, inner=#1, outer=#1}%
                 }
             }
         }

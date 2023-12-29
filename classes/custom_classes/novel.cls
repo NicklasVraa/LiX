@@ -14,7 +14,7 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[12pt,oneside]{book}
+\LoadClass[12pt,twoside,openany]{book} % Overriden by in-document commands.
 
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[basics, cover, figures, lists, formatting, header, headings, isbn, license, metadata, publish, ornaments, refs, size]{lix}

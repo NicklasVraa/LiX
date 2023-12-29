@@ -214,6 +214,9 @@ Add headings to the document.
 
 Top-level headings will act like chapters in book-like classes, but as sections in article-like classes. Headings will be numbered, unless a `*` is added to the command, e.g. `\h*{...}`. The regular commands, like `\chapter` and `\section` can still be used along with their starred counterparts.
 
+- `\start{odd/even}` \
+  Applicable to book-like classes only. It will instruct the compiler to add blank pages such that chapters always start on odd or even pages. In western bookbinding, it is traditional to have chapters start on odd (recto) pages. If this command is not used, no blank pages will be added.
+
 ### ISBN <a name="isbn"></a>
 Add an ISBN-code along with a corresponding barcode to your document. Should be called before `\begin{document}`.
 - `\isbn{978-0201529838}`
@@ -333,8 +336,8 @@ These are commands for setting up the basic layout characteristics of your docum
   | `a0` <br> `a1` <br> ... <br> `a6` | `b0` <br> `b1` <br> ... <br> `b6` | `c0` <br> `c1` <br> ... <br> `c6` | `ansia` <br> `ansib` <br> ... <br> `ansie` | `letter` <br> `executive` <br> `legal` | `portrait` <br> `landscape` |
 
   Alternatively, use `\size{custom}{width}{height}`, e.g. `\size{custom}{6in}{9in}`.
-- `\margins{top}{bot}{left}{right}` \
-  Alternatively, the margins may be specified as {all}, {topbot}{leftright}, {top}{bot}{leftright}
+- `\margins{top}{bot}{inner}{outer}` \
+  Alternatively, the margins may be specified as `{all}`, `{topbot}{innerouter}`, `{top}{bot}{innerouter}`. When doing double-sided printing, the inner margin is often wider than the outer margin to allow for space to bind pages together. For single-sided printing and digital-only documents, the inner and outer margins are almost always equal.
 
 ### Tables <a name="tables"></a>
 There are three types. These three tables will cover 90% of your table-needs, but you have access to the full power of the tabularray package for more complicated tables. The `&` symbol separates items and `\\` separates rows. Caption is optional.
