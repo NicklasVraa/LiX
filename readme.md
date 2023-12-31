@@ -8,7 +8,7 @@ Check out LiX templates on [Overleaf](https://www.overleaf.com/latex/templates?q
 
 Disclaimer: This project breaks conventions and practices, which are considered to be "standard" by the LaTeX community. If you want to learn "pure" LaTeX, this is not the project for you. However, for those of you that want to get stuff done as painlessly as possible: enjoy.
 
-Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installation) | [Plans](#plans)
+Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installation) | [Scripts](#scripts) | [Plans](#plans)
 
 **Motivation**: \
 While LaTeX is the indisputable king for typesetting publishable documents, it does have a steep learning curve and is very syntax-heavy. To ease the burden of typesetting and bring the author's focus back on their content, the syntax should be as light as possible. Defining your own look-and-feel is even more inaccessible, if one is not familiar with basic programming -  hence this humble project, which attempts to address these issues.
