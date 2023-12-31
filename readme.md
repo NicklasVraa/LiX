@@ -366,9 +366,22 @@ Check up on the [svg](https://ctan.org/pkg/svg?lang=en) package, which has non-l
 
 For VSCode, I recommend installing the [LaTeX Workshop](https://github.com/James-Yu/LaTeX-Workshop) extension, and adding this [snippet file](additional/lix.code-snippets) to your snippets collection, and this [entry](additional/settings.json) to your own `settings.json` file.
 
+---
+## Scripts <a name="scripts"></a>
+The following are bash commands that call scripts which are particularly useful for self-publishing and book production.
+
+Encrypt and protect your PDF with a user- and owner-password for more secure distribution. Supply passwords and paths to source and destination. Requires `qpdf`.
+```bash
+qpdf --encrypt <userpass> <ownerpass> 256 --modify=none --extract=n --print=none -- <source>.pdf <dest>.pdf
+```
+
+Prepare your PDF for book-style printing by performing automatic imposition. Supply the number of pages per signature `N`, the sheet dimensions, and paths to source and destination. Requires `pdfjam`.
+```bash
+pdfjam --nup 2x1 --signature <N> --frame false --twoside --trim '0cm 0cm 0cm 0cm' --clip true --quiet --keepinfo --papersize '{<height>,<2*width>}' --tidy --landscape --outfile <dest>.pdf <source>.pdf
+```
 
 ---
-## 4. Plans <a name="plans"></a>
+## 5. Plans <a name="plans"></a>
 LiX package:
 - [x] Watermark command.
 - [x] Add ornamental commands.
