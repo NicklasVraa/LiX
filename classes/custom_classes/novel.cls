@@ -86,9 +86,8 @@
         \olddate{\normalsize{\theDate}}%
     }
     \addMetadata
-
+    \addBlanks{\theFrontBlanks}
     \addFrontCover
-    \addBackCover
 
     \ifnum\printOnCover=1
         \@ifundefined{theTitle}{}{%
@@ -103,4 +102,7 @@
     \addBorders
     \addEpigraph
     \pagestyle{fancy}
+}{
+    \addBackCover
+    \addBlanks{\theBackBlanks}
 }

@@ -291,10 +291,10 @@ Add various elements relating to documents that are published in book-form, like
   Thank someone in your document.
 - `\epigraph{poem or quotation}` \
   Add a short paragraph of informal text that suggests the theme of the book.
+- `\endpages{N}{M}` \
+  Add N blank pages to the start and optionally M blank pages to the end of the document. This is mostly useful when printing and binding the document into a book.
 
-In-class commands:
-- `\addFormalPage` \
-  The page after the front-cover of a book, which contain formalities.
+In-class commands (for creating custom classes): `\addFrontCover`, `\addBackCover`, `\addFormalPage`, `\addCorners`, `\addBorders`, `\addEpigraph`, `\addBlanks`.
 
 ### Ornaments <a name="ornaments"></a>
 Add ornamental elements all pages of the document. Browse the types of ornaments are available in the documentation for the `pgfornaments` package. Check out the [poem](classes/custom_classes/poem_example.pdf) class for a visual example.
