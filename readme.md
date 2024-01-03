@@ -305,10 +305,10 @@ Add ornamental elements all pages of the document. Browse the types of ornaments
 
 ### Refs <a name="refs"></a>
 Reference internal elements and cite external sources from your bibliography.
-- `\r{label}` \
+- `\ref{label}` \
   Reference your figures, tables, math-blocks, headings, code-blocks, etc. using your own labels.
-- `\R{label}` \
-  Uppercase equivalent of \r.
+- `\Ref{label}` \
+  Uppercase equivalent of \ref.
 - `\cite{your_source}` \
   As defined in your bibliography file.
 - `\bib{path/to/refs}{style}` \
