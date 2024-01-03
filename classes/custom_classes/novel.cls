@@ -57,7 +57,6 @@
 
 % PAGESTYLES: ------------------------------------------------------------------
 \setlength{\headsep}{3mm}%
-\pagestyle{fancy}%
 \renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}%
 \fancyhead[L]{}%
 \fancyhead[C]{\small\scshape\color{darkgray} \chaptername\ \thechapter\ --\ \leftmark}%
@@ -101,7 +100,6 @@
     \addCorners
     \addBorders
     \addEpigraph
-    \pagestyle{fancy}
 }{
     \addBackCover
     \addBlanks{\theBackBlanks}

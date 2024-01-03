@@ -90,7 +90,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage[indent]{parskip}
-\RequirePackage{eso-pic, hyperref, microtype, multicol, lastpage, transparent, xcolor, xparse}
+\RequirePackage{eso-pic, hyperref, lastpage, microtype, multicol, transparent, xcolor, xparse}
 
 % ESSENTIAL SETUP: -------------------------------------------------------------
 \hypersetup{hidelinks} % Remove box around links.
@@ -114,7 +114,7 @@
     \renewcommand{\url}[2]{\href{#2}{#1}}
 
     % Table of Contents --------------------------------------------------------
-    \newcommand{\toc}{\tableofcontents}
+    \newcommand{\toc}{{\small\tableofcontents}}
     \@ifundefined{chapter}{}{% If class is article-like.
         \addtocontents{toc}{\protect\thispagestyle{empty}}
     }
@@ -436,9 +436,11 @@
                 \addEmpty%
                 \chapter*{#2}\label{#2}%
                 \addcontentsline{toc}{chapter}{#2}%
+                \pagestyle{empty}
             }{%
                 \addEmpty%
                 \chapter{#2}\label{#2}%
+                \pagestyle{fancy}
             }
         }
         \NewDocumentCommand{\hh}{sm}{%
@@ -646,7 +648,7 @@
             \thispagestyle{empty}{%
                 \vspace*{\fill}
                 \begin{center}%
-                    \begin{minipage}{.6\textwidth}%
+                    \begin{minipage}{.7\textwidth}%
                         \i{\theEpigraph}%
                     \end{minipage}%
                 \end{center}%
