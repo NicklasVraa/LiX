@@ -418,11 +418,11 @@
     }{% If class is book-like.
         \RequirePackage{changepage}
 
-        \newcommand{\addEmpty}{}
+        \providecommand{\addEmpty}{}
         \NewDocumentCommand{\start}{m}{%
             \ifnum\pdfstrcmp{#1}{odd}=0
                 \renewcommand{\addEmpty}{%
-                    \checkoddpage\ifoddpage\newpage\clearpage\null\thispagestyle{empty}\fi%
+                    \checkevenpage\ifevenpage\else\newpage\clearpage\null\thispagestyle{empty}\fi%
                 }
             \else\ifnum\pdfstrcmp{#1}{even}=0
                 \renewcommand{\addEmpty}{%
@@ -649,7 +649,7 @@
                 \vspace*{\fill}
                 \begin{center}%
                     \begin{minipage}{.7\textwidth}%
-                        \i{\theEpigraph}%
+                        \textit{\theEpigraph}%
                     \end{minipage}%
                 \end{center}%
                 \vspace{3em}%
@@ -731,9 +731,9 @@
 \ifnum\useRefs=1
     \RequirePackage{cite}
 
-    \renewcommand{\ref}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}
+    \newcommand{\at}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}
 
-    \renewcommand{\Ref}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
+    \newcommand{\At}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
 
     \newcommand{\theBibfont}{\normalfont} % Default.
     \NewDocumentCommand{\bibfont}{m}{
@@ -826,6 +826,7 @@
         basicstyle=\ttfamily\small, breaklines=true%
     }
 
+    \providecommand{\c}{}
     \RenewDocumentCommand{\c}{v}{%
         \lstinline[style=inline]{#1}%
     }
@@ -921,12 +922,21 @@
     \RequirePackage{ulem}
 
     \normalem % Allow italized and underlined text.
+
+    \providecommand{\b}{}
     \renewcommand{\b}[1]{\textbf{#1}} % Bold.
+
+    \providecommand{\i}{}
     \renewcommand{\i}[1]{\textit{#1}} % Italic.
+
+    \providecommand{\u}{}
     \renewcommand{\u}[1]{\uline{#1}}  % Underline.
-    \newcommand{\s}[1]{\sout{#1}}     % Strikethrough.
+
+    \providecommand{\s}{}
+    \renewcommand{\s}[1]{\sout{#1}}     % Strikethrough.
 
     \RequirePackage{lettrine}         % Large first letter (lettrine).
+    \providecommand{\l}{}
     \RenewDocumentCommand{\l}{mg}{
         \lettrine[nindent=2.4pt, findent=-1.5pt, loversize=0.06]{\textbf{#1}}{\IfValueTF{#2}{#2}{}}
     }

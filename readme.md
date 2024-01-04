@@ -197,7 +197,7 @@ These command names were chosen to ensure that the readability of the source cod
 - `\c{...}` (c)ode inline.
 - `\i{...}` (i)talic text.
 - `\l{...}` (l)arge letter.
-- `\m{...}` (m)ath inline.
+- `\m{...}` (m)ath/mono inline.
 - `\s{...}` (s)trikeout.
 - `\u{...}` (u)nderline.
 
@@ -305,10 +305,10 @@ Add ornamental elements all pages of the document. Browse the types of ornaments
 
 ### Refs <a name="refs"></a>
 Reference internal elements and cite external sources from your bibliography.
-- `\ref{label}` \
+- `\at{label}` \
   Reference your figures, tables, math-blocks, headings, code-blocks, etc. using your own labels.
-- `\Ref{label}` \
-  Uppercase equivalent of \ref.
+- `\At{label}` \
+  Uppercase equivalent of \r.
 - `\cite{your_source}` \
   As defined in your bibliography file.
 - `\bib{path/to/refs}{style}` \

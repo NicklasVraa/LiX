@@ -10,7 +10,7 @@
 \LoadClass[12pt]{article}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[basics, formatting, header, metadata, ornaments, size]{lix}
+\RequirePackage[basics, formatting, header, headings, metadata, ornaments, size]{lix}
 \RequirePackage{miama, setspace, silence, titlesec, titling}
 
 \WarningsOff*
