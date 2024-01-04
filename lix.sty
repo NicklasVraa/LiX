@@ -136,7 +136,7 @@
 
     % Language -----------------------------------------------------------------
     \NewDocumentCommand{\lang}{mg}{%
-        \RequirePackage[#1]{babel}
+        \RequirePackage[shorthands=off, #1]{babel}
         \newcommand{\theLanguage}{#1}%
         \babelhyphenation[#1]{#2}
     }
