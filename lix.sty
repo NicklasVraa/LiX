@@ -442,6 +442,7 @@
                 \chapter{#2}\label{#2}%
                 \pagestyle{fancy}
             }
+            \noindent\ignorespaces%
         }
         \NewDocumentCommand{\hh}{sm}{%
             \IfBooleanTF{#1}{%
@@ -450,6 +451,7 @@
             }{%
                 \section{#2}\label{#2}%
             }
+            \noindent\ignorespaces%
         }
         \NewDocumentCommand{\hhh}{sm}{%
             \IfBooleanTF{#1}{%
@@ -458,6 +460,7 @@
             }{%
                 \subsection{#2}\label{#2}%
             }
+            \noindent\ignorespaces%
         }
         \NewDocumentCommand{\hhhh}{sm}{%
             \IfBooleanTF{#1}{%
@@ -466,6 +469,7 @@
             }{%
                 \subsubsection{#2}\label{#2}%
             }
+            \noindent\ignorespaces%
         }
     }
 \fi
@@ -502,6 +506,7 @@
                 #2
             \end{numbers}%
         }
+        \noindent\ignorespaces%
     }
 \fi
 
