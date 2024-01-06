@@ -377,7 +377,7 @@ qpdf --encrypt <userpass> <ownerpass> 256 --modify=none --extract=n --print=none
 
 Prepare your PDF for book-style printing by performing automatic imposition. Supply the number of pages per signature `N`, the sheet dimensions, and paths to source and destination. Requires `pdfjam`.
 ```bash
-pdfjam --nup 2x1 --signature <N> --frame false --twoside --trim '0cm 0cm 0cm 0cm' --clip true --quiet --keepinfo --papersize '{<height>,<2*width>}' --tidy --landscape --outfile <dest>.pdf <source>.pdf
+pdfjam --nup 2x1 --signature <N> --frame false --twoside --trim '0cm 0cm 0cm 0cm' --clip true --quiet --keepinfo --papersize '{<height>,<2*width>}' --tidy --landscape --longedge --outfile <dest>.pdf <source>.pdf
 ```
 
 ---

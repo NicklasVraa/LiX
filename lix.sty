@@ -114,7 +114,7 @@
     \renewcommand{\url}[2]{\href{#2}{#1}}
 
     % Table of Contents --------------------------------------------------------
-    \newcommand{\toc}{{\small\tableofcontents}}
+    \newcommand{\toc}{\pagestyle{empty}{\small\tableofcontents}}
     \@ifundefined{chapter}{}{% If class is article-like.
         \addtocontents{toc}{\protect\thispagestyle{empty}}
     }
