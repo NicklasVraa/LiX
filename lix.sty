@@ -99,7 +99,28 @@
 \ifnum\useBasics=1
 
     % Add ----------------------------------------------------------------------
-    \newcommand{\add}[1]{\input{#1}}
+    %\newcommand{\add}[1]{\input{#1}}
+
+    \NewDocumentCommand{\add}{sm}{ % One command tex and pdf files.
+        \filename@parse{#2}
+        \ifnum\pdfstrcmp{\filename@ext}{pdf}=0%
+            \newpage%
+            \AddToShipoutPicture*{%
+                \put(0,0){%
+                    \parbox[b][\paperheight]{\paperwidth}{%
+                        \vfill\centering%
+                        \includegraphics[width=\paperwidth,height=\paperheight]{#2}%
+                        \vfill%
+                    }
+                }
+            }
+            \IfBooleanTF{#1}{}{% Background instead of new page.
+                \null\newpage%
+            }
+        \else%
+            \input{#2}%
+        \fi%
+    }
 
     % Use ----------------------------------------------------------------------
     \newcommand{\use}[1]{\usepackage{#1}}
@@ -666,6 +687,7 @@
 
     \newcommand{\theFrontBlanks}{0}
     \newcommand{\theBackBlanks}{0}
+
     \NewDocumentCommand{\endpages}{mg}{%
         \renewcommand{\theFrontBlanks}{#1}%
         \IfValueTF{#2}{%
