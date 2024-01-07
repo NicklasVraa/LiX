@@ -14,7 +14,7 @@
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
-\LoadClass{article}
+\LoadClass[12pt]{article}
 
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[algorithms, basics, code, figures, formatting, headings, lists, math, metadata, refs, size, tables]{lix}
@@ -80,10 +80,11 @@
 \titlespacing\section{0pt}{14pt}{4pt}
 \titlespacing\subsection{0pt}{14pt}{4pt}
 \titlespacing\subsubsection{0pt}{14pt}{4pt}
-\titleformat*{\section}{\bfseries\scshape}
-\titleformat*{\subsection}{\bfseries\scshape}
-\titleformat*{\subsubsection}{\bfseries\scshape}
+\titleformat*{\section}{\LARGE\bfseries\scshape}
+\titleformat*{\subsection}{\Large\bfseries\scshape}
+\titleformat*{\subsubsection}{\large\bfseries\scshape}
 \titleformat*{\paragraph}{\bfseries\scshape}
+\AddToHook{cmd/section/before}{\clearpage}
 
 % CAPTIONS: --------------------------------------------------------------------
 \captionsetup{
@@ -122,7 +123,7 @@
     }
 
     \@ifundefined{theAbstract}{}{%
-        \textbf{\textsc{Abstract:}} \theAbstract%
+        \section*{Abstract} \theAbstract\newpage%
     }
     \addMetadata
 }

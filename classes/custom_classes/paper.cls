@@ -27,6 +27,19 @@
 \bibfont{\footnotesize}
 \authorfont{\normalsize}
 
+% HEADER: ----------------------------------------------------------------------
+\fancypagestyle{plain}{% First page.
+    \renewcommand{\headrulewidth}{0pt}%
+    \fancyhead{}%
+    \fancyfoot[C]{{\thepage} of \pageref{LastPage}}%
+}
+\fancypagestyle{fancy}{%
+    \renewcommand{\headrulewidth}{0pt}%
+    \fancyhead{}%
+    \fancyfoot[C]{{\thepage} of \pageref{LastPage}}%
+}
+\pagestyle{fancy}
+
 % SIZE, MARGINS: ---------------------------------------------------------------
 \ifnum\numColumns=1
     \geometry{a4paper, top=28mm, left=34mm, right=34mm, bottom=36mm}
@@ -36,6 +49,7 @@
     \setlength{\columnsep}{5mm}
     \setlength{\droptitle}{-2.8em}
 \fi\fi
+\fancyhfoffset[O]{0pt}
 
 % TABLE OF CONTENTS: -----------------------------------------------------------
 \titlecontents{section}[0em]{}{%

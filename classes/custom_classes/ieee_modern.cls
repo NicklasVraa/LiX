@@ -10,13 +10,13 @@
 \LoadClass[twocolumn]{article}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[basics, code, figures, formatting, header, headings, lists, math, metadata, refs, size, tables]{lix}
+\RequirePackage[algorithms, basics, code, figures, formatting, header, headings, lists, math, metadata, refs, size, tables]{lix}
 \RequirePackage{setspace, silence, titlesec, titletoc, titling}
 \RequirePackage{times}
 
 \WarningsOff*
 
-% OVERRIDES: --------------------------------------------------------------
+% FONT OVERRIDES: --------------------------------------------------------------
 \bibfont{\footnotesize}
 \setlength{\parindent}{0pt}
 

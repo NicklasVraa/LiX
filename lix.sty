@@ -135,8 +135,8 @@
     \renewcommand{\url}[2]{\href{#2}{#1}}
 
     % Table of Contents --------------------------------------------------------
-    \newcommand{\toc}{\pagestyle{empty}{\small\tableofcontents}}
-    \@ifundefined{chapter}{}{% If class is article-like.
+    \newcommand{\toc}{{\small\tableofcontents}}
+    \@ifundefined{chapter}{}{
         \addtocontents{toc}{\protect\thispagestyle{empty}}
     }
 
@@ -409,8 +409,10 @@
             \IfBooleanTF{#1}{%
                 \section*{#2}\label{#2}%
                 \addcontentsline{toc}{section}{#2}%
+                \pagestyle{plain}
             }{%
                 \section{#2}\label{#2}%
+                \pagestyle{fancy}
             }
         }
         \NewDocumentCommand{\hh}{sm}{%
@@ -431,9 +433,9 @@
         }
         \NewDocumentCommand{\hhhh}{sm}{%
             \IfBooleanTF{#1}{%
-                \paragraph*{#2}
+                \paragraph*{#2}~\\
             }{%
-                \paragraph{#2}
+                \paragraph{#2}~\\
             }
         }
     }{% If class is book-like.
