@@ -68,9 +68,9 @@
 \titlespacing\section{0pt}{14pt}{4pt}
 \titlespacing\subsection{0pt}{14pt}{4pt}
 \titlespacing\subsubsection{0pt}{14pt}{4pt}
-\titleformat*{\section}{\bfseries\scshape}
-\titleformat*{\subsection}{\bfseries\scshape}
-\titleformat*{\subsubsection}{\bfseries\scshape}
+\titleformat*{\section}{\LARGE\bfseries\scshape}
+\titleformat*{\subsection}{\Large\bfseries\scshape}
+\titleformat*{\subsubsection}{\large\bfseries\scshape}
 \titleformat*{\paragraph}{\bfseries\scshape}
 \titleformat{\chapter}[display]{%
     \normalsize%

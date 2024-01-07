@@ -50,7 +50,7 @@
 }{% Prefix.
     \centering\hspace{1pt}\small\scshape\color{darkgray}\chaptertitlename \ \thechapter%
 }{% Vertical space between.
-    -9pt%
+    -12pt%
 }{% Chapter name.
     \centering\LARGE\bfseries\scshape%
 }

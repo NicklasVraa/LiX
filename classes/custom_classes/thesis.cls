@@ -72,7 +72,7 @@
 }
 
 % HEADINGS: --------------------------------------------------------------------
-\setcounter{secnumdepth}{3}% Levels of heading that will be numbered.
+\setcounter{secnumdepth}{4}% Levels of heading that will be numbered.
 \renewcommand*{\@seccntformat}[1]{% Add dot after number.
     \csname the#1\endcsname.\hspace{0.5em}%
 }
