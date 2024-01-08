@@ -4,36 +4,23 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{novel}[2023/02/10 For works of fiction]
-
-% Intercept class options.
-\newcommand{\numColumns}{1}
-\DeclareOption{twocolumn}{
-    \renewcommand{\numColumns}{2}
-    \PassOptionsToClass{\CurrentOption}{book}
-}
-
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
-\LoadClass[12pt,twoside,openany]{book} % Overriden by in-document commands.
+\LoadClass[12pt,twoside,openany]{book}
 
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[basics, cover, figures, lists, formatting, header, headings, isbn, license, metadata, publish, ornaments, refs, size]{lix}
 \RequirePackage[lining]{ebgaramond}
-\RequirePackage{setspace, silence, titlesec, titletoc, titling}
-
-\WarningsOff*
 
 % OVERRIDES: -------------------------------------------------------------------
 \authorfont{\normalsize}
+\setlength{\droptitle}{-110mm}
 \RenewDocumentCommand{\l}{mg}{
     \lettrine[nindent=2.4pt, findent=-1.5pt, loversize=0.25]{#1}{\IfValueTF{#2}{#2}{}}
 }
 
 % SIZE, MARGINS: ---------------------------------------------------------------
 \geometry{letterpaper, top=36mm, bottom=40mm, left=40mm, right=40mm}
-
-% COVER: -----------------------------------------------------------------------
-\setlength{\droptitle}{-110mm}%
 
 % HEADINGS: --------------------------------------------------------------------
 \setcounter{secnumdepth}{1}% Levels of heading that will be numbered.
@@ -87,7 +74,6 @@
     \addMetadata
     \addBlanks{\theFrontBlanks}
     \addFrontCover
-
     \ifnum\printOnCover=1
         \@ifundefined{theTitle}{}{%
             \maketitle%
@@ -95,7 +81,6 @@
     \else
         \mbox{}\pagestyle{empty}\newpage%
     \fi
-
     \addFormalPage
     \addCorners
     \addBorders

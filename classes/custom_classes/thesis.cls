@@ -18,21 +18,13 @@
 
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[algorithms, basics, code, figures, formatting, headings, lists, math, metadata, refs, size, tables]{lix}
-\RequirePackage{setspace, silence, titlesec, titletoc, titling}
-
-\WarningsOff*
 
 % OVERRIDES: -------------------------------------------------------------------
 \setlength\parindent{0pt}
-
-% FONT OVERRIDES: --------------------------------------------------------------
 \bibfont{\footnotesize}
 \authorfont{\normalsize}
-
-% COMMAND OVERRIDES: -----------------------------------------------------------
+\usecompacttoc
 \renewcommand{\toc}{\tableofcontents\newpage}
-
-% SIZE, MARGINS: ---------------------------------------------------------------
 \ifnum\numColumns=1
     \geometry{a4paper, top=32mm, left=28mm, right=28mm, bottom=28mm}
     \setlength{\droptitle}{-3.8em}
@@ -41,6 +33,19 @@
     \setlength{\columnsep}{5mm}
     \setlength{\droptitle}{-2.8em}
 \fi\fi
+\setcounter{secnumdepth}{4}% Levels of heading that will be numbered.
+\titlespacing\numberless{0pt}{14pt}{4pt}
+\titlespacing\section{0pt}{14pt}{4pt}
+\titlespacing\subsection{0pt}{14pt}{4pt}
+\titlespacing\subsubsection{0pt}{14pt}{4pt}
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+\titleformat*{\paragraph}{\bfseries}
+\AddToHook{cmd/section/before}{\clearpage}
+\renewcommand*{\@seccntformat}[1]{% Add dot after number.
+    \csname the#1\endcsname.\hspace{0.5em}%
+}
 
 % PAGESTYLES: ------------------------------------------------------------------
 \fancypagestyle{plain}{
@@ -55,51 +60,13 @@
     }{
         \fancyhead[L]{\scriptsize\scshape\theLeftHeader}
     }
-    \fancyhead[R]{\scriptsize\thepage}%
+    \fancyhead[R]{\scriptsize\thepage\ of \pageref{LastPage}}%
     \fancyfoot{}
-}
-
-% TABLE OF CONTENTS: -----------------------------------------------------------
-\titlecontents{section}[0em]{}{%
-    \thecontentslabel.\hspace*{0.5em}}{}{%
-    \titlerule*[0.5pc]{.}\contentspage%
-}
-\titlecontents{subsection}[0em]{%
-    \hspace*{1.4em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
-    \titlerule*[0.5pc]{.}\contentspage%
-}
-\titlecontents{subsubsection}[0em]{%
-    \hspace*{2.8em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
-    \titlerule*[0.5pc]{.}\contentspage%
-}
-
-% HEADINGS: --------------------------------------------------------------------
-\setcounter{secnumdepth}{4}% Levels of heading that will be numbered.
-\renewcommand*{\@seccntformat}[1]{% Add dot after number.
-    \csname the#1\endcsname.\hspace{0.5em}%
-}
-\titlespacing\numberless{0pt}{14pt}{4pt}
-\titlespacing\section{0pt}{14pt}{4pt}
-\titlespacing\subsection{0pt}{14pt}{4pt}
-\titlespacing\subsubsection{0pt}{14pt}{4pt}
-\titleformat*{\section}{\LARGE\bfseries\scshape}
-\titleformat*{\subsection}{\Large\bfseries\scshape}
-\titleformat*{\subsubsection}{\large\bfseries\scshape}
-\titleformat*{\paragraph}{\bfseries\scshape}
-\AddToHook{cmd/section/before}{\clearpage}
-
-% CAPTIONS: --------------------------------------------------------------------
-\captionsetup{
-    format=plain, labelfont=bf, font=scriptsize,
-    justification=raggedright, singlelinecheck=false
 }
 
 % LAYOUT: ----------------------------------------------------------------------
 \wrap{%
-    \pagestyle{plain}
-
     \@ifundefined{theTitle}{}{%
-
         \@ifundefined{theSubtitle}{%
             \oldtitle{\LARGE\textbf{\textsc{\theTitle}}}%
         }{%
@@ -117,13 +84,9 @@
     }{%
         \olddate{\normalsize{\theDate}}%
     }
-
     \@ifundefined{theTitle}{}{%
-        \maketitle%
-        \newpage
-        \pagestyle{fancy}
+        \maketitle\newpage\pagestyle{fancy}
     }
-
     \@ifundefined{theAbstract}{}{%
         \section*{Abstract} \theAbstract\newpage%
     }

@@ -2,41 +2,43 @@
 % Docs: https://github.com/NicklasVraa/LiX
 
 \documentclass{thesis}
+\usepackage{lipsum}
 
 \lang     {english}
 \title    {An Interesting and Cool Title}
-\subtitle {Some Equally Interesting Buzzwords to Entice The Reader}
-\authors  {Nicklas Vraa}{Second Author}{Third Author}
+\subtitle {And An Equally Interesting Subtitle}
+\authors  {Nicklas Vraa}{Second Author}
 \keywords {Research, template, packages}
 
-
 \begin{document}
-
-\cols*{2}{\toc}
+\toc
 
 \h*{Non-Numbered Heading}
-Fusce cursus auctor ipsum quis gravida. Cras suscipit, quam ac tempor fringilla, libero felis euismod metus, ac egestas tortor ipsum vel mi. Donec feugiat, enim et tempus consectetur, ante metus commodo velit, quis rhoncus justo tellus vitae mauris. Aliquam ut accumsan mauris. Pellentesque mi justo, tempus nec tempus at, lacinia nec metus. Fusce sit amet lacus dignissim, dapibus diam vulputate, gravida magna. Aenean rhoncus quam vel scelerisque dictum.
+\lipsum[1]
 
 \h{Numbered Heading}
-Quisque dignissim sapien at tellus porttitor tempus. Etiam nec auctor diam, sed consectetur sapien. Fusce nec urna egestas, euismod ipsum quis, malesuada est. Duis consectetur magna eros, at mollis lacus bibendum vel. Proin convallis felis nec pellentesque fermentum. Suspendisse ut congue dolor. Etiam ornare sem molestie, faucibus urna in, dapibus leo.
+\lipsum[2]
 
 \hh{Subheading}
-Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent velit turpis, pulvinar ac dapibus congue, ultrices at quam. Nullam dui libero, lobortis vel magna et, egestas venenatis ex. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum vehicula nec nisl non placerat. Ut lobortis tincidunt varius. Curabitur in mattis sem.
+\lipsum[3]
 
 \hhh{Subsubheading}
-Etiam eu orci ac lectus rutrum cursus a nec neque. Cras leo nibh, blandit et pretium vel, auctor sed orci. Phasellus tincidunt vitae mauris eget ultricies. Donec vehicula egestas lorem ut dictum. Integer quis diam ullamcorper, tempor diam in, iaculis enim. Etiam non nulla venenatis, volutpat tortor id, vestibulum ligula.
+\lipsum[4]
 
-\h{Formats}
+\hhhh{Subsubsubheading}
+\lipsum[5-10]
+
+\hh{Formats}
 Nunc ante \b{bold} lectus, pretium id \i{italic} sodales, dapibus \s{strikethrough} urna. Suspendisse maximus \u{underlined} metus sed ante commodo efficitur. Some inline code: \c{def func(a,b): return a+b}
 
-\h{Mathematics}
+\hh{Mathematics}
 Pellentesque sagittis orci ut lorem blandit, vel cursus urna interdum. Mauris malesuada fermentum ipsum, accumsan varius velit porttitor ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum sem orci, eget ornare justo sodales.
 
     \math{my_equation}{
     \hat{x}_i = \frac{x_i-\mu}{\sqrt{\sigma^2+\epsilon}}
     }
 
-\h{Code Blocks}
+\hh{Code Blocks}
 Nullam congue ligula vitae urna convallis commodo. Proin nunc mi, vulputate quis viverra eu, consequat vitae risus sed venenatis. Praesent ut libero in dui mattis maximus.
 
     \code{my_code}{python}{
@@ -52,7 +54,7 @@ Nullam congue ligula vitae urna convallis commodo. Proin nunc mi, vulputate quis
     }
     {This is some code.}
 
-\h{Tables}
+\hh{Tables}
 Cras vitae sem egestas, elementum felis vitae, ultricies ante. Fusce pellen tesque massa vitae massa molestie, at cursus urna scelerisque. Aliquam malesuada nunc at est vulputate condimentum. Aliquam luctus tellus id ipsum facilisis facilisis. Cras eu egestas magna.
 
     \cols{2}{
@@ -68,7 +70,7 @@ Cras vitae sem egestas, elementum felis vitae, ultricies ante. Fusce pellen tesq
     }{And this is a rows-table}
     }
 
-\h{Figures}
+\hh{Figures}
 Nullam massa nunc, sollicitudin id eleifend vitae, pellentesque sit amet lectus. Morbi vestibulum leo quis tempor lacinia.
 
     \fig{my_svg}{1}{resources/placeholder.svg}
@@ -80,7 +82,7 @@ Integer sed metus malesuada, volutpat urna condimentum, aliquet metus. Phasellus
     {This is a png-figure scaled by 0.7.}
 
 
-\h{Columns}
+\hh{Columns}
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada tortor ac condimentum molestie. In hac habitasse platea dictumst.
 
     \cols{2}{
@@ -88,7 +90,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras malesuada tortor a
     \fig{right_fig}{1}{resources/placeholder.png}{As does this figure.}
     }
 
-\h{Algorithms}
+\hh{Algorithms}
 Nulla odio tortor, feugiat sit amet justo quis, placerat egestas odio. Vestibulum cursus nulla lectus, id congue neque laoreet eget. Pellentesque et blandit leo.
 
     \algo{my_alg}{
@@ -100,7 +102,7 @@ Nulla odio tortor, feugiat sit amet justo quis, placerat egestas odio. Vestibulu
     }
     {This is an algorithm described in pseudo-code.}
 
-\h{Lists}
+\hh{Lists}
 Elit vel sagittis luctus, arcu libero pellentesque nisi, sed consectetur quam neque a elit. Donec consectetur cursus nulla eu feugiat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
     \items{
@@ -118,13 +120,11 @@ Elit vel sagittis luctus, arcu libero pellentesque nisi, sed consectetur quam ne
     \item Last item.
     }
 
-\h{Referencing}
+\hh{Referencing}
 Here is a hyperlink to a \url{webpage}{https://www.overleaf.com/}. This is a reference to \at{my_equation}, and this refers to \at{my_svg}. You can also refer to headings like \at{Tables}. \At{my_code} is a capitalized variant. For all references, both the name and number are links. Of cource, you can cite sources using \c{\cite{...}}, like this \cite{minted} or this \cite{tabularray}. You can also insert a bibliography.
 
-\h{Conclusion}
+\hh{Conclusion}
 Aliquam luctus tellus id ipsum facilisis facilisis. Cras eu egestas magna. Aenean id nunc odio. Integer sit amet justo mi. Integer lorem neque, sodales et tellus finibus.
-
-\toc
 
 \bib{resources/refs}
 

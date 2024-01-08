@@ -4,19 +4,16 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{poem}[2023/02/10 For academic research papers]
-
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 \LoadClass[12pt]{article}
 
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[basics, formatting, header, headings, metadata, ornaments, size]{lix}
-\RequirePackage{miama, setspace, silence, titlesec, titling}
-
-\WarningsOff*
-\setlength\parindent{0pt}
+\RequirePackage{miama}
 
 % OVERRIDES: -------------------------------------------------------------------
+\setlength\parindent{0pt}
 \authorfont{\scriptsize}
 \RenewDocumentCommand{\l}{mg}{
     \lettrine[lines=1, loversize=-0.3, lraise=-0.1, findent=-2pt]{#1}{\IfValueTF{#2}{#2}{}}
@@ -49,7 +46,6 @@
     \@ifundefined{theTitle}{}{%
         \maketitle%
     }
-
     \addMetadata
     \addCorners
     \addBorders

@@ -4,14 +4,6 @@
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{novella}[2023/02/10 For works of fiction]
-
-% Intercept class options.
-\newcommand{\numColumns}{1}
-\DeclareOption{twocolumn}{
-    \renewcommand{\numColumns}{2}
-    \PassOptionsToClass{\CurrentOption}{book}
-}
-
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass[12pt,oneside]{book}
@@ -19,9 +11,6 @@
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[basics, formatting, header, headings, metadata, size]{lix}
 \RequirePackage[lining]{ebgaramond}
-\RequirePackage{setspace, silence, titlesec, titletoc, titling}
-
-\WarningsOff*
 
 % OVERRIDES: -------------------------------------------------------------------
 \authorfont{\normalsize}
@@ -87,9 +76,8 @@
     }{%
         \olddate{\normalsize{\theDate}}%
     }
-    \addMetadata
-
     \@ifundefined{theTitle}{}{%
         \maketitle%
     }
+    \addMetadata
 }

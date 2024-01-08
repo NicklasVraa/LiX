@@ -92,6 +92,7 @@
 \RequirePackage[indent]{parskip}
 \RequirePackage{eso-pic, hyperref, lastpage, microtype, multicol, transparent, xcolor, xparse}
 
+
 % ESSENTIAL SETUP: -------------------------------------------------------------
 \hypersetup{hidelinks} % Remove box around links.
 
@@ -99,8 +100,6 @@
 \ifnum\useBasics=1
 
     % Add ----------------------------------------------------------------------
-    %\newcommand{\add}[1]{\input{#1}}
-
     \NewDocumentCommand{\add}{sm}{ % One command tex and pdf files.
         \filename@parse{#2}
         \ifnum\pdfstrcmp{\filename@ext}{pdf}=0%
@@ -138,6 +137,21 @@
     \newcommand{\toc}{{\small\tableofcontents}}
     \@ifundefined{chapter}{}{
         \addtocontents{toc}{\protect\thispagestyle{empty}}
+    }
+
+    \newcommand{\usecompacttoc}{
+        \titlecontents{section}[0em]{}{%
+            \thecontentslabel.\hspace*{0.5em}}{}{%
+            \titlerule*[0.5pc]{.}\contentspage%
+        }
+        \titlecontents{subsection}[0em]{%
+            \hspace*{1.4em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
+            \titlerule*[0.5pc]{.}\contentspage%
+        }
+        \titlecontents{subsubsection}[0em]{%
+            \hspace*{2.8em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
+            \titlerule*[0.5pc]{.}\contentspage%
+        }
     }
 
     % Columns ------------------------------------------------------------------
@@ -363,6 +377,11 @@
     \RequirePackage{caption, float, graphicx, svg}
     \setlength{\belowcaptionskip}{1pt}
 
+    \captionsetup{
+        format=plain, labelfont=bf, font=scriptsize,
+        justification=raggedright, singlelinecheck=false
+    }
+
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
 
     \NewDocumentCommand{\fig}{mmmg}{ % One command for vectors and images.
@@ -409,7 +428,6 @@
             \IfBooleanTF{#1}{%
                 \section*{#2}\label{#2}%
                 \addcontentsline{toc}{section}{#2}%
-                \pagestyle{plain}
             }{%
                 \section{#2}\label{#2}%
                 \pagestyle{fancy}
@@ -1056,4 +1074,10 @@
             }
         }
     }
+\fi
+
+% MUST LOAD LAST: --------------------------------------------------------------
+\ifnum\useStdClass=0
+    \RequirePackage{setspace, silence, titlesec, titletoc, titling}
+    \WarningsOff*
 \fi
