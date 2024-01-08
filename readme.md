@@ -154,7 +154,7 @@ A collection of essential commands and aliases.
 - `\shield{Text}{opacity}` \
   Overlays every page with an invisible wall of text to prevent easy extraction of text, i.e. copy-pasting. Opacity is optional and between 0 (invisible) and 1 (black). E.g. `\shield{COPYRIGHTED, NICE TRY}`.
 - `\np` and `\bl` \
-  Simpler alias for `\newpage` and forces a blank line.
+  The first is an alias for `\newpage` and the second forces a blank line.
 
 In-class commands:
 - `\authorfont{\...}` \
@@ -194,10 +194,10 @@ Place figures, i.e. images and illustrations in your document.
 ### Formatting <a name="formatting"></a>
 These command names were chosen to ensure that the readability of the source code is minimally affected.
 - `\b{...}` (b)old text.
-- `\c{...}` (c)ode inline.
+- `\c{...}` (c)ode/mono inline.
 - `\i{...}` (i)talic text.
 - `\l{...}` (l)arge letter.
-- `\m{...}` (m)ath/mono inline.
+- `\m{...}` (m)ath inline.
 - `\s{...}` (s)trikeout.
 - `\u{...}` (u)nderline.
 
