@@ -16,7 +16,7 @@
 \WarningsOff*
 \setlength\parindent{0pt}
 
-% FONT OVERRIDES: --------------------------------------------------------------
+% OVERRIDES: -------------------------------------------------------------------
 \authorfont{\scriptsize}
 \RenewDocumentCommand{\l}{mg}{
     \lettrine[lines=1, loversize=-0.3, lraise=-0.1, findent=-2pt]{#1}{\IfValueTF{#2}{#2}{}}

@@ -23,7 +23,7 @@
 \WarningsOff*
 \setlength\parindent{0pt}
 
-% FONT OVERRIDES: --------------------------------------------------------------
+% OVERRIDES: -------------------------------------------------------------------
 \bibfont{\footnotesize}
 \authorfont{\normalsize}
 

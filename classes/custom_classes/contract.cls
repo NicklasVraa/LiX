@@ -15,6 +15,8 @@
 \RequirePackage{times}
 
 \WarningsOff*
+
+% OVERRIDES: -------------------------------------------------------------------
 \setlength\parindent{0pt}
 \renewcommand\maketitlehookc{\vspace{-2ex}}
 

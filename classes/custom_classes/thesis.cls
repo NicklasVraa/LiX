@@ -21,6 +21,8 @@
 \RequirePackage{setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*
+
+% OVERRIDES: -------------------------------------------------------------------
 \setlength\parindent{0pt}
 
 % FONT OVERRIDES: --------------------------------------------------------------

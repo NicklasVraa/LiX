@@ -21,6 +21,8 @@
 \RequirePackage{parskip, setspace, silence, titlesec, titletoc, titling}
 
 \WarningsOff*
+
+% OVERRIDES: -------------------------------------------------------------------
 \setlength\parindent{0pt}
 
 % SIZE, MARGINS: ---------------------------------------------------------------

@@ -16,7 +16,7 @@
 
 \WarningsOff*
 
-% FONT OVERRIDES: --------------------------------------------------------------
+% OVERRIDES: -------------------------------------------------------------------
 \bibfont{\footnotesize}
 \setlength{\parindent}{0pt}
 

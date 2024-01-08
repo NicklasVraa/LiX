@@ -23,7 +23,7 @@
 
 \WarningsOff*
 
-% FONT OVERRIDES: --------------------------------------------------------------
+% OVERRIDES: -------------------------------------------------------------------
 \authorfont{\normalsize}
 \RenewDocumentCommand{\l}{mg}{
     \lettrine[nindent=2.4pt, findent=-1.5pt, loversize=0.25]{#1}{\IfValueTF{#2}{#2}{}}
