@@ -23,6 +23,10 @@
 \setlength\parindent{0pt}
 \bibfont{\footnotesize}
 \authorfont{\normalsize}
+\counterwithin{equation}{section}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\AtBeginDocument{\counterwithin{lstlisting}{section}}
 \usecompacttoc
 \renewcommand{\toc}{\tableofcontents\newpage}
 \ifnum\numColumns=1
@@ -33,7 +37,7 @@
     \setlength{\columnsep}{5mm}
     \setlength{\droptitle}{-2.8em}
 \fi\fi
-\setcounter{secnumdepth}{4}% Levels of heading that will be numbered.
+\setcounter{secnumdepth}{3}% Levels of heading that will be numbered.
 \titlespacing{\numberless}{0pt}{14pt}{4pt}
 \titlespacing{\section}{0pt}{14pt}{4pt}
 \titlespacing{\subsection}{0pt}{14pt}{4pt}

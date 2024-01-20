@@ -894,21 +894,25 @@
     }
 
     \ExplSyntaxOn
-        \NewDocumentCommand{\code}{mm +v g}{%
+        \NewDocumentCommand{\code}{smm +v g}{%
             \begingroup%
                 \noindent{\tiny\dotfill}%
-                \newlinechar=\endlinechar
-                \exp_args:Nx \scantokens{
-                    \string\begin{lstlisting}[\unexpanded{language=#2,style=block}]
-                    #3
-                    \string\end{lstlisting}%
+                \IfBooleanTF{#1}{%
+                    \lstinputlisting[language=#3, style=block]{#4}
+                }{%
+                    \newlinechar=\endlinechar
+                    \exp_args:Nx \scantokens{
+                        \string\begin{lstlisting}[\unexpanded{language=#3,style=block}]
+                        #4
+                        \string\end{lstlisting}%
+                    }
                 }
                 \noindent{\tiny\dotfill}
-                \IfValueTF{#4}{%
+                \IfValueTF{#5}{%
                     \captionsetup{type=lstlisting}%
-                    \caption{#4}%
+                    \caption{#5}%
                 }{}
-                \label{#1}%
+                \label{#2}%
             \endgroup%
         }
     \ExplSyntaxOff

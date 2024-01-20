@@ -166,15 +166,20 @@ In-class commands:
 
 
 ### Code <a name="code"></a>
-Insert code blocks into your document.
+Insert internal code blocks into your document.
 ```latex
 ...
     \code{label}{language}{
     % Your code.
     }{caption}
-..
+...
 ```
-Code-blocks will be subtly highlighted according to the given language. A label is mandatory, but caption is optional. For no highlighting, set the language to `text`. Indent the block four spaces, as these will be gobbled (removed) in the resulting pdf. This is for better readability in the source file. I recommend indenting all code-blocks, tables, figures, etc., to better distinguish them from regular text.
+Or import external code from a file using the starred version.
+```latex
+\code*{label}{language}{path/to/file}{caption}
+```
+
+Code-blocks will be subtly highlighted according to the given language. A label is mandatory, but caption is optional. For no highlighting, set the language to `text`. For internal code block, indent the block four spaces, as these will be gobbled (removed) in the resulting pdf. This is for better readability in the source file. I recommend indenting all code-blocks, tables, figures, etc., to better distinguish them from regular text.
 
 ### Cover <a name="cover"></a>
 Add a cover to your document, as in the front and back of a book.
