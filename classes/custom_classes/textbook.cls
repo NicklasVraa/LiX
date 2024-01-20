@@ -31,10 +31,10 @@
     \csname the#1\endcsname.\hspace{0.5em}%
 }
 \titlespacing{\chapter}{-1pt}{-45pt}{4pt}
-\titlespacing\numberless{0pt}{14pt}{4pt}
-\titlespacing\section{0pt}{14pt}{4pt}
-\titlespacing\subsection{0pt}{14pt}{4pt}
-\titlespacing\subsubsection{0pt}{14pt}{4pt}
+\titlespacing{\numberless}{0pt}{14pt}{4pt}
+\titlespacing{\section}{0pt}{14pt}{4pt}
+\titlespacing{\subsection}{0pt}{14pt}{4pt}
+\titlespacing{\subsubsection}{0pt}{14pt}{4pt}
 \titleformat*{\section}{\LARGE\bfseries\scshape}
 \titleformat*{\subsection}{\Large\bfseries\scshape}
 \titleformat*{\subsubsection}{\large\bfseries\scshape}

@@ -20,10 +20,10 @@
 \setlength{\droptitle}{-3em}
 \fancyhfoffset[O]{0pt}
 \setcounter{secnumdepth}{3}% Levels of heading that will be numbered.
-\titlespacing\numberless{0pt}{10pt}{3pt}
-\titlespacing\section{0pt}{10pt}{3pt}
-\titlespacing\subsection{0pt}{10pt}{3pt}
-\titlespacing\subsubsection{\parindent}{10pt}{0.5em}
+\titlespacing{\numberless}{0pt}{10pt}{3pt}
+\titlespacing{\section}{0pt}{10pt}{3pt}
+\titlespacing{\subsection}{0pt}{10pt}{3pt}
+\titlespacing{\subsubsection}{\parindent}{10pt}{0.5em}
 \titleformat{\section}{\centering\scshape}{\Roman{section}.}{0.5em}{}
 \titleformat{\subsection}{\itshape}{\Alph{subsection}.}{0.5em}{}
 \titleformat{\subsubsection}[runin]{\itshape}{\arabic{subsection})}{0.5em}{}[:]

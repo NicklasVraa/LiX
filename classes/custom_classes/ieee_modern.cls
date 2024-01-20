@@ -21,10 +21,10 @@
 \setlength{\droptitle}{-3em}
 \fancyhfoffset[O]{0pt}
 \setcounter{secnumdepth}{3}% Levels of heading that will be numbered.
-\titlespacing\numberless{0pt}{14pt}{4pt}
-\titlespacing\section{0pt}{14pt}{4pt}
-\titlespacing\subsection{0pt}{14pt}{4pt}
-\titlespacing\subsubsection{0pt}{14pt}{4pt}
+\titlespacing{\numberless}{0pt}{14pt}{4pt}
+\titlespacing{\section}{0pt}{14pt}{4pt}
+\titlespacing{\subsection}{0pt}{14pt}{4pt}
+\titlespacing{\subsubsection}{0pt}{14pt}{4pt}
 \titleformat*{\section}{\bfseries\scshape}
 \titleformat*{\subsection}{\bfseries\scshape}
 \titleformat*{\subsubsection}{\bfseries\scshape}
@@ -79,7 +79,6 @@
     }{%
         \olddate{\normalsize{\theDate}}%
     }
-
     \@ifundefined{theTitle}{}{%
         \maketitle%
     }
@@ -90,6 +89,5 @@
         }
         }\vspace{0.5em}
     }
-
     \addMetadata
 }

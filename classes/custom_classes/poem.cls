@@ -15,14 +15,13 @@
 % OVERRIDES: -------------------------------------------------------------------
 \setlength\parindent{0pt}
 \authorfont{\scriptsize}
+\geometry{a5paper, top=40mm, left=35mm, right=35mm, bottom=35mm}
+\setlength{\droptitle}{-5em}
 \RenewDocumentCommand{\l}{mg}{
     \lettrine[lines=1, loversize=-0.3, lraise=-0.1, findent=-2pt]{#1}{\IfValueTF{#2}{#2}{}}
 }
 
-% SIZE, MARGINS: ---------------------------------------------------------------
-\geometry{a5paper, top=40mm, left=35mm, right=35mm, bottom=35mm}
-\setlength{\droptitle}{-5em}
-
+% HEADER AND FOOTER: -----------------------------------------------------------
 \fancypagestyle{plain}{%
     \renewcommand{\headrulewidth}{0pt}%
     \fancyhead[C]{%

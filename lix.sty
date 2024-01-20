@@ -141,7 +141,7 @@
 
     \newcommand{\usecompacttoc}{
         \titlecontents{section}[0em]{}{%
-            \thecontentslabel.\hspace*{0.5em}}{}{%
+            \bfseries\thecontentslabel.\hspace*{0.5em}}{\bfseries}{%
             \titlerule*[0.5pc]{.}\contentspage%
         }
         \titlecontents{subsection}[0em]{%
@@ -988,7 +988,6 @@
         \lettrine[nindent=2.4pt, findent=-1.5pt, loversize=0.06]{\textbf{#1}}{\IfValueTF{#2}{#2}{}}
     }
 \fi
-
 
 % LAYOUT -----------------------------------------------------------------------
 \ifnum\useStdClass=1

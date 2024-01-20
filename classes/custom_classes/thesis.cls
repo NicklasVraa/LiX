@@ -34,10 +34,10 @@
     \setlength{\droptitle}{-2.8em}
 \fi\fi
 \setcounter{secnumdepth}{4}% Levels of heading that will be numbered.
-\titlespacing\numberless{0pt}{14pt}{4pt}
-\titlespacing\section{0pt}{14pt}{4pt}
-\titlespacing\subsection{0pt}{14pt}{4pt}
-\titlespacing\subsubsection{0pt}{14pt}{4pt}
+\titlespacing{\numberless}{0pt}{14pt}{4pt}
+\titlespacing{\section}{0pt}{14pt}{4pt}
+\titlespacing{\subsection}{0pt}{14pt}{4pt}
+\titlespacing{\subsubsection}{0pt}{14pt}{4pt}
 \titleformat*{\section}{\LARGE\bfseries}
 \titleformat*{\subsection}{\Large\bfseries}
 \titleformat*{\subsubsection}{\large\bfseries}

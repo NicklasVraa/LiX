@@ -19,10 +19,10 @@
 \setlength{\droptitle}{-3.8em}
 \setlength{\columnsep}{5mm}
 \setcounter{secnumdepth}{0}% Levels of heading that will be numbered.
-\titlespacing\numberless{0pt}{14pt}{4pt}
-\titlespacing\section{0pt}{14pt}{4pt}
-\titlespacing\subsection{0pt}{14pt}{4pt}
-\titlespacing\subsubsection{0pt}{14pt}{4pt}
+\titlespacing{\numberless}{0pt}{14pt}{4pt}
+\titlespacing{\section}{0pt}{14pt}{4pt}
+\titlespacing{\subsection}{0pt}{14pt}{4pt}
+\titlespacing{\subsubsection}{0pt}{14pt}{4pt}
 \titleformat*{\section}{\Large\bfseries\scshape}
 \titleformat*{\subsection}{\bfseries\scshape}
 \titleformat*{\subsubsection}{\bfseries\scshape}
