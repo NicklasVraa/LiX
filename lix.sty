@@ -513,6 +513,18 @@
             \noindent\ignorespaces%
         }
     }
+
+    \NewDocumentCommand{\addheadingseparator}{m}{%
+        \ifnum\pdfstrcmp{#1}{dot}=0
+            \renewcommand*{\@seccntformat}[1]{%
+                \csname the##1\endcsname.\hspace{0.5em}%
+            }
+        \else\ifnum\pdfstrcmp{#1}{line}=0
+            \renewcommand*{\@seccntformat}[1]{%
+                \csname the##1\endcsname\hspace{0.4em}{\raisebox{0.25\depth}{|}}\hspace{0.4em}%
+            }
+        \fi\fi
+    }
 \fi
 
 % ISBN: ------------------------------------------------------------------------
@@ -879,7 +891,7 @@
     }
 
     \lstdefinestyle{block}{% Block styling.
-        basicstyle=\ttfamily\footnotesize,
+        basicstyle=\ttfamily\scriptsize,
         commentstyle=\color[rgb]{0.5,0.5,0.5},
         breaklines=true,
         numbers=left,

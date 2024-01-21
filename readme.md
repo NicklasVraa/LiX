@@ -222,6 +222,9 @@ Top-level headings will act like chapters in book-like classes, but as sections 
 - `\start{odd/even}` \
   Applicable to book-like classes only. It will instruct the compiler to add blank pages such that chapters always start on odd or even pages. In western bookbinding, it is traditional to have chapters start on odd (recto) pages. If this command is not used, no blank pages will be added.
 
+In-class commands:
+- `addheadingseparator{type}` will separate numbering from the actual heading with either a `line` or a final `dot` after the number.
+
 ### ISBN <a name="isbn"></a>
 Add an ISBN-code along with a corresponding barcode to your document. Should be called before `\begin{document}`.
 - `\isbn{978-0201529838}`

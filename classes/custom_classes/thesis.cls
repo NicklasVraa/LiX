@@ -42,14 +42,12 @@
 \titlespacing{\section}{0pt}{14pt}{4pt}
 \titlespacing{\subsection}{0pt}{14pt}{4pt}
 \titlespacing{\subsubsection}{0pt}{14pt}{4pt}
-\titleformat*{\section}{\LARGE\bfseries}
-\titleformat*{\subsection}{\Large\bfseries}
-\titleformat*{\subsubsection}{\large\bfseries}
-\titleformat*{\paragraph}{\bfseries}
+\titleformat*{\section}{\LARGE\bfseries\scshape}
+\titleformat*{\subsection}{\Large\bfseries\scshape}
+\titleformat*{\subsubsection}{\large\bfseries\scshape}
+\titleformat*{\paragraph}{\bfseries\scshape}
 \AddToHook{cmd/section/before}{\clearpage}
-\renewcommand*{\@seccntformat}[1]{% Add dot after number.
-    \csname the#1\endcsname.\hspace{0.5em}%
-}
+\addheadingseparator{line}
 
 % PAGESTYLES: ------------------------------------------------------------------
 \fancypagestyle{plain}{
