@@ -2,141 +2,246 @@
 // Author: Nicklas Vraa.
 {
     // ABSTRACT: ---------------------------------------------------------------
-    "Add an abstract": {
+    "Add abstract": {
         "scope": "latex",
         "prefix": ["abstract"],
         "body": ["\\abstract{${1:your summary}}$0"],
-        "description": "Add an abstract that summarizes your findings."
+        "description": "Add abstract"
     },
     // ADD: --------------------------------------------------------------------
-    "Import from separate tex-file": {
+    "Inset tex or pdf": {
         "scope": "latex",
-        "prefix": ["add", "input", "import"],
-        "body": ["\\add{${1:file.tex}}$0"],
-        "description": "Import from separate tex-file."
+        "prefix": ["add", "input", "import", "include", "pdf"],
+        "body": ["\\add{${1|file.tex,file.pdf|}}$0"],
+        "description": "Insert tex or pdf"
+    },
+    // ALGORITHM: --------------------------------------------------------------
+    "Start algorithm": {
+        "scope": "latex",
+        "prefix": ["algo", "algorithm"],
+        "body": ["\\algo{${1:label}}{\n${3:...}\n}{${4:caption}}$0"],
+        "description": "Start algorithm"
     },
     // ANCHOR: -----------------------------------------------------------------
-    "Anchor/align content left, right or center": {
+    "Anchor/anchor content": {
         "scope": "latex",
         "prefix": ["anchor", "align"],
         "body": ["\\anchor{${1|center,left,right|}}{\n$0\n}"],
-        "description": "Anchor/align content left, right or center."
+        "description": "Anchor/align content"
     },
     // AUTHORS: ----------------------------------------------------------------
     "Add authors": {
         "scope": "latex",
         "prefix": ["authors"],
         "body": ["\\authors{${1:first}}$0"],
-        "description": "Add authors."
+        "description": "Add authors"
     },
     // BIBLIOGRAPHY: -----------------------------------------------------------
-    "Insert a bibliography": {
+    "Insert bibliography": {
         "scope": "latex",
         "prefix": ["bibliography"],
         "body": ["\\bib{${1:path/to/file}}{${2|style,unsrt,plain,ieeetr,abbrv,acm,alpha,apalike,ieeetr,siam|}}$0"],
-        "description": "Insert a bibliography."
+        "description": "Insert bibliography"
+    },
+    // BLANK LINE: -------------------------------------------------------------
+    "Force blank line": {
+        "scope": "latex",
+        "prefix": ["newline", "blankline"],
+        "body": ["\\bl"],
+        "description": "Force blank line"
     },
     // BLURB: ------------------------------------------------------------------
-    "Add a blurb": {
+    "Add blurb": {
         "scope": "latex",
         "prefix": ["blurb"],
         "body": ["\\blurb{${1:flavor-text}}$0"],
-        "description": "Add flavor-text to the back cover."
+        "description": "Add flavor-text to the back cover"
+    },
+    // BOLD: -------------------------------------------------------------------
+    "Bold text": {
+        "scope": "latex",
+        "prefix": ["bold"],
+        "body": ["\\b{$1}$0"],
+        "description": "Bold text"
+    },
+    // BORDERS: ----------------------------------------------------------------
+    "Add ornamental borders": {
+        "scope": "latex",
+        "prefix": ["borders", "ornaments"],
+        "body": ["\\borders{$1:id}{$2:color!opacity}{$3:width}{$4:padding}$0"],
+        "description": "Add ornamental borders"
     },
     // BYLINE: -----------------------------------------------------------------
-    "Add a byline": {
+    "Add byline": {
         "scope": "latex",
-        "prefix": ["by"],
+        "prefix": ["by", "byline"],
         "body": ["\\by{${1:name}}{${2:contact}}{${3:image.png}}$0"],
-        "description": "Add a byline, optionally with an image."
+        "description": "Add byline"
     },
-    // CODE: -------------------------------------------------------------------
-    "Insert a codeblock": {
+    // CITATION: ---------------------------------------------------------------
+    "Cite source": {
+        "scope": "latex",
+        "prefix": ["cite", "citation", "source"],
+        "body": ["\\cite{$1:source}$0"],
+        "description": "Cite source"
+    },
+    // CODE INLINE: ------------------------------------------------------------
+    "Inline code": {
+        "scope": "latex",
+        "prefix": ["code"],
+        "body": ["\\c{$1}$0"],
+        "description": "Add inline code"
+    },
+    // CODE BLOCK: -------------------------------------------------------------
+    "Start code block": {
         "scope": "latex",
         "prefix": ["codeblock"],
         "body": ["\\code{${1:label}}{${2|lang,python,c,c++,javascript,latex|}}{\n${3:...}\n}{${4:caption}}$0"],
-        "description": "Insert a codeblock."
+        "description": "Start code block"
+    },
+    // COST: -------------------------------------------------------------------
+    "Add cost": {
+        "scope": "latex",
+        "prefix": ["cost", "price"],
+        "body": ["\\cost{$1}$0"],
+        "description": "Add cost"
+    },
+    // COLUMNS: ----------------------------------------------------------------
+    "Split into columns": {
+        "scope": "latex",
+        "prefix": ["cols", "columns"],
+        "body": ["\\cols{$1:number}{\n${2:...}\n}$0"],
+        "description": "Split into columns"
+    },
+    // CORNERS: ----------------------------------------------------------------
+    "Add ornamental corners": {
+        "scope": "latex",
+        "prefix": ["corners", "ornaments"],
+        "body": ["\\corners{$1:id}{$2:color!opacity}{$3:width}{$4:padding}$0"],
+        "description": "Add ornamental corners"
     },
     // COVER: ------------------------------------------------------------------
-    "Add cover art": {
+    "Add cover": {
         "scope": "latex",
         "prefix": ["cover"],
         "body": ["\\cover{${1:path/to/front.pdf}}{${2:path/to/back.pdf}}$0"],
-        "description": "Insert a cover."
+        "description": "Insert cover"
     },
     // DATE: -------------------------------------------------------------------
-    "Add a date": {
+    "Add date": {
         "scope": "latex",
         "prefix": ["date"],
         "body": ["\\date{$CURRENT_MONTH_NAME $CURRENT_DATE, $CURRENT_YEAR}$0"],
-        "description": "Add a date."
+        "description": "Add date"
     },
     // DEDICATE: ---------------------------------------------------------------
-    "Add a dedication": {
+    "Add dedication": {
         "scope": "latex",
         "prefix": ["dedicate"],
         "body": ["\\dedicate{${1:dedicatee}}{${2:message}}$0"],
-        "description": "Add a dedication."
+        "description": "Add dedication"
     },
     // EDITION: ----------------------------------------------------------------
-    "Specify an edition": {
+    "Specify edition": {
         "scope": "latex",
         "prefix": ["edition"],
         "body": ["\\edition{${1:number}}{${2:year}}$0"],
-        "description": "Specify an edition"
+        "description": "Specify edition"
+    },
+    // ENDPAGES: ---------------------------------------------------------------
+    "Add endpages": {
+        "scope": "latex",
+        "prefix": ["endpages", "blanks"],
+        "body": ["\\endpages{$1:before}{$2:after}$0"],
+        "description": "Add endpages"
+    },
+    // EPIGRAPH: ---------------------------------------------------------------
+    "Add epigraph": {
+        "scope": "latex",
+        "prefix": ["epigraph"],
+        "body": ["\\epigraph{$1}$0"],
+        "description": "Add epigraph"
     },
     // FIGURES: ----------------------------------------------------------------
     "Insert a figure": {
 		"scope": "latex",
-		"prefix": "figure",
+		"prefix": ["figure"],
 		"body": ["\\fig{${1:label}}{${2:scale}}{${3:path}}{${4:caption}}$0"],
-		"description": "Insert a figure."
+		"description": "Insert figure"
 	},
     // HEADER: -----------------------------------------------------------------
-    "Add a header": {
+    "Add header": {
         "scope": "latex",
         "prefix": ["header"],
         "body": ["\\header{${1:left}}{${2:center}}{${3:right}}$0"],
-        "description": "Add a header."
+        "description": "Add header"
     },
     // HEADING: ----------------------------------------------------------------
-    "Add a top-level heading": {
+    "Add top-level heading": {
         "scope": "latex",
         "prefix": ["h", "heading", "section", "chapter"],
         "body": ["\\h{$1}$0"],
-        "description": "Add a top-level heading."
+        "description": "Add top-level heading"
     },
-    "Add a 2nd-level heading": {
+    "Add 2nd-level heading": {
         "scope": "latex",
         "prefix": ["hh", "subheading", "subsection"],
         "body": ["\\hh{$1}$0"],
-        "description": "Add a 2nd-level heading."
+        "description": "Add 2nd-level heading"
     },
-    "Add a 3rd-level heading": {
+    "Add 3rd-level heading": {
         "scope": "latex",
         "prefix": ["hhh", "subsubheading", "subsubsection"],
         "body": ["\\hhh{$1}$0"],
-        "description": "Add a 3rd-level heading."
+        "description": "Add 3rd-level heading"
     },
-    "Add a 4th-level heading": {
+    "Add 4th-level heading": {
         "scope": "latex",
         "prefix": ["hhhh", "subsubsubheading", "subsubsubsection", "paragraph"],
         "body": ["\\hhhh{$1}$0"],
-        "description": "Add a 4th-level heading."
+        "description": "Add 4th-level heading"
+    },
+    // ID-NUMBER: --------------------------------------------------------------
+    "Add ID-number": {
+        "scope": "latex",
+        "prefix": ["id", "idnum"],
+        "body": ["\\isbn{${1:number}}$0"],
+        "description": "Add ID-number"
     },
     // ISBN: -------------------------------------------------------------------
     "Add an ISBN code": {
         "scope": "latex",
         "prefix": ["isbn"],
         "body": ["\\isbn{${1:code}}$0"],
-        "description": "Add an ISBN code."
+        "description": "Add ISBN code"
+    },
+    // ISSUE: ------------------------------------------------------------------
+    "Specify issue": {
+        "scope": "latex",
+        "prefix": ["issue"],
+        "body": ["\\issue{$1}$0"],
+        "description": "Specify issue number"
+    },
+    // ITALIC: -----------------------------------------------------------------
+    "Italic text": {
+        "scope": "latex",
+        "prefix": ["italic"],
+        "body": ["\\i{$1}$0"],
+        "description": "Italic text"
     },
     // LANGUAGE: ---------------------------------------------------------------
-    "Specify a language": {
+    "Specify language": {
         "scope": "latex",
         "prefix": ["lang"],
         "body": ["\\lang{${1:english}}$0"],
-        "description": "Specify a language."
+        "description": "Specify language"
+    },
+    // LETTRINE: ---------------------------------------------------------------
+    "Insert lettrine": {
+        "scope": "latex",
+        "prefix": ["lettrine"],
+        "body": ["\\l{$1}$0"],
+        "description": "Insert lettrine"
     },
     // LICENSE: ----------------------------------------------------------------
     "Set document licensing": {
@@ -146,94 +251,171 @@
         "description": "Set document licensing"
     },
     // LISTS: ------------------------------------------------------------------
-    "Insert a list of items": {
+    "Start list": {
         "scope": "latex",
         "prefix": ["lists", "items"],
-        "body": ["\\items$2{\n¤ $1\n}$0"],
-        "description": "Insert a list."
+        "body": ["\\items$1{\n\t\\item $2\n}$0"],
+        "description": "Start list"
+    },
+    // LOCATION: ---------------------------------------------------------------
+    "Specify location": {
+        "scope": "latex",
+        "prefix": ["location"],
+        "body": ["\\location{}"],
+        "description": "Specify location"
     },
     // MARGINS: ----------------------------------------------------------------
     "Set document margins": {
         "scope": "latex",
         "prefix": ["margins"],
         "body": ["\\margins{${1:top}}{${2:bottom}}{${3:left}}{${4:right}}$0"],
-        "description": "Set document margins."
+        "description": "Set document margins"
     },
-    // MATH: -------------------------------------------------------------------
-    "Insert a math block": {
+    // MATH INLINE: ------------------------------------------------------------
+    "Inline math": {
         "scope": "latex",
         "prefix": ["math"],
+        "body": ["\\m{$1}$0"],
+        "description": "Add inline math"
+    },
+    // MATH BLOCK: -------------------------------------------------------------
+    "Start math block": {
+        "scope": "latex",
+        "prefix": ["mathblock"],
         "body": ["\\math{${1:label}}{\n${2:...}\n}$0"],
-        "description": "Insert a math block."
+        "description": "Start math block"
+    },
+    // NEW PAGE: ---------------------------------------------------------------
+    "Force new page": {
+        "scope": "latex",
+        "prefix": ["newpage", "next"],
+        "body": ["\\np"],
+        "description": "Force new page"
     },
     // NOTE: -------------------------------------------------------------------
     "Add an author's note": {
         "scope": "latex",
         "prefix": ["note"],
         "body": ["\\note{${1:...}}$0"],
-        "description": "Add an author's note on the metadata-page."
+        "description": "Add author's note"
     },
     // PUBLISHER: --------------------------------------------------------------
-    "Specify a publisher": {
+    "Specify publisher": {
         "scope": "latex",
         "prefix": ["publisher"],
         "body": ["\\publisher{${1:...}}$0"],
-        "description": "Specify a publisher."
+        "description": "Specify publisher"
+    },
+    // REFERENCE: --------------------------------------------------------------
+    "Reference label": {
+        "scope": "latex",
+        "prefix": ["reference", "ref", "at"],
+        "body": ["\\at{$1:label}$0"],
+        "description": "Reference label"
+    },
+    // SHIELD: -----------------------------------------------------------------
+    "Add copy-paste protection": {
+        "scope": "latex",
+        "prefix": ["shield", "protect"],
+        "body": ["\\shield{${1:text}{${2:opacity}$0"],
+        "description": "Add copy-paste protection"
     },
     // SIGN: -------------------------------------------------------------------
-    "Add a signature field": {
+    "Add signature field": {
         "scope": "latex",
         "prefix": ["sign"],
         "body": ["\\sign{${1:name}}{${2:designation}}$0"],
-        "description": "Add a signature field."
+        "description": "Add signature field"
     },
     // SIZE: -------------------------------------------------------------------
     "Set document dimensions": {
         "scope": "latex",
         "prefix": ["size"],
         "body": ["\\size{${1|standard,a4,a5,letter|}}{${2|orientation,portrait,landscape|}}$0"],
-        "description": "Set document dimensions."
+        "description": "Set document dimensions"
+    },
+    // START CHAPTERS: ---------------------------------------------------------
+    "Start chapters at": {
+        "scope": "latex",
+        "prefix": ["start", "verso", "recto"],
+        "body": ["\\start{${1|odd,even|}}$0"],
+        "description": "Start chapters at"
+    },
+    // STRIKEOUT: --------------------------------------------------------------
+    "Strikeout text": {
+        "scope": "latex",
+        "prefix": ["strikeout", "redact"],
+        "body": ["\\s{$1}$0"],
+        "description": "Strikeout text"
     },
     // SUBTITLE: ---------------------------------------------------------------
-    "Add a subtitle": {
+    "Add subtitle": {
         "scope": "latex",
         "prefix": ["subtitle"],
         "body": ["\\subtitle{${1:...}}$0"],
-        "description": "Add a subtitle."
+        "description": "Add subtitle"
     },
     // TABLES: -----------------------------------------------------------------
-    "Insert a table": {
+    "Insert table": {
 		"scope": "latex",
 		"prefix": "table",
 		"body": ["\\tabs{${1:label}}{${2|type,cols,rows,grid|}}{\n${3:...}\n}{${4:caption}}$0"],
-		"description": "Insert a table."
+		"description": "Insert table"
 	},
+    // TABLE OF CONTENTS: ------------------------------------------------------
+    "Add table-of-contents": {
+        "scope": "latex",
+        "prefix": ["toc", "contents"],
+        "body": ["\\toc$0"],
+        "description": "Add table-of-contents"
+    },
     // THANK: ------------------------------------------------------------------
-    "Add a 'thanks to' section": {
+    "Add 'thanks to' section": {
         "scope": "latex",
         "prefix": ["thank"],
         "body": ["\\thank{${1:...}}$0"],
-        "description": "Add a 'thanks to' section."
+        "description": "Add 'thanks to' section"
     },
     // TITLE: ------------------------------------------------------------------
-    "Add a title": {
+    "Add title": {
         "scope": "latex",
         "prefix": ["title"],
         "body": ["\\title{${1:...}}$0"],
-        "description": "Add a title."
+        "description": "Add title"
+    },
+    // UNDERLINE: --------------------------------------------------------------
+    "Underline text": {
+        "scope": "latex",
+        "prefix": ["underline"],
+        "body": ["\\u{$1}$0"],
+        "description": "Underline text"
     },
     // URL: --------------------------------------------------------------------
-    "Insert a url": {
+    "Insert url": {
         "scope": "latex",
         "prefix": ["url"],
         "body": ["\\url{${1:text}}{${2:website}}$0"],
-        "description": "Insert a URL."
+        "description": "Insert URL"
     },
     // USE: --------------------------------------------------------------------
     "Import packages": {
         "scope": "latex",
         "prefix": ["use"],
         "body": ["\\use{${1:pkg1, pkg2}}$0"],
-        "description": "Import latex packages."
+        "description": "Import latex packages"
+    },
+    // VOLUME: -----------------------------------------------------------------
+    "Specify volume": {
+        "scope": "latex",
+        "prefix": ["volume"],
+        "body": ["\\volume{$1}$0"],
+        "description": "Specify volumen number"
+    },
+    // WATERMARK: --------------------------------------------------------------
+    "Add watermarks": {
+        "scope": "latex",
+        "prefix": ["watermark", "mark"],
+        "body": ["\\watermark{${1:text}}{${2:color!opacity}}$0"],
+        "description": "Add watermarks"
     }
 }
