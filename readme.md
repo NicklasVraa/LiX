@@ -104,7 +104,8 @@ This is an overview of the commands, which are available when specifying a certa
 **Bundles**: \
 [algorithms](#algorithms-), [basics](#basics-), [code](#code-), [cover](#cover-), [figures](#figures-), [formatting](#formatting-), [header](#header-), [heading](#heading-), [license](#license-), [isbn](#isbn-), [lists](#lists-), [math](#math-), [metadata](#metadata-), [periodical](#periodical-), [publish](#publish-), [ornaments](#ornaments-), [refs](#refs-), [sign](#sign-), [size](#size-), [tables](#tables-).
 
-### Algorithms <a name="algorithms"></a>
+<details><summary><b>Algorithms</b><a name="algorithms"></a></summary>
+
 Insert algorithms into your document. Simply type your algorithm in plain text and mix in math typesetting whenever you require, between `$`-signs. No need for any escaped `\keywords`.
 ```latex
 ...
@@ -116,6 +117,7 @@ Insert algorithms into your document. Simply type your algorithm in plain text a
 ```
 Algorithms will be subtly highlighted. A label is mandatory, but caption is optional. Indent the block four spaces, as these will be gobbled (removed) in the resulting pdf. This is for better readability in the source file. I recommend indenting all algorithms, tables, figures, etc., to better distinguish them from regular text.
 
+</details>
 
 ### Basics <a name="basics"></a>
 A collection of essential commands and aliases.
