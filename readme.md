@@ -101,10 +101,7 @@ It is also possible to use the standard classes, like [article](classes/standard
 ## 2. LiX Syntax <a name="syntax"></a>
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamiliar with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`. In-class commands are not supposed to be used in the main `.tex` document, but rather in your `.cls` file.
 
-**Bundles**: \
-[algorithms](algorithms-), [basics](#basics-), [code](#code-), [cover](#cover-), [figures](#figures-), [formatting](#formatting-), [header](#header-), [heading](#heading-), [license](#license-), [isbn](#isbn-), [lists](#lists-), [math](#math-), [metadata](#metadata-), [periodical](#periodical-), [publish](#publish-), [ornaments](#ornaments-), [refs](#refs-), [sign](#sign-), [size](#size-), [tables](#tables-).
-
-<details><summary><b>Algorithms</b></summary><a name="algorithms"></a>
+<details><summary><b>Algorithms</b></summary>
 
 Insert algorithms into your document. Simply type your algorithm in plain text and mix in math typesetting whenever you require, between `$`-signs. No need for any escaped `\keywords`.
 ```latex
@@ -119,7 +116,8 @@ Algorithms will be subtly highlighted. A label is mandatory, but caption is opti
 
 </details>
 
-### Basics <a name="basics"></a>
+<details><summary><b>Basics</b></summary>
+
 A collection of essential commands and aliases.
 
 - `\abstract{summary of findings}` \
@@ -166,8 +164,10 @@ In-class commands:
 - `\wrap{prepend...}{append...}` \
   Insert code immediately after \begin{document} and (optionally) immediately before \end{document}.
 
+</details>
 
-### Code <a name="code"></a>
+<details><summary><b>Code</b></summary>
+
 Insert internal code blocks into your document.
 ```latex
 ...
@@ -183,7 +183,10 @@ Or import external code from a file using the starred version.
 
 Code-blocks will be subtly highlighted according to the given language. A label is mandatory, but caption is optional. For no highlighting, set the language to `text`. For internal code block, indent the block four spaces, as these will be gobbled (removed) in the resulting pdf. This is for better readability in the source file. I recommend indenting all code-blocks, tables, figures, etc., to better distinguish them from regular text.
 
-### Cover <a name="cover"></a>
+</details>
+
+<details><summary><b>Cover</b></summary>
+
 Add a cover to your document, as in the front and back of a book.
 - `\cover{path/to/front.pdf}{path/to/back.pdf}` \
   The images have to be pdf-files. The starred version will **not** print the title, author, etc. on top of the cover. This is useful, if the cover already includes these. Should be called before `\begin{document}`.
@@ -192,13 +195,18 @@ In-class commands:
 - `\addFrontCover`
 - `\addBackCover`
 
+</details>
 
-### Figures <a name="figures"></a>
+<details><summary><b>Figures</b></summary>
+
 Place figures, i.e. images and illustrations in your document.
 - `\fig{label}{scale}{path}{caption}` \
   Places your figure at the spot where it's called, if possible. The command is file-format agnostic i.e. it works the same for both regular images and vector graphics. Scale is from 1% to 100% of the current column-width, i.e. from 0.01 to 1. Caption is optional.
 
-### Formatting <a name="formatting"></a>
+</details>
+
+<details><summary><b>Formatting</b></summary>
+
 These command names were chosen to ensure that the readability of the source code is minimally affected.
 - `\b{...}` (b)old text.
 - `\c{...}` (c)ode/mono inline.
@@ -208,11 +216,17 @@ These command names were chosen to ensure that the readability of the source cod
 - `\s{...}` (s)trikeout.
 - `\u{...}` (u)nderline.
 
-### Header <a name="header"></a>
+</details>
+
+<details><summary><b>Header</b></summary>
+
 Add a strip of text to the top of each page.
 - `\header{left}{center}{right}`
 
-### Heading <a name="heading"></a>
+</details>
+
+<details><summary><b>Heading</b></summary>
+
 Add headings to the document.
 - `\h{...}` Level one heading.
 - `\hh{...}` Level two heading.
@@ -227,11 +241,17 @@ Top-level headings will act like chapters in book-like classes, but as sections 
 In-class commands:
 - `addheadingseparator{type}` will separate numbering from the actual heading with either a `line` or a final `dot` after the number.
 
-### ISBN <a name="isbn"></a>
+</details>
+
+<details><summary><b>ISBN</b></summary>
+
 Add an ISBN-code along with a corresponding barcode to your document. Should be called before `\begin{document}`.
 - `\isbn{978-0201529838}`
 
-### License <a name="license"></a>
+</details>
+
+<details><summary><b>License</b></summary>
+
 Add a license to your document with an automatically generated copyright statement based on the input to the command. Should be called before `\begin{document}`.
 - `\license{type}{modifiers}{version}{holder}` \
   An overview of the possible inputs the command. E.g \license{CC}{by-nc-sa}{3.0}. \
@@ -240,7 +260,10 @@ Add a license to your document with an automatically generated copyright stateme
   |-------|-----------|----------|
   | Creative Commons: `CC` | Attribution: `by` <br> ShareAlike: `sa` <br> NoDerivatives: `nd` <br> NonCommercial: `nc` <br> | Universal: `1.0` <br> Unported: `3.0` <br> International: `4.0` |
 
-### Lists <a name="lists"></a>
+</details>
+
+<details><summary><b>Lists</b></summary>
+
 Add lists to your document. It is possible to nest lists.
 ```latex
 \items{
@@ -254,7 +277,10 @@ Add lists to your document. It is possible to nest lists.
 ```
 `items{...}` will be numbered, and `items*{...}` will be bullet points.
 
-### Math <a name="math"></a>
+</details>
+
+<details><summary><b>Math</b></summary>
+
 Add math-blocks to your document.
 ```latex
 \math{label}{
@@ -271,10 +297,16 @@ The label is required and the math block will be numbered. These are shortcut co
 - `\C` $\rightarrow \mathbb{C}$ (Complex set)
 - `\epsilon` $\rightarrow \varepsilon$ (varepsilon)
 
-### Metadata <a name="metadata"></a>
+</details>
+
+<details><summary><b>Metadata</b></summary>
+
 If this bundle is loaded, it will automatically fill in the metadata fields of the pdf, like the title, subject, keywords etc.
 
-### Periodical <a name="periodical"></a>
+</details>
+
+<details><summary><b>Periodical</b></summary>
+
 Add various elements relating to documents that are periodicals, like a newspaper. Should be called before `\begin{document}`.
 
 - `\cost{\$9.99}` \
@@ -286,7 +318,10 @@ Add various elements relating to documents that are periodicals, like a newspape
 - `\volume{123}` \
   Add a volume number.
 
-### Publish <a name="publish"></a>
+</details>
+
+<details><summary><b>Publish</b></summary>
+
 Add various elements relating to documents that are published in book-form, like a novel. Should be called before `\begin{document}`.
 
 - `\dedicate{dedicatee}{message}` \
@@ -306,14 +341,20 @@ Add various elements relating to documents that are published in book-form, like
 
 In-class commands (for creating custom classes): `\addFrontCover`, `\addBackCover`, `\addFormalPage`, `\addCorners`, `\addBorders`, `\addEpigraph`, `\addBlanks`.
 
-### Ornaments <a name="ornaments"></a>
+</details>
+
+<details><summary><b>Ornaments</b></summary>
+
 Add ornamental elements all pages of the document. Browse the types of ornaments are available in the documentation for the `pgfornaments` package. Check out the [poem](classes/custom_classes/poem_example.pdf) class for a visual example.
 - `\corners{ornament_id}{color!opacity}{width}{padding}` \
   Add ornaments to all four corners of all pages. Only the ID is mandatory.
 - `\borders{ornament_id}{color!opacity}{width}{padding}` \
   Add ornaments to all four sides of all pages. Only the ID is mandatory.
 
-### Refs <a name="refs"></a>
+</details>
+
+<details><summary><b>Refs</b></summary>
+
 Reference internal elements and cite external sources from your bibliography.
 - `\at{label}` \
   Reference your figures, tables, math-blocks, headings, code-blocks, etc. using your own labels.
@@ -332,12 +373,18 @@ In-class commands:
 - `\bibfont{\...}` \
   Apply styling commands to the bibliography text.
 
-### Sign <a name="signature"></a>
+</details>
+
+<details><summary><b>Sign</b></summary>
+
 Place signature fields in your document.
 - `sign{name}{designation}` \
   E.g. \sign{Nicklas Vraa}{CEO of the Universe}. To place multiple fields on the same line, don't leave a blank line between command calls.
 
-### Size <a name="size"></a>
+</details>
+
+<details><summary><b>Size</b></summary>
+
 These are commands for setting up the basic layout characteristics of your document. Should be called before `\begin{document}`.
 - `\size{standard}{orientation}` \
   Set the dimensions and orientation of your document by specifying standards. E.g \size{a4}{portrait}.
@@ -349,7 +396,10 @@ These are commands for setting up the basic layout characteristics of your docum
 - `\margins{top}{bot}{inner}{outer}` \
   Alternatively, the margins may be specified as `{all}`, `{topbot}{innerouter}`, `{top}{bot}{innerouter}`. When doing double-sided printing, the inner margin is often wider than the outer margin to allow for space to bind pages together. For single-sided printing and digital-only documents, the inner and outer margins are almost always equal.
 
-### Tables <a name="tables"></a>
+</details>
+
+<details><summary><b>Tables</b></summary>
+
 There are three types. These three tables will cover 90% of your table-needs, but you have access to the full power of the tabularray package for more complicated tables. The `&` symbol separates items and `\\` separates rows. Caption is optional.
 ```latex
 \tabs{label}{type}{
@@ -363,6 +413,7 @@ Types:
 
 Formatting code for the table may also be given explicitly in the type field.
 
+</details>
 
 ---
 ## 3. Installation <a name="installation"></a>
