@@ -102,7 +102,7 @@ It is also possible to use the standard classes, like [article](classes/standard
 This is an overview of the commands, which are available when specifying a certain bundle (in alphabetical order). To those unfamiliar with LaTeX, a command is always prefixed with a backslash `\`, mandatory input is enclosed in `{}` and optional input is enclosed in `[]`. Whitespace between a command and its input does not matter. Comments are always prefixed with a percentage symbol `%`. In-class commands are not supposed to be used in the main `.tex` document, but rather in your `.cls` file.
 
 **Bundles**: \
-[algorithms](#algorithms-), [basics](#basics-), [code](#code-), [cover](#cover-), [figures](#figures-), [formatting](#formatting-), [header](#header-), [heading](#heading-), [license](#license-), [isbn](#isbn-), [lists](#lists-), [math](#math-), [metadata](#metadata-), [periodical](#periodical-), [publish](#publish-), [ornaments](#ornaments-), [refs](#refs-), [sign](#sign-), [size](#size-), [tables](#tables-).
+[algorithms](algorithms-), [basics](#basics-), [code](#code-), [cover](#cover-), [figures](#figures-), [formatting](#formatting-), [header](#header-), [heading](#heading-), [license](#license-), [isbn](#isbn-), [lists](#lists-), [math](#math-), [metadata](#metadata-), [periodical](#periodical-), [publish](#publish-), [ornaments](#ornaments-), [refs](#refs-), [sign](#sign-), [size](#size-), [tables](#tables-).
 
 <details><summary><b>Algorithms</b></summary><a name="algorithms"></a>
 
