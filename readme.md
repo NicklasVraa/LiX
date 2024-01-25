@@ -104,7 +104,7 @@ This is an overview of the commands, which are available when specifying a certa
 **Bundles**: \
 [algorithms](#algorithms-), [basics](#basics-), [code](#code-), [cover](#cover-), [figures](#figures-), [formatting](#formatting-), [header](#header-), [heading](#heading-), [license](#license-), [isbn](#isbn-), [lists](#lists-), [math](#math-), [metadata](#metadata-), [periodical](#periodical-), [publish](#publish-), [ornaments](#ornaments-), [refs](#refs-), [sign](#sign-), [size](#size-), [tables](#tables-).
 
-<details><summary><b>Algorithms</b><a name="algorithms"></a></summary>
+<details><summary><b>Algorithms</b></summary><a name="algorithms"></a>
 
 Insert algorithms into your document. Simply type your algorithm in plain text and mix in math typesetting whenever you require, between `$`-signs. No need for any escaped `\keywords`.
 ```latex
