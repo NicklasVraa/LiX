@@ -5,16 +5,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{thesis}[2023/02/10 For longer reports]
 
-% Intercept class options.
-\newcommand{\numColumns}{1}
-\DeclareOption{twocolumn}{
-    \renewcommand{\numColumns}{2}
-    \PassOptionsToClass{\CurrentOption}{article}
-}
-
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
-\LoadClass[12pt]{article}
+\LoadClass[11pt, titlepage]{article}
 
 % SETUP: -----------------------------------------------------------------------
 \RequirePackage[algorithms, basics, code, figures, formatting, headings, lists, math, metadata, refs, size, tables]{lix}
@@ -29,14 +22,7 @@
 \AtBeginDocument{\counterwithin{lstlisting}{section}}
 \usecompacttoc
 \renewcommand{\toc}{\tableofcontents\newpage}
-\ifnum\numColumns=1
-    \geometry{a4paper, top=32mm, left=28mm, right=28mm, bottom=28mm}
-    \setlength{\droptitle}{-3.8em}
-\else\ifnum\numColumns=2
-    \geometry{a4paper, top=26mm, left=24mm, right=24mm, bottom=30mm}
-    \setlength{\columnsep}{5mm}
-    \setlength{\droptitle}{-2.8em}
-\fi\fi
+\geometry{a4paper, top=38mm, left=32mm, right=32mm, bottom=32mm}
 \setcounter{secnumdepth}{3}% Levels of heading that will be numbered.
 \titlespacing{\numberless}{0pt}{14pt}{4pt}
 \titlespacing{\section}{0pt}{14pt}{4pt}
@@ -70,9 +56,9 @@
 \wrap{%
     \@ifundefined{theTitle}{}{%
         \@ifundefined{theSubtitle}{%
-            \oldtitle{\LARGE\textbf{\textsc{\theTitle}}}%
+            \oldtitle{\Huge\textbf{\textsc{\theTitle}}}%
         }{%
-            \oldtitle{\LARGE\textbf{\textsc{\theTitle}}\\[0.4ex]%
+            \oldtitle{\LARGE\textbf{\textsc{\theTitle}}\\[1ex]%
             \large\scshape\theSubtitle}%
         }
     }
