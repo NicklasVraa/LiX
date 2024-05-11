@@ -288,6 +288,8 @@ Add math-blocks to your document.
 }
 ```
 The label is required and the math block will be numbered. These are shortcut commands in the math environment:
+- `diff{f}{x}` $\frac{d f}{d x}$ (derivative)
+- `diff*{f}{x}` $\frac{\partial f}{\partial x}$ (partial derivative)
 - `\mean{x}` $\rightarrow \overline{x}$
 - `\Re` $\rightarrow \mathbb{R}$ (Real set)
 - `\Im` $\rightarrow \mathbb{I}$ (Imaginary set)

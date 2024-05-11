@@ -579,6 +579,14 @@
 
     \newcommand{\m}[1]{$#1$} % Inline math.
 
+    \NewDocumentCommand{\diff}{smm}{%
+        \IfBooleanTF{#1}{%
+            \frac{\partial #2}{\partial #3}
+        }{%
+            \frac{d #2}{d #3}
+        }
+    }
+
     \RenewDocumentCommand{\math}{mm}{% Block of math.
         \vspace{-0.5\baselineskip}
         \begin{equation}\label{#1}
