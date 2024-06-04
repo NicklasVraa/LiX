@@ -10,7 +10,7 @@
 \LoadClass[11pt, titlepage]{article}
 
 % SETUP: -----------------------------------------------------------------------
-\RequirePackage[algorithms, basics, code, figures, formatting, headings, lists, math, metadata, refs, size, tables]{lix}
+\RequirePackage[algorithms, basics, code, figures, formatting, headings, license, lists, math, metadata, publish, refs, size, tables]{lix}
 
 % OVERRIDES: -------------------------------------------------------------------
 \setlength\parindent{0pt}
@@ -34,6 +34,9 @@
 \titleformat*{\paragraph}{\bfseries\scshape}
 \AddToHook{cmd/section/before}{\clearpage}
 \addheadingseparator{line}
+
+\widowpenalties 1 10000 % Avoid splitting paragraphs.
+\raggedbottom % Avoid stretching page content.
 
 % PAGESTYLES: ------------------------------------------------------------------
 \fancypagestyle{plain}{
@@ -79,4 +82,5 @@
         \section*{Abstract} \theAbstract\newpage%
     }
     \addMetadata
+    \addFormalPage\stepcounter{page}
 }

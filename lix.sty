@@ -129,6 +129,7 @@
 
     % Force blank line ---------------------------------------------------------
     \newcommand{\bl}{\\\\}
+    \newcommand{\nl}{\\\\}
 
     % URLs ---------------------------------------------------------------------
     \renewcommand{\url}[2]{\href{#2}{#1}}
@@ -153,6 +154,11 @@
             \titlerule*[0.5pc]{.}\contentspage%
         }
     }
+
+    % Force page-break within table-of-contents.
+    \newcommand{\tocbreak}{\addtocontents{toc}{\protect\newpage}}
+    \newcommand{\tb}{\tocbreak}
+    \newcommand{\nt}{\tocbreak}
 
     % Columns ------------------------------------------------------------------
     \NewDocumentCommand{\cols}{smm}{
@@ -577,6 +583,8 @@
     \newcommand{\Q}{\mathbb{Q}}    % Rational set.
     \newcommand{\C}{\mathbb{C}}    % Complex set.
 
+    \newcommand{\about}{\raisebox{0.5ex}{\texttildelow}} % Print a single tilde.
+
     \newcommand{\m}[1]{$#1$} % Inline math.
 
     \NewDocumentCommand{\diff}{smm}{%
@@ -688,7 +696,7 @@
                 }
                 \@ifpackageloaded{doclicense}{%
                     \vspace{8mm}%
-                    \textbf{Copyright} 2022--\the\year\ \theCopyrightHolder\par%
+                    \textbf{Copyright} \the\year\ \theCopyrightHolder\par%
                     \doclicenseLongText \par%
                     \vspace{1mm}%
                     \doclicenseIcon%
