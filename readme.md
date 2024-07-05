@@ -18,11 +18,11 @@ Say, we want to setup a book with the US letter size and a very specific margin,
 
 All that can be achieved by this:
 ```latex
-\documentclass{book}
-\usepackage[stdclass, all]{lix}
+\documentclass{thesis} % Or any of the other document classes.
 
-\lang      {danish}
-\size      {letter}
+% Document configuration.
+\lang      {english}
+\size      {a4}
 \cover     {path/to/front.pdf}{path/to/back.pdf}
 \margins   {22mm}{20mm}{21mm}{40mm}
 \title     {A Cool Title}
@@ -33,13 +33,21 @@ All that can be achieved by this:
 \license   {CC}{nc}{3.0}{My Company}
 \edition   {3}{2023}
 \watermark {DRAFT}{black!10}
-
-\begin{document}
-% ... No need for \maketitle
-
-\h{Introduction}
+\shield    {copyrighted}
 % ...
 
+\begin{document}
+% ... No need for \maketitle or anything else.
+
+\toc % Include table-of-contents
+
+\h{Introduction} % Level-1 heading.
+% ...
+
+\hh{Motivation} % Level-2 heading.
+% ...
+
+    % Simple code-snippet inclusion.
     \code{my_snippet}{python}{
     import numpy as np
     % ...
@@ -47,6 +55,7 @@ All that can be achieved by this:
 
 % ...
 
+    % One-line figure import that supports jpg, png, svg, pdf, etc.
     \fig{ny_figure}{0.8}{path/to/image.png}{This figures explains how...}
 
 % ...
