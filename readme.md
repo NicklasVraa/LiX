@@ -6,7 +6,7 @@ Check out LiX templates on [Overleaf](https://www.overleaf.com/latex/templates?q
 
 > LiX aims to be for LaTeX, what LaTeX is for TeX.
 
-Disclaimer: This project breaks conventions and practices, which are considered to be "standard" by the LaTeX community. If you want to learn "pure" LaTeX, this is not the project for you. However, for those of you that want to get stuff done as painlessly as possible: enjoy.
+Disclaimer: This project breaks conventions and practices, which are considered to be "standard" by the LaTeX community. If you want to learn "pure" LaTeX, this is not the project for you. However, for those of you that want to get stuff done as painlessly as possible: Please enjoy.
 
 Shortcuts: [Examples](#examples) | [Syntax](#syntax) | [Installation](#installation) | [Scripts](#scripts) | [Plans](#plans)
 
