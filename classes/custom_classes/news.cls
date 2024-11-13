@@ -72,3 +72,14 @@
 }{
     \end{multicols}
 }
+
+% CONTENTS: --------------------------------------------------------------------
+\@ifundefined{chapter}{}{
+    \usecompacttoc
+    \makeatletter%
+        \renewcommand\tableofcontents{%
+            \h{\contentsname}%
+            \@starttoc{toc}%
+            \protect\thispagestyle{front}}%
+    \makeatother%
+}
