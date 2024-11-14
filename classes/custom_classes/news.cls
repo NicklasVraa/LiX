@@ -74,12 +74,40 @@
 }
 
 % CONTENTS: --------------------------------------------------------------------
+\newrobustcmd{\tocdepth}[1]{%
+    \IfStrEq{#1}{h}{\setcounter{tocdepth}{1}}
+        {\IfStrEq{#1}{hh}{\setcounter{tocdepth}{2}}
+            {\IfStrEq{#1}{hhh}{\setcounter{tocdepth}{3}}}%
+                {\IfStrEq{#1}{hhhh}{\setcounter{tocdepth}{4}}{\setcounter{tocdepth}{2}}}}%
+}
+
+\renewcommand{\usecompacttoc}{
+    \titlecontents{section}[0em]{}{%
+        \small\bfseries\thecontentslabel.\hspace*{0.5em}}{\bfseries}{%
+        \titlerule*[0.5pc]{.}\contentspage%
+    }
+    \titlecontents{subsection}[0em]{%
+        \small\hspace*{0.8em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
+        \titlerule*[0.5pc]{.}\contentspage%
+    }
+    \titlecontents{subsubsection}[0em]{%
+        \small\hspace*{1.6em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
+        \titlerule*[0.5pc]{.}\contentspage%
+    }
+    \titlecontents{paragraph}[0em]{%
+        \small\hspace*{2.4em}}{\thecontentslabel.\hspace*{0.5em}}{}{%
+        \titlerule*[0.5pc]{.}\contentspage%
+    }
+}
+
 \@ifundefined{chapter}{}{
-    \usecompacttoc
     \makeatletter%
         \renewcommand\tableofcontents{%
+            \usecompacttoc
             \h{\contentsname}%
             \@starttoc{toc}%
-            \protect\thispagestyle{front}}%
+            \protect\thispagestyle{front}%
+            }
     \makeatother%
 }
+
