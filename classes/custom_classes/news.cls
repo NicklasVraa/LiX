@@ -104,7 +104,7 @@
     \makeatletter%
         \renewcommand\tableofcontents{%
             \usecompacttoc
-            \h{\contentsname}%
+            \section*{\contentsname}%
             \@starttoc{toc}%
             \protect\thispagestyle{front}%
             }
