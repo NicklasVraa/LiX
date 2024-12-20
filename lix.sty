@@ -897,6 +897,30 @@
 \ifnum\useCode=1
     \RequirePackage{caption, inconsolata, listings}
 
+    \lstdefinelanguage{js}{ % Javascipt and JSON highlighting support.
+        literate=
+        *{0}{{\textbf{0}}}{1}
+        {1}{{\textbf{1}}}{1}
+        {2}{{\textbf{2}}}{1}
+        {3}{{\textbf{3}}}{1}
+        {4}{{\textbf{4}}}{1}
+        {5}{{\textbf{5}}}{1}
+        {6}{{\textbf{6}}}{1}
+        {7}{{\textbf{7}}}{1}
+        {8}{{\textbf{8}}}{1}
+        {9}{{\textbf{9}}}{1}
+        {:}{{\textbf{:}}}{1}
+        {,}{{\textbf{,}}}{1}
+        {\{}{{\textbf{\{}}}{1}
+        {\}}{{\textbf{\}}}}{1}
+        {[}{{\textbf{[}}}{1}
+        {]}{{\textbf{]}}}{1},
+        morecomment=[s]{/*}{*/},
+        morecomment=[l]{//},
+        keywords={function, var, let, const, return, if, else, for, while, switch, case, break, continue, try, catch, throw, new, class, extends, import, export, default, in, of, instanceof},
+        keywordstyle=\textbf
+    }
+
     \lstdefinestyle{inline}{% Inline styling.
         basicstyle=\ttfamily\small, breaklines=true%
     }

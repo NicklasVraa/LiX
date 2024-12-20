@@ -1,0 +1,105 @@
+% Auth: Nicklas Vraa
+% Docs: https://github.com/NicklasVraa/LiX
+
+\documentclass{ieee}
+
+\size     {letter}
+\header   {LiX IEEE Journal Template for \LaTeX}
+\title    {A Sample Document for IEEE Journals and \\
+           Transactions Using a LiX-based Class}
+\authors  {Name Lastname}{Another Guy}{And Another}
+\keywords {Research, templates, metapackages, packages,
+           LaTeX, IEEE, LiX, Simplicity, Abstraction}
+\idnum    {1234-56789}
+
+\abstract{% ...}
+
+\begin{document}
+
+\h*{Non-Numbered Heading} % ...
+
+\h{Numbered Heading} % ...
+
+\hh{Subheading} % ...
+
+\hhh{Subsubheading} % ...
+
+\h{Formats}
+Nunc ante \b{bold} lectus, pretium id \i{italic} sodales, dapibus \s{strikethrough} urna. Suspendisse maximus \u{underlined} metus sed ante commodo efficitur. Some inline code: \c{def func(a,b): return a+b} % ...
+
+\h{Mathematics}
+% ...
+    \math{my_equation}{
+        \hat{x}_i = \frac{x_i-\mu}{\sqrt{\sigma^2+\epsilon}}
+    }
+
+\h{Code Blocks}
+ % ...
+    \code{my_code}{python}{
+    # Mauris viverra massa id lorem pretium gravida lorem ipsum.
+
+    if num == 1:
+      print(num, "is not a prime.")
+    elif num > 1:
+      for i in range(2, num):
+        if (num % i) == 0:
+          print(num, "is a prime.")
+          break
+    }
+    {This is some code.}
+
+\h{Tables}
+% ...
+    \tabs{my_table}{cols}{
+    This & is & a & cool & table \\
+    1    & 2  & 3 & 4    & 5     \\
+    a    & b  & c & d    & e
+    }
+    {This is a table - Notice that the description wraps.}
+
+\h{Figures}
+ % ...
+    \fig{my_svg}{0.7}{resources/placeholder.svg}
+    {This is an svg-figure scaled by 0.7, and this is a very long description.}
+
+    \fig{my_png}{0.7}{resources/placeholder.png}
+    {This is a png-figure.}
+
+\hh{Lists}
+ % ...
+    \items*{
+        \item This is a very long item to test the wrapping of text in the unordered environment.
+        \items*{
+            \item Another item, but indented.
+            \items*{
+                \item Yet another item.
+                \item An item on the same level.
+            }
+        }
+    }
+ % ...
+    \items{
+        \item This is an item.
+        \items{
+            \item Another item, but indented.
+            \items{
+                \item Yet another item.
+                \item An item on the same level.
+            }
+        }
+        \item Last item.
+    }
+
+ % ...
+
+\h{Referencing}
+Here is a hyperlink to a \url{webpage}{https://www.overleaf.com/}. This is a reference to \at{my_equation}, and this refers to \at{my_svg}. You can also refer to headings like \at{Tables}. \At{my_code} is a capitalized variant. For all references, both the name and number are links. Of cource, you can cite sources using \c{\cite{...}}, like this \cite{minted} or this \cite{tabularray}. You can also insert a bibliography.
+
+\h{Conclusion}
+ % ...
+
+\toc % table-of-contents.
+
+\bib{resources/refs}{ieeetr}
+
+\end{document}
