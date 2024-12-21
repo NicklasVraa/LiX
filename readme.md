@@ -282,9 +282,9 @@ Add lists to your document. It is possible to nest lists.
         \item Something else
         \item The final thing.
     }
-}
+}[nosep]
 ```
-`items{...}` will be numbered, and `items*{...}` will be bullet points.
+`items{...}` will be numbered, and `items*{...}` will be bullet points. The optional `[nosep]` option will remove the line spacing between the items. 
 
 </details>
 

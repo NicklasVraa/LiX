@@ -555,13 +555,13 @@
     \setlist[numbers,1]{leftmargin=8mm}
     \setlist[numbers]{leftmargin=*,label*=\arabic*.,labelindent=0mm}
 
-    \NewDocumentCommand{\items}{s+m}{%
+    \NewDocumentCommand{\items}{s+mO{}}{%
         \IfBooleanTF{#1}{%
-            \begin{bullets}%
+            \begin{bullets}[#3]%
                 #2
             \end{bullets}%
         }{%
-            \begin{numbers}%
+            \begin{numbers}[#3]%
                 #2
             \end{numbers}%
         }
