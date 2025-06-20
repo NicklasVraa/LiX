@@ -16,7 +16,7 @@
 \setlength\parindent{0pt}
 \renewcommand\maketitlehookc{\vspace{-2ex}}
 \usecompacttoc
-\geometry{a4paper, top=30mm, left=24mm, right=24mm, bottom=24mm}
+\geometry{a4paper, top=28mm, left=20mm, right=20mm, bottom=20mm}
 \setlength{\columnsep}{4mm}
 \setlength{\droptitle}{-5em}
 \fancyhfoffset[O]{0pt}
@@ -59,9 +59,9 @@
 \wrap{%
     \@ifundefined{theTitle}{}{%
         \@ifundefined{theSubtitle}{%
-            \oldtitle{\raggedright\Large\scshape\theTitle}%
+            \oldtitle{\raggedright\Large\scshape\textbf{\theTitle}}%
         }{%
-            \oldtitle{\raggedright\Large\scshape\theTitle\\[0.4ex]%
+            \oldtitle{\raggedright\Large\scshape\textbf{\theTitle}\\[0.4ex]%
             \normalsize\scshape\theSubtitle}%
         }
     }
@@ -71,7 +71,7 @@
         \oldauthor{\theAuthor}%
     }
     \@ifundefined{theDate}{%
-        \olddate{}%
+        \olddate{\vspace{-8ex}}%
     }{%
         \olddate{\raggedright\normalsize{\theDate}}%
     }

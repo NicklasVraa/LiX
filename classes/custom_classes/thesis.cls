@@ -16,9 +16,9 @@
 \setlength\parindent{0pt}
 \bibfont{\footnotesize}
 \authorfont{\normalsize}
-\counterwithin{equation}{section}
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
+%\counterwithin{equation}{section}
+%\counterwithin{figure}{section}
+%\counterwithin{table}{section}
 \AtBeginDocument{\counterwithin{lstlisting}{section}}
 \usecompacttoc
 \renewcommand{\toc}{\tableofcontents\newpage}

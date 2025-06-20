@@ -1,0 +1,1 @@
+/home/nv/Projects/lix/classes/custom_classes/novel.cls

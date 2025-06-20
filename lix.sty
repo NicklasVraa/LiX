@@ -6,6 +6,11 @@
 % your own document-class, or directly in your main document when using a
 % predefined class. The goal of this package is to speed up writing your
 % documents, but also to simplify the process of defining your own class.
+%
+% TODO:
+% - Check out the following packages: cleverref, natbib and biblatex.
+% - Check out biber backend as replacement for bibtex.
+% - Check out \sisetup for siunitx.
 % ------------------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
@@ -102,8 +107,8 @@
     \RequirePackage{pdfpages}
 
     % Add ----------------------------------------------------------------------
-    \NewDocumentCommand{\add}{mg}{ % One command for including tex and pdf files.
-        \filename@parse{#1}
+    \NewDocumentCommand{\add}{mg}{% One command for including tex and pdf files.
+        \filename@parse{#1}%
         \ifnum\pdfstrcmp{\filename@ext}{pdf}=0%
             \IfValueTF{#2}{%
                 \includepdf[pages=#2]{#1}%
@@ -117,6 +122,9 @@
 
     % Use ----------------------------------------------------------------------
     \newcommand{\use}[1]{\usepackage{#1}}
+
+    % Comment ------------------------------------------------------------------
+    \newcommand{\comment}[1]{}
 
     % Force new page -----------------------------------------------------------
     \newcommand{\np}{\newpage}
@@ -136,11 +144,11 @@
 
     % Table of Contents --------------------------------------------------------
     \newcommand{\toc}{{\small\tableofcontents}}
-    \@ifundefined{chapter}{}{
+    \@ifundefined{chapter}{}{%
         \addtocontents{toc}{\protect\thispagestyle{empty}}
     }
 
-    \newcommand{\usecompacttoc}{
+    \newcommand{\usecompacttoc}{%
         \titlecontents{section}[0em]{}{%
             \bfseries\thecontentslabel.\hspace*{0.5em}}{\bfseries}{%
             \titlerule*[0.5pc]{.}\contentspage%
@@ -161,16 +169,16 @@
     \newcommand{\nt}{\tocbreak}
 
     % Columns ------------------------------------------------------------------
-    \NewDocumentCommand{\cols}{smm}{
+    \NewDocumentCommand{\cols}{smm}{%
         \IfBooleanTF{#1}{%
             \begin{multicols*}{#2}%
-                #3
-            \end{multicols*}
-        }{
+                #3%
+            \end{multicols*}%
+        }{%
             \begin{multicols}{#2}%
-                #3
-            \end{multicols}
-        }
+                #3%
+            \end{multicols}%
+        }%
     }
 
     \newenvironment{columns}{\begin{multicols}}{\end{multicols}}
@@ -192,7 +200,7 @@
 
     % Author -------------------------------------------------------------------
     \newcommand{\theAuthorFont}{\normalfont}
-    \NewDocumentCommand{\authorfont}{m}{
+    \NewDocumentCommand{\authorfont}{m}{%
         \renewcommand{\theAuthorFont}{#1}
     }
     \NewCommandCopy{\oldauthor}{\author}%
@@ -221,7 +229,7 @@
     }
 
     % Byline -------------------------------------------------------------------
-    \NewDocumentCommand{\by}{mmg}{
+    \NewDocumentCommand{\by}{mmg}{%
         \IfValueTF{#3}{%
             \begin{figure}[H]
                 \begin{minipage}[H]{0.2\columnwidth}
@@ -326,7 +334,7 @@
         }
     }
 
-    \newcommand{\addFrontCover}{
+    \newcommand{\addFrontCover}{%
         \@ifundefined{theFront}{}{%
             \AddToShipoutPicture*{%
                 \put(0,0){%
@@ -340,7 +348,7 @@
         }
     }
 
-    \newcommand{\addBackCover}{
+    \newcommand{\addBackCover}{%
         \newpage\thispagestyle{empty}%
         \@ifundefined{theBack}{}{%
             \AddToShipoutPicture*{%
@@ -383,14 +391,14 @@
     \RequirePackage{caption, float, graphicx, svg}
     \setlength{\belowcaptionskip}{1pt}
 
-    \captionsetup{
+    \captionsetup{%
         format=plain, labelfont=bf, font=scriptsize,
         justification=raggedright, singlelinecheck=false
     }
 
     \def\maxwidth#1{\ifdim\Gin@nat@width>#1 #1\else\Gin@nat@width\fi}
 
-    \NewDocumentCommand{\fig}{mmmg}{ % One command for vectors and images.
+    \NewDocumentCommand{\fig}{mmmg}{% One command for vectors and images.
         \begin{figure}[H]
             \centering
             \filename@parse{#3}
@@ -465,17 +473,25 @@
     }{% If class is book-like.
         \RequirePackage{changepage}
 
-        \providecommand{\addEmpty}{}
+        \providecommand{\addEmpty}{}%
         \NewDocumentCommand{\start}{m}{%
-            \ifnum\pdfstrcmp{#1}{odd}=0
+            \IfStrEq{#1}{odd}{%
                 \renewcommand{\addEmpty}{%
-                    \checkevenpage\ifevenpage\else\newpage\clearpage\null\thispagestyle{empty}\fi%
-                }
-            \else\ifnum\pdfstrcmp{#1}{even}=0
-                \renewcommand{\addEmpty}{%
-                    \checkoddpage\ifoddpage\else\newpage\clearpage\null\thispagestyle{empty}\fi%
-                }
-            \fi\fi
+                    \checkoddpage
+                    \ifoddpage\else
+                        \newpage\clearpage\null\thispagestyle{empty}%
+                    \fi
+                }%
+            }{%
+                \IfStrEq{#1}{even}{%
+                    \renewcommand{\addEmpty}{%
+                        \checkoddpage
+                        \ifoddpage
+                            \newpage\clearpage\null\thispagestyle{empty}%
+                        \fi
+                    }%
+                }{\renewcommand{\addEmpty}{}}%
+            }%
         }
 
         \NewDocumentCommand{\h}{sm}{%
@@ -663,7 +679,7 @@
         \newcommand{\theThankyou}{#1}%
     }
 
-    \newcommand{\addFormalPage}{
+    \newcommand{\addFormalPage}{%
         \thispagestyle{empty}{%
             \clearpage\raggedright\footnotesize%
             \begin{minipage}{0.6\linewidth}%
@@ -757,14 +773,22 @@
 \ifnum\useSign=1
     \RequirePackage{tabularray}
 
-    \NewDocumentCommand{\sign}{mm}{%
+    \NewDocumentCommand{\sign}{mg}{%
         \noindent%
-        \begin{tblr}{colspec={cc}, rowsep={0pt}, row{4}={abovesep+=4pt},vspan={minimal}}%
-            \\ \\ \\
-            \cline{2,4}
-            & {\small #1} & & {\small Date} & \\ & {\scriptsize #2}
-        \end{tblr}%
-        \vspace*{0.5em}
+        \IfValueTF{#2}{%
+            \begin{tblr}{colspec={cc}, rowsep={0pt}, row{4}={abovesep+=4pt},vspan={minimal}}%
+                \\ \\ \\
+                \cline{2,4}
+                & {\small \hspace*{2ex}#1\hspace*{2ex}} & & {\small Date} & \\ & {\scriptsize #2}
+            \end{tblr}%
+        }{%
+            \begin{tblr}{colspec={cc}, rowsep={0pt}, row{4}={abovesep+=4pt},vspan={minimal}}%
+                \\ \\ \\
+                \cline{2,4}
+                & {\small \hspace*{2ex}#1\hspace*{2ex}} & & {\small Date} & \\ &
+            \end{tblr}%
+        }
+        \vspace*{0.2em}
     }
 \fi
 
@@ -806,8 +830,10 @@
 \ifnum\useRefs=1
     \RequirePackage{cite}
 
+    % Reference in-document items mid-sentence.
     \newcommand{\at}[1]{\renewcommand\lstlistingautorefname{snippet}\renewcommand\figureautorefname{figure}\renewcommand\equationautorefname{equation}\renewcommand\tableautorefname{table}\renewcommand\sectionautorefname{section}\renewcommand\subsectionautorefname{section}\renewcommand\subsubsectionautorefname{section}\renewcommand\paragraphautorefname{section}\renewcommand\subparagraphautorefname{section}\autoref{#1}}
 
+    % Reference in-document items at the start of a sentence.
     \newcommand{\At}[1]{\renewcommand\lstlistingautorefname{Snippet}\renewcommand\figureautorefname{Figure}\renewcommand\equationautorefname{Equation}\renewcommand\tableautorefname{Table}\renewcommand\sectionautorefname{Section}\renewcommand\subsectionautorefname{Section}\renewcommand\subsubsectionautorefname{Section}\renewcommand\paragraphautorefname{Section}\renewcommand\subparagraphautorefname{Section}\autoref{#1}}
 
     \newcommand{\theBibfont}{\normalfont} % Default.
@@ -834,7 +860,7 @@
 \ifnum\useTables=1
     \RequirePackage{caption, tabularray}
 
-    \NewDocumentCommand{\tabs}{mmmg}{
+    \NewDocumentCommand{\tabs}{mmmg}{%
         \begin{table}[H]
             \centering
             \ifnum\pdfstrcmp{#2}{cols}=0
@@ -897,7 +923,7 @@
 \ifnum\useCode=1
     \RequirePackage{caption, inconsolata, listings}
 
-    \lstdefinelanguage{js}{ % Javascipt and JSON highlighting support.
+    \lstdefinelanguage{js}{% Javascipt and JSON highlighting support.
         literate=
         *{0}{{\textbf{0}}}{1}
         {1}{{\textbf{1}}}{1}
@@ -935,7 +961,6 @@
         commentstyle=\color[rgb]{0.5,0.5,0.5},
         breaklines=true,
         numbers=left,
-        gobble=4,
         numberstyle=\tiny,
         numbersep=7pt,
         aboveskip=0.5em,
@@ -945,29 +970,18 @@
         postbreak=\mbox{\hspace{-2.5em}\textcolor{gray}{$\hookrightarrow$}\space\space}
     }
 
-    \ExplSyntaxOn
-        \NewDocumentCommand{\code}{smm +v g}{%
-            \begingroup%
-                \noindent{\tiny\dotfill}%
-                \IfBooleanTF{#1}{%
-                    \lstinputlisting[language=#3, style=block]{#4}
-                }{%
-                    \newlinechar=\endlinechar
-                    \exp_args:Nx \scantokens{
-                        \string\begin{lstlisting}[\unexpanded{language=#3,style=block}]
-                        #4
-                        \string\end{lstlisting}%
-                    }
-                }
-                \noindent{\tiny\dotfill}
-                \IfValueTF{#5}{%
-                    \captionsetup{type=lstlisting}%
-                    \caption{#5}%
-                }{}
-                \label{#2}%
-            \endgroup%
-        }
-    \ExplSyntaxOff
+    \NewDocumentCommand{\code}{mmmg}{%
+        \begingroup%
+            \noindent{\tiny\dotfill}%
+            \lstinputlisting[language=#2, style=block]{#3}
+            \noindent{\tiny\dotfill}
+            \IfValueTF{#4}{%
+                \captionsetup{type=lstlisting}%
+                \caption{#4}%
+            }{}
+            \label{#1}%
+        \endgroup%
+    }
 
     % Add reference category for code blocks.
     \renewcommand{\lstlistingname}{Snippet}
@@ -978,7 +992,7 @@
 \ifnum\useAlgorithms=1
     \RequirePackage{caption, inconsolata, listings}
 
-    \lstdefinelanguage{alg}{
+    \lstdefinelanguage{alg}{%
         %morekeywords={%
         %    assert,def,do,else,end,ensure,for,function,%
         %    if,in,let,require,return,stop,then,while%
@@ -990,7 +1004,6 @@
         mathescape=true,
         breaklines=true,
         numbers=left,
-        gobble=4,
         numberstyle=\tiny,
         numbersep=7pt,
         aboveskip=0.5em,
@@ -999,25 +1012,20 @@
         xleftmargin=14pt,
         postbreak=\mbox{\hspace{-2.5em}\textcolor{gray}{$\hookrightarrow$}\space\space}
     }
-    \ExplSyntaxOn
-        \NewDocumentCommand{\algo}{m +v g}{%
-            \begingroup%
-                \noindent{\tiny\dotfill}%
-                \newlinechar=\endlinechar
-                \exp_args:Nx \scantokens{
-                    \string\begin{lstlisting}[\unexpanded{language=alg,style=algorithm}]
-                    #2
-                    \string\end{lstlisting}%
-                }
-                \noindent{\tiny\dotfill}
-                \IfValueTF{#3}{%
-                    \captionsetup{type=lstlisting}%
-                    \caption{#3}%
-                }{}
-                \label{#1}%
-            \endgroup%
-        }
-    \ExplSyntaxOff
+
+    \NewDocumentCommand{\algo}{mmg}{%
+        \begingroup%
+            \noindent{\tiny\dotfill}%
+            \lstinputlisting[language=alg, style=algorithm]{#2}
+            \noindent{\tiny\dotfill}
+            \IfValueTF{#3}{%
+                \captionsetup{type=lstlisting}%
+                \caption{#3}%
+            }{}
+            \label{#1}%
+        \endgroup%
+    }
+
 \fi
 
 % FORMATTING: ------------------------------------------------------------------
@@ -1031,6 +1039,9 @@
 
     \providecommand{\i}{}
     \renewcommand{\i}[1]{\textit{#1}} % Italic.
+
+    \providecommand{\bi}{}
+    \renewcommand{\bi}[1]{\textbf{\textit{#1}}} % Bold and Italic.
 
     \providecommand{\u}{}
     \renewcommand{\u}[1]{\uline{#1}}  % Underline.
@@ -1096,8 +1107,8 @@
         \newcommand{\theBorderPad}{\IfValueTF{#4}{#4}{0cm}}
     }
 
-    \newcommand{\addCorners}{
-        \@ifundefined{theCornerID}{}{
+    \newcommand{\addCorners}{%
+        \@ifundefined{theCornerID}{}{%
             \AddToShipoutPictureBG{%
                 \begin{tikzpicture}[overlay, color=\theCornerColor]
                     \node[shift={(\theCornerPad,-\theCornerPad)}, anchor=north west] at (current page.north west){%
@@ -1113,8 +1124,8 @@
         }
     }
 
-    \newcommand{\addBorders}{
-        \@ifundefined{theBorderID}{}{
+    \newcommand{\addBorders}{%
+        \@ifundefined{theBorderID}{}{%
             \AddToShipoutPictureBG{%
                 \begin{tikzpicture}[overlay, color=\theBorderColor]
                     \node[shift={(0,\theBorderPad)}, anchor=south] at (current page.south){%
